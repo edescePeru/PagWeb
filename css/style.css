@@ -211,7 +211,7 @@ body a{
 	padding-right:0;
 }
 .col-xs-6.menu {
-  padding-right: 0;
+  padding-left: 40px;
 }
 .menu{
   width: 82% !important;
