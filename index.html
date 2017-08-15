@@ -39,18 +39,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 <div class="header_top">
 	<div class="container">
-		<div class="one-fifth column row_1">
-			<span class="selection-box"><select class="domains valid" name="domains">
-		       <option>English</option>
-		       <option>Español</option>
-		       <option>Japones</option>
-		    </select></span>
-         </div>
-         <div class="cssmenu">
-			<ul>
-			    <li class="active"><a href="login.html">Mi cuenta</a></li> 
+         		<div class="cssmenu">
+         			<ul class="ul-left">
+			    	<li class="active"><a href="about.html">Nosotros</a></li> 
+			    	<li><a href="contact.html">Contactanos	</a></li> 
 			</ul>
-		 </div>
+			<ul class="ul">
+			    	<li class="active"><a href="login.html">Mi cuenta</a></li> 
+			    	<li>
+				    	<div class="box_1-cart">
+						<div class="box_11">
+							<a href="checkout.html">
+						      		<h4>
+						      			<img src="images/default/bag1.png" alt=""/>
+						      			<p class="carts">
+						      				<span id="simpleCart_quantity" class="simpleCart_quantity"></span>
+						      			</p>
+						      			<div class="clearfix"> </div>
+						      		</h4>
+						      	</a>
+						</div>
+				          		<div class="clearfix"> </div>
+		        			</div>
+		        		</li>	
+			</ul>
+		</div>
 	</div>
 </div>	
 <div class="wrap-box"></div>
@@ -181,14 +194,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			  </ul> 
 			</div>
 		</div>
-	    <div class="col-xs-4 header-bottom-right">
-	       <div class="box_1-cart">
-		     <div class="box_11"><a href="checkout.html">
-		      <h4><p>Carrito: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><img src="images/bag.png" alt=""/><div class="clearfix"> </div></h4>
-		      </a></div>
-	          <p class="empty"><a href="javascript:;" class="simpleCart_empty">Carrito vacio</a></p>
-	          <div class="clearfix"> </div>
-	        </div>
+	    <div class="col-xs-5 header-bottom-right">
 	        <div class="search">	  
 				<input type="text" name="s" class="textbox" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 				<input type="submit" value="Subscribe" id="submit" name="submit">
