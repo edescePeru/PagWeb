@@ -5,8 +5,6 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Buy_shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 
 	<!-- CSS -->
 	<link href="../../css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -16,6 +14,7 @@
 	
 </head>	
 <body>
+
 <div class="header_top">
 	<div class="container">
          		<div class="cssmenu">
@@ -24,7 +23,7 @@
 			    	<li><a href="../../contact.html">Contactanos	</a></li> 
 			</ul>
 			<ul class="ul">
-			    	<li class="active"><a href="login.html">Mi cuenta</a></li> 
+			    	<li class="active"><a href="../../login.html">Mi cuenta</a></li> 
 			    	<li>
 				    	<div class="box_1-cart">
 						<div class="box_11">
@@ -45,146 +44,17 @@
 		</div>
 	</div>
 </div>	
+
 <div class="wrap-box"></div>
+
+
+
 <div class="header_bottom">
 	<div class="container">
 		<div class="col-xs-8 header-bottom-left">
-			<div class="col-xs-2 logo">
-				<h1><a href="../../index.html"><span>EDESCE</span>Store</a></h1>
-			</div>
-		
-			<div class="col-xs-6 menu">
-				<ul class="megamenu skyblue">
-					<li class="active grid">
-						<a class="color1" href="../../index.php">Tecnologia</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="discos_duros.html">Discos Duros</a></li>
-											<li><a href="men.html">Memoria RAM</a></li>
-											<li><a href="men.html">Motherboard</a></li>
-											<li><a href="men.html">Tarjetas Graficas</a></li>
-											<li><a href="men.html">SSD</a></li>
-											<li><a href="men.html">Cases</a></li>
-											<li><a href="men.html">Fuentes</a></li>
-											<li><a href="men.html">Procesadores</a></li>
-											<li><a href="men.html">Laptops</a></li>
-											<li><a href="men.html">Parlantes</a></li>
-											<li><a href="men.html">Teclados</a></li>
-											<li><a href="men.html">Bags</a></li>
-											<li><a href="men.html">Caps & Hats</a></li>
-											<li><a href="men.html">Hoodies & Sweatshirts</a></li>
-											<li><a href="men.html">Jackets & Coats</a></li>
-											<li><a href="men.html">Jeans</a></li>
-											<li><a href="men.html">Jewellery</a></li>
-											<li><a href="men.html">Jumpers & Cardigans</a></li>
-											<li><a href="men.html">Leather Jackets</a></li>
-											<li><a href="men.html">Long Sleeve T-Shirts</a></li>
-											<li><a href="men.html">Loungewear</a></li>
-										</ul>	
-									</div>							
-								</div>
-
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="men.html">Mouse</a></li>
-											<li><a href="men.html">Celulares</a></li>
-											<li><a href="men.html">Tablets</a></li>
-											<li><a href="men.html">SmartWatch</a></li>
-											<li><a href="men.html">Impresoras</a></li>
-											<li><a href="men.html">Camaras</a></li>
-											<li><a href="men.html">Consolas</a></li>
-											<li><a href="men.html">Videojuegos</a></li>
-											<li><a href="men.html">Monitores</a></li>
-											<li><a href="men.html">TV/SmartTV</a></li>
-											<li><a href="men.html">PC armada</a></li>
-										</ul>	
-									</div>							
-								</div>
-							
-								<div class="col1">
-									<div class="h_nav">
-										<h4>RECOMENDADO</h4>
-										<ul>
-											<li><a href="men.html">PROMOCIONES</a></li>
-											<li><a href="men.html">CAMARAS DE SEGURIDAD</a></li>
-											<li><a href="men.html">LINEA BLANCA</a></li>
-											<li><a href="men.html">GAMING</a></li>
-											<li><a href="men.html">SCOOTER ELECTRICO</a></li>
-											<li><a href="men.html">SOFTWARE</a></li>
-											<li><a href="men.html">RED</a></li>
-											<li><a href="men.html">PROYECTORES</a></li>
-											<li><a href="men.html">COOLER</a></li>
-										</ul>	
-									</div>												
-								</div>
-						  	</div>
-						</div>
-					</li>
-				    	
-					<li class="grid"><a class="color2" href="#">MODA/H</a>
-					  	<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="men.html">Polos</a></li>
-											<li><a href="men.html">Camisa</a></li>
-											<li><a href="men.html">Casaca</a></li>
-											<li><a href="men.html">Chompa</a></li>
-											<li><a href="men.html">Bata</a></li>
-											<li><a href="men.html">Ropa Interior</a></li>
-											<li><a href="men.html">Medias</a></li>
-											<li><a href="men.html">Jumpers & Cardigans</a></li>
-											<li><a href="men.html">Leather Jackets</a></li>
-											<li><a href="men.html">Long Sleeve T-Shirts</a></li>
-											<li><a href="men.html">Loungewear</a></li>
-										</ul>	
-									</div>							
-								</div>
-								
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="men.html">Shirts</a></li>
-											<li><a href="men.html">Shoes, Boots & Trainers</a></li>
-											<li><a href="men.html">Shorts</a></li>
-											<li><a href="men.html">Suits & Blazers</a></li>
-											<li><a href="men.html">Sunglasses</a></li>
-											<li><a href="men.html">Sweatpants</a></li>
-											<li><a href="men.html">Swimwear</a></li>
-											<li><a href="men.html">Trousers & Chinos</a></li>
-											<li><a href="men.html">T-Shirts</a></li>
-											<li><a href="men.html">Underwear & Socks</a></li>
-											<li><a href="men.html">Vests</a></li>
-										</ul>	
-									</div>							
-								</div>
-
-								<div class="col1">
-									<div class="h_nav">
-										<h4>Popular Brands</h4>
-										<ul>
-											<li><a href="men.html">Levis</a></li>
-											<li><a href="men.html">Persol</a></li>
-											<li><a href="men.html">Nike</a></li>
-											<li><a href="men.html">Edwin</a></li>
-											<li><a href="men.html">New Balance</a></li>
-											<li><a href="men.html">Jack & Jones</a></li>
-											<li><a href="men.html">Paul Smith</a></li>
-											<li><a href="men.html">Ray-Ban</a></li>
-											<li><a href="men.html">Wood Wood</a></li>
-										</ul>	
-									</div>												
-								</div>
-						  	</div>
-						</div>
-					</li>
-			  	</ul> 
-			</div>
+		<?php 
+			require '../header.php';
+		 ?>
 		</div>
 		
 		<div class="col-xs-4 header-bottom-right">
@@ -331,7 +201,7 @@
 			<div class="grids_of_4">
 			  	<div class="grid1_of_4 simpleCart_shelfItem">
 					<div class="content_box">
-						<a href="single.html">
+						<a href="../content/j1.html">
 							<div class="view view-fifth">
 					   	   		<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
 						   		<div class="mask1">
@@ -340,29 +210,7 @@
 							</div>
 						</a>	
 					
-						
-						
-						<div class="size_2">
-							<!--<div class="size_2-left"> 
-								<input type="text" class="item_quantity quantity_1" value="1" />
-							</div>-->
-							<input type="button" class="item_add add3" value="Agregar carrito"/>
-							<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>
-				<div class="grid1_of_4 simpleCart_shelfItem">
-					<div class="content_box">
-						<a href="single.html">
-							<div class="view view-fifth">
-					   	   		<img src="../../images/celular/0.png" class="img-responsive" alt=""/>
-						   		<div class="mask1">
-						   			<div class="info"> </div>
-								</div>
-							</div>
-						</a>	
-					
-						<h5><a href="single.html"> Samsung J1 Negro</a></h5>
+						<h5><a href="../content/j1.html"> Samsung J1 Negro</a></h5>
 						<h6>Pantalla 4.3", 512MB RAM</h6>
 						<div class="size_1">
 							<span class="item_price">S/.187.95</span>
@@ -380,16 +228,16 @@
 				</div>
 				<div class="grid1_of_4 simpleCart_shelfItem">
 					<div class="content_box">
-						<a href="single.html">
+						<a href="../content/j1.html">
 							<div class="view view-fifth">
-					   	   		<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
+					   	   		<img src="../../images/celular/0.png" class="img-responsive" alt=""/>
 						   		<div class="mask1">
 						   			<div class="info"> </div>
 								</div>
 							</div>
 						</a>	
 					
-						<h5><a href="single.html"> Samsung J1 Negro</a></h5>
+						<h5><a href="../content/j1.html"> Samsung J1 Negro</a></h5>
 						<h6>Pantalla 4.3", 512MB RAM</h6>
 						<div class="size_1">
 							<span class="item_price">S/.187.95</span>
@@ -407,7 +255,34 @@
 				</div>
 				<div class="grid1_of_4 simpleCart_shelfItem">
 					<div class="content_box">
-						<a href="single.html">
+						<a href="../content/j1.html">
+							<div class="view view-fifth">
+					   	   		<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
+						   		<div class="mask1">
+						   			<div class="info"> </div>
+								</div>
+							</div>
+						</a>	
+					
+						<h5><a href="../content/j1.html"> Samsung J1 Negro</a></h5>
+						<h6>Pantalla 4.3", 512MB RAM</h6>
+						<div class="size_1">
+							<span class="item_price">S/.187.95</span>
+							<div class="clearfix"></div>
+						</div>
+						
+						<div class="size_2">
+							<!--<div class="size_2-left"> 
+								<input type="text" class="item_quantity quantity_1" value="1" />
+							</div>-->
+							<input type="button" class="item_add add3" value="Agregar carrito"/>
+							<div class="clearfix"> </div>
+						</div>
+					</div>
+				</div>
+				<div class="grid1_of_4 simpleCart_shelfItem">
+					<div class="content_box">
+						<a href="../content/j1.html">
 							<div class="view view-fifth">
 					   	   		<img src="../../images/celular/0.png" class="img-responsive" alt=""/>
 						   		<div class="mask1">
@@ -416,7 +291,7 @@
 							</div>
 						</a>	
 					
-						<h5><a href="single.html"> Samsung J1 Negro</a></h5>
+						<h5><a href="../content/j1.html"> Samsung J1 Negro</a></h5>
 						<h6>Pantalla 4.3", 512MB RAM</h6>
 						<div class="size_1">
 							<span class="item_price">S/.187.95</span>
@@ -506,16 +381,14 @@
 </div>
 
 <script type="text/javascript" src="../../js/simpleCart.min.js"> </script>
-<script type="text/javascript" src="../../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="../../js/megamenu.js"></script>
 <script type="text/javascript" src="../../js/jquery.jscrollpane.min.js"></script>
 <script>
 	$(document).ready(function(){
 		$(".megamenu").megamenu();
 	});
-</script>
 
-<script type="application/x-javascript"> 
 	addEventListener("load", function() { 
 		setTimeout(hideURLbar, 0);
 	}, false); 
@@ -523,9 +396,7 @@
 	function hideURLbar(){ 
 		window.scrollTo(0,1); 
 	} 
-</script>
 
-<script type="text/javascript" id="sourcecode">
 	$(function()
 	{
 		$('.scroll-pane').jScrollPane();
