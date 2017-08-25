@@ -1,3 +1,7 @@
+<?php 
+	 session_start();
+	 $inicioSesion = isset($_SESSION['id']);
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -10,6 +14,8 @@
 	<link href="../../css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="../../css/style.css" rel='stylesheet' type='text/css' />
 	<link href="../../css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="../../css/font-awesome.min.css" rel="stylesheet" >
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	
 </head>	
@@ -18,28 +24,70 @@
 <div class="header_top">
 	<div class="container">
          		<div class="cssmenu">
-         			<ul class="ul-left">
-			    	<li class="active"><a href="../../about.html">Nosotros</a></li> 
-			    	<li><a href="../../contact.html">Contactanos	</a></li> 
+			<ul class="ul-left">
+				<li class="active"><a href="about.html">Nosotros</a></li> 
+				<li><a href="contact.html">Contactanos	</a></li> 
 			</ul>
 			<ul class="ul">
-			    	<li class="active"><a href="../../login.html">Mi cuenta</a></li> 
-			    	<li>
-				    	<div class="box_1-cart">
+				<li>
+					<div class="box_1-cart">
 						<div class="box_11">
 							<a href="checkout.html">
-						      		<h4>
-						      			<img src="../../images/default/bag1.png" alt=""/>
-						      			<p class="carts">
-						      				<span id="simpleCart_quantity" class="simpleCart_quantity"></span>
-						      			</p>
-						      			<div class="clearfix"> </div>
-						      		</h4>
-						      	</a>
+						  		<h4>
+						  			<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+						  			<p class="carts">
+						  				<span id="simpleCart_quantity" class="simpleCart_quantity"></span>
+						  			</p>
+						  			<div class="clearfix"> </div>
+						  		</h4>
+						  	</a>
 						</div>
-				          		<div class="clearfix"> </div>
-		        			</div>
-		        		</li>	
+				  		<div class="clearfix"> </div>
+					</div>
+				</li>
+				<?php if (!$inicioSesion) {?>
+					<li class="active"><a href="login.php">Iniciar Sesion</a></li> 
+				<?php } else { ?>	
+					<li>
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="checkout.html">
+							  		<h4>
+							  			<i class="fa fa-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Mi cuenta"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+					<li>
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="checkout.html" data-toggle="tooltip" data-placement="right" title="Pedidos">
+							  		<h4>
+							  			<i class="fa fa-truck" aria-hidden="true"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+					<li class="active">
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="script/logout.php" data-toggle="tooltip" data-placement="right" title="Salir">
+							  		<h4>
+							  			<i class="fa fa-power-off" aria-hidden="true"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+				<?php } ?>
 			</ul>
 		</div>
 	</div>
@@ -53,7 +101,7 @@
 	<div class="container">
 		<div class="col-xs-8 header-bottom-left">
 		<?php 
-			require '../header.php';
+			require '../header.html';
 		 ?>
 		</div>
 		
@@ -209,14 +257,14 @@
 								</div>
 							</div>
 						</a>	
-					
-						<h5><a href="../content/j1.html"> Samsung J1 Negro</a></h5>
+
+						<h5><a href="single.html"> Samsung J1 Negro</a></h5>
 						<h6>Pantalla 4.3", 512MB RAM</h6>
 						<div class="size_1">
 							<span class="item_price">S/.187.95</span>
 							<div class="clearfix"></div>
 						</div>
-						
+
 						<div class="size_2">
 							<!--<div class="size_2-left"> 
 								<input type="text" class="item_quantity quantity_1" value="1" />
@@ -322,61 +370,18 @@
 
 <div class="footer">
 	<div class="container">
-	   <div class="footer_top">
-		<div class="col-md-4 box_3">
-			<h3>Our Stores</h3>
-			<address class="address">
-              <p>9870 St Vincent Place, <br>Glasgow, DC 45 Fr 45.</p>
-              <dl>
-                 <dt></dt>
-                 <dd>Freephone:<span> +1 800 254 2478</span></dd>
-                 <dd>Telephone:<span> +1 800 547 5478</span></dd>
-                 <dd>FAX: <span>+1 800 658 5784</span></dd>
-                 <dd>E-mail:&nbsp; <a href="mailto@example.com">info(at)buyshop.com</a></dd>
-              </dl>
-           </address>
-           <ul class="footer_social">
-			  <li><a href=""> <i class="fb"> </i> </a></li>
-			  <li><a href=""><i class="tw"> </i> </a></li>
-			  <li><a href=""><i class="google"> </i> </a></li>
-			  <li><a href=""><i class="instagram"> </i> </a></li>
-		   </ul>
-		</div>
-		<div class="col-md-4 box_3">
-			<h3>Blog Posts</h3>
-			<h4><a href="#">Sed ut perspiciatis unde omnis</a></h4>
-			<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
-			<h4><a href="#">Sed ut perspiciatis unde omnis</a></h4>
-			<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
-			<h4><a href="#">Sed ut perspiciatis unde omnis</a></h4>
-			<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
-		</div>
-		<div class="col-md-4 box_3">
-			<h3>Support</h3>
-			<ul class="list_1">
-				<li><a href="#">Terms & Conditions</a></li>
-				<li><a href="#">FAQ</a></li>
-				<li><a href="#">Payment</a></li>
-				<li><a href="#">Refunds</a></li>
-				<li><a href="#">Track Order</a></li>
-				<li><a href="#">Services</a></li>
-			</ul>
-			<ul class="list_1">
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Press</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">About Us</a></li>
-				<li><a href="#">Contact Us</a></li>
-			</ul>
-			<div class="clearfix"> </div>
+		<div class="footer_top">
+		<?php 
+			require '../footer.html';
+		 ?>
 		</div>
 		<div class="clearfix"> </div>
-		</div>
+
 		<div class="footer_bottom">
 			<div class="copy">
-                <p>Copyright © 2015 Buy_shop. All Rights Reserved.<a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
-	        </div>
-	    </div>
+                			<p>© 2017 Edesce Store. Todos los derechos reservados.</p>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -384,9 +389,11 @@
 <script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="../../js/megamenu.js"></script>
 <script type="text/javascript" src="../../js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 <script>
 	$(document).ready(function(){
 		$(".megamenu").megamenu();
+		$('[data-toggle="tooltip"]').tooltip(); 
 	});
 
 	addEventListener("load", function() { 

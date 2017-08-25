@@ -1,3 +1,7 @@
+<?php 
+	 session_start();
+	 $inicioSesion = isset($_SESSION['id']);
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -11,13 +15,12 @@
 	<link href="css/nivo-slider.css" rel="stylesheet" >
 	<link href="css/mi-slider.css" rel="stylesheet" >
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 
 <style>
-	
-
 	.banner_desc {
-	text-align: center;
+		text-align: center;
 	}
 
 </style>
@@ -32,13 +35,12 @@
 				<li><a href="contact.html">Contactanos	</a></li> 
 			</ul>
 			<ul class="ul">
-				<li class="active"><a href="login.html">Mi cuenta</a></li> 
 				<li>
 					<div class="box_1-cart">
 						<div class="box_11">
 							<a href="checkout.html">
 						  		<h4>
-						  			<img src="images/default/bag1.png" alt=""/>
+						  			<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 						  			<p class="carts">
 						  				<span id="simpleCart_quantity" class="simpleCart_quantity"></span>
 						  			</p>
@@ -48,7 +50,50 @@
 						</div>
 				  		<div class="clearfix"> </div>
 					</div>
-				</li>	
+				</li>
+				<?php if (!$inicioSesion) {?>
+					<li class="active"><a href="login.php">Iniciar Sesion</a></li> 
+				<?php } else { ?>	
+					<li>
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="checkout.html">
+							  		<h4>
+							  			<i class="fa fa-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Mi cuenta"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+					<li>
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="checkout.html" data-toggle="tooltip" data-placement="right" title="Pedidos">
+							  		<h4>
+							  			<i class="fa fa-truck" aria-hidden="true"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+					<li class="active">
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="script/logout.php" data-toggle="tooltip" data-placement="right" title="Salir">
+							  		<h4>
+							  			<i class="fa fa-power-off" aria-hidden="true"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+				<?php } ?>
 			</ul>
 		</div>
 	</div>
@@ -59,138 +104,9 @@
 <div class="header_bottom">
 	<div class="container">
 		<div class="col-xs-8 header-bottom-left">
-			<div class="col-xs-3 logo">
-				<h1><a href="index.html"><span>EDESCE</span>Store</a></h1>
-			</div>
-				
-			<div class="col-xs-6 menu">
-				<ul class="megamenu skyblue">
-					<li class="active grid">
-						<a class="color1" href="index.html">
-							Tecnologia
-						</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="product/t/discos_duros.php">Discos Duros</a></li>
-											<li><a href="men.html">Memoria RAM</a></li>
-											<li><a href="men.html">Motherboard</a></li>
-											<li><a href="men.html">Tarjetas Graficas</a></li>
-											<li><a href="men.html">SSD</a></li>
-											<li><a href="men.html">Cases</a></li>
-											<li><a href="men.html">Fuentes</a></li>
-											<li><a href="men.html">Procesadores</a></li>
-											<li><a href="men.html">Laptops</a></li>
-											<li><a href="men.html">Parlantes</a></li>
-											<li><a href="men.html">Teclados</a></li>
-										</ul>	
-									</div>							
-								</div>
-
-								<div class="col1">
-									<div class="h_nav">
-										<ul>
-											<li><a href="men.html">Mouse</a></li>
-											<li><a href="men.html">Celulares</a></li>
-											<li><a href="men.html">Tablets</a></li>
-											<li><a href="men.html">SmartWatch</a></li>
-											<li><a href="men.html">Impresoras</a></li>
-											<li><a href="men.html">Camaras</a></li>
-											<li><a href="men.html">Consolas</a></li>
-											<li><a href="men.html">Videojuegos</a></li>
-											<li><a href="men.html">Monitores</a></li>
-											<li><a href="men.html">TV/SmartTV</a></li>
-											<li><a href="men.html">PC armada</a></li>
-										</ul>	
-									</div>							
-								</div>
-
-								<div class="col1">
-									<div class="h_nav">
-										<h4>RECOMENDADO</h4>
-										<ul>
-											<li><a href="men.html">PROMOCIONES</a></li>
-											<li><a href="men.html">CAMARAS DE SEGURIDAD</a></li>
-											<li><a href="men.html">LINEA BLANCA</a></li>
-											<li><a href="men.html">GAMING</a></li>
-											<li><a href="men.html">SCOOTER ELECTRICO</a></li>
-											<li><a href="men.html">SOFTWARE</a></li>
-											<li><a href="men.html">RED</a></li>
-											<li><a href="men.html">PROYECTORES</a></li>
-											<li><a href="men.html">COOLER</a></li>
-										</ul>	
-									</div>												
-								</div>
-							</div>
-						</div>
-					</li>
-
-					<li class="grid"><a class="color2" href="#">MODA-H/M</a>
-						<div class="megapanel">
-							<div class="row">
-								<div class="col1">
-									<div class="h_nav">
-										<h4>Moda Hombres</h4>
-										<ul>
-											<li><a href="men.html">Polos</a></li>
-											<li><a href="men.html">Camisa</a></li>
-											<li><a href="men.html">Casaca</a></li>
-											<li><a href="men.html">Chompa</a></li>
-											<li><a href="men.html">Bata</a></li>
-											<li><a href="men.html">Ropa Interior</a></li>
-											<li><a href="men.html">Medias</a></li>
-											<li><a href="men.html">Zapatos</a></li>
-											<li><a href="men.html">Zapatillas</a></li>
-											<li><a href="men.html">Gorros</a></li>
-											<li><a href="men.html">Short</a></li>
-										</ul>	
-									</div>							
-								</div>
-
-								<div class="col1">
-									<div class="h_nav">
-										<h4>Moda Mujeres</h4>
-										<ul>
-											<li><a href="men.html">Polos</a></li>
-											<li><a href="men.html">Blusa</a></li>
-											<li><a href="men.html">Casaca</a></li>
-											<li><a href="men.html">Chompa</a></li>
-											<li><a href="men.html">Bata</a></li>
-											<li><a href="men.html">Ropa Interior</a></li>
-											<li><a href="men.html">Zapatos</a></li>
-											<li><a href="men.html">Zapatillas</a></li>
-											<li><a href="men.html">Gorros</a></li>
-										</ul>	
-									</div>							
-								</div>
-								
-								<div class="col1">
-									<div class="h_nav">
-										<h4>Moda Niños/Niñas</h4>
-										<ul>
-											<li><a href="men.html">Polos</a></li>
-											<li><a href="men.html">Camisa/Blusa</a></li>
-											<li><a href="men.html">Casaca</a></li>
-											<li><a href="men.html">Chompa</a></li>
-											<li><a href="men.html">Bata</a></li>
-											<li><a href="men.html">Ropa Interior</a></li>
-											<li><a href="men.html">Medias</a></li>
-											<li><a href="men.html">Zapatos</a></li>
-											<li><a href="men.html">Zapatillas</a></li>
-											<li><a href="men.html">Gorros</a></li>
-											<li><a href="men.html">Short</a></li>
-										</ul>	
-									</div>												
-								</div>
-							</div>
-						</div>
-					</li>
-					
-					<li><a class="color4" href="about.html">Nosotros</a></li>		
-				</ul> 
-			</div>
+		<?php 
+			require 'header.html';
+		 ?>
 		</div>
 			
 		<div class="col-xs-4 header-bottom-right">
@@ -347,7 +263,7 @@
 		<div class="row_5">
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="shop-holder1">
-					<a href="single.html"><img src="images/pic4.jpg" class="img-responsive" alt=""/></a>
+					<a href="single.html"><img src="images/default/pic4.jpg" class="img-responsive" alt=""/></a>
 				</div>
 				<div class="shop-content" style="height: 80px;">
 					<h3><a href="single.html">Moda Varones</a></h3>
@@ -357,7 +273,7 @@
 
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="shop-holder1">
-					<a href="single.html"><img src="images/pic5.jpg" class="img-responsive" alt=""/></a>
+					<a href="single.html"><img src="images/default/pic5.jpg" class="img-responsive" alt=""/></a>
 				</div>
 				
 				<div class="shop-content" style="height: 80px;">
@@ -368,7 +284,7 @@
 			
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="shop-holder1">
-					<a href="single.html"><img src="images/pic6.jpg" class="img-responsive" alt=""/></a>
+					<a href="single.html"><img src="images/default/pic6.jpg" class="img-responsive" alt=""/></a>
 				</div>
 				
 				<div class="shop-content" style="height: 80px;">
@@ -386,59 +302,9 @@
 <div class="footer">
 	<div class="container">
 		<div class="footer_top">
-			<div class="col-md-4 box_3">
-				<h3>Our Stores</h3>
-				<address class="address">
-	 				<p>9870 St Vincent Place, <br>Glasgow, DC 45 Fr 45.</p>
-					
-					<dl>
-	 					<dt></dt>
-						<dd>Freephone:<span> +1 800 254 2478</span></dd>
-						<dd>Telephone:<span> +1 800 547 5478</span></dd>
-						<dd>FAX: <span>+1 800 658 5784</span></dd>
-						<dd>E-mail:&nbsp; <a href="mailto@example.com">info(at)buyshop.com</a></dd>
-					</dl>
-				</address>
-
-				<ul class="footer_social">
-					<li><a href=""> <i class="fb"> </i> </a></li>
-					<li><a href=""><i class="tw"> </i> </a></li>
-					<li><a href=""><i class="google"> </i> </a></li>
-					<li><a href=""><i class="instagram"> </i> </a></li>
-				</ul>
-			</div>
-
-			<div class="col-md-4 box_3">
-				<h3>Blog Posts</h3>
-				<h4><a href="#">Sed ut perspiciatis unde omnis</a></h4>
-				<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
-				<h4><a href="#">Sed ut perspiciatis unde omnis</a></h4>
-				<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
-				<h4><a href="#">Sed ut perspiciatis unde omnis</a></h4>
-				<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced</p>
-			</div>
-
-			<div class="col-md-4 box_3">
-				<h3>Support</h3>
-				<ul class="list_1">
-					<li><a href="#">Terms & Conditions</a></li>
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">Payment</a></li>
-					<li><a href="#">Refunds</a></li>
-					<li><a href="#">Track Order</a></li>
-					<li><a href="#">Services</a></li>
-				</ul>
-				<ul class="list_1">
-					<li><a href="#">Services</a></li>
-					<li><a href="#">Press</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Contact Us</a></li>
-				</ul>
-				<div class="clearfix"> </div>
-			</div>
-
-			<div class="clearfix"> </div>
+		<?php 
+			require 'footer.html';
+		 ?>
 		</div>
 
 		<div class="footer_bottom">
@@ -453,7 +319,8 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
-<script src="js/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
 
 <script type="text/javascript"> 
 	$(window).on('load', function() {
@@ -462,6 +329,7 @@
 
 	$(document).ready(function(){
 		$(".megamenu").megamenu();
+		 $('[data-toggle="tooltip"]').tooltip();  
 	});
 
 	addEventListener("load", function() { 
