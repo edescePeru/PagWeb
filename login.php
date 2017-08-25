@@ -5,10 +5,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Registro</title>
+	<title>Inicio Sesion</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+	
 	<!-- CSS -->
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
@@ -16,11 +16,12 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 
+
 </head>
 <body>
 <div class="header_top">
 	<div class="container">
-         		<div class="cssmenu">
+		<div class="cssmenu">
 			<ul class="ul-left">
 				<li class="active"><a href="about.html">Nosotros</a></li> 
 				<li><a href="contact.html">Contactanos	</a></li> 
@@ -92,7 +93,7 @@
 
 <div class="wrap-box"></div>
 
-<div class="header_bottom">
+<div class="header_bottom men_border">
 	<div class="container">
 		<div class="col-xs-8 header-bottom-left">
 			<?php 
@@ -110,99 +111,54 @@
 		</div>
 
 		<div class="clearfix"></div>
-
-		<div class="clearfix"></div>
 	</div>
 </div>
 
-<div class="border-box"></div>
-
 <div class="single_top">
-	<div class="container">
-		<?php if (!$inicioSesion) {?> 
-			<h1>
-				<B>CREAR CUENTA</B>
-				<div class="border-title"></div>
-			</h1>
-		
-			<div class="colum-left">
-				<div class="register">
-					<form id="register-form" autocomplete="off"> 
-						<div class="register-top-grid">
-							<h3>INFORMACIÓN PERSONAL</h3>
-							<div>
-								<span>NOMBRES <label>*</label></span>
-								<input type="text" id="first" name="first"> 
-							</div>
-							<div>
-								<span>APELLIDOS <label>*</label></span>
-								<input type="text" id="last" name="last"> 
-							</div>
-							<div>
-								<span>DNI <label>*</label></span>
-								<input type="text" maxlength="8" id="dni" name="dni"> 
-							</div>
-							<div>
-								<span>TELEFONO <label>*</label></span>
-								<input type="text" maxlength="9" id="phone" name="phone"> 
-							</div>
-							<!--	
-							<div class="clearfix"> </div>
-							<a class="news-letter" href="#">
-								<label class="checkbox">
-									<input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter
-								</label>
-							</a> 
-							-->
+	<div class="container"> 
+		<div class="register">
+			<?php if (!$inicioSesion) {?>
+				<div class="col-md-6 login-right">
+				  	<h3>Iniciar Sesión</h3>
+					<form id="register-login" autocomplete="off">
+						<div>
+							<span>EMAIL<label>*</label></span>
+							<input type="text" id="email" name="email"> 
 						</div>
-						
-						<div class="register-bottom-grid">
-						    <h3>INFORMACION DE INICIO DE SESIÓN</h3>
-						    <div>
-								<span>EMAIL <label>*</label></span>
-								<input type="text" id="email" name="email">
-							</div>
-
-							
-							<div class="clearfix block"> </div>
-
-							<div>
-								<span>CONTRASEÑA <label>*</label></span>
-								<input type="password" id="password" name="pwd">
-							</div>
-							
-							<div>
-								<span>CONFIRMAR CONTRASEÑA <label>*</label></span>
-								<input type="password" id="repeatpwd" name="repeatpwd">
-							</div>
-							<div class="clearfix"> </div>
+						<div>
+							<span>CONTRASEÑA<label>*</label></span>
+							<input type="password" id="pwd" name="pwd"> 
 						</div>
-					
-
-						<div class="clearfix"> </div>
-						<div class="register-but">
-							 <button type="submit" id="btn-register" class="registrar">Registrar</button>
-							<div class="clearfix"> </div>
+						<div>
+							<a class="forgot" href="#">¿Olvidaste tu contraseña?</a>	
 						</div>
-
+						  
+						<button type="submit" id="btn-login">Iniciar Sesion</button>
 					</form>
 				</div>
-			</div>
-
-			<div class="colum-right">
-				<img src="images/default/icono-registro.png" class="img-content">
-			</div>
-		<?php } else { ?>
-			<div class="noLogin">
-				<img src="images/default/noPage.png">
+				
+				<div class="col-md-6 login-left">
+					<h3>Nuevo Cliente</h3>
+				  	<div class="colum-left">
+						<p>Al crear una cuenta en <b>Edesce Store</b> podrás acceder a promociones únicas que te llegarán a tu correo, realizar el servicio de pago de manera rápida, revisar y realizar seguimiento de tus pedidos y mucho más...</p>
+						<a class="acount-btn" href="register.php"><b>Crear una cuenta</b></a>
+					 </div>
+					 <div class="colum-right">
+						<img src="images/default/login.png" class="img-content">
+					</div>
+				</div>	
 				<div class="clearfix"> </div>
-				<a type="button" href="script/logout.php" class="logout"><button><b>Cerrar Sesion</b></button></a>
 			</div>
-		<?php } ?>
-
-	    
-	</div>
-</div>     
+			<?php } else { ?>
+				<div class="noLogin">
+					<img src="images/default/noPage.png">
+					<div class="clearfix"> </div>
+					<a type="button" href="script/logout.php" class="logout"><button><b>Cerrar Sesion</b></button></a>
+				</div>
+			<?php } ?>
+		</div>
+     </div>
+</div>    
 
 <div class="footer">
 	<div class="container">
@@ -215,11 +171,9 @@
 
 		<div class="footer_bottom">
 			<div class="copy">
-			<p>© 2017 Edesce Store. Todos los derechos reservados.</p>
-	        </div>
-	    </div>
-
-
+                			<p>© 2017 Edesce Store. Todos los derechos reservados.</p>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -227,7 +181,22 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script type="text/javascript" src="misJs/validate.js"></script>
-<script type="text/javascript" src="misJs/registerClient.js"></script>
+<script type="text/javascript" src="misJs/login.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<script>
+	$(document).ready(function(){
+		$(".megamenu").megamenu();
+		$('[data-toggle="tooltip"]').tooltip();  
+	});
+
+	addEventListener("load", function() { 
+		setTimeout(hideURLbar, 0);
+	}, false); 
+
+	function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
 </body>
 </html>		
