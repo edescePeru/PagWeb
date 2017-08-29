@@ -29,7 +29,11 @@ function login(){
 			});
 		}else{
 			alert(response.message);
-			window.location.href="index.php";
+			if (response.role == 2) {
+				window.location.href="index.php";
+			} else{
+				window.location.href="panel.php";
+			};
 		}
 
 	});
