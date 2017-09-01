@@ -22,7 +22,7 @@
 	<div class="container">
          		<div class="cssmenu">
 			<ul class="ul-left">
-				<li class="active"><a href="about.html">Nosotros</a></li> 
+				<li class="active"><a href="about.php">Nosotros</a></li> 
 				<li><a href="contact.html">Contactanos	</a></li> 
 			</ul>
 			<ul class="ul">

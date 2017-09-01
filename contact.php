@@ -1,11 +1,16 @@
 <?php 
 	 session_start();
 	 $inicioSesion = isset($_SESSION['id']);
+
+	 if ($inicioSesion) {
+		$user = $_SESSION['user'];
+		$email = $_SESSION['email'];
+	 }
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Inicio Sesion</title>
+<title>Contacto</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
@@ -15,7 +20,6 @@
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-
 
 </head>
 <body>
@@ -115,50 +119,48 @@
 </div>
 
 <div class="single_top">
-	<div class="container"> 
-		<div class="register">
-			<?php if (!$inicioSesion) {?>
-				<div class="col-md-6 login-right">
-				  	<h3>Iniciar Sesión</h3>
-					<form id="register-login" autocomplete="off">
-						<div>
-							<span>EMAIL<label>*</label></span>
-							<input type="text" id="email" name="email"> 
-						</div>
-						<div>
-							<span>CONTRASEÑA<label>*</label></span>
-							<input type="password" id="pwd" name="pwd"> 
-						</div>
-						<div>
-							<a class="forgot" href="#">¿Olvidaste tu contraseña?</a>	
-						</div>
-						  
-						<button type="submit" id="btn-login">Iniciar Sesion</button>
-					</form>
+	<div class="container"> 		
+		<div class="content-title">
+			<h1 class="contact">Contáctanos</h1>
+			<div class="line-title"></div>
+		</div>	
+		<div class="col-md-9 contact_left">
+			<h3>por mensaje</h3>
+	  		<form id="form-message">
+				<div class="column_2">
+					<?php if ($inicioSesion){ ?>
+						<input type="text" class="name"  placeholder="Nombre" name="name" id="name" value="<?= $user; ?>" readonly>
+						<input type="text" class="email"  placeholder="Email" name="email" id="email" value="<?= $email; ?>" readonly >
+					<?php }else{ ?>
+						<input type="text" class="name"  placeholder="Nombre" name="name" id="name">
+						<input type="text" class="email"  placeholder="Email" name="email" id="email">
+					<?php } ?>
+					<input type="text" class="text"  placeholder="Asunto" name="Object" id="Object">
+				
 				</div>
 				
-				<div class="col-md-6 login-left">
-					<h3>Nuevo Cliente</h3>
-				  	<div class="colum-left">
-						<p>Al crear una cuenta en <b>Edesce Store</b> podrás acceder a promociones únicas que te llegarán a tu correo, realizar el servicio de pago de manera rápida, revisar y realizar seguimiento de tus pedidos y mucho más...</p>
-						<a class="acount-btn" href="register.php"><b>Crear una cuenta</b></a>
-					 </div>
-					 <div class="colum-right">
-						<img src="images/default/login.png" class="img-content">
-					</div>
-				</div>	
-				<div class="clearfix"> </div>
-			</div>
-			<?php } else { ?>
-				<div class="noLogin">
-					<img src="images/default/noPage.png">
-					<div class="clearfix"> </div>
-					<a type="button" href="script/logout.php" class="logout"><button><b>Cerrar Sesion</b></button></a>
+				<div class="column_3">
+					<textarea placeholder="Mensaje" name="message" name="message"></textarea>
 				</div>
-			<?php } ?>
+
+				<div class="form-submit1">
+					<button type="submit" id="btn-message">Enviar Mensaje</button>
+				</div>
+
+				<div class="clearfix"> </div>
+			</form>
 		</div>
-     </div>
-</div>    
+		
+		<div class="col-md-3 contact_right">
+			<h3>POR FACEBOOK</h3>
+			<div class="fb-page" data-href="https://www.facebook.com/EdesceStore/" data-tabs="messages" data-small-header="false"  data-height="400" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+				<blockquote cite="https://www.facebook.com/EdesceStore/" class="fb-xfbml-parse-ignore">
+					<a href="https://www.facebook.com/EdesceStore/">Edesce Store</a>
+				</blockquote>
+			</div>
+		</div>
+	</div>
+</div>  
 
 <div class="footer">
 	<div class="container">
@@ -181,7 +183,7 @@
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script type="text/javascript" src="misJs/validate.js"></script>
-<script type="text/javascript" src="misJs/login.js"></script>
+<script type="text/javascript" src="misJs/message.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 
@@ -196,6 +198,18 @@
 	}, false); 
 
 	function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
+
+<script>
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.10";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
 
 </script>
 </body>
