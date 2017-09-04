@@ -48,7 +48,7 @@
 					</div>
 				</li>
 				<?php if (!$inicioSesion) {?>
-					<li class="active"><a href="login.php">Iniciar Sesion</a></li> 
+					<li class="active"><a href="login.php">Inicia Sesion</a></li> 
 				<?php } else { ?>	
 					<li>
 						<div class="box_1-cart">
