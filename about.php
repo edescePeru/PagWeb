@@ -167,7 +167,7 @@
 				<div class="sidebar-content">
 					<h3><b>Youtube</b></h3>
 					<div class="you-body">
-						<div class="g-ytsubscribe" data-channel="TestStorePeru" data-layout="full" data-count="default"></div>
+						<div class="g-ytsubscribe" data-channelid="UCYtuXXobcXWVN8An6xVQn1A" data-layout="full" data-count="default"></div>
 					</div>
 				</div>
 			</div>

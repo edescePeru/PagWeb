@@ -67,22 +67,58 @@
 	font-family: sans-serif;
 	text-align: center;
 	color:#fff;
-	width:100%;
 	z-index:8;
+	width: 100%;
 	padding: 5px 10px;
 	overflow: hidden;
 	display: none;
 }
-.nivo-caption p {
+
+.nivo-caption{
+	text-transform: uppercase;	
+}
+
+.nivo-caption div.image1{
+	width:100%;
+}
+
+.nivo-caption div.image2{
+	width:50%;
+	color: black;
+}
+
+.nivo-caption div.image3{
+	width:50%;
+	color: #000;
+    	text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+
+.nivo-caption h4 {
 	padding:5px;
 	margin:0;
+	margin-bottom: 10px;
 }
 .nivo-caption a {
 	display:inline !important;
 }
+
+.nivo-caption button {
+	background: #f54d56;
+	color: #FFF;
+	font-size: 0.8em;
+	padding: 0.7em 1.2em;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border: none;
+}
 .nivo-html-caption {
     display:none;
 }
+
 /* Direction nav styles (e.g. Next & Prev) */
 .nivo-directionNav a {
 	position:absolute;
