@@ -2,9 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b192b39-6053-4921-b3eb-bfe17cd56a04" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/Slider/h.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/Slider/i - copia - copia.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/Slider/k.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/about.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/contact.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/misJs/message.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Script/navbar.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Script/sideBar.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/about.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/contact.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/panel.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BaseDatos/shop.sql" afterPath="$PROJECT_DIR$/BaseDatos/shop.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Script/Login.php" afterPath="$PROJECT_DIR$/Script/Login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/nivo-slider.css" afterPath="$PROJECT_DIR$/css/nivo-slider.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/style.css" afterPath="$PROJECT_DIR$/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/footer.html" afterPath="$PROJECT_DIR$/footer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misJs/login.js" afterPath="$PROJECT_DIR$/misJs/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misJs/producto.js" afterPath="$PROJECT_DIR$/misJs/producto.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/misJs/validate.js" afterPath="$PROJECT_DIR$/misJs/validate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/productos.php" afterPath="$PROJECT_DIR$/productos.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/register.php" afterPath="$PROJECT_DIR$/register.php" />
     </list>
     <ignored path="PagWeb.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +50,8 @@
       <file leaf-file-name="productos.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/productos.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="692" column="0" selection-start-line="692" selection-start-column="0" selection-end-line="692" selection-end-column="0" />
+            <state relative-caret-position="154">
+              <caret line="52" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="966" selection-end-column="0" />
               <folding>
                 <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#script#10;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -54,8 +75,8 @@
       <file leaf-file-name="producto.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/misJs/producto.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -70,8 +91,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/misJs/categoria.js" />
-        <option value="$PROJECT_DIR$/misJs/producto.js" />
         <option value="$PROJECT_DIR$/productos.php" />
+        <option value="$PROJECT_DIR$/BaseDatos/shop.sql" />
+        <option value="$PROJECT_DIR$/misJs/producto.js" />
       </list>
     </option>
   </component>
@@ -142,6 +164,20 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="Script" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PagWeb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PagWeb" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="misJs" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -178,12 +214,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1504562403573</updated>
-      <workItem from="1504562404966" duration="2321000" />
+      <workItem from="1504562404966" duration="2745000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2321000" />
+    <option name="totallyTimeSpent" value="2745000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -224,24 +260,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/misJs/producto.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="27" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/productos.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="692" column="0" selection-start-line="692" selection-start-column="0" selection-end-line="692" selection-end-column="0" />
+        <state relative-caret-position="154">
+          <caret line="52" column="26" selection-start-line="0" selection-start-column="0" selection-end-line="966" selection-end-column="0" />
           <folding>
             <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#script#10;n#body#0;n#html#0;n#!!top" expanded="false" />
             <marker date="1504564101590" expanded="true" signature="27158:27261" placeholder="..." />
             <marker date="1504564101590" expanded="true" signature="31161:31291" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/misJs/producto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>

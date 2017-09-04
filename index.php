@@ -31,8 +31,8 @@
 	<div class="container">
 		<div class="cssmenu">
 			<ul class="ul-left">
-				<li class="active"><a href="about.html">Nosotros</a></li> 
-				<li><a href="contact.html">Contactanos	</a></li> 
+				<li class="active"><a href="about.php">Nosotros</a></li> 
+				<li><a href="contact.php">Contactanos	</a></li> 
 			</ul>
 			<ul class="ul">
 				<li>
@@ -128,20 +128,42 @@
 	    <img src="images/Slider/a.jpg" alt="" title="#htmlcaption1" />    
 	    <img src="images/Slider/c.jpg" alt="" title="#htmlcaption2" />     
 	    <img src="images/Slider/d.jpg" alt="" title="#htmlcaption3" />    
-	    <img src="images/Slider/e.jpg" alt="" title="#htmlcaption4" />    
+	    <img src="images/Slider/k.jpg" alt="" title="#htmlcaption4" />    
 	    <img src="images/Slider/f.jpg" alt="" title="#htmlcaption5" />    
 	</div> 
 
-	<div id="htmlcaption1" class="nivo-html-caption">     
-	    <h1>Sean Bienvenidos</h1>
-	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	<div id="htmlcaption1" class="nivo-html-caption"> 
+		<div class="image1">    
+			<h2><b>Crea tu propio estilo <br> mirate diferente...</b></h2>
+			<h4><b>Ropa de mujer y hombre</b></h4>
+			<button><b>Ver mas...</b></button>
+		</div>
 	</div>
-	<div id="htmlcaption2" class="nivo-html-caption">     
-	    <h1>Acerca de Nosotros</h1>
+
+	<div id="htmlcaption2" class="nivo-html-caption"> 
+		<div class="image2">    
+			<h2><b>Realiza tus actividades <br> con comodidad...</b></h2>
+			<h4><b>Zapatos y zapatillas</b></h4>
+			<button><b>Ver mas...</b></button>
+		</div>
 	</div>
-	<div id="htmlcaption3" class="nivo-html-caption">     
-	    <h1>Gracias por visitar</h1>
+
+	<div id="htmlcaption3" class="nivo-html-caption"> 
+		<div class="image3">    
+			<h2><b>Ponte en contacto <br> con el mundo...</b></h2>
+			<h4><b>Celulares</b></h4>
+			<button><b>Ver mas...</b></button>
+		</div>
 	</div>
+
+	<div id="htmlcaption4" class="nivo-html-caption"> 
+		<div class="image3">    
+			<h2><b>Ponte en contacto <br> con el mundo...</b></h2>
+			<h4><b>Celulares</b></h4>
+			<button><b>Ver mas...</b></button>
+		</div>
+	</div>
+
 </div>	
 
 <div class="content_top">
