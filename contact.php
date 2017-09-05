@@ -211,6 +211,5 @@
 	}(document, 'script', 'facebook-jssdk'));
 </script>
 
-</script>
 </body>
 </html>		
