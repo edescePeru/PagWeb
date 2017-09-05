@@ -1,12 +1,17 @@
 drop database if exists shop;
 create database shop;
-	use shop;
+use shop;
 -- Tablas fuertes
 create table tipoCliente (
 	idTipoCLiente int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre varchar(80),
 	enable boolean
 );
+
+INSERT INTO tipoCliente(nombre, enable)
+VALUES ('Administrador', 1),
+	('Cliente', 1);
+
 create table categoria (
 	idCategoria int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	nombre varchar(80),
@@ -32,6 +37,11 @@ create table cliente (
 	password varchar(80),
 	enable boolean
 );
+
+INSERT INTO cliente (nombre, apellidos, docIdentidad, direccion, telefono, idTipoCliente, correo, password, enable)
+VALUES ('Administrador', 'Master', '12345678', 'Direccion', '987456321', 1, 'admin@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1),
+	('Jorge', 'Gonzales', '12345678', 'Direccion', '987456321', 2, 'jorge@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1);
+
 create table subcategoria (
 	idSubCategoria int NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	idCategoria int NOT NULL,

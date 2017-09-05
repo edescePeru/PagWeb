@@ -38,8 +38,9 @@
 
 		            // Almacenamos el nombre de usuario en una variable de sesión usuario
 			$_SESSION['id'] = $fila["0"];
-			$_SESSION['user'] = $fila["1"].' '.$fila["2"];
+			$_SESSION['user'] = $fila["1"];
 			$_SESSION['email'] = $fila["7"];
+			$_SESSION['role'] = $fila["6"];
 			echo json_encode(['error' => false, 'message' =>	'Bienvenido a Edesce Store. Redireccionando...' ]);
 		          return;
 		}
