@@ -1,4 +1,5 @@
 <?php
+include 'BaseDatos/conexion.php';
 session_start();
 ?>
 <!DOCTYPE html>
@@ -602,14 +603,22 @@ session_start();
 							<input type="text" id="form-field-2" placeholder="Username" class="col-xs-10 col-sm-10" />
 						</div>
 					</div>
+
+					
                     
 					<div class="form-group">
 						<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Sub Categoría</label>
 						<div class="col-sm-9">
 							<select class="col-sm-9 form-control " id="form-field-select-1">
 								<option value="">Escoja la subcategoría</option>
-								<option value="WI">Wisconsin</option>
-								<option value="WY">Wyoming</option>
+								<?php 
+									$resultSet = mysqli_query($conexion, 'SELECT * FROM subcategoria WHERE enable = 1');
+									while($fila = mysqli_fetch_array($resultSet)){
+								?>
+								<option value="<?php echo $fila[0]; ?>"><?php echo $fila[2] ?></option>
+								<?php 
+								} 
+								?>
 							</select>
 						</div>
 					</div>
@@ -618,8 +627,14 @@ session_start();
 						<div class="col-sm-9">
 							<select class="col-sm-9 form-control " id="form-field-select-1">
 								<option value="">Escoja la marca</option>
-								<option value="WI">Wisconsin</option>
-								<option value="WY">Wyoming</option>
+								<?php 
+									$resultSet = mysqli_query($conexion, 'SELECT * FROM marca WHERE enable = 1');
+									while($fila = mysqli_fetch_array($resultSet)){
+								?>
+								<option value="<?php echo $fila[0]; ?>"><?php echo $fila[1] ?></option>
+								<?php 
+								} 
+								?>
 							</select>
 						</div>
 					</div>
