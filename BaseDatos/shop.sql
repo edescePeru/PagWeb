@@ -229,6 +229,20 @@ CREATE TABLE IF NOT EXISTS `productoimage` (
   PRIMARY KEY (`idProductoImage`),
   KEY `idProducto` (`idProducto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `productoimage`
+--
+
+CREATE TABLE IF NOT EXISTS `productoItem` (
+  `idProductoItem` int(11) NOT NULL AUTO_INCREMENT,
+  `idProducto` int(11) NOT NULL,
+  `codigo` varchar(50) DEFAULT NULL,
+  `enable` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`idProductoItem`),
+  KEY `idProducto` (`idProducto`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
