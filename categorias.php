@@ -191,7 +191,7 @@ include 'BaseDatos/conexion.php';
 									                  $resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
 									                  while($fila = mysqli_fetch_array($resultSet)){
 									                ?>
-													<tr data-id="<?= $fila['0'] ?>">
+													<tr>
 														<td class="center">
 															<label class="pos-rel">
 																<input type="checkbox" class="ace" />
@@ -591,6 +591,7 @@ include 'BaseDatos/conexion.php';
 			
 			})
 		</script>
+
 
 		<!-- Own scripts -->
 		<script src="notify/bootstrap-notify.js"></script>

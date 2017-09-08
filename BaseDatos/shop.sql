@@ -165,7 +165,33 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `nombre` varchar(80) DEFAULT NULL,
   `enable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idMarca`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+
+--
+-- Volcado de datos para la tabla `marca`
+--
+
+INSERT INTO `marca` (`idMarca`, `nombre`, `enable`) VALUES
+(1, 'Acer', 1),
+(2, 'AOC', 1),
+(3, 'ASUS', 1),
+(4, 'Canon', 1),
+(5, 'Dell', 1),
+(6, 'Epson', 1),
+(7, 'Genius', 1),
+(8, 'Gigabyte', 1),
+(9, 'Gopro', 1),
+(10, 'HP', 1),
+(11, 'Huawei', 1),
+(12, 'Intel', 1),
+(13, 'Lenovo', 1),
+(14, 'LG', 1),
+(15, 'KINGSTON', 1),
+(16, 'Panasonic', 1),
+(17, 'Samsung', 1),
+(18, 'Xiaomi', 1),
+(19, 'Apple', 1),
+(20, 'SEAGATE', 1);
 
 -- --------------------------------------------------------
 

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("#show-register").on('click', showModalRegister);
 	$("#new-categoria").on('click', saveCategoria);
-	$("[data-eliminar]").on('click', deleteCategoria);
+	$(document).on('click', '[data-eliminar]', deleteCategoria);
 });
 
 function showModalRegister() {
@@ -32,9 +32,5 @@ function saveCategoria () {
 }
 
 function deleteCategoria () {
-	event.preventDefault();
-	var dato = $(this).data('eliminar');
-	//var dato = $(this).parents("tr").find('td:nth-child(2)').html();
-	//var dato = $(this).parents("tr").data('id');
-	alert(dato);
+	 alert($(this).data("id"));
 }	
