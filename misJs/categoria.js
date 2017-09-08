@@ -32,5 +32,5 @@ function saveCategoria () {
 }
 
 function deleteCategoria () {
-	 alert($(this).data("eliminar"));
+	 alert($(this).data("id"));
 }	
