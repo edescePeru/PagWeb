@@ -551,7 +551,7 @@ session_start();
 						<div class="col-sm-9">
 							<div class="widget-box col-sm-10">
 								<div class="widget-header">
-									<h4 class="widget-title">Descripción corta</h4>
+									<h4 class="widget-title">Descripciones</h4>
 
 									<div class="widget-toolbar">
 										<a href="#" data-action="collapse">
@@ -563,25 +563,25 @@ session_start();
 								<div class="widget-body">
 									<div class="widget-main">
 										<div>
-											<label for="form-field-9">Default</label>
+											<label for="form-field-9">Descripción corta</label>
 
-											<textarea class="form-control" id="form-field-8" placeholder="Default Text"></textarea>
+											<textarea class="form-control" id="form-field-8" placeholder="Descripción corta"></textarea>
 										</div>
 
 										<br />
 
 										<div>
-											<label for="form-field-9">With Character Limit</label>
+											<label for="form-field-9">Descripción larga</label>
 
-											<textarea class="form-control" id="form-field-8" placeholder="Default Text"></textarea>
+											<textarea class="form-control" id="form-field-8" placeholder="Descripción larga"></textarea>
 										</div>
 
 										<br />
 
 										<div>
-											<label for="form-field-9">With Character Limit</label>
+											<label for="form-field-9">Contenido de caja</label>
 
-											<textarea class="form-control" id="form-field-8" placeholder="Default Text"></textarea>
+											<textarea class="form-control" id="form-field-8" placeholder="Contenido caja"></textarea>
 										</div>
 									</div>
 								</div>
@@ -602,11 +602,22 @@ session_start();
 							<input type="text" id="form-field-2" placeholder="Username" class="col-xs-10 col-sm-10" />
 						</div>
 					</div>
+                    
 					<div class="form-group">
-						<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Default</label>
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Sub Categoría</label>
 						<div class="col-sm-9">
 							<select class="col-sm-9 form-control " id="form-field-select-1">
-								<option value=""></option>
+								<option value="">Escoja la subcategoría</option>
+								<option value="WI">Wisconsin</option>
+								<option value="WY">Wyoming</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Marca</label>
+						<div class="col-sm-9">
+							<select class="col-sm-9 form-control " id="form-field-select-1">
+								<option value="">Escoja la marca</option>
 								<option value="WI">Wisconsin</option>
 								<option value="WY">Wyoming</option>
 							</select>
@@ -620,6 +631,10 @@ session_start();
 						<i class="ace-icon fa fa-times"></i>
 						Close
 					</button>
+                    <button class="btn btn-sm btn-primary pull-left" data-dismiss="modal">
+                        <i class="ace-icon fa fa-save"></i>
+                        Guardar
+                    </button>
 				</div>
 			</form>
 		</div><!-- /.modal-content -->
