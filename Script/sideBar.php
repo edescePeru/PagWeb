@@ -34,6 +34,13 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 						<b class="arrow"></b>
 					</li>
 					<li class="">
+						<a href="subcategorias.php">
+							<i class="menu-icon fa fa-pencil-square-o"></i>
+							<span class="menu-text"> Sub-Categorias </span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+					<li class="">
 						<a href="productos.php">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Productos </span>

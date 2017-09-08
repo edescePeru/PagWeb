@@ -1,16 +1,15 @@
 $(document).ready(function(){
 	$("#show-register").on('click', showModalRegister);
-	$("#new-categoria").on('click', saveCategoria);
-	$("[data-eliminar]").on('click', deleteCategoria);
+	$("#new-subcategoria").on('click', saveSubCategoria);
 });
 
 function showModalRegister() {
 	$("#modal-register").modal('show');
 }
 
-function saveCategoria () {
+function saveSubCategoria () {
 	event.preventDefault();
-	var url = 'Script/RegCategoria.php';
+	var url = 'Script/RegSubCategoria.php';
     var data = $("#form-categoria").serializeArray();
 
 	$.ajax({
@@ -30,11 +29,3 @@ function saveCategoria () {
 		}
 	});
 }
-
-function deleteCategoria () {
-	event.preventDefault();
-	var dato = $(this).data('eliminar');
-	//var dato = $(this).parents("tr").find('td:nth-child(2)').html();
-	//var dato = $(this).parents("tr").data('id');
-	alert(dato);
-}	

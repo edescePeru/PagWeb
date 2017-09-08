@@ -80,17 +80,14 @@
 
 .nivo-caption div.image1{
 	width:100%;
-}
-
-.nivo-caption div.image2{
-	width:50%;
 	color: black;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
 .nivo-caption div.image3{
 	width:50%;
 	color: #000;
-    	text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
 }
 
 .nivo-caption h4 {

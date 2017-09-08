@@ -1,5 +1,5 @@
 <?php 
-include 'BaseDatos/conexion.php';
+	include 'BaseDatos/conexion.php';
 	 session_start();
 ?>
 <!DOCTYPE html>
@@ -75,7 +75,7 @@ include 'BaseDatos/conexion.php';
 							</li>
 
 							<li>
-								<a href="productos.php">Categorias</a>
+								<a href="subcategorias.php">Sub-Categorias</a>
 							</li>
 							
 							<li class="active">Listado</li>
@@ -156,15 +156,15 @@ include 'BaseDatos/conexion.php';
 								
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">Listado de categorias</h3>
+										<h3 class="header smaller lighter blue">Listado de Sub-Categorias</h3>
 										<a id="show-register" role="button" class="btn btn-success" >
-											Nueva Categoria
+											Nueva Sub-Categoria
 										</a>
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
 										</div>
 										<div class="table-header">
-											Resultados de "Las últimas categorias registradas"
+											Resultados de "Las últimas Sub-categorias registradas"
 										</div>
 
 										<!-- div.table-responsive -->
@@ -180,6 +180,7 @@ include 'BaseDatos/conexion.php';
 																<span class="lbl"></span>
 															</label>
 														</th>
+														<th>Nombre Sub-categoria</th>
 														<th>Nombre categoria</th>
 
 														<th></th>
@@ -188,10 +189,12 @@ include 'BaseDatos/conexion.php';
 
 												<tbody>
 													<?php 
-									                  $resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
-									                  while($fila = mysqli_fetch_array($resultSet)){
+									                  $resultSet = mysqli_query($conexion, 'SELECT SC.idSubCategoria, SC.nombre, C.nombre FROM subcategoria SC
+									                  										JOIN Categoria C ON SC.idCategoria = C.idCategoria
+									                  										WHERE SC.enable = 1 and C.enable = 1');
+									                  while($fila = mysqli_fetch_row($resultSet)){
 									                ?>
-													<tr data-id="<?= $fila['0'] ?>">
+													<tr>
 														<td class="center">
 															<label class="pos-rel">
 																<input type="checkbox" class="ace" />
@@ -199,8 +202,12 @@ include 'BaseDatos/conexion.php';
 															</label>
 														</td>
 
-														<td >
-															<?= $fila['nombre'] ?>
+														<td>
+															<?= $fila['1'] ?>
+														</td>
+
+														<td>
+															<?= $fila['2'] ?>
 														</td>
 														
 
@@ -214,7 +221,7 @@ include 'BaseDatos/conexion.php';
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 
-																<a class="red" data-eliminar="<?= $fila['0'] ?>">
+																<a class="red" href="#">
 																	<i class="ace-icon fa fa-trash-o bigger-130"></i>
 																</a>
 															</div>
@@ -309,12 +316,29 @@ include 'BaseDatos/conexion.php';
 					<form class="form-horizontal" role="form" id="form-categoria">
 						<div class="modal-body">
 							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Categoria</label>
+								<div class="col-sm-9 ">
+									<select class="col-sm-9 form-control" id="categoria" name="categoria">
+										<option value=""></option>
+										<?php 
+											$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
+											while($fila = mysqli_fetch_array($resultSet)){
+										?>
+										<option value="<?= $fila['0'] ?>"><?= $fila['1'] ?></option>
+										<?php } ?>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nombre </label>
 
 								<div class="col-sm-9">
-									<input type="text" id="categoria" name="categoria" placeholder="Categoria" class="col-xs-10 col-sm-10" />
+									<input type="text" id="subcategoria" name="subcategoria" placeholder="Sub-Categoria" class="col-xs-10 col-sm-10" />
 								</div>
 							</div>
+
+
 
 						</div>
 
@@ -323,7 +347,7 @@ include 'BaseDatos/conexion.php';
 								<i class="ace-icon fa fa-times"></i>
 								Close
 							</button>
-							<button id="new-categoria" class="btn btn-sm btn-primary pull-left" >
+							<button id="new-subcategoria" class="btn btn-sm btn-primary pull-left" >
 								<i class="ace-icon fa fa-save"></i>
 								Guardar
 							</button>
@@ -382,7 +406,7 @@ include 'BaseDatos/conexion.php';
 					bAutoWidth: false,
 					"aoColumns": [
 					  { "bSortable": false },
-					  null, 
+					  null, null,
 					  { "bSortable": false }
 					],
 					"aaSorting": [],
@@ -594,6 +618,6 @@ include 'BaseDatos/conexion.php';
 
 		<!-- Own scripts -->
 		<script src="notify/bootstrap-notify.js"></script>
-		<script src="misJs/categoria.js"></script>
+		<script src="misJs/subcategoria.js"></script>
 	</body>
 </html>
