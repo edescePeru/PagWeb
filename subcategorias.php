@@ -43,6 +43,13 @@
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+
+		<style>
+			.proceso{
+				float: left;
+    			padding-right: 5px;
+			}
+		</style>
 	</head>
 
 	<body class="no-skin">
@@ -189,7 +196,7 @@
 
 												<tbody>
 													<?php 
-									                  $resultSet = mysqli_query($conexion, 'SELECT SC.idSubCategoria, SC.nombre, C.nombre FROM subcategoria SC
+									                  $resultSet = mysqli_query($conexion, 'SELECT SC.idSubCategoria, SC.nombre, C.nombre, C.idCategoria FROM subcategoria SC
 									                  										JOIN Categoria C ON SC.idCategoria = C.idCategoria
 									                  										WHERE SC.enable = 1 and C.enable = 1');
 									                  while($fila = mysqli_fetch_row($resultSet)){
@@ -202,22 +209,18 @@
 															</label>
 														</td>
 
-														<td>
+														<td data-id=<?= $fila['0'] ?> data-subcategoria>
 															<?= $fila['1'] ?>
 														</td>
 
-														<td>
+														<td data-categoria=<?= $fila['3'] ?>>
 															<?= $fila['2'] ?>
 														</td>
 														
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
-																</a>
-
-																<a class="green" >
+																<a class="green" data-editar>
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 
@@ -234,14 +237,6 @@
 
 																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
 																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
 																				<span class="green">
 																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
@@ -250,7 +245,7 @@
 																		</li>
 
 																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																			<a data-eliminar="<?= $fila['0'] ?>" class="tooltip-error" data-rel="tooltip" title="Delete">
 																				<span class="red">
 																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																				</span>
@@ -306,14 +301,14 @@
 		</div><!-- /.main-container -->
 		
 		<!-- Modals-->
-		<div id="modal-register" class="modal fade" tabindex="-1">
+		<div id="modal-subcateg" class="modal fade" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h3 class="smaller lighter blue no-margin">Registrar categoria</h3>
+						<h3 class="smaller lighter blue no-margin"><div id="proceso" class="proceso">Registrar</div> Sub-categoria</h3>
 					</div>
-					<form class="form-horizontal" role="form" id="form-categoria">
+					<form class="form-horizontal" role="form" id="form-subcategoria">
 						<div class="modal-body">
 							<div class="form-group">
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Categoria</label>

@@ -96,11 +96,11 @@ function deleteCategoria () {
 
 			if(response.error) {
 				console.log(response.message);
-				alert(response.message);
+				$.notify(response.message,"danger");
 				
 			}else{
-				alert(response.message);
-				location.reload();
+				$.notify(response.message,"danger");
+				setTimeout(function(){ location.reload(); },2000);
 			}
 		});
     } 	

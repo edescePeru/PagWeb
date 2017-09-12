@@ -11,7 +11,7 @@
 	}
 
 	if ($id == "undefined") {
-		echo json_encode(['error' => true, 'message' =>  "El id no esta definido"]);
+		echo json_encode(['error' => true, 'message' =>  "La categoria no esta definido"]);
 		return;
 	}
 

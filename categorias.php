@@ -592,5 +592,6 @@ include 'BaseDatos/conexion.php';
 		<!-- Own scripts -->
 		<script src="notify/bootstrap-notify.js"></script>
 		<script src="misJs/categoria.js"></script>
+		<script src="notify/bootstrap-notify.min.js"></script>
 	</body>
 </html>
