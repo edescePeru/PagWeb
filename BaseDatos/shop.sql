@@ -205,12 +205,15 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `contenidoCaja` text,
   `color` varchar(80) DEFAULT NULL,
   `precio` decimal(9,2) DEFAULT NULL,
+  `stock`  int(11) NULL,
   `idSubCategoria` int(11) NOT NULL,
   `idMarca` int(11) NOT NULL,
+  `idCliente` int(11) NOT NULL,
   `enable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idProducto`),
   KEY `idSubCategoria` (`idSubCategoria`),
-  KEY `idMarca` (`idMarca`)
+  KEY `idMarca` (`idMarca`),
+  KEY `idCliente` (`idCliente`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -401,7 +404,8 @@ CREATE TABLE IF NOT EXISTS `tipocliente` (
 
 INSERT INTO `tipocliente` (`idTipoCLiente`, `nombre`, `enable`) VALUES
 (1, 'Administrador', 1),
-(2, 'Cliente', 1);
+(2, 'Cliente', 1),
+(3, 'Vendedor', 1);
 
 --
 -- Restricciones para tablas volcadas
@@ -444,7 +448,8 @@ ALTER TABLE `detacompra`
 --
 ALTER TABLE `producto`
   ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`idSubCategoria`) REFERENCES `subcategoria` (`idSubCategoria`),
-  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`idMarca`) REFERENCES `marca` (`idMarca`);
+  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`idMarca`) REFERENCES `marca` (`idMarca`),
+  ADD CONSTRAINT `producto_ibfk_3` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`);
 
 --
 -- Filtros para la tabla `productoimage`
