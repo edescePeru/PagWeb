@@ -43,6 +43,13 @@ include 'BaseDatos/conexion.php';
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+
+		<style>
+			.proceso{
+				float: left;
+    			padding-right: 5px;
+			}
+		</style>
 	</head>
 
 	<body class="no-skin">
@@ -199,18 +206,14 @@ include 'BaseDatos/conexion.php';
 															</label>
 														</td>
 
-														<td >
+														<td data-id=<?= $fila['0'] ?> data-nombre>
 															<?= $fila['nombre'] ?>
 														</td>
 														
 
 														<td>
 															<div class="hidden-sm hidden-xs action-buttons">
-																<a class="blue" href="#">
-																	<i class="ace-icon fa fa-search-plus bigger-130"></i>
-																</a>
-
-																<a class="green" href="#">
+																<a class="green" data-editar>
 																	<i class="ace-icon fa fa-pencil bigger-130"></i>
 																</a>
 
@@ -227,15 +230,7 @@ include 'BaseDatos/conexion.php';
 
 																	<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
 																		<li>
-																			<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="ace-icon fa fa-search-plus bigger-120"></i>
-																				</span>
-																			</a>
-																		</li>
-
-																		<li>
-																			<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																			<a data-editar class="tooltip-success" data-rel="tooltip" title="Edit">
 																				<span class="green">
 																					<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																				</span>
@@ -243,7 +238,7 @@ include 'BaseDatos/conexion.php';
 																		</li>
 
 																		<li>
-																			<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																			<a data-eliminar="<?= $fila['0'] ?>" class="tooltip-error" data-rel="tooltip" title="Delete">
 																				<span class="red">
 																					<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																				</span>
@@ -299,12 +294,13 @@ include 'BaseDatos/conexion.php';
 		</div><!-- /.main-container -->
 		
 		<!-- Modals-->
-		<div id="modal-register" class="modal fade" tabindex="-1">
+		<!-- Modal register-->
+		<div id="modal-categ" class="modal fade" tabindex="-1">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h3 class="smaller lighter blue no-margin">Registrar categoria</h3>
+						<h3 class="smaller lighter blue no-margin"><div id="proceso" class="proceso">Registrar</div> categoria</h3>
 					</div>
 					<form class="form-horizontal" role="form" id="form-categoria">
 						<div class="modal-body">
@@ -323,7 +319,7 @@ include 'BaseDatos/conexion.php';
 								<i class="ace-icon fa fa-times"></i>
 								Close
 							</button>
-							<button id="new-categoria" class="btn btn-sm btn-primary pull-left" >
+							<button id="process-categoria" class="btn btn-sm btn-primary pull-left" >
 								<i class="ace-icon fa fa-save"></i>
 								Guardar
 							</button>
@@ -352,10 +348,10 @@ include 'BaseDatos/conexion.php';
 		<!-- <![endif]-->
 
 		<!--[if IE]>
-<script type="text/javascript">
- window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
-</script>
-<![endif]-->
+		<script type="text/javascript">
+		 window.jQuery || document.write("<script src='assets/js/jquery1x.min.js'>"+"<"+"/script>");
+		</script>
+		<![endif]-->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>

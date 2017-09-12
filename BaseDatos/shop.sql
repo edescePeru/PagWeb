@@ -190,9 +190,7 @@ INSERT INTO `marca` (`idMarca`, `nombre`, `enable`) VALUES
 (16, 'Panasonic', 1),
 (17, 'Samsung', 1),
 (18, 'Xiaomi', 1),
-(19, 'Apple', 1),
-(20, 'SEAGATE', 1);
-
+(19, 'Apple', 1);
 -- --------------------------------------------------------
 
 --

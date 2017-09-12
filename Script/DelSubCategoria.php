@@ -6,7 +6,7 @@
 
 	// $eliminar = mysqli_query($conexion, "DELETE FROM categoria WHERE idCategoria = '".$id."'");
 
-	$eliminar = mysqli_query($conexion, "UPDATE categoria SET enable = 0 WHERE idCategoria = '".$id."'");
+	$eliminar = mysqli_query($conexion, "UPDATE subcategoria SET enable = 0 WHERE idSubCategoria = '".$id."'");
 
 
 	if ($eliminar) { 
