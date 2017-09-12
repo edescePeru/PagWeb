@@ -2,6 +2,8 @@
 	header('Content-type: application/json');
 	include '../BaseDatos/conexion.php';
 
+	session_start();
+
 	//valores
 	$name = $_POST['name'];
 	$descriptionShort = $_POST['description-short'];
@@ -57,8 +59,8 @@
 		return;
 	}
 
-	$query = "INSERT INTO producto(nombrePortada, descripcionCorta, descripcionLarga, contenidoCaja, color, precio, idSubCategoria, idMarca, enable) 
-	VALUES ('".$name."','".$descriptionShort."','".$descriptionLong."','".$contentBox."','".$color."',".$price.",".$subcategoria.",".$marca.",1)";
+	$query = "INSERT INTO producto(nombrePortada, descripcionCorta, descripcionLarga, contenidoCaja, color, precio, idSubCategoria, idMarca, idCliente, enable) 
+	VALUES ('".$name."','".$descriptionShort."','".$descriptionLong."','".$contentBox."','".$color."',".$price.",".$subcategoria.",".$marca.",'".$_SESSION['id']."',1)";
 
 	$registro = mysqli_query($conexion, $query);
 
