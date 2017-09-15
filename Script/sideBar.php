@@ -41,12 +41,48 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 						<b class="arrow"></b>
 					</li>
 					<li class="">
+						<a href="marcas.php">
+							<i class="menu-icon fa fa-pencil"></i>
+							<span class="menu-text"> Marcas </span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+
+					<!--
+					<li class="">
 						<a href="productos.php">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Productos </span>
 						</a>
 						<b class="arrow"></b>
 					</li>
+					-->
+
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-headphones"></i>
+							<span class="menu-text"> Productos </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+						<b class="arrow"></b>
+						<ul class="submenu">
+							<li class="">
+								<a href="producto_catalogo.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Administrar productos
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="">
+								<a href="producto_nuevo.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Nuevo producto
+								</a>
+								<b class="arrow"></b>
+							</li>
+						</ul>
+					</li>
+
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
@@ -201,6 +237,7 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 							</li>
 						</ul>
 					</li>
+
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
@@ -225,6 +262,7 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 							</li>
 						</ul>
 					</li>
+
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
@@ -283,6 +321,7 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 						</a>
 						<b class="arrow"></b>
 					</li>
+
 					<li class="">
 						<a href="gallery.html">
 							<i class="menu-icon fa fa-picture-o"></i>
@@ -290,6 +329,7 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 						</a>
 						<b class="arrow"></b>
 					</li>
+
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-tag"></i>
@@ -349,6 +389,7 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 							</li>
 						</ul>
 					</li>
+
 				</ul><!-- /.nav-list -->
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
