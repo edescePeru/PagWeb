@@ -211,7 +211,7 @@
 															</label>
 														</td>
 
-														<td data-id=<?= $fila['0'] ?> data-marca>
+														<td data-id=<?= $fila['0'] ?> data-marca=<?= $fila['1'] ?>>
 															<?= $fila['1'] ?>
 														</td>
 
@@ -330,6 +330,7 @@
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Sub-Categoria</label>
 								<div class="col-sm-9 ">
 									<select class="col-sm-9 form-control" id="subcategoria" name="subcategoria">
+										<option value=""></option>
 										
 									</select>
 								</div>

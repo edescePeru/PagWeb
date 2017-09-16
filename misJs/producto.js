@@ -6,8 +6,31 @@ $(document).ready(function(){
 	$('#categoria').on('change', viewSubcategoria);
 	$('#subcategoria').on('change', viewMarca);
 
+	$('#Next1').on('click', nextView);
+
 
 });
+
+function nextView() {
+	var idCategoria = $('#categoria').val();
+	var idSubcategoria = $('#subcategoria').val();
+	var idMarca = $('#marca').val();
+	var categoria = $("#categoria option:selected").map(function() {
+	    return $(this).text();
+	}).get();
+	var subcategoria = $("#subcategoria option:selected").map(function() {
+	    return $(this).text();
+	}).get();
+	var marca = $("#marca option:selected").map(function() {
+	    return $(this).text();
+	}).get();
+	console.log(idCategoria);
+	console.log(idSubcategoria);
+	console.log(idMarca);
+	console.log(categoria);
+	console.log(subcategoria);
+	console.log(marca);
+}
 
 function viewSubcategoria () {
 	var categoria = $(this).val();

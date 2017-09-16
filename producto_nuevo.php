@@ -212,7 +212,24 @@ session_start();
 				<div class="row">
 					<div class="col-xs-12">
 						<!-- PAGE CONTENT BEGINS -->
+						<div class="row">
+							
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>
 
+							<div class="col-sm-9">
+								<input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>
+
+							<div class="col-sm-9">
+								<input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
 						<div class="row">
 							<div class="col-xs-12">
 								<h3 class="header smaller lighter blue">Nuevo producto</h3>
@@ -224,19 +241,19 @@ session_start();
 									<ul class="nav nav-tabs ">
 
 										<li class="active" style="pointer-events: none;">
-											<a  data-toggle="tab">Categoría de tu producto</a>
+											<a  data-toggle="tab1">Categoría de tu producto</a>
 										</li>
 										<li style="pointer-events: none;">
-											<a  data-toggle="tab">Informacion de tu producto</a>
+											<a  data-toggle="tab2">Informacion de tu producto</a>
 										</li>
 										<li style="pointer-events: none;">
-											<a  data-toggle="tab">Información adicional de tu producto <i class="fa"></i></a>
+											<a  data-toggle="tab3">Información adicional de tu producto <i class="fa"></i></a>
 										</li>
 										<li style="pointer-events: none;">
-											<a  data-toggle="tab">Precios de tu producto <i class="fa"></i></a>
+											<a  data-toggle="tab4">Precios de tu producto <i class="fa"></i></a>
 										</li>
 										<li style="pointer-events: none;">
-											<a  data-toggle="tab">Imagenes de tu producto <i class="fa"></i></a>
+											<a  data-toggle="tab5">Imagenes de tu producto <i class="fa"></i></a>
 										</li>
 
 									</ul>
@@ -259,7 +276,7 @@ session_start();
 														$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
 														while($fila = mysqli_fetch_array($resultSet)){
 													?>
-													<option value="<?php echo $fila[0]; ?>"><?php echo $fila[1] ?> >></option>
+													<option value="<?php echo $fila[0]; ?>"><?php echo $fila[1] ?></option>
 													<?php }	?>
 												</select>
 											</div>
@@ -286,221 +303,8 @@ session_start();
 
 							        <div class="tab-pane" id="Tab2">
 
-							          <div class="col-md-12">
-							            <div style="float: left; width: 45%">
 
-							              <div style=" border-bottom: 1px dotted #CCC;  margin-top: 30px; font-size: 20px;">
-							                <p align="center" style="font-family: Agency FB;"><b>RECOGO DE PEDIDO...</b></p>
-							              </div>
-
-							              <div class="row">
-							                  <h4>UBICACIÓN DE RECOGO</h4>
-							                    <div class="row">
-
-							                      <div class="col-md-6">
-							                        <h5>Departamento</h5>
-							                        <select class="form-control departamento" style="width: 100%;"  id="departamento">
-							                          <option value=""></option>
-							                          <?php 
-							                            $depa = mysqli_query($conexion, 'SELECT * FROM departamento');
-							                            while($fila = mysqli_fetch_row($depa)){
-							                          ?>
-							                          <option value= "<?=$fila[0]?>"> <?=$fila[1]?> </option>
-							                          <?php } ?>                                             
-							                         </select>
-							                      </div>
-
-							                      
-							                      <div class="col-md-6">
-							                       <h5>Provincia</h5>
-							                        <select class="form-control provincia" style="width: 100%;"  name="provincia" id="provincia">
-							                            <option value=""></option>
-							                        </select>
-							                      </div>
-
-							                    </div>
-							              </div>
-
-							              <br>
-
-							              <div class="row">
-							                <div class="row">
-							                  <div class="col-md-6">
-							                    <h5>Distrito</h5>
-							                    <select class="form-control distrito" style="width: 100%;"  id="distrito" name="recogoDistrito" >
-							                      <option value=""></option>
-							                    </select>
-							                  </div>
-
-							                  <div class="col-md-6">
-							                    <h5>Dirección</h5>
-							                    <div class="has-feedback">
-							                      <input type="text" class="form-control" placeholder="Direccion"   name="recogoDireccion">
-							                      <span class="fa fa-map-marker form-control-feedback" style=" line-height: 34px;"></span>
-							                    </div>
-							                  </div>
-							                </div>
-							              </div>
-
-							              <br>
-
-							              <div class="row">
-							                <h4>FECHA Y HORA DE RECOGO</h4>
-							                <div class="row">
-							                  <div class="col-md-6">
-							                    <h5>Fecha</h5>
-							                    <div class="has-feedback">
-							                      <input type="text" class="form-control" data-date data-inputmask="'alias': 'dd-mm-yyyy'"  data-mask  name="recogoFecha">
-							                      <span class="fa fa-calendar form-control-feedback" style=" line-height: 34px;"></span>
-							                    </div>
-							                  </div>
-
-							                  <div class="col-md-6">
-							                    <h5>Hora</h5>
-							                    <div class="input-group clockpicker" data-placement="right" data-align="top" >
-							                        <input type="text" class="form-control" data-inputmask="'alias': 'hh:mm'"  data-mask name="recojoHora" >
-							                        <span class="input-group-addon">
-							                            <i class="fa fa-clock-o"></i>                        
-							                        </span>
-							                    </div>
-
-							                  </div>
-
-							                  <!--
-							                  <div class="col-md-6">
-							                    <h5>Hora</h5>
-							                    <div class="has-feedback">
-							                      <input type="text" class="form-control"  date-time>
-							                      <span class="fa fa-clock-o form-control-feedback" style=" line-height: 34px;"></span>
-							                    </div>
-							                  </div>
-							                  -->
-							                </div>
-							              </div>
-
-							              <br>
-
-							              <div class="row">
-							                <h4 style="color: red;">FECHA MAXIMA PARA LA BUSQUEDAD DE UNIDADES *</h4>
-							                <div class="row">
-							                  <div class="col-md-6">
-							                    <h5>Fecha</h5>
-							                    <div class="has-feedback">
-							                      <input type="text" class="form-control" data-date data-inputmask="'alias': 'dd-mm-yyyy'"  data-mask  name="maximaFecha">
-							                      <span class="fa fa-calendar form-control-feedback" style=" line-height: 34px;"></span>
-							                    </div>
-							                  </div>
-
-							                  <div class="col-md-6">
-							                    <h5>Hora</h5>
-							                    <div class="input-group clockpicker" data-placement="right" data-align="top">
-							                        <input type="text" class="form-control" data-inputmask="'alias': 'hh:mm'"  data-mask name="maximaHora">
-							                        <span class="input-group-addon">
-							                            <i class="fa fa-clock-o"></i>                        
-							                        </span>
-							                    </div>
-
-							                  </div>
-
-							                  <!--
-							                  <div class="col-md-6">
-							                    <h5>Hora</h5>
-							                    <div class="has-feedback">
-							                      <input type="text" class="form-control"  date-time>
-							                      <span class="fa fa-clock-o form-control-feedback" style=" line-height: 34px;"></span>
-							                    </div>
-							                  </div>
-							                  -->
-							                </div>
-							              </div>
-
-
-							            </div>
-
-							      
-							            <div style="float: right; width: 45%">
-							              <div style=" border-bottom: 1px dotted #CCC;  margin-top: 30px; font-size: 18px;">
-							                <p align="center" style="font-family: Agency FB;"><b>ENTREGA DE PEDIDO...</b></p>
-							              </div>
-
-
-							              <div class="row">
-							                  <h4>UBICACIÓN DE ENTREGA</h4>
-							                    <div class="row">
-
-							                      <div class="col-md-6">
-							                        <h5>Departamento</h5>
-							                        <select class="form-control departamento" style="width: 100%;"  id="departamento1">
-							                          <option value=""></option>
-							                          <?php 
-							                            $depa = mysqli_query($conexion, 'SELECT * FROM departamento');
-							                            while($fila = mysqli_fetch_row($depa)){
-							                          ?>
-							                          <option value= "<?=$fila[0]?>"> <?=$fila[1]?> </option>
-							                          <?php } ?>                                             
-							                         </select>
-							                      </div>
-
-							                      
-							                      <div class="col-md-6">
-							                       <h5>Provincia</h5>
-							                        <select class="form-control provincia" style="width: 100%;"  name="provincia" id="provincia1">
-							                            <option value=""></option>
-							                        </select>
-							                      </div>
-
-							                    </div>
-							              </div>
-
-							              <br>
-
-							              <div class="row">
-							                <div class="row">
-							                  <div class="col-md-6">
-							                    <h5>Distrito</h5>
-							                    <select class="form-control distrito" style="width: 100%;"  id="distrito1" name="entregaDistrito">
-							                      <option value=""></option>
-							                    </select>
-							                  </div>
-
-							                  <div class="col-md-6">
-							                    <h5>Dirección</h5>
-							                    <div class="has-feedback">
-							                      <input type="text" class="form-control" placeholder="Direccion"   name="entregaDireccion">
-							                      <span class="fa fa-map-marker form-control-feedback" style=" line-height: 34px;"></span>
-							                    </div>
-							                  </div>
-							                </div>
-							              </div>
-
-							              <br>
-
-							              <div class="row">
-							                <h4>FECHA DE ENTREGA</h4>
-							                <div class="row">
-							                  <div class="col-md-6">
-							                        <h5>Fecha</h5>
-							                        <div class="has-feedback">
-							                          <input type="text" class="form-control" data-date data-inputmask="'alias': 'dd-mm-yyyy'"  data-mask  name="entregaFecha">
-							                          <span class="fa fa-calendar form-control-feedback" style=" line-height: 34px;"></span>
-							                        </div>
-							                      </div>
-
-							                  <!--
-							                  <div class="col-md-6">
-							                    <h5>Hora</h5>
-							                    <div class="has-feedback">
-							                      <input type="text" class="form-control"   date-time>
-							                      <span class="fa fa-clock-o form-control-feedback" style=" line-height: 34px;"></span>
-							                    </div>
-							                  </div>
-							                  -->
-							                </div>
-							              </div>
-							            </div>
-
-							          </div>
-
+								    
 
 							          <div class="tab2">
 							            <a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
@@ -554,6 +358,69 @@ session_start();
 							            <a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 							            <button type="button" id="Previous3" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
 							            <button type="button" id="Next3" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+							          </div>
+							        </div>
+
+							        <div class="tab-pane" id="Tab4">
+
+							          <div style=" border-bottom: 1px dotted #CCC;  margin-top: 30px; font-size: 20px;">
+							            <p align="center" style="font-family: Agency FB;"><b>DESCRIPCIÓN DEL PRECIO...</b></p>
+							          </div>
+
+							          <div class="col-xs-6" >
+							            <div class="form-group has-feedback">
+							              <h5 class="control-label">Forma de Pago: </h5>         
+							              <div class="has-feedback">
+							                <select class="form-control" name="forma" id="forma" style=" width: 75%;">
+							                  <option value="Contado">Contado</option>
+							                  <option value="Credito">Credito</option>
+							                </select>
+							              </div>
+							            </div>
+
+							            <div class="form-group has-feedback">
+							              <h5 class="control-label">Tipo de Moneda: </h5>         
+							              <div class="has-feedback">
+							                <select class="form-control" name="tipo" id="tipo" style=" width: 75%;">
+							                  <option value="sol">Soles</option>
+							                  <option value="dolar">Dolares</option>
+							                </select>
+							              </div>
+							            </div>
+
+							            <div class="form-group has-feedback">
+							              <h5 class="control-label">Monto de Pago: </h5> 
+							              <div class="input-group" style=" width: 75%;">
+							                <div class="input-group-addon" id="mon">
+							                  S/.
+							                </div>
+							                <input type="text" class="form-control" name="monto"  onkeypress="return NumCheck(event, this);">
+							              </div>
+
+							              <input type="checkbox" name="portn"> Por tonelada <br>
+
+							              <div class="form-group" id="CantDias" style="display:none">
+							                <h5 class="control-label">Cantidad de dias: </h5>
+							                <input type="text" class="form-control" name="dias" style=" width: 75%;" >
+							              </div>
+							            </div>
+
+							          </div>
+
+							          <div class="col-xs-6" >           
+							            <div class="form-group has-feedback"> 
+							              <h5 class="control-label">Seleccione: </h5>   
+							              <input type="checkbox" name="igv"> Incluye Igv <br>
+							              <input type="checkbox" name="seguro"> Tiene seguro de Carga
+							            </div>
+
+							          </div>
+
+							          
+							          <div class="tab4" >
+							            <a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+							            <button type="button" id="Previous4" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
+							            <button type="submit"  id="submit" style="width: 150px;" class="btn btn-success" OnClick="return confirm('¿Esta seguro que los datos son correctos?');"><i class="fa fa fa-check-circle"></i> Enviar</button>
 							          </div>
 							        </div>
 

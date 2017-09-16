@@ -14,15 +14,25 @@ $(document).ready(function(){
 		var subcategoria = $fila.find('[data-subcategoria]').data('subcategoria');
 
 		console.log(categoria);
-		console.log(subcategoria);
 
-		$('#subcategoria').load('Script/ComboSelect.php?categoria='+categoria+'&&espacio=1');
+		var marca = $fila.find('[data-marca]').data('marca');
+		console.log(marca);
 
-		var marca = $fila.find('[data-marca]').text();
+        $.getJSON('Script/ComboSelectMarca.php?categoria='+categoria+'&&espacio=1',function(data)
+	    {
+	    	console.log(data);
+	        $.each(data,function(key,value)
+	        {
+	        	console.log(value[0]);
+	            if( value[0] == subcategoria )
+	                $("#subcategoria").append(" <option value='" + value[0]+"' selected='selected'>" + value[1]  + "</option> ");
+	            else
+	                $("#subcategoria").append(" <option value='" + value[0]+"' >" + value[1]  + "</option> ");
+	        });
+	    });
 
-		$('#marca').val(subcategoria);
+		$('#marca').val(marca);
 		$('#categoria').val(categoria);
-		$('#subcategoria').val(subcategoria);
 
 
 		$("#modal-marca").modal({
