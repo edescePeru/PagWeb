@@ -234,7 +234,7 @@ session_start();
 							<div class="col-xs-12">
 								<h3 class="header smaller lighter blue">Nuevo producto</h3>
 								<div class="table-header">
-									Registro de un nuevo producto
+									Registro de un producto
 								</div>
 
 								<div class="register-content">
