@@ -8,6 +8,9 @@ $(document).ready(function(){
 
 	$('#Next1').on('click', nextView);
 
+	
+
+
 
 });
 
@@ -15,6 +18,7 @@ function nextView() {
 	var idCategoria = $('#categoria').val();
 	var idSubcategoria = $('#subcategoria').val();
 	var idMarca = $('#marca').val();
+
 	var categoria = $("#categoria option:selected").map(function() {
 	    return $(this).text();
 	}).get();
@@ -24,6 +28,11 @@ function nextView() {
 	var marca = $("#marca option:selected").map(function() {
 	    return $(this).text();
 	}).get();
+
+	$('#categ').text(categoria);	
+	$("#subcateg").text(subcategoria);
+	$("#marc").text(marca);
+
 	console.log(idCategoria);
 	console.log(idSubcategoria);
 	console.log(idMarca);

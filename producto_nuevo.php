@@ -98,9 +98,18 @@ session_start();
 			overflow: auto;
 		}
 
+		div.cat-sub p, div.cat-sub b{
+			float: left;
+		}
 
+		div.cat-sub b{
+			margin-left: 0.5em;
+    		margin-right: 0.5em;
+		}
 
-
+		.page-content>.row .col-xs-12{
+			margin-top: 1.3em;
+		}
 
 	</style>
 </head>
@@ -247,7 +256,7 @@ session_start();
 											<a  data-toggle="tab2">Informacion de tu producto</a>
 										</li>
 										<li style="pointer-events: none;">
-											<a  data-toggle="tab3">Información adicional de tu producto <i class="fa"></i></a>
+											<a  data-toggle="tab3">Información del paquete <i class="fa"></i></a>
 										</li>
 										<li style="pointer-events: none;">
 											<a  data-toggle="tab4">Precios de tu producto <i class="fa"></i></a>
@@ -294,7 +303,7 @@ session_start();
 											</div>
 										</div>
 
-										<div style="margin-top: 1em; float: right; ">
+										<div style="margin-top: 3em; float: right; ">
 											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 											<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 										</div>
@@ -303,188 +312,246 @@ session_start();
 
 							        <div class="tab-pane" id="Tab2">
 
+							        	<div class="clearfix">
 
-								    
+											<div class="cat-sub">
+												<p id="categ"></p> <b>>></b>
+												<p id="subcateg"></p> <b>>></b>
+												<p id="marc"></p>
+											</div>
 
-							          <div class="tab2">
-							            <a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Nombre del producto</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="name" name="name" class="form-control" />
+														<div class="acotacion">
+															* Nombre del producto + marca + modelo + caracteristicas + color
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Modelo del producto</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="model" name="model" class="form-control" />
+														<div class="acotacion">
+															* Ejemplo: Samsung J7 prime, Smart TV KU6000
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Descripción Corta</b> </label>
+
+													<div class="col-xs-9">
+														<textarea class="form-control" id="description-short" name="description-short" 
+														placeholder="Memoria: 64 gb&#10;Pantalla: HD&#10;Camara: 8px" rows="5" ></textarea>
+														<div class="acotacion">
+															* Maximo 5 lineas
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Descripción Larga</b> </label>
+
+													<div class="col-xs-9">
+														<textarea class="form-control" id="description-long" name="description-long" 
+														rows="5" placeholder="Celular Samsung, 6.3 pulgadas, resolución 2960x1440, cámara dual de 12 megapixels,  6GB de RAM, 64GB, 128GB o 256GB de almacenamiento interno, batería de 3300 mAh" ></textarea>
+														<div class="acotacion">
+															* Minimo 100 letras
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Garantía del producto</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="garantia" name="garantia" class="form-control" />
+														<div class="acotacion">
+															* Ejemplo: 1 año, 6 meses
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Color del producto</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="color" name="color" class="form-control" />
+														<div class="acotacion">
+															* Ejemplo: rosado, gold, silver, negro
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div style="margin-top: 3em; float: right; ">
+											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 							            <button type="button" id="Previous2" data-toggle="tab" href="#Tab1" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
 							            <button type="button" id="Next2" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
-							          </div>
+										</div>
 							        </div>
 
 							        <div class="tab-pane" id="Tab3">
 
-							          <div style=" border-bottom: 1px dotted #CCC;  margin-top: 30px; font-size: 20px;">
-							            <p align="center" style="font-family: Agency FB;"><b>DESCRIPCIÓN DE UNIDADES...</b></p>
-							          </div>
+										<div class="clearfix">
 
-							          <div style="float: left;width: 44%;padding-left: 52px;">
-							            <div class="col-xs-12" >
-							              <div class="form-group has-feedback">
-							                <h5 class="control-label">Cantidad Unidades: </h5> 
-							                <div class="input-group">
-							                 
-							                  <input type="text" class="form-control" name="unidadCantidad">
-							                  <div class="input-group-addon">
-							                    Unidades
-							                  </div>
-							                </div>
-							              </div>
-							            </div>
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>¿Que hay en la caja?</b> </label>
 
+													<div class="col-xs-9">
+														<textarea class="form-control" id="content-box" name="content-box" placeholder="Producto&#10;Control remoto&#10; Manual de instrucciones&#10; Tarjeta de garantía" rows="5" ></textarea>
+													</div>
+												</div>
+											</div>
 
-							            <div class="col-xs-12" >
-							              <div class="form-group has-feedback">
-							                <h5 class="control-label">Tipo de Unidad: </h5>         
-							                <input type="text" class="form-control"  name="tipoUnidad">
-							                <span class="fa fa-truck" style="top: 38px; right: 0; width: 34px; position: absolute;"></span>   
-							              </div>
-							            </div>
-							           
-							          </div>
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Largo del paquete (cm)</b> </label>
 
-							          <div style="float: right; width: 45%">
-							            <div class="col-xs-12" >
-							              <div class="form-group has-feedback">
-							                <h5 class="control-label">Requisitos de la Unidad: </h5>         
-							                <textarea  style="width:100%; height:150px; resize:none; border-radius: 5px;" name="RequisitoUnidad" id="RequisitoUnidad"></textarea>
-							              </div>
-							            </div>
-							          </div>
+													<div class="col-xs-9">
+														<input type="text" id="large-box" name="large-box" class="form-control"/>
+														<div class="acotacion">
+															* Escribir solamente en números 
+														</div>
+													</div>
+												</div>
+											</div>
 
-							        
-							            <div class="tab3">
-							            <a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-							            <button type="button" id="Previous3" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-							            <button type="button" id="Next3" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
-							          </div>
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Ancho del paquete (cm)</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="width-box" name="width-box" class="form-control"/>
+														<div class="acotacion">
+															* Escribir solamente en números 
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Alto del paquete (cm)</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="height-box" name="height-box" class="form-control"/>
+														<div class="acotacion">
+															* Escribe solamente en números
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b> Peso del paquete (Kg)</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="weight-box" name="weight-box" class="form-control" />
+														<div class="acotacion">
+															* Escriba solamente en números
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div style="margin-top: 3em; float: right; ">
+											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+											<button type="button" id="Previous2" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
+											<button type="button" id="Next4" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+										</div>
+
+									</div>
+
+									<div class="tab-pane" id="Tab4">
+
+										<div class="clearfix">
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Codigo del producto</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="key" name="key" class="form-control"/>
+														<div class="acotacion">
+															* Código identificador para la búsqueda del producto
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Stock</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="stock" name="stock" class="form-control"/>
+														<div class="acotacion">
+															* Escribir solamente en números
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xs-12" >
+												<div class="form-group">
+													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Precio (S/.)</b> </label>
+
+													<div class="col-xs-9">
+														<input type="text" id="price" name="price" class="form-control"/>
+														<div class="acotacion">
+															* Escribir solamente en números, máximo dos decimales
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+
+										<div style="margin-top: 3em; float: right; ">
+											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+											<button type="button" id="Previous4" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
+											<button type="button" id="Next5" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+										</div>
+							          
 							        </div>
 
-							        <div class="tab-pane" id="Tab4">
+							        <div class="tab-pane" id="Tab5">
 
-							          <div style=" border-bottom: 1px dotted #CCC;  margin-top: 30px; font-size: 20px;">
-							            <p align="center" style="font-family: Agency FB;"><b>DESCRIPCIÓN DEL PRECIO...</b></p>
-							          </div>
+										<div class="clearfix">
 
-							          <div class="col-xs-6" >
-							            <div class="form-group has-feedback">
-							              <h5 class="control-label">Forma de Pago: </h5>         
-							              <div class="has-feedback">
-							                <select class="form-control" name="forma" id="forma" style=" width: 75%;">
-							                  <option value="Contado">Contado</option>
-							                  <option value="Credito">Credito</option>
-							                </select>
-							              </div>
-							            </div>
+											
 
-							            <div class="form-group has-feedback">
-							              <h5 class="control-label">Tipo de Moneda: </h5>         
-							              <div class="has-feedback">
-							                <select class="form-control" name="tipo" id="tipo" style=" width: 75%;">
-							                  <option value="sol">Soles</option>
-							                  <option value="dolar">Dolares</option>
-							                </select>
-							              </div>
-							            </div>
+										</div>
 
-							            <div class="form-group has-feedback">
-							              <h5 class="control-label">Monto de Pago: </h5> 
-							              <div class="input-group" style=" width: 75%;">
-							                <div class="input-group-addon" id="mon">
-							                  S/.
-							                </div>
-							                <input type="text" class="form-control" name="monto"  onkeypress="return NumCheck(event, this);">
-							              </div>
-
-							              <input type="checkbox" name="portn"> Por tonelada <br>
-
-							              <div class="form-group" id="CantDias" style="display:none">
-							                <h5 class="control-label">Cantidad de dias: </h5>
-							                <input type="text" class="form-control" name="dias" style=" width: 75%;" >
-							              </div>
-							            </div>
-
-							          </div>
-
-							          <div class="col-xs-6" >           
-							            <div class="form-group has-feedback"> 
-							              <h5 class="control-label">Seleccione: </h5>   
-							              <input type="checkbox" name="igv"> Incluye Igv <br>
-							              <input type="checkbox" name="seguro"> Tiene seguro de Carga
-							            </div>
-
-							          </div>
-
+										<div style="margin-top: 3em; float: right; ">
+											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+								            <button type="button" id="Previous4" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
+								            <button type="submit"  id="submit" style="width: 150px;" class="btn btn-success" OnClick="return confirm('¿Esta seguro que los datos son correctos?');"><i class="fa fa fa-check-circle"></i> Enviar</button>
+										</div>
 							          
-							          <div class="tab4" >
-							            <a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-							            <button type="button" id="Previous4" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-							            <button type="submit"  id="submit" style="width: 150px;" class="btn btn-success" OnClick="return confirm('¿Esta seguro que los datos son correctos?');"><i class="fa fa fa-check-circle"></i> Enviar</button>
-							          </div>
-							        </div>
-
-							        <div class="tab-pane" id="Tab4">
-
-							          <div style=" border-bottom: 1px dotted #CCC;  margin-top: 30px; font-size: 20px;">
-							            <p align="center" style="font-family: Agency FB;"><b>DESCRIPCIÓN DEL PRECIO...</b></p>
-							          </div>
-
-							          <div class="col-xs-6" >
-							            <div class="form-group has-feedback">
-							              <h5 class="control-label">Forma de Pago: </h5>         
-							              <div class="has-feedback">
-							                <select class="form-control" name="forma" id="forma" style=" width: 75%;">
-							                  <option value="Contado">Contado</option>
-							                  <option value="Credito">Credito</option>
-							                </select>
-							              </div>
-							            </div>
-
-							            <div class="form-group has-feedback">
-							              <h5 class="control-label">Tipo de Moneda: </h5>         
-							              <div class="has-feedback">
-							                <select class="form-control" name="tipo" id="tipo" style=" width: 75%;">
-							                  <option value="sol">Soles</option>
-							                  <option value="dolar">Dolares</option>
-							                </select>
-							              </div>
-							            </div>
-
-							            <div class="form-group has-feedback">
-							              <h5 class="control-label">Monto de Pago: </h5> 
-							              <div class="input-group" style=" width: 75%;">
-							                <div class="input-group-addon" id="mon">
-							                  S/.
-							                </div>
-							                <input type="text" class="form-control" name="monto"  onkeypress="return NumCheck(event, this);">
-							              </div>
-
-							              <input type="checkbox" name="portn"> Por tonelada <br>
-
-							              <div class="form-group" id="CantDias" style="display:none">
-							                <h5 class="control-label">Cantidad de dias: </h5>
-							                <input type="text" class="form-control" name="dias" style=" width: 75%;" >
-							              </div>
-							            </div>
-
-							          </div>
-
-							          <div class="col-xs-6" >           
-							            <div class="form-group has-feedback"> 
-							              <h5 class="control-label">Seleccione: </h5>   
-							              <input type="checkbox" name="igv"> Incluye Igv <br>
-							              <input type="checkbox" name="seguro"> Tiene seguro de Carga
-							            </div>
-
-							          </div>
-
-							          
-							          <div class="tab4" >
-							            <a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-							            <button type="button" id="Previous4" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-							            <button type="submit"  id="submit" style="width: 150px;" class="btn btn-success" OnClick="return confirm('¿Esta seguro que los datos son correctos?');"><i class="fa fa fa-check-circle"></i> Enviar</button>
-							          </div>
 							        </div>
 							      </div>
 
@@ -567,5 +634,9 @@ session_start();
 
 <!-- Own scripts -->
 <script src="misJs/producto.js"></script>
+
+<script>
+	
+</script>
 </body>
 </html>

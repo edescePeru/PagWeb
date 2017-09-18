@@ -4,6 +4,8 @@ $(document).ready(function(){
 
 	$(document).on('click', '[data-eliminar]', deleteSubCategoria);
 	$(document).on('click', '[data-editar]', function() {
+
+		$('#subcategoria').html('');
 		
 		console.log("hola");
 
@@ -18,8 +20,9 @@ $(document).ready(function(){
 		var marca = $fila.find('[data-marca]').data('marca');
 		console.log(marca);
 
-        $.getJSON('Script/ComboSelectMarca.php?categoria='+categoria+'&&espacio=1',function(data)
+        $.getJSON('Script/ComboSelectMarca.php?categoria='+categoria,function(data)
 	    {
+	    	$("#subcategoria").append("<option ></option>");
 	    	console.log(data);
 	        $.each(data,function(key,value)
 	        {
