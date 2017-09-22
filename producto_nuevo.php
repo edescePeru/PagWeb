@@ -13,9 +13,10 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 	<!-- bootstrap & fontawesome -->
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-
+	<link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
 	<!-- page specific plugin styles -->
 
 	<!-- text fonts -->
@@ -112,6 +113,9 @@ session_start();
 		}
 
 	</style>
+
+	
+    
 </head>
 
 <body class="no-skin">
@@ -267,9 +271,9 @@ session_start();
 
 									</ul>
 
-							    <form action="Script/RegGenAnuncio.php"  method="post" id="formulario" autocomplete="off">
+							    <form action=""  method="post" id="formulario" autocomplete="off">
 
-							      <div class="tab-content">
+							    <div class="tab-content">
 
 									<div class="tab-pane active" id="Tab1">
 
@@ -307,7 +311,6 @@ session_start();
 											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 											<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 										</div>
-
 							        </div>
 
 							        <div class="tab-pane" id="Tab2">
@@ -482,7 +485,6 @@ session_start();
 											<button type="button" id="Previous2" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
 											<button type="button" id="Next4" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 										</div>
-
 									</div>
 
 									<div class="tab-pane" id="Tab4">
@@ -535,16 +537,24 @@ session_start();
 											<button type="button" id="Previous4" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
 											<button type="button" id="Next5" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 										</div>
-							          
 							        </div>
 
 							        <div class="tab-pane" id="Tab5">
 
-										<div class="clearfix">
-
+										<form enctype="multipart/form-data">
+											<div class="row kv-main" style="width: 100%">
+												<div class="col-md-10 col-md-offset-1">
+													<h4>Multi Language Inputs</h4>
+												    
+												        <label>Spanish Input</label>
+												        <input id="file-es" name="file-es" type="file" multiple>
+												    
+												    <hr>
+												    <br>
+												</div>
+											</div>
+										</form>
 											
-
-										</div>
 
 										<div style="margin-top: 3em; float: right; ">
 											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
@@ -625,7 +635,7 @@ session_start();
 <script type="text/javascript">
 	if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 </script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>
@@ -635,8 +645,30 @@ session_start();
 <!-- Own scripts -->
 <script src="misJs/producto.js"></script>
 
+<script src="js/plugins/sortable.js" type="text/javascript"></script>
+<script src="js/fileinput.js" type="text/javascript"></script>
+<script src="js/locales/fr.js" type="text/javascript"></script>
+<script src="js/locales/es.js" type="text/javascript"></script>
+<script src="themes/explorer/theme.js" type="text/javascript"></script>
 <script>
-	
+    $('#file-es').fileinput({
+        language: 'es',
+        uploadUrl: '#',
+        allowedFileExtensions: ['jpg', 'png', 'gif', 'jpeg'],
+        maxFileCount: 10,
+        uploadUrl: 'Script/saveProducts.php',
+    }); 
+
+    $('#file-es').on('fileerror', function(event, data, msg) {
+       console.log(data.id);
+       console.log(data.index);
+       console.log(data.file);
+       console.log(data.reader);
+       console.log(data.files);
+       // get message
+       alert(msg);
+    });
+    
 </script>
 </body>
 </html>
