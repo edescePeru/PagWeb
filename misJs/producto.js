@@ -5,16 +5,42 @@ $(document).ready(function(){
 
 	$('#categoria').on('change', viewSubcategoria);
 	$('#subcategoria').on('change', viewMarca);
+	$('#marca').on('change', viewButton);
 
-	$('#Next1').on('click', nextView);
+	$('#Next1').on('click', function () { nextPage(1); nextView(); })
+	$('#Next2').on('click', function () { nextPage(2) });
+	$('#Next3').on('click', function () { nextPage(3) });
+	$('#Next4').on('click', function () { nextPage(4) });
+
+	$('#Previous2').on('click', function () { PreviousPage(2) });
+	$('#Previous3').on('click', function () { PreviousPage(3) });
+	$('#Previous4').on('click', function () { PreviousPage(4) });
+	$('#Previous5').on('click', function () { PreviousPage(5) });
+
+	$('.text2').on('input', function() { nextButton(2) });
+	$('.text3').on('input', function() { nextButton(3) });
+	$('.text4').on('input', function() { nextButton(4) });
 
 	
 
-
+	
 
 });
 
+function nextButton(i) {
+		var empty = false;
+
+		$('.text'+i).each(function() {
+			if (!empty && $(this).val() == '') {
+				empty = true;
+			}
+		});
+
+		$('#Next'+i).prop('disabled', empty);
+}
+
 function nextView() {
+
 	var idCategoria = $('#categoria').val();
 	var idSubcategoria = $('#subcategoria').val();
 	var idMarca = $('#marca').val();
@@ -33,16 +59,23 @@ function nextView() {
 	$("#subcateg").text(subcategoria);
 	$("#marc").text(marca);
 
-	console.log(idCategoria);
+
+
+	
+
+
+
+	/*console.log(idCategoria);
 	console.log(idSubcategoria);
 	console.log(idMarca);
 	console.log(categoria);
 	console.log(subcategoria);
-	console.log(marca);
+	console.log(marca);*/
 }
 
 function viewSubcategoria () {
 	var categoria = $(this).val();
+	$('#Next1').prop('disabled', true);
 	$("#subcategoria").css("display", "block");
 	$("#marca").css("display", "none");
 	$('#subcategoria').load('Script/ComboSelect.php?categoria='+categoria);
@@ -50,10 +83,29 @@ function viewSubcategoria () {
 
 function viewMarca () {
 	var subcategoria = $(this).val();
+	$('#Next1').prop('disabled', true);
 	$(".select-subcategoria").css("float", "left");
 	$("#marca").css("display", "block");
 	$('#marca').load('Script/ComboSelect.php?subcategoria='+subcategoria);
 }
+
+function viewButton() {
+	$('#Next1').prop('disabled', false);
+}
+
+function nextPage(i) {
+	$('li').removeClass('active');
+	x = i + 1;
+	$('.nav-tabs li:nth-child('+x+')').addClass('active');
+}
+
+function PreviousPage(i) {
+	$('li').removeClass('active');
+	x = i - 1;
+	$('.nav-tabs li:nth-child('+x+')').addClass('active');
+}
+
+
 
 function showModalRegister() {
 	$("#modal-register").modal('show');
