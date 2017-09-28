@@ -253,300 +253,303 @@ session_start();
 
 									</ul>
 
-							    <form action=""  method="post" id="formulario" autocomplete="off">
+									<form action=""  method="post" id="product-register" autocomplete="off">
+							    		<div class="tab-content">
+							     		
 
-							    <div class="tab-content">
+											<div class="tab-pane active" id="Tab1">
 
-									<div class="tab-pane active" id="Tab1">
+												<div class="clearfix">
 
-										<div class="clearfix">
+													<div style=" border-bottom: 1px dotted #CCC; margin-bottom: 1em;">
+														<p>Por favor, seleccione la categoria principal para su producto</p>
+													</div>
 
-											<div style=" border-bottom: 1px dotted #CCC; margin-bottom: 1em;">
-												<p>Por favor, seleccione la categoria principal para su producto</p>
-											</div>
+										            <div class="first-select">
+														<select name="categoria" id="categoria" multiple>
+															<?php 
+																$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
+																while($fila = mysqli_fetch_array($resultSet)){
+															?>
+															<option value="<?php echo $fila[0]; ?>"><?php echo $fila[1] ?></option>
+															<?php }	?>
+														</select>
+													</div>
 
-								            <div class="first-select">
-												<select name="categoria" id="categoria" multiple>
-													<?php 
-														$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
-														while($fila = mysqli_fetch_array($resultSet)){
-													?>
-													<option value="<?php echo $fila[0]; ?>"><?php echo $fila[1] ?></option>
-													<?php }	?>
-												</select>
-											</div>
+													<div class="select-subcategoria">
+														<select name="subcategoria" id="subcategoria" multiple>
+															
+														</select>
+													</div>
 
-											<div class="select-subcategoria">
-												<select name="subcategoria" id="subcategoria" multiple>
-													
-												</select>
-											</div>
+													<div class="select-marca">
+														<select name="marca" id="marca" multiple>
+															
+														</select>	
+													</div>
+												</div>
 
-											<div class="select-marca">
-												<select name="marca" id="marca" multiple>
-													
-												</select>	
-											</div>
-										</div>
+												<div style="margin-top: 3em; float: right; ">
+													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+												</div>
+									        </div>
 
-										<div style="margin-top: 3em; float: right; ">
-											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-											<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
-										</div>
-							        </div>
+											<div class="tab-pane" id="Tab2">
 
-									<div class="tab-pane" id="Tab2">
+									        	<div class="clearfix">
 
-							        	<div class="clearfix">
+													<div class="cat-sub">
+														<p id="categ"></p> <b>>></b>
+														<p id="subcateg"></p> <b>>></b>
+														<p id="marc"></p>
+													</div>
 
-											<div class="cat-sub">
-												<p id="categ"></p> <b>>></b>
-												<p id="subcateg"></p> <b>>></b>
-												<p id="marc"></p>
-											</div>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Nombre del producto</b> </label>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Nombre del producto</b> </label>
-
-													<div class="col-xs-9">
-														<input type="text" id="name" name="name" class="form-control text2" />
-														<div class="acotacion">
-															* Nombre del producto + marca + modelo + caracteristicas + color
+															<div class="col-xs-9">
+																<input type="text" id="name" name="name" class="form-control text2" />
+																<div class="acotacion">
+																	* Nombre del producto + marca + modelo + caracteristicas + color
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Modelo del producto</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Modelo del producto</b> </label>
 
-													<div class="col-xs-9">
-														<input type="text" id="model" name="model" class="form-control text2" />
-														<div class="acotacion">
-															* Ejemplo: Samsung J7 prime, Smart TV KU6000
+															<div class="col-xs-9">
+																<input type="text" id="model" name="model" class="form-control text2" />
+																<div class="acotacion">
+																	* Ejemplo: Samsung J7 prime, Smart TV KU6000
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Descripción Corta</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Descripción Corta</b> </label>
 
-													<div class="col-xs-9">
-														<textarea class="form-control text2" id="description-short" name="description-short" 
-														placeholder="Memoria: 64 gb&#10;Pantalla: HD&#10;Camara: 8px" rows="5" ></textarea>
-														<div class="acotacion">
-															* Maximo 5 lineas
+															<div class="col-xs-9">
+																<textarea class="form-control text2" id="description-short" name="description-short" 
+																placeholder="Memoria: 64 gb&#10;Pantalla: HD&#10;Camara: 8px" rows="5" ></textarea>
+																<div class="acotacion">
+																	* Maximo 5 lineas
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Descripción Larga</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Descripción Larga</b> </label>
 
-													<div class="col-xs-9">
-														<textarea class="form-control text2" id="description-long" name="description-long" 
-														rows="5" placeholder="Celular Samsung, 6.3 pulgadas, resolución 2960x1440, cámara dual de 12 megapixels,  6GB de RAM, 64GB, 128GB o 256GB de almacenamiento interno, batería de 3300 mAh" ></textarea>
-														<div class="acotacion">
-															* Minimo 100 letras
+															<div class="col-xs-9">
+																<textarea class="form-control text2" id="description-long" name="description-long" 
+																rows="5" placeholder="Celular Samsung, 6.3 pulgadas, resolución 2960x1440, cámara dual de 12 megapixels,  6GB de RAM, 64GB, 128GB o 256GB de almacenamiento interno, batería de 3300 mAh" ></textarea>
+																<div class="acotacion">
+																	* Minimo 100 letras
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Garantía del producto</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Garantía del producto</b> </label>
 
-													<div class="col-xs-9">
-														<input type="text" id="garantia" name="garantia" class="form-control text2" />
-														<div class="acotacion">
-															* Ejemplo: 1 año, 6 meses
+															<div class="col-xs-9">
+																<input type="text" id="garantia" name="garantia" class="form-control text2" />
+																<div class="acotacion">
+																	* Ejemplo: 1 año, 6 meses
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Color del producto</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Color del producto</b> </label>
 
-													<div class="col-xs-9">
-														<input type="text" id="color" name="color" class="form-control text2" />
-														<div class="acotacion">
-															* Ejemplo: rosado, gold, silver, negro
+															<div class="col-xs-9">
+																<input type="text" id="color" name="color" class="form-control text2" />
+																<div class="acotacion">
+																	* Ejemplo: rosado, gold, silver, negro
+																</div>
+															</div>
 														</div>
 													</div>
+
 												</div>
-											</div>
 
-										</div>
-
-										<div style="margin-top: 3em; float: right; ">
-											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-											<button type="button" id="Previous2" data-toggle="tab" href="#Tab1" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-											<button type="button" id="Next2" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
-										</div>
-							        </div>
-
-							        <div class="tab-pane" id="Tab3">
-
-										<div class="clearfix">
-
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>¿Que hay en la caja?</b> </label>
-
-													<div class="col-xs-9">
-														<textarea class="form-control text3" id="content-box" name="content-box" placeholder="Producto&#10;Control remoto&#10; Manual de instrucciones&#10; Tarjeta de garantía" rows="5" ></textarea>
-													</div>
+												<div style="margin-top: 3em; float: right; ">
+													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<button type="button" id="Previous2" data-toggle="tab" href="#Tab1" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
+													<button type="button" id="Next2" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
-											</div>
+									        </div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Largo del paquete (cm)</b> </label>
+									        <div class="tab-pane" id="Tab3">
 
-													<div class="col-xs-9">
-														<input type="text" id="large-box" name="large-box" class="form-control text3"/>
-														<div class="acotacion">
-															* Escribir solamente en números 
+												<div class="clearfix">
+
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>¿Que hay en la caja?</b> </label>
+
+															<div class="col-xs-9">
+																<textarea class="form-control text3" id="content-box" name="content-box" placeholder="Producto&#10;Control remoto&#10; Manual de instrucciones&#10; Tarjeta de garantía" rows="5" ></textarea>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Ancho del paquete (cm)</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Largo del paquete (cm)</b> </label>
 
-													<div class="col-xs-9">
-														<input type="text" id="width-box" name="width-box" class="form-control text3"/>
-														<div class="acotacion">
-															* Escribir solamente en números 
+															<div class="col-xs-9">
+																<input type="text" id="large-box" name="large-box" class="form-control text3"/>
+																<div class="acotacion">
+																	* Escribir solamente en números 
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Alto del paquete (cm)</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Ancho del paquete (cm)</b> </label>
 
-													<div class="col-xs-9">
-														<input type="text" id="height-box" name="height-box" class="form-control text3"/>
-														<div class="acotacion">
-															* Escribe solamente en números
+															<div class="col-xs-9">
+																<input type="text" id="width-box" name="width-box" class="form-control text3"/>
+																<div class="acotacion">
+																	* Escribir solamente en números 
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b> Peso del paquete (Kg)</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Alto del paquete (cm)</b> </label>
 
-													<div class="col-xs-9">
-														<input type="text" id="weight-box" name="weight-box" class="form-control text3" />
-														<div class="acotacion">
-															* Escriba solamente en números
+															<div class="col-xs-9">
+																<input type="text" id="height-box" name="height-box" class="form-control text3"/>
+																<div class="acotacion">
+																	* Escribe solamente en números
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-										</div>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b> Peso del paquete (Kg)</b> </label>
 
-										<div style="margin-top: 3em; float: right; ">
-											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-											<button type="button" id="Previous3" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-											<button type="button" id="Next3" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
-										</div>
-									</div>
-
-									<div class="tab-pane" id="Tab4">
-
-										<div class="clearfix">
-
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Codigo del producto</b> </label>
-
-													<div class="col-xs-9">
-														<input type="text" id="key" name="key" class="form-control text4"/>
-														<div class="acotacion">
-															* Código identificador para la búsqueda del producto
+															<div class="col-xs-9">
+																<input type="text" id="weight-box" name="weight-box" class="form-control text3" />
+																<div class="acotacion">
+																	* Escriba solamente en números
+																</div>
+															</div>
 														</div>
 													</div>
+
+												</div>
+
+												<div style="margin-top: 3em; float: right; ">
+													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<button type="button" id="Previous3" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
+													<button type="button" id="Next3" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
 											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Stock</b> </label>
+											<div class="tab-pane" id="Tab4">
 
-													<div class="col-xs-9">
-														<input type="text" id="stock" name="stock" class="form-control text4"/>
-														<div class="acotacion">
-															* Escribir solamente en números
+												<div class="clearfix">
+
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Codigo del producto</b> </label>
+
+															<div class="col-xs-9">
+																<input type="text" id="key" name="key" class="form-control text4"/>
+																<div class="acotacion">
+																	* Código identificador para la búsqueda del producto
+																</div>
+															</div>
 														</div>
 													</div>
-												</div>
-											</div>
 
-											<div class="col-xs-12" >
-												<div class="form-group">
-													<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Precio (S/.)</b> </label>
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Stock</b> </label>
 
-													<div class="col-xs-9">
-														<input type="text" id="price" name="price" class="form-control text4"/>
-														<div class="acotacion">
-															* Escribir solamente en números, máximo dos decimales
+															<div class="col-xs-9">
+																<input type="text" id="stock" name="stock" class="form-control text4"/>
+																<div class="acotacion">
+																	* Escribir solamente en números
+																</div>
+															</div>
 														</div>
 													</div>
+
+													<div class="col-xs-12" >
+														<div class="form-group">
+															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Precio (S/.)</b> </label>
+
+															<div class="col-xs-9">
+																<input type="text" id="price" name="price" class="form-control text4"/>
+																<div class="acotacion">
+																	* Escribir solamente en números, máximo dos decimales
+																</div>
+															</div>
+														</div>
+													</div>
+
 												</div>
-											</div>
 
-										</div>
-
-										<div style="margin-top: 3em; float: right; ">
-											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-											<button type="button" id="Previous4" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Atras</button>
-											<button type="button" id="Next4" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
-										</div>
-							        </div>
-
-							        <div class="tab-pane" id="Tab5">
-
-										<form enctype="multipart/form-data">
-											<div class="row kv-main" style="width: 100%">
-												<div class="col-md-10 col-md-offset-1">
-													<h4>Multi Language Inputs</h4>
-												    
-												        <label>Spanish Input</label>
-												        <input id="file-es" name="file-es" type="file" multiple>
-												    
-												    <hr>
-												    <br>
+												<div style="margin-top: 3em; float: right; ">
+													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<button type="button" id="Previous4" data-toggle="tab" href="#Tab3" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Atras</button>
+													<!-- <button type="submit" id="Next4" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button> -->
+													<button type="submit" id="Next4" data-toggle="tab" class="btn btn-primary" disabled><i class="fa fa fa-check-circle"></i> Subir imagenes</button>
 												</div>
-											</div>
-										</form>
-											
+									        </div>
 
-										<div style="margin-top: 3em; float: right; ">
-											<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-								            <button type="button" id="Previous5" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-								            <button type="submit"  id="submit" style="width: 150px;" class="btn btn-success" OnClick="return confirm('¿Esta seguro que los datos son correctos?');"><i class="fa fa fa-check-circle"></i> Enviar</button>
-										</div>
-							        </div>
+									</form>
+
+								        <div class="tab-pane" id="Tab5">
+
+											<form enctype="multipart/form-data">
+												<div class="row kv-main" style="width: 100%">
+													<div class="col-md-10 col-md-offset-1">
+														<h4>Multi Language Inputs</h4>
+													    
+													        <label>Spanish Input</label>
+													        <input id="file-es" name="file-es" type="file" multiple>
+													    
+													    <hr>
+													    <br>
+													</div>
+												</div>
+											</form>
+												
+
+											<div style="margin-top: 3em; float: right; ">
+												<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+									            <button type="button" id="Previous5" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
+									            <button type="submit"  id="submit" style="width: 150px;" class="btn btn-success" OnClick="return confirm('¿Esta seguro que los datos son correctos?');"><i class="fa fa fa-check-circle"></i> Enviar</button>
+											</div>
+								        </div>
 							      </div>
 
-							    </form>
+							    
 	
 								</div>
 							</div>
@@ -634,9 +637,8 @@ session_start();
 <script>
     $('#file-es').fileinput({
         language: 'es',
-        uploadUrl: '#',
         allowedFileExtensions: ['jpg', 'png', 'gif', 'jpeg'],
-        maxFileCount: 10,
+        maxFileCount: 4,
         uploadUrl: 'Script/saveProducts.php',
     }); 
 

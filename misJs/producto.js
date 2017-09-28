@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("#show-register").on('click', showModalRegister);
 	$(document).on('click', '[data-items]', showModalItems);
-	$("#btn-register").on('click', registerProduct);
+	/*$("#btn-register").on('click', registerProduct);*/
 
 	$('#categoria').on('change', viewSubcategoria);
 	$('#subcategoria').on('change', viewMarca);
@@ -10,7 +10,11 @@ $(document).ready(function(){
 	$('#Next1').on('click', function () { nextPage(1); nextView(); })
 	$('#Next2').on('click', function () { nextPage(2) });
 	$('#Next3').on('click', function () { nextPage(3) });
-	$('#Next4').on('click', function () { nextPage(4) });
+	$('#Next4').on('click', function () { 
+		registerProduct();
+
+		
+	});
 
 	$('#Previous2').on('click', function () { PreviousPage(2) });
 	$('#Previous3').on('click', function () { PreviousPage(3) });
@@ -28,6 +32,7 @@ $(document).ready(function(){
 });
 
 function nextButton(i) {
+
 		var empty = false;
 
 		$('.text'+i).each(function() {
@@ -35,6 +40,17 @@ function nextButton(i) {
 				empty = true;
 			}
 		});
+
+		/*if (i == 2) {
+			cant = $('#description-long').val().length;
+			if (cant <= 100) {
+				empty = true;
+			}
+		}*/
+
+		/*console.log(empty);
+		console.log(i);
+		console.log(cant);*/
 
 		$('#Next'+i).prop('disabled', empty);
 }
@@ -117,24 +133,53 @@ function showModalItems() {
 
 function registerProduct() {
 	event.preventDefault();
-	var url = 'Script/productRegister.php';
-    var data = $("#form-register").serializeArray();
-	console.log(data);
-	$.ajax({
-        url: url,
-        data: data,
-        method: 'POST'
-	}).done(function( response ) {
-	    console.log(response);
+    var r = confirm("Revise si sus datos son correctos \n Los datos ingresados se registraran en la base de datos");
+    if (r == true) {
+    	var url = 'Script/RegProduct.php';
+	    var data = $("#product-register").serializeArray();
+		console.log(data);
 
-		if(response.error) {
-			console.log(response.message);
-			alert(response.message);
-			
-		}else{
-			alert(response.message);
-			console.log(response.message);
-			location.reload();
-		}
-	});
+		$.ajax({
+	        url: url,
+	        data: data,
+	        method: 'POST'
+		}).done(function( response ) {
+		    console.log(response);
+
+			if(response.error) {
+				console.log(response.message);
+				alert(response.message);
+		        nextPage(4);
+				$("#Next4").attr("href", "#Tab5");
+				
+			}else{
+				alert(response.message);
+				console.log(response.message);
+				location.reload();
+			}
+		});
+
+        
+    }
+		/*event.preventDefault();
+		var url = 'Script/productRegister.php';
+	    var data = $("#form-register").serializeArray();
+		console.log(data);
+		$.ajax({
+	        url: url,
+	        data: data,
+	        method: 'POST'
+		}).done(function( response ) {
+		    console.log(response);
+
+			if(response.error) {
+				console.log(response.message);
+				alert(response.message);
+				
+			}else{
+				alert(response.message);
+				console.log(response.message);
+				location.reload();
+			}
+		});*/
 }
