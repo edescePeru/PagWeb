@@ -301,6 +301,12 @@
 			<!-- grids_of_4 -->
 			<div class="grids_of_4">
 			<?php 
+				if (!isset($_GET['page'])) {
+					$pagina = 1;
+				} else {
+					$pagina = $_GET['page'];
+				}
+				
 				if ($pagina <= 1) {
 					$limit = 0;
 				} else {
@@ -333,7 +339,7 @@
 							<!--<div class="size_2-left"> 
 								<input type="text" class="item_quantity quantity_1" value="1" />
 							</div>-->
-							<input type="button" class="item_add add3" value="Agregar carrito"/>
+							<input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
