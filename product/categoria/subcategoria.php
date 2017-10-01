@@ -41,7 +41,7 @@
 						  		<h4>
 						  			<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 						  			<p class="carts">
-						  				<span id="simpleCart_quantity" class="simpleCart_quantity"></span>
+						  				<span id="cart_quantity" class="">0</span>
 						  			</p>
 						  			<div class="clearfix"> </div>
 						  		</h4>
@@ -403,6 +403,8 @@
 		$('.scroll-pane').jScrollPane();
 	});
 </script>
+<script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="../../misJs/cartShop.js"></script>
 
 </body>
 </html>		

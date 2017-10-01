@@ -1,8 +1,17 @@
 $(document).ready(function(){
 	$(".megamenu").megamenu();
+	var javaScriptVar = "<?php echo $_GET['back']; ?>";
+	console.log(javaScriptVar);
 
 	$('#btn-login').on('click', login);
 });
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 
 function login(){
 	event.preventDefault();
@@ -15,7 +24,8 @@ function login(){
 		method: 'POST'
 	}).done(function( response ) {
 		console.log(response);
-
+		var javaScriptVar = "<?php echo $_GET['back']; ?>";
+		console.log(javaScriptVar);
 		if(response.error) {
 			console.log(response.message);
 			alert(response.message);
@@ -29,11 +39,18 @@ function login(){
 			});
 		}else{
 			alert(response.message);
-			if (response.role == 2) {
-				window.location.href="index.php";
-			} else{
-				window.location.href="panel.php";
+			var javaScriptVar = getParameterByName('back');
+			if (javaScriptVar == '1') {
+				window.history.back();
+			} else {
+				if (response.role == '2') {
+					window.location.href="index.php";
+				} else{
+					window.location.href="panel.php";
+				}
 			}
+
+			
 		}
 
 	});

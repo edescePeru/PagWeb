@@ -41,8 +41,8 @@
 			$_SESSION['user'] = $fila["1"];
 			$_SESSION['email'] = $fila["7"];
 			$_SESSION['role'] = $fila["6"];
-			echo json_encode(['error' => false, 'message' =>	'Bienvenido a Edesce Store. Redireccionando...' ]);
-		          return;
+			echo json_encode(['error' => false, 'message' =>'Bienvenido a Edesce Store. Redireccionando...', 'role'=> $fila["6"]]);
+		    return;
 		}
 	}
  ?>
