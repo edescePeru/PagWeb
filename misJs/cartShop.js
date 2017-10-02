@@ -33,18 +33,30 @@ function addCartShop () {
 			} else {
 				$.notify({
 					// options
-					icon: 'ti-thumb-down',
-					title: 'Advertencia',
-					message: 'Turning standard Bootstrap alerts into "notify" like notifications',
+					icon: 'fa fa-thumbs-down',
+					title: 'Advertencia: ',
+					message: response.message,
 				},{
-					type:'info'
+					type:'danger',
+					delay: 2000,
+					timer: 1000
 				});
+				$('#cart_quantity').html(response.cantidad);
 			}
 			
 		}else{
-			$.notify(response.message,"danger");
+			$.notify({
+					// options
+					icon: 'fa fa-thumbs-up',
+					title: 'Éxito: ',
+					message: response.message,
+				},{
+					type:'success',
+					delay: 2000,
+					timer: 1000
+				});
 			// Actualizar campos
-			('cart_quantity').html(response.cantidad);
+			$('#cart_quantity').html(response.cantidad);
 		}
 	});
 }

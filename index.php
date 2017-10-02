@@ -42,7 +42,7 @@
 						  		<h4>
 						  			<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 						  			<p class="carts">
-						  				<span id="simpleCart_quantity" class="simpleCart_quantity"></span>
+						  				<span id="cart_quantity" class=""></span>
 						  			</p>
 						  			<div class="clearfix"> </div>
 						  		</h4>
