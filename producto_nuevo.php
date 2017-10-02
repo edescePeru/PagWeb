@@ -247,17 +247,14 @@ session_start();
 										<li style="pointer-events: none;">
 											<a  data-toggle="tab4">Precios de tu producto <i class="fa"></i></a>
 										</li>
-										<li style="pointer-events: none;">
-											<a  data-toggle="tab5">Imagenes de tu producto <i class="fa"></i></a>
-										</li>
-
 									</ul>
+								</div>
 
-									<form action=""  method="post" id="product-register" autocomplete="off">
-							    		<div class="tab-content">
-							     		
+								<form id="product-register" method="post" accept-charset="utf-8">
 
-											<div class="tab-pane active" id="Tab1">
+									<div class="tab-content">
+
+										<div class="tab-pane active" id="Tab1">
 
 												<div class="clearfix">
 
@@ -521,37 +518,11 @@ session_start();
 													<button type="submit" id="Next4" data-toggle="tab" class="btn btn-primary" disabled><i class="fa fa fa-check-circle"></i> Subir imagenes</button>
 												</div>
 									        </div>
-
-									</form>
-
-								        <div class="tab-pane" id="Tab5">
-
-											<form enctype="multipart/form-data">
-												<div class="row kv-main" style="width: 100%">
-													<div class="col-md-10 col-md-offset-1">
-														<h4>Multi Language Inputs</h4>
-													    
-													        <label>Spanish Input</label>
-													        <input id="file-es" name="file-es" type="file" multiple>
-													    
-													    <hr>
-													    <br>
-													</div>
-												</div>
-											</form>
-												
-
-											<div style="margin-top: 3em; float: right; ">
-												<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-									            <button type="button" id="Previous5" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-									            <button type="submit"  id="submit" style="width: 150px;" class="btn btn-success" OnClick="return confirm('¿Esta seguro que los datos son correctos?');"><i class="fa fa fa-check-circle"></i> Enviar</button>
-											</div>
-								        </div>
-							      </div>
+									</div>
+								</form>			
 
 							    
 	
-								</div>
 							</div>
 						</div>
 						<!-- PAGE CONTENT ENDS -->

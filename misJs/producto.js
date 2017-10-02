@@ -1,7 +1,10 @@
 $(document).ready(function(){
-	$("#show-register").on('click', showModalRegister);
-	$(document).on('click', '[data-items]', showModalItems);
-	/*$("#btn-register").on('click', registerProduct);*/
+	$('#large-box').on('keypress', decimal);
+	$('#width-box').on('keypress', decimal);
+	$('#height-box').on('keypress', decimal);
+	$('#weight-box').on('keypress', decimal);
+	$('#price').on('keypress', decimal);
+	$('#stock').on('keypress', decimal);
 
 	$('#categoria').on('change', viewSubcategoria);
 	$('#subcategoria').on('change', viewMarca);
@@ -10,11 +13,7 @@ $(document).ready(function(){
 	$('#Next1').on('click', function () { nextPage(1); nextView(); })
 	$('#Next2').on('click', function () { nextPage(2) });
 	$('#Next3').on('click', function () { nextPage(3) });
-	$('#Next4').on('click', function () { 
-		registerProduct();
-
-		
-	});
+	$('#Next4').on('click', function () { registerProduct(); });
 
 	$('#Previous2').on('click', function () { PreviousPage(2) });
 	$('#Previous3').on('click', function () { PreviousPage(3) });
@@ -25,11 +24,68 @@ $(document).ready(function(){
 	$('.text3').on('input', function() { nextButton(3) });
 	$('.text4').on('input', function() { nextButton(4) });
 
-	
-
-	
-
 });
+
+/*function registerProducts(my_callback) {
+	event.preventDefault();
+    var r = confirm("Revise si sus datos son correctos \n Los datos ingresados se registraran en la base de datos");
+	if (r == true) {
+		var url = 'Script/RegProduct.php';
+	    var data = $("#product-register").serializeArray();
+	    var resultado;
+
+	    $.ajax({
+	        url: url,
+	        data: data,
+	        method: 'POST'
+		}).done(function( response ) {
+			if (response.error == true) {
+				resultado = 'a';
+			} else{
+				
+			};
+			my_callback(resultado);
+		});
+  		
+	}
+}
+*/
+
+function decimal (e) {
+	var texto = $(this);
+      key = e.keyCode ? e.keyCode : e.which;
+
+      if(texto.val().substring(0,1) == '.') 
+            texto.val('0' + texto.val());
+
+      //borrar      
+      if (key == 8) return true;
+
+      // 0-9
+      if (key > 47 && key < 58) {
+        if (texto.val() === "") return true;
+        
+      var existePto = (/[.]/).test(texto.val());
+        if (existePto === false){
+          regexp = /.[0-9]{10}$/; //PARTE ENTERA 10
+        }
+        else {
+          regexp = /.[0-9]{2}$/; //PARTE DECIMAL2
+        }
+
+        return !(regexp.test(texto.val()));
+      }
+      
+      //.
+      if (key == 46) {
+        if (texto.val() === "") return false;
+          regexp = /^[0-9]+$/;
+          return regexp.test(texto.val());
+      }
+
+      //otro key
+      return false;
+}
 
 function nextButton(i) {
 
@@ -121,16 +177,6 @@ function PreviousPage(i) {
 	$('.nav-tabs li:nth-child('+x+')').addClass('active');
 }
 
-
-
-function showModalRegister() {
-	$("#modal-register").modal('show');
-}
-
-function showModalItems() {
-	$("#modal-items").modal('show');
-}
-
 function registerProduct() {
 	event.preventDefault();
     var r = confirm("Revise si sus datos son correctos \n Los datos ingresados se registraran en la base de datos");
@@ -149,13 +195,12 @@ function registerProduct() {
 			if(response.error) {
 				console.log(response.message);
 				alert(response.message);
-		        nextPage(4);
-				$("#Next4").attr("href", "#Tab5");
+				
 				
 			}else{
 				alert(response.message);
 				console.log(response.message);
-				location.reload();
+				location.href = 'uploadImage.php?id='+response.idprod;
 			}
 		});
 

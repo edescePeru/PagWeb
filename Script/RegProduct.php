@@ -61,10 +61,10 @@
 		return;
 	}
 
-	if ($prod_descrip_larga < 100) {
+/*	if (strlen($prod_descrip_larga) < 100) {
 		echo json_encode(['error' => true, 'message' => 'Es necesario que la descripcion larga del producto sea mayor a 100 caracteres.']);
 		return;
-	}
+	}*/
 
 	if ($prod_garantia == "") {
 		echo json_encode(['error' => true, 'message' => 'Es necesario especificar la garantia del producto.']);
@@ -86,7 +86,7 @@
 		return;
 	}
 
-	if (!is_numeric($box_largo) && $box_largo < 0){
+	if (!is_numeric($box_largo) || $box_largo < 0){
 		echo json_encode(['error' => true, 'message' => 'Es necesario que el largo de la caja sea valor numerico positivo.']);
 		return;
 	}
@@ -96,7 +96,7 @@
 		return;
 	}
 
-	if (!is_numeric($box_ancho) && $box_ancho < 0){
+	if (!is_numeric($box_ancho) || $box_ancho < 0){
 		echo json_encode(['error' => true, 'message' => 'Es necesario que el ancho de la caja sea valor numerico positivo.']);
 		return;
 	}
@@ -106,7 +106,7 @@
 		return;
 	}
 
-	if (!is_numeric($box_alto) && $box_ancho < 0){
+	if (!is_numeric($box_alto) || $box_ancho < 0){
 		echo json_encode(['error' => true, 'message' => 'Es necesario que el alto de la caja sea valor numerico positivo.']);
 		return;
 	}
@@ -116,7 +116,7 @@
 		return;
 	}
 
-	if (!is_numeric($box_peso) && $box_peso < 0){
+	if (!is_numeric($box_peso) || $box_peso < 0){
 		echo json_encode(['error' => true, 'message' => 'Es necesario que el peso de la caja sea valor numerico positivo.']);
 		return;
 	}
@@ -131,7 +131,7 @@
 		return;
 	}
 
-	if (!is_numeric($prod_stock) && $prod_stock < 0){
+	if (!is_numeric($prod_stock) || $prod_stock < 0){
 		echo json_encode(['error' => true, 'message' => 'Es necesario que el stock del producto sea valor numerico positivo.']);
 		return;
 	}
@@ -141,18 +141,32 @@
 		return;
 	}
 
-	if (!is_numeric($prod_precio) && $prod_precio < 0){
+	if (!is_numeric($prod_precio) || $prod_precio < 0){
 		echo json_encode(['error' => true, 'message' => 'Es necesario que el precio del producto sea valor numerico positivo.']);
 		return;
 	}
 
-	$query = "INSERT INTO producto(nombrePortada, descripcionCorta, descripcionLarga, contenidoCaja, color, precio, idSubCategoria, idMarca, idCliente, enable) 
-	VALUES ('".$name."','".$descriptionShort."','".$descriptionLong."','".$contentBox."','".$color."',".$price.",".$subcategoria.",".$marca.",'".$_SESSION['id']."',1)";
+
+	$query = "INSERT INTO producto(codigo, nombre, modelo, stock, precio,
+									descripcionCorta, descripcionLarga, garantia, color,
+									contenidoCaja, largoCaja, anchoCaja, altoCaja, pesoCaja,
+									idSubCategoria, idMarca, idCliente, enable) 
+				VALUES ('".$prod_codigo."', '".$prod_nombre."', '".$prod_modelo."', '".$prod_stock."', '".$prod_precio."', 
+						'".$prod_descrip_corta."', '".$prod_descrip_larga."', '".$prod_garantia."', '".$prod_color."',
+						'".$box_contenido."', '".$box_largo."', '".$box_ancho."', '".$box_alto."', '".$box_peso."',
+						'".$subcategoria."','".$marca."','".$_SESSION['id']."',1)";
 
 	$registro = mysqli_query($conexion, $query);
 
-	if ($registro) { 
-		echo json_encode(['error' => false, 'message' => 'Se ha registrado correctamente']);
+	$idfinal = mysqli_query($conexion, "SELECT MAX(idProducto) FROM Producto");
+	if ($row = mysqli_fetch_row($idfinal)) {
+		$id = $row[0];
+	}
+
+	
+
+	if ($registro = true) { 
+		echo json_encode(['error' => false, 'message' => "Se ha registrado correctamente. Ahora suba sus imágenes.", 'idprod' => $id]);
 		return;
 	} else {
 		echo json_encode(['error' => true, 'message' => 'Ocurrió un error inesperado. :(']);
