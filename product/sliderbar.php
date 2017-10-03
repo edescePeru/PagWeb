@@ -9,7 +9,7 @@
 				<li>
 					<div class="box_1-cart">
 						<div class="box_11">
-							<a href="../../checkout.html">
+							<a href="../../checkout.php">
 						  		<h4>
 						  			<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 						  			<p class="carts">

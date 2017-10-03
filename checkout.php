@@ -1,49 +1,34 @@
-<!--A Design by W3layouts
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php 
+	 session_start();
+	 $inicioSesion = isset($_SESSION['id']);
+
+	 if ($inicioSesion) {
+		$user = $_SESSION['user'];
+		$email = $_SESSION['email'];
+	 }
+?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Buy_shop an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Checkout :: w3layouts</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Buy_shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!-- Custom Theme files -->
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<script src="js/simpleCart.min.js"> </script>
-<!-- Custom Theme files -->
-<!--webfont-->
-<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-<!-- start menu -->
-<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-<script type="text/javascript" src="js/megamenu.js"></script>
-<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+	<title>Buy_shop an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Checkout :: w3layouts</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<!-- CSS -->
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" >
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
-<div class="header_top">
-	<div class="container">
-		<div class="one-fifth column row_1">
-			<span class="selection-box"><select class="domains valid" name="domains">
-		       <option>English</option>
-		       <option>French</option>
-		       <option>German</option>
-		    </select></span>
-         </div>
-         <div class="cssmenu">
-			<ul>
-			   <li class="active"><a href="login.html">My Account</a></li> 
-			</ul>
-		 </div>
-	</div>
-</div>	
+
+
+<?php 
+	require 'sliderbar.php';
+?>
+
 <div class="header_bottom men_border">
 	    <div class="container">
 			<div class="col-xs-8 header-bottom-left">
@@ -341,5 +326,38 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    </div>
 	</div>
 </div>
+
+<script type="text/javascript" src="js/simpleCart.min.js"> </script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/megamenu.js"></script>
+<script type="text/javascript" src="misJs/validate.js"></script>
+<script type="text/javascript" src="misJs/message.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+<script>
+	$(document).ready(function(){
+		$(".megamenu").megamenu();
+		$('[data-toggle="tooltip"]').tooltip();  
+	});
+
+	addEventListener("load", function() { 
+		setTimeout(hideURLbar, 0);
+	}, false); 
+
+	function hideURLbar(){ window.scrollTo(0,1); } 
+
+</script>
+
+<script>
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.10";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+
 </body>
 </html>		
