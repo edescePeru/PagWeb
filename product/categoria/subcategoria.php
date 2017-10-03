@@ -26,9 +26,83 @@
 </head>	
 <body>
 
+
 <?php 
 	require '../sliderbar.php';
 ?>
+
+<div class="header_top">
+	<div class="container">
+         		<div class="cssmenu">
+			<ul class="ul-left">
+				<li class="active"><a href="about.html">Nosotros</a></li> 
+				<li><a href="contact.html">Contactanos	</a></li> 
+			</ul>
+			<ul class="ul">
+				<li>
+					<div class="box_1-cart">
+						<div class="box_11">
+							<a href="checkout.html">
+						  		<h4>
+						  			<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+						  			<p class="carts">
+						  				<span id="cart_quantity" class="">0</span>
+						  			</p>
+						  			<div class="clearfix"> </div>
+						  		</h4>
+						  	</a>
+						</div>
+				  		<div class="clearfix"> </div>
+					</div>
+				</li>
+				<?php if (!$inicioSesion) {?>
+					<li class="active"><a href="login.php">Iniciar Sesion</a></li> 
+				<?php } else { ?>	
+					<li>
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="checkout.html">
+							  		<h4>
+							  			<i class="fa fa-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Mi cuenta"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+					<li>
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="checkout.html" data-toggle="tooltip" data-placement="right" title="Pedidos">
+							  		<h4>
+							  			<i class="fa fa-truck" aria-hidden="true"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+					<li class="active">
+						<div class="box_1-cart">
+							<div class="box_11">
+								<a href="script/logout.php" data-toggle="tooltip" data-placement="right" title="Salir">
+							  		<h4>
+							  			<i class="fa fa-power-off" aria-hidden="true"></i>
+							  			<div class="clearfix"> </div>
+							  		</h4>
+							  	</a>
+							</div>
+					  		<div class="clearfix"> </div>
+						</div>
+					</li>	
+				<?php } ?>
+			</ul>
+		</div>
+	</div>
+</div>	
+>>>>>>> 18576d431b5f119e86985ded44b984ca2f373ff0
 
 <div class="wrap-box"></div>
 
@@ -233,6 +307,12 @@
 			<!-- grids_of_4 -->
 			<div class="grids_of_4">
 			<?php 
+				if (!isset($_GET['page'])) {
+					$pagina = 1;
+				} else {
+					$pagina = $_GET['page'];
+				}
+				
 				if ($pagina <= 1) {
 					$limit = 0;
 				} else {
@@ -265,7 +345,7 @@
 							<!--<div class="size_2-left"> 
 								<input type="text" class="item_quantity quantity_1" value="1" />
 							</div>-->
-							<input type="button" class="item_add add3" value="Agregar carrito"/>
+							<input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -329,6 +409,8 @@
 		$('.scroll-pane').jScrollPane();
 	});
 </script>
+<script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="../../misJs/cartShop.js"></script>
 
 </body>
 </html>		
