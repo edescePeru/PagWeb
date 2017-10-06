@@ -200,7 +200,7 @@ function registerProduct() {
 			}else{
 				alert(response.message);
 				console.log(response.message);
-				location.href = 'uploadImage.php?id='+response.idprod;
+				location.href = 'producto_uploadImage.php?id='+response.idprod;
 			}
 		});
 
