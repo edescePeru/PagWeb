@@ -1,6 +1,8 @@
 <?php
 include 'BaseDatos/conexion.php';
 session_start();
+
+$idprod = $_GET['idprod'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -87,9 +89,9 @@ session_start();
 		}
 
 
-		select[id="subcategoria"], select[id="marca"]{
+		/*select[id="subcategoria"], select[id="marca"]{
 			display: none;
-		}
+		}*/
 
 		.first-select, .select-subcategoria{
 			float: left;
@@ -231,7 +233,9 @@ session_start();
 						<!-- PAGE CONTENT BEGINS -->
 						<div class="row">
 							<div class="col-xs-12">
-								<h3 class="header smaller lighter blue">Nuevo producto</h3>
+								<h3 class="header smaller lighter blue">Editar el producto N° 
+									<p id="idprod" style="display: inline;"><?= $idprod ?></p>
+								</h3>
 								<div class="table-header">
 									Registro de un producto
 								</div>
@@ -254,7 +258,25 @@ session_start();
 									</ul>
 								</div>
 
-								<form id="product-register" method="post" accept-charset="utf-8">
+								<?php 
+									
+
+									$resultSet = mysqli_query($conexion, 'SELECT 
+										P.idProducto, P.codigo, P.nombre, P.modelo, P.stock, 
+										P.precio, P.descripcionCorta, P.descripcionLarga, P.garantia, P.color, 
+										P.contenidoCaja, P.largoCaja, P.anchoCaja, P.altoCaja, P.pesoCaja, 
+										P.FechaCreacion, C.idCategoria, C.nombre as Categoria, P.idSubCategoria, SC.nombre as Subcategoria, 
+										P.idMarca, M.nombre as Marca, P.idCliente 
+										FROM producto P 
+										JOIN subcategoria SC ON SC.idSubcategoria = P.idSubcategoria 
+										JOIN categoria C ON SC.idCategoria = C.idCategoria 
+										JOIN marca M ON M.idMarca = P.idMarca 
+										WHERE P.enable = 1 and idProducto = "'.$idprod.'"');
+									    
+									while($prod = mysqli_fetch_array($resultSet)){
+								?>
+
+								<form id="product-edit" method="post" accept-charset="utf-8">
 
 									<div class="tab-content">
 
@@ -266,25 +288,40 @@ session_start();
 														<p>Por favor, seleccione la categoria principal para su producto</p>
 													</div>
 
+												
+
 										            <div class="first-select">
 														<select name="categoria" id="categoria" multiple>
 															<?php 
 																$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
 																while($fila = mysqli_fetch_array($resultSet)){
 															?>
-															<option value="<?php echo $fila[0]; ?>"><?php echo $fila[1] ?></option>
+															<option <?php if($fila[1] == $prod['Categoria'] ){echo("selected");}?> value="<?php echo $fila[0]; ?>" ><?php echo $fila[1] ?></option>	
 															<?php }	?>
 														</select>
 													</div>
 
 													<div class="select-subcategoria">
 														<select name="subcategoria" id="subcategoria" multiple>
-															
+															<?php 
+																$resultSet = mysqli_query($conexion, "SELECT idSubCategoria, nombre FROM subcategoria 
+																										WHERE enable = 1 and idCategoria = '".$prod['idCategoria']."'");
+																while($fila = mysqli_fetch_array($resultSet)){
+															?>
+															<option <?php if($fila[1] == $prod['Subcategoria'] ){echo("selected");}?> value="<?php echo $fila[0]; ?>" ><?php echo $fila[1] ?></option>	
+															<?php }	?>
 														</select>
 													</div>
 
 													<div class="select-marca">
 														<select name="marca" id="marca" multiple>
+															<?php 
+																$resultSet = mysqli_query($conexion, "SELECT idMarca, nombre FROM marca 
+																										WHERE enable = 1 and idSubCategoria = '".$prod['idSubCategoria']."'");
+																while($fila = mysqli_fetch_array($resultSet)){
+															?>
+															<option <?php if($fila[1] == $prod['Marca'] ){echo("selected");}?> value="<?php echo $fila[0]; ?>" ><?php echo $fila[1] ?></option>	
+															<?php }	?>
 															
 														</select>	
 													</div>
@@ -292,7 +329,7 @@ session_start();
 
 												<div style="margin-top: 3em; float: right; ">
 													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-													<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+													<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
 									        </div>
 
@@ -311,7 +348,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Nombre del producto</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="name" name="name" class="form-control text2" />
+																<input type="text" id="name" name="name" class="form-control text2" value="<?= $prod['nombre']; ?>" />
 																<div class="acotacion">
 																	* Nombre del producto + marca + modelo + caracteristicas + color
 																</div>
@@ -324,7 +361,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Modelo del producto</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="model" name="model" class="form-control text2" />
+																<input type="text" id="model" name="model" class="form-control text2" value="<?= $prod['modelo']; ?>" />
 																<div class="acotacion">
 																	* Ejemplo: Samsung J7 prime, Smart TV KU6000
 																</div>
@@ -338,7 +375,7 @@ session_start();
 
 															<div class="col-xs-9">
 																<textarea class="form-control text2" id="description-short" name="description-short" 
-																placeholder="Memoria: 64 gb&#10;Pantalla: HD&#10;Camara: 8px" rows="5"></textarea>
+																placeholder="Memoria: 64 gb&#10;Pantalla: HD&#10;Camara: 8px" rows="5"><?= $prod['descripcionCorta']; ?></textarea>
 																<div class="acotacion">
 																	* Maximo 5 lineas
 																</div>
@@ -353,7 +390,8 @@ session_start();
 
 															<div class="col-xs-9">
 																<textarea class="form-control text2" id="description-long" name="description-long" 
-																rows="5" placeholder="Celular Samsung, 6.3 pulgadas, resolución 2960x1440, cámara dual de 12 megapixels,  6GB de RAM, 64GB, 128GB o 256GB de almacenamiento interno, batería de 3300 mAh" ></textarea>
+																rows="5" placeholder="Celular Samsung, 6.3 pulgadas, resolución 2960x1440, cámara dual de 12 megapixels,  6GB de RAM, 64GB, 128GB o 256GB de almacenamiento interno, batería de 3300 mAh" ><?= $prod['descripcionLarga']; ?>
+																</textarea>
 																<div class="acotacion">
 																	* Minimo 100 letras
 																	<p id="numero" style="float: right;"></p>
@@ -367,7 +405,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Garantía del producto</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="garantia" name="garantia" class="form-control text2" />
+																<input type="text" id="garantia" name="garantia" class="form-control text2" value="<?= $prod['garantia']; ?>" />
 																<div class="acotacion">
 																	* Ejemplo: 1 año, 6 meses
 																</div>
@@ -380,7 +418,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Color del producto</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="color" name="color" class="form-control text2" />
+																<input type="text" id="color" name="color" class="form-control text2" value="<?= $prod['color']; ?>" />
 																<div class="acotacion">
 																	* Ejemplo: rosado, gold, silver, negro
 																</div>
@@ -393,7 +431,7 @@ session_start();
 												<div style="margin-top: 3em; float: right; ">
 													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 													<button type="button" id="Previous2" data-toggle="tab" href="#Tab1" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-													<button type="button" id="Next2" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+													<button type="button" id="Next2" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
 									        </div>
 
@@ -406,7 +444,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>¿Que hay en la caja?</b> </label>
 
 															<div class="col-xs-9">
-																<textarea class="form-control text3" id="content-box" name="content-box" placeholder="Producto&#10;Control remoto&#10; Manual de instrucciones&#10; Tarjeta de garantía" rows="5" ></textarea>
+																<textarea class="form-control text3" id="content-box" name="content-box" placeholder="Producto&#10;Control remoto&#10; Manual de instrucciones&#10; Tarjeta de garantía" rows="5" ><?= $prod['contenidoCaja']; ?></textarea>
 															</div>
 														</div>
 													</div>
@@ -416,7 +454,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Largo del paquete (cm)</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="large-box" name="large-box" class="form-control text3"/>
+																<input type="text" id="large-box" name="large-box" class="form-control text3" value="<?= $prod['largoCaja']; ?>" />
 																<div class="acotacion">
 																	* Escribir solamente en números 
 																</div>
@@ -429,7 +467,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Ancho del paquete (cm)</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="width-box" name="width-box" class="form-control text3"/>
+																<input type="text" id="width-box" name="width-box" class="form-control text3" value="<?= $prod['anchoCaja']; ?>"/>
 																<div class="acotacion">
 																	* Escribir solamente en números 
 																</div>
@@ -442,7 +480,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Alto del paquete (cm)</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="height-box" name="height-box" class="form-control text3"/>
+																<input type="text" id="height-box" name="height-box" class="form-control text3" value="<?= $prod['largoCaja']; ?>"/>
 																<div class="acotacion">
 																	* Escribe solamente en números
 																</div>
@@ -455,7 +493,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b> Peso del paquete (Kg)</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="weight-box" name="weight-box" class="form-control text3" />
+																<input type="text" id="weight-box" name="weight-box" class="form-control text3" value="<?= $prod['pesoCaja']; ?>" />
 																<div class="acotacion">
 																	* Escriba solamente en números
 																</div>
@@ -468,7 +506,7 @@ session_start();
 												<div style="margin-top: 3em; float: right; ">
 													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 													<button type="button" id="Previous3" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
-													<button type="button" id="Next3" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+													<button type="button" id="Next3" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
 											</div>
 
@@ -478,23 +516,10 @@ session_start();
 
 													<div class="col-xs-12" >
 														<div class="form-group">
-															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Codigo del producto</b> </label>
-
-															<div class="col-xs-9">
-																<input type="text" id="key" name="key" class="form-control text4"/>
-																<div class="acotacion">
-																	* Código identificador para la búsqueda del producto
-																</div>
-															</div>
-														</div>
-													</div>
-
-													<div class="col-xs-12" >
-														<div class="form-group">
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Stock</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="stock" name="stock" class="form-control text4"/>
+																<input type="text" id="stock" name="stock" class="form-control text4" value="<?= $prod['stock']; ?>" />
 																<div class="acotacion">
 																	* Escribir solamente en números
 																</div>
@@ -507,7 +532,7 @@ session_start();
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Precio (S/.)</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="price" name="price" class="form-control text4"/>
+																<input type="text" id="price" name="price" class="form-control text4" value="<?= $prod['precio']; ?>"/>
 																<div class="acotacion">
 																	* Escribir solamente en números, máximo dos decimales
 																</div>
@@ -521,11 +546,13 @@ session_start();
 													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 													<button type="button" id="Previous4" data-toggle="tab" href="#Tab3" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Atras</button>
 													<!-- <button type="submit" id="Next4" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button> -->
-													<button type="submit" id="Next4" data-toggle="tab" class="btn btn-primary" disabled><i class="fa fa fa-check-circle"></i> Subir imagenes</button>
+													<button type="submit" id="Next4" data-toggle="tab" class="btn btn-primary"><i class="fa fa fa-check-circle"></i> Editar producto</button>
 												</div>
 									        </div>
 									</div>
-								</form>			
+								</form>		
+
+								<?php } ?>	
 
 							    
 	
@@ -604,7 +631,7 @@ session_start();
 
 
 <!-- Own scripts -->
-<script src="misJs/productonew.js"></script>
+<script src="misJs/productoedit.js"></script>
 
 <script src="js/plugins/sortable.js" type="text/javascript"></script>
 <script src="themes/explorer/theme.js" type="text/javascript"></script>

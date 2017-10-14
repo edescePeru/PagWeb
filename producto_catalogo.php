@@ -65,6 +65,28 @@ session_start();
 			}
 		}
 	</style> -->	
+	<style type="text/css">
+		.carousel-inner>.item>div>img{
+			height: 400px;
+		}
+
+		#edit{
+			padding-left: 28%!important;
+		}
+
+		button.btn.btn-minier.btn-yellow.dropdown-toggle {
+		    margin-top: -5px;
+		    margin-left: 0.2em;
+		}
+
+		ul.dropdown-visual.dropdown-menu.dropdown-close {
+		    right: 4.8em;
+		    top: 81%;
+		}
+		div.tooltip.fade.left.in {
+			left: 0;
+}
+	</style>
 </head>
 
 <body class="no-skin">
@@ -178,7 +200,7 @@ session_start();
 						<div class="row">
 							<div class="col-xs-12">
 								<h3 class="header smaller lighter blue">Listado de productos</h3>
-								<a id="show-register" role="button" class="btn btn-success" >
+								<a href="producto_nuevo.php" role="button" class="btn btn-success" >
 									Nuevo Producto
 								</a>
 								<div class="clearfix">
@@ -201,19 +223,29 @@ session_start();
 													<span class="lbl"></span>
 												</label>
 											</th>
-											<th>Producto</th>
-											<th>Precio</th>
-											<th>Subcategoria</th>
-											<th class="hidden-480">Marca</th>
-											<th class="hidden-480">Descripción corta</th>
-											<th class="hidden-480">Descripcion larga</th>
-											<th class="hidden-480">Contenido de caja</th>
-											<th class="hidden-480">Color</th>
+											<th>Nombre</th>
+											<th>Codigo</th>
+											<th>Fecha Creado</th>
+											<th>Garantía</th>
+											<th class="hidden-480">Precio (S/.)</th>
+											<th class="hidden-480">Stock</th>
 											<th></th>
 										</tr>
 										</thead>
 
 										<tbody>
+											<?php 
+									            $resultSet = mysqli_query($conexion, 'SELECT idProducto, nombre, codigo, FechaCreacion, garantia, precio, stock 
+									            										FROM Producto 
+									            										WHERE enable = 1 and idCliente = "'.$_SESSION['id'].'"');
+									            while($fila = mysqli_fetch_array($resultSet)){
+									            	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+
+									            	$dia = date('d', strtotime($fila['FechaCreacion']));
+									            	$mes = $meses[date('n',strtotime($fila['FechaCreacion']))-1];
+									            	$anio = date('Y', strtotime($fila['FechaCreacion']));
+									            	$fechaCreacion = $dia."-".$mes."-".$anio;
+											?>
 
 											<tr>
 												<td class="center">
@@ -223,45 +255,57 @@ session_start();
 													</label>
 												</td>
 
-												<td></td>
-												<td></td>
-												<td></td>
-												<td class="hidden-480"></td>
-												<td class="hidden-480"></td>
-												<td class="hidden-480"></td>
-												<td class="hidden-480"></td>
-												<td class="hidden-480"></td>
+												<td data-id=<?= $fila['idProducto'] ?> data-nombre><?= $fila['nombre'] ?></td>
+												<td><?= $fila['codigo'] ?></td>
+												<td><?= $fechaCreacion ?></td>
+												<td class="hidden-480"><?= $fila['garantia'] ?></td>
+												<td class="hidden-480" data-precio><?= $fila['precio'] ?></td>
+												<td class="hidden-480" data-stock><?= $fila['stock'] ?></td>
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
-														<a class="blue" href="#" data-rel="tooltip" title="Items">
+														<!-- <a class="blue" href="#" data-rel="tooltip" title="Items">
 															<i class="ace-icon fa fa-search-plus bigger-130"></i>
-														</a>
-														<a class="green" href="#" data-rel="tooltip" title="Editar">
+														</a> -->
+														<a class="green" href="#" data-rel="tooltip" title="Editar" data-editar>
 															<i class="ace-icon fa fa-pencil bigger-130"></i>
 														</a>
-														<a class="red" href="#" data-rel="tooltip" title="Eliminar">
+														<a class="red" data-rel="tooltip" title="Eliminar" data-eliminar="<?= $fila['idProducto'] ?>">
 															<i class="ace-icon fa fa-trash-o bigger-130"></i>
 														</a>
-														<a class="orange" href="#" data-rel="tooltip" title="Imagenes">
+														<a class="orange" href="#" data-rel="tooltip" title="Imagenes" data-picture="<?= $fila['idProducto'] ?>">
 															<i class="ace-icon fa fa-file-image-o bigger-130"></i>
 														</a>
+
+														<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto" >
+																<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+														</button>
+
+														<ul class="dropdown-visual dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close ">
+															<li>
+																<a href="#" class="tooltip-info" data-rel="tooltip" title="Editar imagen" data-placement="left">
+																	<span class="blue">
+																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																	</span>
+																</a>
+															</li>
+														</ul>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
-															<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+															<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto" >
 																<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
 															</button>
 															<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-																<li>
+																<!-- <li>
 																	<a href="#" class="tooltip-info" data-rel="tooltip" title="Items">
 																		<span class="blue">
 																			<i class="ace-icon fa fa-search-plus bigger-120"></i>
 																		</span>
 																	</a>
-																</li>
+																</li> -->
 
 																<li>
-																	<a href="#" class="tooltip-success" data-rel="tooltip" title="Editar">
+																	<a href="#" class="tooltip-success" data-rel="tooltip" title="Editar imagen" data-editar>
 																		<span class="green">
 																			<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																		</span>
@@ -269,14 +313,14 @@ session_start();
 																</li>
 
 																<li>
-																	<a href="#" class="tooltip-error" data-rel="tooltip" title="Eliminar">
+																	<a class="tooltip-error" data-rel="tooltip" title="Eliminar" data-eliminar="<?= $fila['idProducto'] ?>">
 																		<span class="red">
 																			<i class="ace-icon fa fa-trash-o bigger-120"></i>
 																		</span>
 																	</a>
 																</li>
 																<li>
-																	<a href="#" class="tooltip-warning" data-rel="tooltip" title="Imagenes">
+																	<a href="#" class="tooltip-warning" data-rel="tooltip" title="Imagenes" data-picture="<?= $fila['idProducto'] ?>">
 																		<span class="orange">
 																			<i class="ace-icon fa fa-file-image-o bigger-120"></i>
 																		</span>
@@ -287,6 +331,7 @@ session_start();
 													</div>
 												</td>
 											</tr>
+											<?php } ?>
 											
 										</tbody>
 									</table>
@@ -332,15 +377,15 @@ session_start();
 </div><!-- /.main-container -->
 
 <!-- Modals-->
-<div id="modal-register" class="modal fade" tabindex="-1">
+<div id="modal-picture" class="modal fade" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h3 class="smaller lighter blue no-margin">Registrar producto</h3>
+				<h3 class="smaller lighter blue no-margin">Imagenes</h3>
 			</div>
 			<form class="form-horizontal" role="form" id="form-register">
-				<div class="modal-body">
+				<div class="modal-body" id="modal-body">
 
 					
 
@@ -351,10 +396,58 @@ session_start();
 						<i class="ace-icon fa fa-times"></i>
 						Close
 					</button>
-                    <a id="btn-register" class="btn btn-sm btn-primary pull-left">
-                        <i class="ace-icon fa fa-save"></i>
-                        Guardar
-                    </a>
+				</div>
+			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
+
+<div id="modal-producto" class="modal fade" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="smaller lighter blue no-margin">Editar producto</h3>
+			</div>
+			
+			<form class="form-horizontal" role="form" id="form-producto">
+				<div class="modal-body">
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nombre</label>
+						<div class="col-sm-9">
+							<input type="text" id="nombre" name="name" placeholder="Nombre de producto" class="col-xs-10 col-sm-10" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Stock</label>
+						<div class="col-sm-9">
+							<input type="text" id="stock" name="stock" placeholder="Stock de producto" class="col-xs-10 col-sm-10" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Precio</label>
+						<div class="col-sm-9">
+							<input type="text" id="precio" name="price" placeholder="Precio de producto" class="col-xs-10 col-sm-10" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<a id="edit" title="">Modificar otros aspectos...</a>
+					</div>
+
+				</div>
+
+				<div class="modal-footer">
+					<button class="btn btn-sm btn-danger pull-right" data-dismiss="modal">
+						<i class="ace-icon fa fa-times"></i>
+							Close
+					</button>
+					<button id="process-producto" class="btn btn-sm btn-primary pull-left" >
+						<i class="ace-icon fa fa-save"></i>
+							Guardar
+					</button>
 				</div>
 			</form>
 		</div><!-- /.modal-content -->
@@ -410,7 +503,7 @@ session_start();
 					bAutoWidth: false,
 					"aoColumns": [
 						{ "bSortable": false },
-						null, null,null, null, null, null, null, null,
+						null, null,null, null, null, null,
 						{ "bSortable": false }
 					],
 					"aaSorting": [],
@@ -619,6 +712,10 @@ session_start();
 
 	})
 </script>
+
+<script src="misJs/producto.js"></script>
+<script src="notify/bootstrap-notify.js"></script>
+<script src="notify/bootstrap-notify.min.js"></script>
 
 </body>
 </html>

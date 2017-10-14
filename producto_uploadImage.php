@@ -1,8 +1,11 @@
 <?php
 include 'BaseDatos/conexion.php';
 session_start();
+	
+	$idprod = $_GET['idprod'];
 
-$idprod = $_GET['id'];
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -258,7 +261,7 @@ $idprod = $_GET['id'];
 										
 									</div>
 
-									<!-- <form enctype="multipart/form-data">
+									<form enctype="multipart/form-data">
 										<input type="hidden" name="idprod" id="idprod" value="<?=$idprod ?>">
 										<div class="row kv-main" style="width: 100%">
 											<div class="col-md-10 col-md-offset-1">
@@ -268,14 +271,7 @@ $idprod = $_GET['id'];
 												<br>
 											</div>
 										</div>
-									</form>	 -->
-
-									<form enctype="multipart/form-data">
-        <label>Spanish Input</label>
-        <input id="file-es" name="file-es[]" type="file" multiple>
-    </form>
-
-								    
+									</form>									    
 		
 								</div>
 							</div>
@@ -353,16 +349,12 @@ $idprod = $_GET['id'];
 <script src="assets/js/ace-elements.min.js"></script>
 <script src="assets/js/ace.min.js"></script>
 
-
-<!-- Own scripts -->
-<script src="misJs/producto.js"></script>
-
 <script src="js/plugins/sortable.js" type="text/javascript"></script>
 <script src="js/fileinput.js" type="text/javascript"></script>
 <script src="js/locales/fr.js" type="text/javascript"></script>
 <script src="js/locales/es.js" type="text/javascript"></script>
 <script src="themes/explorer/theme.js" type="text/javascript"></script>
-<!-- <script>
+<script>
 
 	var file = $('#file-es');
     file.fileinput({
@@ -400,14 +392,7 @@ $idprod = $_GET['id'];
 
 
     
-</script> -->
-
-<script type="text/javascript">
-	$('#file-es').fileinput({
-        language: 'es',
-        uploadUrl: '#',
-        allowedFileExtensions: ['jpg', 'png', 'gif']
-    });
 </script>
+
 </body>
 </html>
