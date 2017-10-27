@@ -33,8 +33,6 @@
 
 <div class="wrap-box"></div>
 
-
-
 <div class="header_bottom">
 	<div class="container">
 		<div class="col-xs-8 header-bottom-left">
@@ -252,7 +250,7 @@
 			?>
 			  	<div class="grid1_of_4 simpleCart_shelfItem">
 					<div class="content_box">
-						<a href="../content/j1.html">
+						<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
 							<div class="view view-fifth">
 					   	   		<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
 						   		<div class="mask1">
@@ -261,10 +259,9 @@
 							</div>
 						</a>	
 
-						<h5><a href="single.html"> <?php echo $fila[0] ?></a></h5>
-						<h6><?php echo $fila[0] ?></h6>
+						<h6><a href="single.html"> <b><?php echo $fila['nombre'] ?></b> </a></h6>
 						<div class="size_1">
-							<span class="item_price"><?php echo $fila[0] ?></span>
+							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
 							<div class="clearfix"></div>
 						</div>
 

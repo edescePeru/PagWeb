@@ -1405,15 +1405,16 @@ ul.back li{
 	font-size:0.8125em;
 	color:#999;
 }
-ul.back li a{
+ul.back li a:hover{
 	color:#f54d56;
 }
 i.back_arrow{
 	width: 15px;
 	height: 15px;
 	float: left;
-	background: url(../images/img_sprite.png)no-repeat -194px -14px;
+	background: url(../../images/default/img_sprite.png)no-repeat -194px -14px;
 }
+
 .span_3_of_2 h1{
 	color:#4a4a4a;
 	font-size:1.5em;
@@ -1422,12 +1423,12 @@ i.back_arrow{
 .price_single{
    margin: 1em 0 2em;
 }
-.head{
+/*.head{
 	float:left;
-}
+}*/
 .head h2{
-	color:#f54d56;
-	font-size: 2.5em;
+	/*color:#f54d56;*/
+	font-size: 2.3em;
 	font-weight: bold;
 }
 .head_desc{
@@ -1438,11 +1439,6 @@ i.back_arrow{
 	font-size:0.8125em;
 	color:#999;
 	margin-right: 1em;
-}
-.span_3_of_2 p{
-	color:#999;
-	font-size:0.85em;
-	line-height:1.8em;
 }
 .metro1{
 	position: relative;	
@@ -2575,9 +2571,9 @@ p.carts{
 	box-shadow: 0 0 20px rgba(0,0,0,0.2);
 }
 
-a:hover, a:focus {
+/*a:hover, a:focus {
 	text-decoration: none;
-}
+}*/
 
 /*a:hover, a:focus {
     color: #E74C3C;
@@ -2586,10 +2582,6 @@ a:hover, a:focus {
 */
 .border-box{
 	border-bottom: 1px solid rgb(236, 236, 236);
-}
-
-label{
-	color: red;
 }
 
 .single_top {
