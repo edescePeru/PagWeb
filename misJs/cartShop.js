@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 	$(document).on('click', '[data-add]', addCartShop);
+	$('#cartShop').on('click', goCheckout);
 
 });
 
@@ -37,7 +38,7 @@ function addCartShop () {
 					title: 'Advertencia: ',
 					message: response.message,
 				},{
-					type:'danger',
+					type:'success',
 					delay: 2000,
 					timer: 1000
 				});
@@ -60,3 +61,36 @@ function addCartShop () {
 		}
 	});
 }
+
+function goCheckout() {
+	event.preventDefault();
+	$.getJSON('../../Script/verSesion.php',function(data)
+	{
+		console.log(data)
+		if (data.error) {
+			$.notify({
+				// options
+				icon: 'fa fa-thumbs-down',
+				title: 'Advertencia: ',
+				message: data.message,
+			},{
+				type:'danger'
+			});
+			setTimeout(function(){ window.location = '../../login.php?back=1'; },2000);
+		} else{
+			$.notify({
+				// options
+				icon: 'fa fa-thumbs-up',
+				title: 'Éxito: ',
+				message: data.message,
+			},{
+				type:'success',
+				delay: 2000,
+				timer: 1000
+			});
+			setTimeout(function(){ window.location = '../../checkout.php'; },2000);
+		};
+	});
+}
+
+
