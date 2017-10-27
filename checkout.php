@@ -28,7 +28,6 @@
 <?php 
 	require 'sliderbar.php';
 ?>
-
 <div class="header_bottom men_border">
 	    <div class="container">
 			<div class="col-xs-8 header-bottom-left">

@@ -31,7 +31,6 @@
 	require '../sliderbar.php';
 ?>
 
-
 <div class="wrap-box"></div>
 
 

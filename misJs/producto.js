@@ -1,55 +1,48 @@
 $(document).ready(function(){
-	$('#large-box').on('keypress', decimal);
-	$('#width-box').on('keypress', decimal);
-	$('#height-box').on('keypress', decimal);
-	$('#weight-box').on('keypress', decimal);
-	$('#price').on('keypress', decimal);
+	$(document).on('click', '[data-eliminar]', deleteProducto);
+	$(document).on('click', '[data-picture]', showModalPicture);
+	$(document).on('click', '[data-editar]', showModalEditar);
+
+	$("#process-producto").on('click', processProducto);
+
+	$('#precio').on('keypress', decimal);
 	$('#stock').on('keypress', decimal);
-
-	$('#categoria').on('change', viewSubcategoria);
-	$('#subcategoria').on('change', viewMarca);
-	$('#marca').on('change', viewButton);
-
-	$('#Next1').on('click', function () { nextPage(1); nextView(); })
-	$('#Next2').on('click', function () { nextPage(2) });
-	$('#Next3').on('click', function () { nextPage(3) });
-	$('#Next4').on('click', function () { registerProduct(); });
-
-	$('#Previous2').on('click', function () { PreviousPage(2) });
-	$('#Previous3').on('click', function () { PreviousPage(3) });
-	$('#Previous4').on('click', function () { PreviousPage(4) });
-	$('#Previous5').on('click', function () { PreviousPage(5) });
-
-	$('.text2').on('input', function() { nextButton(2) });
-	$('.text3').on('input', function() { nextButton(3) });
-	$('.text4').on('input', function() { nextButton(4) });
-
 });
 
-/*function registerProducts(my_callback) {
-	event.preventDefault();
-    var r = confirm("Revise si sus datos son correctos \n Los datos ingresados se registraran en la base de datos");
-	if (r == true) {
-		var url = 'Script/RegProduct.php';
-	    var data = $("#product-register").serializeArray();
-	    var resultado;
-
-	    $.ajax({
-	        url: url,
-	        data: data,
-	        method: 'POST'
-		}).done(function( response ) {
-			if (response.error == true) {
-				resultado = 'a';
-			} else{
-				
-			};
-			my_callback(resultado);
+function showModalPicture() {
+	var dato = $(this).data("picture");
+	$('#modal-body').load('Script/Archivo.php?idprod='+dato);
+	$("#modal-picture").modal({
+			show:true,
+			backdrop:'static'
 		});
-  		
-	}
+	
 }
-*/
+
+var idProducto;
+function showModalEditar() {
+	$('#form-producto')[0].reset();
+	/*$("#proceso").html("Editar");*/
+
+	var $fila = $(this).parents('tr');
+	idProducto = $fila.find('[data-id]').data('id');
+	var producto = $fila.find('[data-nombre]').text();
+	var precio = $fila.find('[data-precio]').text();
+	var stock = $fila.find('[data-stock]').text();
+	
+	$('#nombre').val(producto);
+	$('#stock').val(stock);
+	$('#precio').val(precio);
+
+	console.log(producto);
+
+	$("#edit").attr("href", "producto_editar.php?idprod="+idProducto);	
+
+	$("#modal-producto").modal({
+		show:true,
+		backdrop:'static'
+	});
+}
 
 function decimal (e) {
 	var texto = $(this);
@@ -87,144 +80,51 @@ function decimal (e) {
       return false;
 }
 
-function nextButton(i) {
-
-		var empty = false;
-
-		$('.text'+i).each(function() {
-			if (!empty && $(this).val() == '') {
-				empty = true;
-			}
-		});
-
-		/*if (i == 2) {
-			cant = $('#description-long').val().length;
-			if (cant <= 100) {
-				empty = true;
-			}
-		}*/
-
-		/*console.log(empty);
-		console.log(i);
-		console.log(cant);*/
-
-		$('#Next'+i).prop('disabled', empty);
-}
-
-function nextView() {
-
-	var idCategoria = $('#categoria').val();
-	var idSubcategoria = $('#subcategoria').val();
-	var idMarca = $('#marca').val();
-
-	var categoria = $("#categoria option:selected").map(function() {
-	    return $(this).text();
-	}).get();
-	var subcategoria = $("#subcategoria option:selected").map(function() {
-	    return $(this).text();
-	}).get();
-	var marca = $("#marca option:selected").map(function() {
-	    return $(this).text();
-	}).get();
-
-	$('#categ').text(categoria);	
-	$("#subcateg").text(subcategoria);
-	$("#marc").text(marca);
-
-
-
-	
-
-
-
-	/*console.log(idCategoria);
-	console.log(idSubcategoria);
-	console.log(idMarca);
-	console.log(categoria);
-	console.log(subcategoria);
-	console.log(marca);*/
-}
-
-function viewSubcategoria () {
-	var categoria = $(this).val();
-	$('#Next1').prop('disabled', true);
-	$("#subcategoria").css("display", "block");
-	$("#marca").css("display", "none");
-	$('#subcategoria').load('Script/ComboSelect.php?categoria='+categoria);
-}
-
-function viewMarca () {
-	var subcategoria = $(this).val();
-	$('#Next1').prop('disabled', true);
-	$(".select-subcategoria").css("float", "left");
-	$("#marca").css("display", "block");
-	$('#marca').load('Script/ComboSelect.php?subcategoria='+subcategoria);
-}
-
-function viewButton() {
-	$('#Next1').prop('disabled', false);
-}
-
-function nextPage(i) {
-	$('li').removeClass('active');
-	x = i + 1;
-	$('.nav-tabs li:nth-child('+x+')').addClass('active');
-}
-
-function PreviousPage(i) {
-	$('li').removeClass('active');
-	x = i - 1;
-	$('.nav-tabs li:nth-child('+x+')').addClass('active');
-}
-
-function registerProduct() {
+function deleteProducto () {
 	event.preventDefault();
-    var r = confirm("Revise si sus datos son correctos \n Los datos ingresados se registraran en la base de datos");
-    if (r == true) {
-    	var url = 'Script/RegProduct.php';
-	    var data = $("#product-register").serializeArray();
-		console.log(data);
+	var url = 'Script/DelProducto.php';
+	var dato = $(this).data("eliminar");
 
+	var r = confirm("¿Desea eliminar esta categoría?");
+    if (r == true) {
 		$.ajax({
-	        url: url,
-	        data: data,
-	        method: 'POST'
+			url: url,
+			data: {dato:dato},
+			method: 'POST'
 		}).done(function( response ) {
-		    console.log(response);
+			console.log(response);
 
 			if(response.error) {
 				console.log(response.message);
-				alert(response.message);
-				
+				$.notify(response.message,"danger");
 				
 			}else{
-				alert(response.message);
-				console.log(response.message);
-				location.href = 'uploadImage.php?id='+response.idprod;
+				$.notify(response.message,"danger");
+				setTimeout(function(){ location.reload(); },2000);
 			}
 		});
+    } 	
+}	
 
-        
-    }
-		/*event.preventDefault();
-		var url = 'Script/productRegister.php';
-	    var data = $("#form-register").serializeArray();
-		console.log(data);
-		$.ajax({
-	        url: url,
-	        data: data,
-	        method: 'POST'
-		}).done(function( response ) {
-		    console.log(response);
+function processProducto() {
+	event.preventDefault();
+	var url = 'Script/EditProducto.php';
+    var data = $("#form-producto").serialize();
 
-			if(response.error) {
-				console.log(response.message);
-				alert(response.message);
+	$.ajax({
+		url: url,
+		data: data + "&idprod=" + idProducto,
+		method: 'POST'
+	}).done(function( response ) {
+	    console.log(response);
+
+		if(response.error) {
+			console.log(response.message);
+			alert(response.message);
 				
-			}else{
-				alert(response.message);
-				console.log(response.message);
-				location.reload();
-			}
-		});*/
+		}else{
+			alert(response.message);
+			location.reload();
+		}
+	});	
 }
