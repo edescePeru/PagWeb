@@ -9,7 +9,15 @@ $(document).ready(function(){
 	starStatic($('#star2'), $('#number-start').text());
 	starStatic($('#star3'), $('#number-start').text());
 
-	
+
+	$('#star4').starrr({
+		max: 5,
+		rating: 3,
+		readOnly: true
+	      /*change: function(e, value){
+	        $s2input.val(value).trigger('input');
+	      }*/
+	});
 
 	star($('#star1'));
 

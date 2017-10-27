@@ -851,20 +851,6 @@
 <script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
 <script type="text/javascript" src="../../misJs/productoview.js"></script>
 
-<script type="text/javascript">
-	var elementos = document.getElementById("puntaje");
-	var star = document.getElementById("star4");
-
-
-	star.starrr({
-		max: 5,
-		rating:  elementos.innerText,
-		readOnly: true
-	      /*change: function(e, value){
-	        $s2input.val(value).trigger('input');
-	      }*/
-	});
-</script>
 
 
 
