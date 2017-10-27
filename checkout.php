@@ -159,7 +159,6 @@
 		     <div class="box_11"><a href="checkout.html">
 		      <h4><p>Cart: <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p><img src="images/bag.png" alt=""/><div class="clearfix"> </div></h4>
 		      </a></div>
-	          <p class="empty"><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 	          <div class="clearfix"> </div>
 	        </div>
 	        <div class="search">	  
@@ -175,89 +174,96 @@
 <div class="container">
 	<div class="check">	 
 		<div class="col-md-9 cart-items">
-			 <h1>My Shopping Bag (2)</h1>
-				<script>$(document).ready(function(c) {
-					$('.close1').on('click', function(c){
-						$('.cart-header').fadeOut('slow', function(c){
-							$('.cart-header').remove();
-						});
-						});	  
-					});
-			   </script>
-			 <div class="cart-header">
-				 <div class="close1"> </div>
-				 <div class="cart-sec simpleCart_shelfItem">
+			 <h1>My Shopping Bag <span id="cantidad">dg</span></h1>
+
+			 <?php 
+			 	include 'BaseDatos/conexion.php'; 
+		 		$query = "SELECT DISTINCT DC.idCarrito, P.idProducto, P.nombrePortada , M.nombre , DC.cantidad, DC.precio, S.nombre, PI.imagen FROM carrito C 
+                        INNER JOIN detacarrito DC ON C.idCarrito = DC.idCarrito
+                        INNER JOIN producto P ON DC.idProducto = P.idProducto
+                        INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
+                        INNER JOIN marca M ON M.idMarca = P.idMarca
+                        INNER JOIN productoimage PI ON PI.idProducto= P.idProducto 
+                        WHERE C.idCliente = ".$_SESSION['id']." AND C.sold = 1";
+				$result = mysqli_query($conexion, $query);
+				$data = [];
+				if (mysqli_num_rows($result)>0) {
+					while ($fila = mysqli_fetch_array($result)) {
+						array_push($data, [$fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5], $fila[6], $fila[7]]);
+						}
+				}
+
+				//echo count($data);
+				//var_dump($data);
+
+				for ($i=0; $i <count($data) ; $i++) { 
+					for($j=$i+1;$j<=count($data)-1;$j++) {	
+						if($data[$i][1]==$data[$j][1]){
+							$data[$j]['borrar']=true;
+						}
+					}
+				}
+				//var_dump($data);
+
+				for ($i=0; $i <count($data) ; $i++) { 
+					if (!isset($data[$i]['borrar'])) {
+						?>
+				 <div class="cart-header">
+					<div class="close1"> </div>
+					<div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
-							 <img src="images/pic1.jpg" class="img-responsive" alt=""/>
+							<img src="Script/images/<?php echo $data[$i][7] ?>" class="img-responsive" alt=""/>
+							
 						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
-						<ul class="qty">
-							<li><p>Size : 5</p></li>
-							<li><p>Qty : 1</p></li>
-						</ul>
-						<div class="delivery">
-							 <p>Service Charges : Rs.100.00</p>
-							 <span>Delivered in 2-3 bussiness days</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
+						<div class="cart-item-info">
+						<div class="feature feature-icon-hover indent first">
+								<a href="" title=""><i class="fa fa-plus pull-right " aria-hidden="true"></i></a>
+							</div>
+							<h3><a href="#"><?php echo $data[$i][2] ?></a><span>Marca: <?php echo $data[$i][3] ?></span></h3>
+							<ul class="qty">
+								<li><p>Precio: <?php echo $data[$i][5] ?></p></li>
+								<li><p data-cantidad='<?php echo $data[$i][1] ?>'>Cantidad: <?php echo $data[$i][4] ?></p></li>
+							</ul>
+							<br>
+							<div class="feature feature-icon-hover indent first">
+								<a href="" title="" data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-plus><i class="fa fa-plus pull-left " aria-hidden="true"></i></a>
+								<a href="" title="" data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-minus><i class="fa fa-minus" aria-hidden="true"></i></a>
+							</div>
+						</div>
+						<div class="clearfix"></div>
+												
+					</div>
+				</div> 
+			<?php 
+					}
+				}
+			
+					
+			 ?>
+						
+		
 			 </div>
-			 <script>$(document).ready(function(c) {
-					$('.close2').on('click', function(c){
-							$('.cart-header2').fadeOut('slow', function(c){
-						$('.cart-header2').remove();
-					});
-					});	  
-					});
-			 </script>
-			 <div class="cart-header2">
-				 <div class="close2"> </div>
-				  <div class="cart-sec simpleCart_shelfItem">
-						<div class="cart-item cyc">
-							 <img src="images/pic2.jpg" class="img-responsive" alt=""/>
-						</div>
-					   <div class="cart-item-info">
-						<h3><a href="#">Mountain Hopper(XS R034)</a><span>Model No: 3578</span></h3>
-						<ul class="qty">
-							<li><p>Size : 5</p></li>
-							<li><p>Qty : 1</p></li>
-						</ul>
-							 <div class="delivery">
-							 <p>Service Charges : Rs.100.00</p>
-							 <span>Delivered in 2-3 bussiness days</span>
-							 <div class="clearfix"></div>
-				        </div>	
-					   </div>
-					   <div class="clearfix"></div>
-											
-				  </div>
-			  </div>		
-		 </div>
 		 <div class="col-md-3 cart-total">
-			 <a class="continue" href="#">Continue to basket</a>
+			 <a class="continue" href="#">Continuar comprando</a>
 			 <div class="price-details">
-				 <h3>Price Details</h3>
+				 <h3>Detalle de compra</h3>
 				 <span>Total</span>
-				 <span class="total1">6200.00</span>
+				 <span id="subtotal" class="total1">gfdgdfg</span>
 				 <span>Discount</span>
-				 <span class="total1">---</span>
+				 <span id="discount" class="total1">---</span>
 				 <span>Delivery Charges</span>
-				 <span class="total1">150.00</span>
+				 <span id="delivery" class="total1">dfgdf</span>
 				 <div class="clearfix"></div>				 
 			 </div>	
 			 <ul class="total_price">
 			   <li class="last_price"> <h4>TOTAL</h4></li>	
-			   <li class="last_price"><span>6350.00</span></li>
+			   <li class="last_price"><span id="total">dfgdfg</span></li>
 			   <div class="clearfix"> </div>
 			 </ul>
 			
 			 
 			 <div class="clearfix"></div>
-			 <a class="order" href="#">Place Order</a>
+			 <a class="order" href="#">Realizar compra</a>
 			 <div class="total-item">
 				 <h3>OPTIONS</h3>
 				 <h4>COUPONS</h4>
@@ -333,6 +339,7 @@
 <script type="text/javascript" src="misJs/validate.js"></script>
 <script type="text/javascript" src="misJs/message.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="misJs/checkout.js"></script>
 
 
 <script>

@@ -9,11 +9,11 @@
 				<li>
 					<div class="box_1-cart">
 						<div class="box_11">
-							<a href="../../checkout.php">
+							<a href="" id="cartShop">
 						  		<h4>
 						  			<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 						  			<p class="carts">
-						  				<span id="simpleCart_quantity" class="simpleCart_quantity"></span>
+						  				<span id="cart_quantity" class=""></span>
 						  			</p>
 						  			<div class="clearfix"> </div>
 						  		</h4>
@@ -28,7 +28,7 @@
 					<li>
 						<div class="box_1-cart">
 							<div class="box_11">
-								<a href="../../checkout.html">
+								<a href=".">
 							  		<h4>
 							  			<i class="fa fa-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Mi cuenta"></i>
 							  			<div class="clearfix"> </div>
@@ -41,7 +41,7 @@
 					<li>
 						<div class="box_1-cart">
 							<div class="box_11">
-								<a href="../../checkout.html" data-toggle="tooltip" data-placement="right" title="Pedidos">
+								<a href="../checkout.php" data-toggle="tooltip" data-placement="right" title="Pedidos">
 							  		<h4>
 							  			<i class="fa fa-truck" aria-hidden="true"></i>
 							  			<div class="clearfix"> </div>
