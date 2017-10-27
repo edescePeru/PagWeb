@@ -154,11 +154,6 @@ function nextView() {
 	$("#marc").text(marca);
 
 
-
-	
-
-
-
 	/*console.log(idCategoria);
 	console.log(idSubcategoria);
 	console.log(idMarca);

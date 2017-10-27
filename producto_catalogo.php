@@ -282,7 +282,7 @@ session_start();
 
 														<ul class="dropdown-visual dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close ">
 															<li>
-																<a href="#" class="tooltip-info" data-rel="tooltip" title="Editar imagen" data-placement="left">
+																<a href="#" class="tooltip-info" data-rel="tooltip" title="Editar..Imagen" data-placement="left">
 																	<span class="blue">
 																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
 																	</span>
