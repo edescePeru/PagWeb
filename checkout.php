@@ -208,15 +208,14 @@
 					if (!isset($data[$i]['borrar'])) {
 						?>
 				 <div class="cart-header">
-					<div class="close1"> </div>
 					<div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
 							<img src="Script/images/<?php echo $data[$i][7] ?>" class="img-responsive" alt=""/>
 							
 						</div>
 						<div class="cart-item-info">
-						<div class="feature feature-icon-hover indent first">
-								<a href="" title=""><i class="fa fa-plus pull-right " aria-hidden="true"></i></a>
+							<div class="feature feature-icon-hover indent first">
+								<a data-delete data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" href="" title=""><i class="fa fa-close pull-right " aria-hidden="true"></i></a>
 							</div>
 							<h3><a href="#"><?php echo $data[$i][2] ?></a><span>Marca: <?php echo $data[$i][3] ?></span></h3>
 							<ul class="qty">
@@ -338,6 +337,7 @@
 <script type="text/javascript" src="misJs/validate.js"></script>
 <script type="text/javascript" src="misJs/message.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="misJs/cartQuantity.js"></script>
 <script type="text/javascript" src="misJs/checkout.js"></script>
 
 

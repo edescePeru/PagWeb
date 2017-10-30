@@ -50,7 +50,7 @@
 			<div class="clearfix"></div>
 		</div>
 
-        		<div class="clearfix"></div>
+				<div class="clearfix"></div>
 	</div>
 </div>
 
@@ -169,18 +169,10 @@
 
 		<div class="col-md-9 w_content">
 			<div class="women">
-				<a href="#"><h4>Enthecwear - <span>4449 itemms</span> </h4></a>
-				<ul class="w_nav">
-					<li>Sort : </li>
-			     		<li><a class="active" href="#">popular</a></li> |
-			     		<li><a href="#">new </a></li> |
-			     		<li><a href="#">discount</a></li> |
-			     		<li><a href="#">price: Low High </a></li> 
-			     		<div class="clear"></div>	
-			     	</ul>
-			    <div class="clearfix"></div>
-			    <?php
-				    $query = "SELECT * FROM producto";
+				
+				<div class="clearfix"></div>
+				<?php
+					$query = "SELECT * FROM producto";
 
 					$result = mysqli_query($conexion, $query);
 
@@ -189,40 +181,40 @@
 
 					$numeroPaginas = ceil($numeroProductos/$numeroLotes);
 
-				    if (!isset($_GET['page'])) {
-		    	?>
+					if (!isset($_GET['page'])) {
+				?>
 					<div class="feature feature-icon-hover indent first">
 						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
 						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
 					</div>
-		    	<?php
-		    		} else {
-		    			$pagina = $_GET['page'];
-		    			if ($pagina==1) {
-		    				$next = $pagina+1;
-		    				$prev = 1;
-		    			} else {
-		    				if ($pagina == $numeroPaginas) {
-		    					$next = $pagina;
-		    					$prev = $pagina-1;
-		    				} else {
-		    					$next = $pagina+1;
-		    					$prev = $pagina-1;
-		    				}
-		    				
-		    				
-		    			}
-		    	?>
+				<?php
+					} else {
+						$pagina = $_GET['page'];
+						if ($pagina==1) {
+							$next = $pagina+1;
+							$prev = 1;
+						} else {
+							if ($pagina == $numeroPaginas) {
+								$next = $pagina;
+								$prev = $pagina-1;
+							} else {
+								$next = $pagina+1;
+								$prev = $pagina-1;
+							}
+							
+							
+						}
+				?>
 					<div class="feature feature-icon-hover indent first">
 						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
 						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
 					</div>
-		    	<?php
-		    		}
-				    
+				<?php
+					}
+					
 				?>
-				    		
-				    		
+							
+							
 				<?php    	
 						
 				?>
@@ -248,18 +240,18 @@
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
 			?>
-			  	<div class="grid1_of_4 simpleCart_shelfItem">
+				<div class="grid1_of_4 simpleCart_shelfItem">
 					<div class="content_box">
 						<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
 							<div class="view view-fifth">
-					   	   		<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
-						   		<div class="mask1">
-						   			<div class="info"> </div>
+								<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
+								<div class="mask1">
+									<div class="info"> </div>
 								</div>
 							</div>
 						</a>	
 
-						<h6><a href="single.html"> <b><?php echo $fila['nombre'] ?></b> </a></h6>
+						<h6><a href="single.html"> <b><?php echo $fila['nombrePortada'] ?></b> </a></h6>
 						<div class="size_1">
 							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
 							<div class="clearfix"></div>
@@ -303,7 +295,7 @@
 
 		<div class="footer_bottom">
 			<div class="copy">
-                			<p>© 2017 Edesce Store. Todos los derechos reservados.</p>
+							<p>© 2017 Edesce Store. Todos los derechos reservados.</p>
 			</div>
 		</div>
 	</div>
@@ -334,6 +326,7 @@
 	});
 </script>
 <script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="../../misJs/cartQuantity2.js"></script>
 <script type="text/javascript" src="../../misJs/cartShop.js"></script>
 
 </body>
