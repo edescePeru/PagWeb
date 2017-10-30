@@ -20,9 +20,37 @@ $(document).ready(function(){
     });
 
     $("[data-plus]").on('click', incrementQuantity);
-    $("[data-minus]").on('click', decrementQuantity);
+    $("[data-delete]").on('click', deleteItem);
 
 });
+
+function deleteItem () {
+	event.preventDefault();
+	var global = $(this);
+	var carrito = $(this).data('carrito');
+	var producto = $(this).data('producto');
+	// first visual changes
+	
+	var url = 'Script/deleteItem.php';
+	$.ajax({
+        url: url,
+        data: {carrito:carrito, producto:producto},
+        method: 'POST'
+	}).done(function( response ) {
+	    console.log(response);
+
+		if(response.error) {
+			console.log(response.message);
+		}else{
+			global.parent().parent().parent().parent().hide();
+			setTimeout(function(){ location.reload(); },2000);
+		}
+
+	});
+
+
+
+}
 
 function incrementQuantity () {
 	// first visual changes
