@@ -378,8 +378,6 @@
 	.recomment h5{
 		margin: 3px 0 0 4px;
 	}
-
-
 </style>
 
 </head>
@@ -519,7 +517,7 @@
 						</div>
 						<!--<div class="single_but"><a href="" class="item_add btn_3" value=""></a></div>-->
 						<div class="buy-box">
-							<button class="buy-cart"><i class="fa fa-shopping-basket"></i> <b>Comprar</b></button>
+							<button class="buy-cart" data-add= <?= $idprod ?>><i class="fa fa-shopping-basket"></i> <b>Comprar</b></button>
 						</div>     
 					</div>
 				</div>
@@ -929,6 +927,7 @@
 </script>
 <script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
 <script type="text/javascript" src="../../misJs/productoview.js"></script>
+<script type="text/javascript" src="../../misJs/cartShop.js"></script>
 
 
 
