@@ -259,7 +259,7 @@
 							</div>
 						</a>	
 
-						<h6><a href="single.html"> <b><?php echo $fila['nombre'] ?></b> </a></h6>
+						<h6><a href="single.html"> <b><?php echo $fila['nombrePortada'] ?></b> </a></h6>
 						<div class="size_1">
 							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
 							<div class="clearfix"></div>
@@ -335,6 +335,7 @@
 </script>
 <script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
 <script type="text/javascript" src="../../misJs/cartShop.js"></script>
+<script type="text/javascript" src="../../misJs/checkout.js"></script>
 
 </body>
 </html>		

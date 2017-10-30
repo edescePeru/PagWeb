@@ -219,7 +219,7 @@
     	margin-right: 2.1%;
 	}
 	.part2{
-		width: 50%;
+		width: 55%;
     	margin-left: 4em;
 	}
 	.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th{
@@ -331,6 +331,55 @@
     	font-size: 15px;
 	}
 
+	.comment{
+		border-bottom: 1px solid rgba(128, 128, 128, 0.33);
+    	margin-bottom: 1em;
+    	padding-left: 0.6em;
+	}
+
+	.comment-tittle{
+		display: inline-flex;
+		font-weight: bold;
+	}
+
+	.comment-tittle label{
+		margin-left: 0.5em;
+	}
+
+	.comment-body{
+		margin-bottom: 0.7em;
+	}
+
+	.comment-body h5{
+		color: #616060;
+		font-size: 13px;
+		margin: 0 0 4px;
+	}
+
+	.part-left{
+		float: left;
+	    width: 30em;
+	    display: inline-flex;
+	}
+
+	.part-rigth{
+		float: right;
+	}
+
+	.part-rigth h5{
+		color: #616060;
+    	font-size: 12.5px;
+	}
+
+	.recomment{
+		display: inline-flex;
+	}
+
+	.recomment h5{
+		margin: 3px 0 0 4px;
+	}
+
+
 </style>
 
 </head>
@@ -365,7 +414,7 @@
 
 <?php 
 	$resultSet = mysqli_query($conexion, 'SELECT 
-		P.idProducto, P.codigo, P.nombre, P.modelo, P.stock, 
+		P.idProducto, P.codigo, P.nombrePortada, P.modelo, P.stock, 
 		P.precio, P.descripcionCorta, P.descripcionLarga, P.garantia, P.color, 
 		P.contenidoCaja, P.largoCaja, P.anchoCaja, P.altoCaja, P.pesoCaja, 
 		P.FechaCreacion, C.idCategoria, C.nombre as Categoria, P.idSubCategoria, SC.nombre as Subcategoria, 
@@ -391,31 +440,29 @@
 		<div class="single_grid">
 			<div class="grid images_3_of_2">
 				<ul id="etalage">
+					<?php 
+						$resultSet2 = mysqli_query($conexion, 'SELECT 
+							P.idProducto, P.imagen
+							FROM productoimage P 
+							WHERE P.enable = 1 and P.idProducto = "'.$idprod.'"');
+																	    
+							while($imagen = mysqli_fetch_array($resultSet2)){
+					?>
+			
 					<li>
-						<a href="optionallink.html">
-							<img class="etalage_thumb_image" src="../../images/default/s1.jpg" class="img-responsive" />
-							<img class="etalage_source_image" src="../../images/default/s1.jpg" class="img-responsive" title="" />
-						</a>
-					</li>
-					<li>
-						<img class="etalage_thumb_image" src="../../images/default/s2.jpg" class="img-responsive" />
-						<img class="etalage_source_image" src="../../images/default/s2.jpg" class="img-responsive" title="" />
+						<img class="etalage_thumb_image" src="../../Script/images/<?= $imagen['imagen']; ?>" class="img-responsive" />
+						<img class="etalage_source_image" src="../../Script/images/<?= $imagen['imagen']; ?>" class="img-responsive" title="" />
 					</li>	
-					<li>
-						<img class="etalage_thumb_image" src="../../images/default/s3.jpg" class="img-responsive"  />
-						<img class="etalage_source_image" src="../../images/default/s3.jpg"class="img-responsive"  />
-					</li>
-						  <li>
-						<img class="etalage_thumb_image" src="../../images/default/s4.jpg" class="img-responsive"  />
-						<img class="etalage_source_image" src="../../images/default/s4.jpg"class="img-responsive"  />
-					</li>
+
+					<?php } ?>
+					
 				</ul>
 				<div class="clearfix"></div>		
 			</div> 
 
 			<div class="desc1 span_3_of_2">
 				<h5>Codigo:  <?= $prod['codigo'] ?></h5>
-				<h1><?= $prod['nombre'] ?></h1>
+				<h1><?= $prod['nombrePortada'] ?></h1>
 				<div class="subtittle">
 					<ul>
 						<li class="active"> 
@@ -460,14 +507,14 @@
 							<div class="">
 								
 							</div>
-							<div class="content-quantity">
+							<!-- <div class="content-quantity">
 								<p>Cantidad: </p>
 								<div class="quantity">
 									<button id="disminuir" class="disminuir">-</button>
 									<input type="text" id="quantity" name="" value="1" placeholder="" readonly>
 									<button id="incrementar" class="incrementar">+</button>
 								</div>
-							</div>
+							</div> -->
 						   	<div class="clearfix"></div>
 						</div>
 						<!--<div class="single_but"><a href="" class="item_add btn_3" value=""></a></div>-->
@@ -496,7 +543,7 @@
 
           	<div class="clearfix"></div>
 		</div>
-        <div class="single_social_top">   
+        <!-- <div class="single_social_top">   
 			<h3 class="m_2">Related Products</h3>
 				<div class="container">
 			       	<div class="box_3">
@@ -539,7 +586,7 @@
 							<div class="clearfix"> </div>
 			       	</div>
 				</div>
-		</div>
+		</div> -->
 		<div class="main" id="section2">
 			<section>
 			    <div class="container">
@@ -553,7 +600,7 @@
 
 					<div class="tab-content">
 						<div id="home" class="tab-pane fade in active">
-							<h3><?= $prod['nombre'] ?></h3>
+							<h3><?= $prod['nombrePortada'] ?></h3>
 							<?php 
 								/*$a = str_replace("\n","<br/>",$prod['descripcionCorta'], $i);*/
 
@@ -678,11 +725,11 @@
 														</div>
 														<div class="form-group">
 															<label>Alias:</label>
-															<input type="text" class="form-control" id="alias" name="alias">
+															<input type="text" class="form-control" id="alias" name="alias" value="<?php if ($inicioSesion){ echo $_SESSION['user'];}?>">
 														</div>
 														<div class="form-group">
 															<label>Correo electronico:</label>
-															<input type="text" class="form-control" id="email" name="email">
+															<input type="text" class="form-control" id="email" name="email" value="<?php if ($inicioSesion){ echo $_SESSION['email'];}?>">
 														</div>
 														<div class="form-group">
 															<label>Titulo <p>(opcional)</p>:</label>
@@ -725,32 +772,51 @@
 							</div>
 
 							<div class="desc1 part2">
-								<table>
 								<?php 
 									$resultSet1 = mysqli_query($conexion, 'SELECT 
 										C.alias, C.puntaje, C.titulo, C.descripcion, C.fechaCreacion, 
 										C.recomendar
 										FROM producto P 
 										JOIN comentario C ON C.idProducto = P.idProducto
-										WHERE P.enable = 1 and P.idProducto = "'.$idprod.'"');
+										WHERE P.enable = 1 and P.idProducto = "'.$idprod.'"
+										ORDER BY C.fechaCreacion DESC');
 																	    
 									while($comment = mysqli_fetch_array($resultSet1)){
+
+										$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 								?>
 
+									<div class="comment">
+										<div class="comment-tittle">
+											<div class="part-left">
+												<p id="puntaje"><?= $comment['puntaje'] ?></p>
+										    	<div id="html" class='starrr'></div>
+										    	<label for=""><?= $comment['titulo'] ?></label>
+											</div>
+											<div class="part-rigth">
+												<h5><?= date('d', strtotime($comment['fechaCreacion']))." / ".$meses[date('n',strtotime($comment['fechaCreacion']))-1]. " / ".date('Y',strtotime($comment['fechaCreacion'])) ;     ?></h5>
+
+											</div>
+								    		
+								    	</div>
+								    	<div class="comment-body">
+								    		<h5>Comentado por <?= $comment['alias'] ?></h5>
+								    		<p><?= $comment['descripcion'] ?></p>
+								    		<div class="recomment">
+								    		<?php if ($comment['recomendar'] == '1'){ ?>
+								    			<i class="fa fa-thumbs-up" aria-hidden="true"></i> 
+								    			<h5>Si, recomiendo este producto</h5>
+								    		<?php }else{ ?>
+								    			<h5>No, recomiendo este producto</h5>
+								    			
+								    		<?php } ?>
+								    		</div>
+								    	</div>
+										
+									</div>			
+
+								<?php } ?>
 							
-								  <tr>
-								    <td>
-								    	<p id="puntaje"><?= $comment['puntaje'] ?></p>
-								    	<div class='starrr' id='star4' ></div>
-								    </td>
-								  </tr>
-								
-
-									
-								
-
-							<?php } ?>
-								</table>
 							</div>
 
 
@@ -767,7 +833,7 @@
 	<div class="container">
 		<div class="footer_top">
 		<?php 
-			require '../footer.html';
+			require '../footer.html';	
 		 ?>
 		</div>
 		<div class="clearfix"> </div>
@@ -846,7 +912,20 @@
 	});
 </script>
 <script type="text/javascript">
+	$(function() {
+		var elementos = $("div#html");
+		var puntajes = $("p#puntaje");
 
+
+		for(i=0, j=0; i<elementos.length && j<puntajes.length; i++, j++) {
+			$(elementos[i]).starrr({
+					max: 5,
+					rating: puntajes[j].innerHTML,
+					readOnly: true
+				});      
+			$(puntajes[j]).css("display", "none");
+        }    
+	});
 </script>
 <script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
 <script type="text/javascript" src="../../misJs/productoview.js"></script>
