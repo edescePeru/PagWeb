@@ -6,6 +6,7 @@
 	$carrito = $_POST['carrito'];
 	$producto = $_POST['producto'];
 	$action = $_POST['action'];
+	//echo $action;
 
 	$query = "SELECT * FROM detacarrito WHERE idCarrito=".$carrito." AND idProducto=".$producto;
 	$result = mysqli_query($conexion, $query);

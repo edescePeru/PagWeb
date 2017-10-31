@@ -20,6 +20,7 @@ $(document).ready(function(){
     });
 
     $("[data-plus]").on('click', incrementQuantity);
+    $("[data-minus]").on('click', decrementQuantity);
     $("[data-delete]").on('click', deleteItem);
 
 });
@@ -94,7 +95,7 @@ function incrementQuantity () {
 	
 
 }
-function decrementQuantity (argument) {
+function decrementQuantity () {
 	event.preventDefault();
 	var global = $(this);
 	var carrito = $(this).data('carrito');

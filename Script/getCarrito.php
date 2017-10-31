@@ -17,20 +17,39 @@
 			}
 	}
 
-	for ($i=0; $i <count($data) ; $i++) { 
+	for ($i=0; $i <=count($data) ; $i++) { 
 		for($j=$i+1;$j<=count($data)-1;$j++) {	
 			if($data[$i][1]==$data[$j][1]){
 				$data[$j]['borrar']=true;
 			}
 		}
 	}
+	//var_dump ($data);
 
-	for ($i=0; $i <count($data) ; $i++) { 
-		if(isset($data[$i]['borrar'])){
-			array_splice($data, $i, 1);
+	/*for ($i=0; $i <=count($data) ; $i++) { 
+		if(isset($data[$i]['borrar']) ){
+			//echo "INICIO ARRAY";
+			unset($data[$i]);
+			//var_dump($data);
+			//echo "INICIO ARRAY";
 		}
-	}
 
-	echo json_encode($data);
+	}*/
+	function elimina_duplicados($array, $campo)
+	{
+	  foreach ($array as $sub)
+	  {
+	    $cmp[] = $sub[$campo];
+	  }
+	  $unique = array_unique($cmp);
+	  foreach ($unique as $k => $campo)
+	  {
+	    $resultado[] = $array[$k];
+	  }
+	  return $resultado;
+	}
+	//print_r();
+
+	echo json_encode(elimina_duplicados($data,'1'));
 	return;
  ?>

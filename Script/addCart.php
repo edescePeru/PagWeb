@@ -59,8 +59,8 @@
 	} else {
 		// Insertar un nuevo detalle a detacarrito 
 		$last_id = $result_carrito[0];
-		//echo 'last'.$last_id; 
-		$query_add="INSERT INTO detacarrito (idCarrito, idProducto, cantidad, precio) VALUES (".$last_id.", ".$idProducto.", 1, ".$result_producto[6].")";
+		$query_add="INSERT INTO detacarrito (idCarrito, idProducto, cantidad, precio) VALUES (".$last_id.", ".$idProducto.", 1, ".$result_producto[5].")";
+		
 		$result_add = mysqli_query($conexion, $query_add);
 		$query_quantity = "SELECT count(*) FROM detacarrito WHERE idCarrito=".$last_id;
 		$result_quantity = mysqli_query($conexion, $query_quantity);
