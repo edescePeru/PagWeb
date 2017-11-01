@@ -173,7 +173,7 @@
 
 		<div class="footer_bottom">
 			<div class="copy">
-                			<p>© 2017 Edesce Store. Todos los derechos reservados.</p>
+                <p>© 2017 Edesce Store. Todos los derechos reservados.</p>
 			</div>
 		</div>
 	</div>
