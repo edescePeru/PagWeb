@@ -273,7 +273,7 @@
 
 		<div class="footer_bottom">
 			<div class="copy">
-				<p>Copyright © 2015 Buy_shop. All Rights Reserved.<a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+				<p>© 2017 Edesce Store. Todos los derechos reservados.</p>
 			</div>
 		</div>
 	</div>
@@ -303,6 +303,9 @@
 		window.scrollTo(0,1); 
 	} 
 </script>
+<script type="text/javascript" src="notify/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="misJs/cartQuantity2.js"></script>
+<script type="text/javascript" src="misJs/cartShop2.js"></script>
 
 </body>
 </html>		
