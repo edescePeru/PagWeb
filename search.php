@@ -1,9 +1,9 @@
 <?php 
 	 session_start();
-	 include_once '../../BaseDatos/conexion.php';
+	 include_once 'BaseDatos/conexion.php';
 	 $inicioSesion = isset($_SESSION['id']);
 
-	 $subcategoria = $_GET['subcategoria'];
+	 $search = $_GET['search'];
 
 	 //echo $subcategoria;
 ?>
@@ -16,10 +16,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 	<!-- CSS -->
-	<link href="../../css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="../../css/style.css" rel='stylesheet' type='text/css' />
-	<link href="../../css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
-	<link href="../../css/font-awesome.min.css" rel="stylesheet" >
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	
@@ -28,7 +28,7 @@
 
 
 <?php 
-	require '../sliderbar.php';
+	require 'sliderbar.php';
 ?>
 
 <div class="wrap-box"></div>
@@ -37,13 +37,13 @@
 	<div class="container">
 		<div class="col-xs-8 header-bottom-left">
 		<?php 
-			require '../header.html';
+			require 'header.html';
 		 ?>
 		</div>
 		
 		<div class="col-xs-4 header-bottom-right">
 			<div class="search">	  
-				<input type="text" name="s" class="textbox" id="search" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+				<input type="text" name="s" class="textbox" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 				<input type="submit" value="Subscribe" id="submit" name="submit">
 				<div id="response"> </div>
 			</div>
@@ -60,7 +60,7 @@
 		<!-- start sidebar -->
 		<div class="col-md-3">
 			<div class="w_sidebar">
-				<img src="../../images/BANNER TECNOLOGIA.jpg" height="1123" width="281" alt="">
+				<img src="images/BANNER TECNOLOGIA.jpg" height="1123" width="281" alt="">
 			</div>
 		</div>
 
@@ -69,7 +69,7 @@
 				
 				<div class="clearfix"></div>
 				<?php
-					$query = "SELECT * FROM producto";
+					$query = "SELECT * FROM producto WHERE nombrePortada LIKE '%".$search."%'";
 
 					$result = mysqli_query($conexion, $query);
 
@@ -81,8 +81,8 @@
 					if (!isset($_GET['page'])) {
 				?>
 					<div class="feature feature-icon-hover indent first">
-						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+						<a href="search.php?search=<?php echo $search ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+						<a href="search.php?search=<?php echo $search ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
 					</div>
 				<?php
 					} else {
@@ -103,8 +103,8 @@
 						}
 				?>
 					<div class="feature feature-icon-hover indent first">
-						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
 					</div>
 				<?php
 					}
@@ -133,15 +133,15 @@
 					$limit = $numeroLotes*($pagina-1);
 				}
 
-				$consulta = "SELECT *  FROM producto LIMIT $limit, $numeroLotes";
+				$consulta = "SELECT *  FROM producto WHERE nombrePortada LIKE '%".$search."%' LIMIT $limit, $numeroLotes";
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
 			?>
 				<div class="grid1_of_4 simpleCart_shelfItem">
 					<div class="content_box">
-						<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
+						<a href="product/content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
 							<div class="view view-fifth">
-								<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
+								<img src="images/celular/mini.jpg" class="img-responsive" alt=""/>
 								<div class="mask1">
 									<div class="info"> </div>
 								</div>
@@ -185,7 +185,7 @@
 	<div class="container">
 		<div class="footer_top">
 		<?php 
-			require '../footer.html';
+			require 'product/footer.html';
 		 ?>
 		</div>
 		<div class="clearfix"> </div>
@@ -198,11 +198,11 @@
 	</div>
 </div>
 
-<script type="text/javascript" src="../../js/simpleCart.min.js"> </script>
-<script type="text/javascript" src="../../js/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="../../js/megamenu.js"></script>
-<script type="text/javascript" src="../../js/jquery.jscrollpane.min.js"></script>
-<script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/simpleCart.min.js"> </script>
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/megamenu.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script>
 	$(document).ready(function(){
 		$(".megamenu").megamenu();
@@ -222,9 +222,9 @@
 		$('.scroll-pane').jScrollPane();
 	});
 </script>
-<script type="text/javascript" src="../../notify/bootstrap-notify.min.js"></script>
-<script type="text/javascript" src="../../misJs/cartQuantity2.js"></script>
-<script type="text/javascript" src="../../misJs/cartShop.js"></script>
+<script type="text/javascript" src="notify/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="misJs/cartQuantity2.js"></script>
+<script type="text/javascript" src="misJs/cartShop.js"></script>
 
 </body>
 </html>		

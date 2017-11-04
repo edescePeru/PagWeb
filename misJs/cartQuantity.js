@@ -8,7 +8,15 @@ $(document).ready(function(){
         
     });
 
+    $('#submit').on('click', searchProduct);
+
 });
+
+function searchProduct() {
+	event.preventDefault();
+	var buscar = $('#search').val();
+	window.location = 'search.php?search='+buscar;
+}
 
 
 
