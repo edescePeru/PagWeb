@@ -150,7 +150,7 @@
 	$fecha = date("Y")."-".date("m")."-".date("d");
 
 
-	$query = "INSERT INTO producto(codigo, nombre, modelo, stock, precio,
+	$query = "INSERT INTO producto(codigo, nombrePortada, modelo, stock, precio,
 									descripcionCorta, descripcionLarga, garantia, color,
 									contenidoCaja, largoCaja, anchoCaja, altoCaja, pesoCaja,
 									FechaCreacion, idSubCategoria, idMarca, idCliente, enable) 
@@ -168,7 +168,7 @@
 
 	
 
-	if ($registro = true) { 
+	if ($registro == true) { 
 		echo json_encode(['error' => false, 'message' => "Se ha registrado correctamente. Ahora suba sus imágenes.", 'idprod' => $id]);
 		return;
 	} else {

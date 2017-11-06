@@ -251,7 +251,8 @@ session_start();
 									<h3 class="header smaller lighter blue">Nuevo producto</h3>
 									<div class="table-header">
 									<?php 
-										$nameProd = mysqli_query($conexion, "SELECT nombre FROM producto WHERE idProducto = " .$idprod);
+										$nameProd = mysqli_query($conexion, "SELECT nombrePortada
+										 FROM producto WHERE idProducto = " .$idprod);
 										if ($row = mysqli_fetch_row($nameProd)) {
 									?>
 										Subir las imagenes del producto: <b> <?= $row[0] ?> </b>
@@ -360,7 +361,7 @@ session_start();
     file.fileinput({
         language: 'es',
         allowedFileExtensions: ['jpg', 'png', 'gif', 'jpeg'],
-        maxFileCount: 4,
+        maxFileCount: 5,
         uploadUrl: 'Script/RegProdImages.php',
         uploadExtraData: {
             idprod: $("#idprod").val(),

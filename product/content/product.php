@@ -117,7 +117,14 @@
 						</li>
 						<li>
 							<div class='starrr' id='star2' ></div>
-							(<p id="number-start"><?= $prod['puntaje'] ?></p>)                			
+							(<p id="number-start">
+							<?php if ($prod['puntaje']>0): ?>
+								<?= $prod['puntaje'] ?>
+							<?php else: ?>
+								0
+							<?php endif ?>
+							
+							</p>)                			
 						</li>
 						<li id="start"><a href="#section2" id="comentar">Califica tu experiencia</a></li>
 					</ul>
@@ -409,7 +416,13 @@
 
 									<div class="start-promedio">
 			                			<div class='starrr' id='star3' ></div>
-			                			<p><?= $prod['puntaje'] ?></p><p>/5</p>
+			                			<p>
+			                			<?php if ($prod['puntaje']>0): ?>
+											<?= $prod['puntaje'] ?>
+										<?php else: ?>
+											0
+										<?php endif ?>
+										</p><p>/5</p>
 									</div> <br>
 									<div style="display: inline-flex; color: #616060; font-size: 0.9em;">
 										<p>Basado en <div style="margin: 0 0.3em;"><b><?= $prod['cantidad'] ?></b></div> comentarios</p> 

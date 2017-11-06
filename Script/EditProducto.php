@@ -80,7 +80,7 @@
 	}else{ $upbox_peso = ""; }	
 	
 
-	$registro = mysqli_query($conexion, "UPDATE producto SET nombre = '$nombre' , stock = '$stock' , precio = '$precio' 
+	$registro = mysqli_query($conexion, "UPDATE producto SET nombrePortada = '$nombre' , stock = '$stock' , precio = '$precio' 
 										$upsubcategoria $upmarca $upmodelo $upprod_descrip_corta $upprod_descrip_larga 
 										$upprod_garantia $upprod_color $upbox_contenido $upbox_largo $upbox_ancho 
 										$upbox_alto $upbox_peso

@@ -235,7 +235,7 @@ session_start();
 
 										<tbody>
 											<?php 
-									            $resultSet = mysqli_query($conexion, 'SELECT idProducto, nombre, codigo, FechaCreacion, garantia, precio, stock 
+									            $resultSet = mysqli_query($conexion, 'SELECT idProducto, nombrePortada, codigo, FechaCreacion, garantia, precio, stock 
 									            										FROM Producto 
 									            										WHERE enable = 1 and idCliente = "'.$_SESSION['id'].'"');
 									            while($fila = mysqli_fetch_array($resultSet)){
@@ -255,7 +255,7 @@ session_start();
 													</label>
 												</td>
 
-												<td data-id=<?= $fila['idProducto'] ?> data-nombre><?= $fila['nombre'] ?></td>
+												<td data-id=<?= $fila['idProducto'] ?> data-nombre><?= $fila['nombrePortada'] ?></td>
 												<td><?= $fila['codigo'] ?></td>
 												<td><?= $fechaCreacion ?></td>
 												<td class="hidden-480"><?= $fila['garantia'] ?></td>

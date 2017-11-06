@@ -133,7 +133,7 @@
 					$limit = $numeroLotes*($pagina-1);
 				}
 
-				$consulta = "SELECT *  FROM producto LIMIT $limit, $numeroLotes";
+				$consulta = "SELECT *  FROM producto where enable = 1 LIMIT $limit, $numeroLotes";
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
 			?>
