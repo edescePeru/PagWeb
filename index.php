@@ -304,7 +304,7 @@
 	} 
 </script>
 <script type="text/javascript" src="notify/bootstrap-notify.min.js"></script>
-<script type="text/javascript" src="misJs/cartQuantity2.js"></script>
+<script type="text/javascript" src="misJs/cartQuantity.js"></script>
 <script type="text/javascript" src="misJs/cartShop2.js"></script>
 
 </body>

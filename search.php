@@ -43,7 +43,7 @@
 		
 		<div class="col-xs-4 header-bottom-right">
 			<div class="search">	  
-				<input type="text" name="s" class="textbox" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+				<input type="text" id="search" name="s" class="textbox" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
 				<input type="submit" value="Subscribe" id="submit" name="submit">
 				<div id="response"> </div>
 			</div>
@@ -223,8 +223,8 @@
 	});
 </script>
 <script type="text/javascript" src="notify/bootstrap-notify.min.js"></script>
-<script type="text/javascript" src="misJs/cartQuantity2.js"></script>
-<script type="text/javascript" src="misJs/cartShop.js"></script>
+<script type="text/javascript" src="misJs/cartQuantity.js"></script>
+<script type="text/javascript" src="misJs/cartShop2.js"></script>
 
 </body>
 </html>		
