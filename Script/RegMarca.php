@@ -38,10 +38,10 @@
 			VALUES ('".$subcategoria."','".$nombremarca."','1')");
 
 	if ($registro) { 
-		echo json_encode(['error' => true, 'message' => 'Se ha registrado correctamente']);
+		echo json_encode(['error' => false, 'message' => 'Se ha registrado correctamente']);
 		return;
 	} else {
-		echo json_encode(['error' => false, 'message' => 'Ocurrió un error inesperado. :(']);
+		echo json_encode(['error' => true, 'message' => 'Ocurrió un error inesperado. :(']);
 		return;
 	}
 

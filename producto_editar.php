@@ -262,7 +262,7 @@ $idprod = $_GET['idprod'];
 									
 
 									$resultSet = mysqli_query($conexion, 'SELECT 
-										P.idProducto, P.codigo, P.nombre, P.modelo, P.stock, 
+										P.idProducto, P.codigo, P.nombrePortada, P.modelo, P.stock, 
 										P.precio, P.descripcionCorta, P.descripcionLarga, P.garantia, P.color, 
 										P.contenidoCaja, P.largoCaja, P.anchoCaja, P.altoCaja, P.pesoCaja, 
 										P.FechaCreacion, C.idCategoria, C.nombre as Categoria, P.idSubCategoria, SC.nombre as Subcategoria, 
@@ -348,7 +348,7 @@ $idprod = $_GET['idprod'];
 															<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Nombre del producto</b> </label>
 
 															<div class="col-xs-9">
-																<input type="text" id="name" name="name" class="form-control text2" value="<?= $prod['nombre']; ?>" />
+																<input type="text" id="name" name="name" class="form-control text2" value="<?= $prod['nombrePortada']; ?>" />
 																<div class="acotacion">
 																	* Nombre del producto + marca + modelo + caracteristicas + color
 																</div>
