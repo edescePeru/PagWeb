@@ -13,7 +13,7 @@
 	}
 
 	if ($nombre == "") {
-		echo json_encode(['error' => true, 'message' =>  'Tiene que especificar la categoria']);
+		echo json_encode(['error' => true, 'message' =>  'Tiene que especificar el nombre de la subcategoria']);
 		return;
 	}
 
