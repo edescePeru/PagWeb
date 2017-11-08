@@ -202,7 +202,7 @@
 <script type="text/javascript" src="misJs/validate.js"></script>
 <script type="text/javascript" src="misJs/message.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<script type="text/javascript" src="misJs/cartQuantity.js"></script>
+<script type="text/javascript" src="misJs/cartQuantity2.js"></script>
 <script type="text/javascript" src="misJs/checkout.js"></script>
 
 
