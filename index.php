@@ -116,7 +116,7 @@
 				<div class="section group">
 				<?php 
 					include 'BaseDatos/conexion.php';
-					$query = "SELECT idProducto, left(nombrePortada, 35), precio FROM producto WHERE vip = 1 LIMIT 3 ORDER BY idProducto ASC ";
+					$query = "SELECT idProducto, left(nombrePortada, 35), precio FROM producto WHERE vip = 1 ORDER BY idProducto ASC LIMIT 3 ";
 					$result = mysqli_query($conexion, $query);
 					$data = [];
 					if (mysqli_num_rows($result)>0) {
@@ -134,9 +134,9 @@
 		
 						<div class="shop-content" style="height: 80px;">
 							<div>
-								<a href="product/t/cell/iphone7.html" rel="tag">Destacado</a>
+								<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>" rel="tag">Destacado</a>
 							</div>
-							<h4><a href="product/t/cell/iphone7.html"><?php echo $fila[1]; ?> ... </a></h4>
+							<h4><a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?> ... </a></h4>
 							<span class="amount item_price">S/. <?php echo $fila[2]; ?></span>
 						</div>
 					</div>
@@ -215,10 +215,10 @@
 		?>
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="shop-holder1">
-					<a href="single.html"><img src="images/default/pic4.jpg" class="img-responsive" alt=""/></a>
+					<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><img src="images/default/pic4.jpg" class="img-responsive" alt=""/></a>
 				</div>
 				<div class="shop-content" style="height: 80px;">
-					<h3><a href="single.html"><?php echo $fila[1]; ?> ... </a></h3>
+					<h4><a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?> ... </a></h4>
 					<span><span class="amount">S/. <?php echo $fila[2]; ?></span></span>
 				</div>
 			</div>
