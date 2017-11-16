@@ -114,10 +114,18 @@
 		<div class="box_1">
 			<div class="col-md-7">
 				<div class="section group">
+				<?php 
+					include 'BaseDatos/conexion.php';
+					$query = "SELECT idProducto, left(nombrePortada, 35), precio FROM producto WHERE vip = 1 ORDER BY idProducto ASC LIMIT 3 ";
+					$result = mysqli_query($conexion, $query);
+					$data = [];
+					if (mysqli_num_rows($result)>0) {
+						while ($fila = mysqli_fetch_array($result)) {
+				 ?>
 					<div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
 						<div class="shop-holder">
 							<div class="product-img">
-								<a href="product/t/cell/iphone7.html">
+								<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
 									<img width="225" height="265" src="images/iphone.png" class="img-responsive"  alt="item4">
 								</a>
 								<a href="" class="button item_add"></a>
@@ -126,47 +134,19 @@
 		
 						<div class="shop-content" style="height: 80px;">
 							<div>
-								<a href="product/t/cell/iphone7.html" rel="tag">Nuevo</a>
+								<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>" rel="tag">Destacado</a>
 							</div>
-							<h3><a href="product/t/cell/iphone7.html">Iphone 7</a></h3>
-							<span class="amount item_price">S/2900.00</span>
-						</div>
-					</div>
-					
-					<div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-						<div class="shop-holder">
-							<div class="product-img">
-								<a href="product/t/cell/s8.html">
-									<img width="225" height="265" src="images/s88.png" class="img-responsive"  alt="item4">
-								</a>
-								<a href="" class="button item_add"></a>
-							</div>
-						</div>
-						<div class="shop-content" style="height: 80px;">
-							<div>
-								<a href="product/t/cell/s8.html" rel="tag">Nuevo</a>
-							</div>
-							<h3><a href="product/t/cell/s8.html">Samsumg S8</a></h3>
-							<span class="amount item_price">S/3000.00</span>
+							<h4><a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?> ... </a></h4>
+							<span class="amount item_price">S/. <?php echo $fila[2]; ?></span>
 						</div>
 					</div>
 
-					<div class="col_1_of_3 span_1_of_3 simpleCart_shelfItem">
-						<div class="shop-holder">
-							<div class="product-img">
-								<a href="product/t/cell/p10lite.html">
-									<img width="225" height="265" src="images/p10lite.png" class="img-responsive"  alt="item4">		  </a>
-								<a href="" class="button item_add"></a>
-							</div>
-						</div>
+				<?php 
+						}
+					}
+
+				 ?>
 				
-						<div class="shop-content" style="height: 80px;">
-				  			<div><a href="product/t/cell/p10lite.html" rel="tag">Nuevo</a>
-				  			</div>
-							<h3><a href="product/t/cell/p10lite.html">Huawei P10 Lite</a></h3>
-							<span class="amount item_price">S/1170.00</span>
-						</div>
-					</div>
 					<div class="clearfix"></div> 
 				</div>
 			</div>
@@ -225,37 +205,29 @@
 	
 	<div class="col-md-6">
 		<div class="row_5">
+		<?php 
+			include 'BaseDatos/conexion.php';
+			$query = "SELECT idProducto, left(nombrePortada, 35), precio FROM producto WHERE vip = 1 ORDER BY idProducto DESC LIMIT 3";
+			$result = mysqli_query($conexion, $query);
+			$data = [];
+			if (mysqli_num_rows($result)>0) {
+				while ($fila = mysqli_fetch_array($result)) {
+		?>
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="shop-holder1">
-					<a href="single.html"><img src="images/default/pic4.jpg" class="img-responsive" alt=""/></a>
+					<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><img src="images/default/pic4.jpg" class="img-responsive" alt=""/></a>
 				</div>
 				<div class="shop-content" style="height: 80px;">
-					<h3><a href="single.html">Moda Varones</a></h3>
-					<span><span class="amount">100 Productos</span></span>
+					<h4><a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?> ... </a></h4>
+					<span><span class="amount">S/. <?php echo $fila[2]; ?></span></span>
 				</div>
 			</div>
+		<?php 
+				}
+			}
 
-			<div class="col_1_of_3 span_1_of_3">
-				<div class="shop-holder1">
-					<a href="single.html"><img src="images/default/pic5.jpg" class="img-responsive" alt=""/></a>
-				</div>
-				
-				<div class="shop-content" style="height: 80px;">
-					<h3><a href="single.html">Moda Mujer</a></h3>
-					<span><span class="amount">70 Productos</span></span>
-				</div>
-			</div>
-			
-			<div class="col_1_of_3 span_1_of_3">
-				<div class="shop-holder1">
-					<a href="single.html"><img src="images/default/pic6.jpg" class="img-responsive" alt=""/></a>
-				</div>
-				
-				<div class="shop-content" style="height: 80px;">
-					<h3><a href="single.html">Calzado</a></h3>
-					<span><span class="amount">54 Unidades</span></span>
-				</div>		
-			</div>
+		?>
+
 			<div class="clearfix"></div> 
 		</div>
 	</div>
