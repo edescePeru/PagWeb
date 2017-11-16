@@ -1,3 +1,4 @@
+<?php include_once 'BaseDatos/conexion.php'; ?>
 			<div class="col-xs-3 logo">
 				<h1><a href="index.php"><span>EDESCE</span>Store</a></h1>
 			</div>
@@ -16,11 +17,16 @@
 											<div class="h_nav">
 												<h5>Celulares y Smartphone</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=iphone">Iphone</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=smartphone">Smartphone</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=celulares_basicos">Celulares básicos</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=accesorios_celular">Accesorios de celular</a></li>
-												</ul>	
+												<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Celulares y Smartphone" and SC.enable = 1');
+																						    
+													while($categoria = mysqli_fetch_array($resultSet)){
+													?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?></ul>	
+
 											</div>							
 										</div>
 
@@ -28,10 +34,15 @@
 											<div class="h_nav">
 												<h5>Audio</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=mp3_mp4">Mp3 y Mp4</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=audifono">Audífonos</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=parlante">Parlantes</a></li>
-												</ul>	
+												<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Audio" and SC.enable = 1');
+																					    
+													while($categoria = mysqli_fetch_array($resultSet)){
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?></ul>	
 											</div>							
 										</div>
 
@@ -39,17 +50,15 @@
 											<div class="h_nav">
 												<h5>Computacion</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=desktop">Desktop</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=case">Case</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=monitor">Monitores</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=ram">Memorias Ram</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=fuente">Fuentes</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=procesador">Procesadores</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=motherboard">Motherboard</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=tarjeta_sonido">Tarjetas de sonido</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=tarjeta_grafica">Tarjetas gráficas</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=dd_interno">Discos duros internos</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=ventilador">Ventilador o cooler</a></li>
+													<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Computación" and SC.enable = 1');
+																					    
+													while($categoria = mysqli_fetch_array($resultSet)){
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?>
 												</ul>	
 											</div>							
 										</div>
@@ -58,15 +67,16 @@
 											<div class="h_nav">
 												<h5>Accesorios de computo</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=usb">Memorias USB</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=camara_web">Cámaras Web</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=dd_externo">Discos duros externos</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=microfono_audifono">Microfonos y audifonos</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=mouse">Mouses</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=teclado">Teclados</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=parlante_computadora">Parlantes para computadora</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=router">Routers</a></li>
-												</ul>	
+												<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Accesorios de Computo" and SC.enable = 1');
+																					    
+													while($categoria = mysqli_fetch_array($resultSet)){
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?>
+												</ul>
 											</div>							
 										</div>
 									</div>
@@ -76,10 +86,16 @@
 											<div class="h_nav">
 												<h5>Accesorios de laptops</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=funda_laptop">Fundas para laptops</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=mochila_laptop">Mochilas y maletines para laptops</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=cooler_laptop">Cooler para laptops</a></li>
-												</ul>	
+													<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Accesorios de Laptops" and SC.enable = 1');
+																					    
+													while($categoria = mysqli_fetch_array($resultSet)){
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?>
+												</ul>
 											</div>							
 										</div>
 
@@ -87,10 +103,15 @@
 											<div class="h_nav">
 												<h5>Impresoras y Escanérs</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=impresora_basica">Impresoras básicas</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=impresora_multifuncional">Impresoras Multifuncionaless</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=escaner">Escanérs</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=tinta">Tintas</a></li>
+													<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Impresoras y Escaners" and SC.enable = 1');
+																					    
+													while($categoria = mysqli_fetch_array($resultSet)){
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?>
 												</ul>	
 											</div>							
 										</div>
@@ -99,8 +120,15 @@
 											<div class="h_nav">
 												<h5>Portatiles</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=laptop">Laptops</a></li>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=all_in_one">All in One</a></li>
+													<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Portatiles" and SC.enable = 1');
+																					    
+													while($categoria = mysqli_fetch_array($resultSet)){
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?>
 												</ul>	
 											</div>							
 										</div>
@@ -109,8 +137,16 @@
 											<div class="h_nav">
 												<h5>Zona Gamer</h5>
 												<ul>
-													<li><a href="product/categoria/subcategoria.php?subcategoria=zona_gamer">Zona Gamers</a></li>
-												</ul>	
+													<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Zona Gamer" and SC.enable = 1');
+																					    
+													while($categoria = mysqli_fetch_array($resultSet)){
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?>
+												</ul>
 											</div>							
 										</div>
 									</div>

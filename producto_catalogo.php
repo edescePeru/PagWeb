@@ -229,7 +229,7 @@ session_start();
 											<th>Garantía</th>
 											<th class="hidden-480">Precio (S/.)</th>
 											<th class="hidden-480">Stock</th>
-											<th></th>
+											<th style=" width: 7em;"></th>
 										</tr>
 										</thead>
 
@@ -275,20 +275,6 @@ session_start();
 														<a class="orange" href="#" data-rel="tooltip" title="Imagenes" data-picture="<?= $fila['idProducto'] ?>">
 															<i class="ace-icon fa fa-file-image-o bigger-130"></i>
 														</a>
-
-														<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto" >
-																<i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
-														</button>
-
-														<ul class="dropdown-visual dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close ">
-															<li>
-																<a href="#" class="tooltip-info" data-rel="tooltip" title="Editar..Imagen" data-placement="left">
-																	<span class="blue">
-																		<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																	</span>
-																</a>
-															</li>
-														</ul>
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
