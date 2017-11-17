@@ -6,44 +6,43 @@ session_start();
 <html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-	<meta charset="utf-8" />
-	<title>EDESCE - Admin</title>
+		<meta charset="utf-8" />
+		<title>EDESCE - Admin</title>
 
-	<meta name="description" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
-	<!-- bootstrap & fontawesome -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-	<link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-    <link href="themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
-	<!-- page specific plugin styles -->
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
 
-	<!-- text fonts -->
-	<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
+		<!-- page specific plugin styles -->
 
-	<!-- ace styles -->
-	<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<!-- text fonts -->
+		<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
 
-	<!--[if lte IE 9]>
-	<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
-	<![endif]-->
+		<!-- ace styles -->
+		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
-	<!--[if lte IE 9]>
-	<link rel="stylesheet" href="assets/css/ace-ie.min.css" />
-	<![endif]-->
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
 
-	<!-- inline styles related to this page -->
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		<![endif]-->
 
-	<!-- ace settings handler -->
-	<script src="assets/js/ace-extra.min.js"></script>
+		<!-- inline styles related to this page -->
 
-	<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+		<!-- ace settings handler -->
+		<script src="assets/js/ace-extra.min.js"></script>
 
-	<!--[if lte IE 8]>
-	<script src="assets/js/html5shiv.min.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="assets/js/html5shiv.min.js"></script>
+		<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
 
 <!-- 	<style>
 		.acotacion{
@@ -291,7 +290,7 @@ session_start();
 												</div>
 
 												<div style="margin-top: 3em; float: right; ">
-													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 													<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
 									        </div>
@@ -391,7 +390,7 @@ session_start();
 												</div>
 
 												<div style="margin-top: 3em; float: right; ">
-													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 													<button type="button" id="Previous2" data-toggle="tab" href="#Tab1" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
 													<button type="button" id="Next2" data-toggle="tab" href="#Tab3" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
@@ -466,7 +465,7 @@ session_start();
 												</div>
 
 												<div style="margin-top: 3em; float: right; ">
-													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 													<button type="button" id="Previous3" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Atras</button>
 													<button type="button" id="Next3" data-toggle="tab" href="#Tab4" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 												</div>
@@ -518,7 +517,7 @@ session_start();
 												</div>
 
 												<div style="margin-top: 3em; float: right; ">
-													<a  href="GenIndex.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+													<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
 													<button type="button" id="Previous4" data-toggle="tab" href="#Tab3" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Atras</button>
 													<!-- <button type="submit" id="Next4" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button> -->
 													<button type="submit" id="Next4" data-toggle="tab" class="btn btn-primary" disabled><i class="fa fa fa-check-circle"></i> Subir imagenes</button>
@@ -596,7 +595,7 @@ session_start();
 <script type="text/javascript">
 	if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 </script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
 <!-- ace scripts -->
 <script src="assets/js/ace-elements.min.js"></script>

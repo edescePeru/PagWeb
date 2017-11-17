@@ -6,11 +6,18 @@
 	 $idprod = $_GET['idprod'];
 
 	 //echo $subcategoria;
+	$resultSet = mysqli_query($conexion, 'SELECT P.nombrePortada FROM producto P WHERE P.idProducto = "'.$idprod.'"');
+									    
+	if ($row = mysqli_fetch_row($resultSet)) {
+		$title = $row[0];
+	}
 ?>
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Buy_shop an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Single :: w3layouts</title>
+
+<title>  <?= $title; ?>
+</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Buy_shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
@@ -30,6 +37,7 @@
 
 </head>
 <body>
+
 <?php 
 	require '../sliderbar.php';
 ?>
@@ -57,6 +65,8 @@
         		<div class="clearfix"></div>
 	</div>
 </div>
+
+
 
 <?php 
 	$resultSet = mysqli_query($conexion, 'SELECT 

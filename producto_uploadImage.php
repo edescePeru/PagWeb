@@ -3,9 +3,6 @@ include 'BaseDatos/conexion.php';
 session_start();
 	
 	$idprod = $_GET['idprod'];
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -368,6 +365,11 @@ session_start();
         }
     }); 
 
+    file.on('filecleared', function(event) {
+	    $('div.alert').empty();
+	    $('div.alert').hide();		
+	  });
+
     file.on('fileerror', function(event, data, msg) {
        console.log(data.id);
        console.log(data.index);
@@ -382,10 +384,11 @@ session_start();
 	    // console.log(data);
 	    alert(data.response.message);
 	    console.log(data.response.fallo);
-	    resp = confirm("¿Termino de subir todas sus imágenes?")
+	    console.log(data.response.message);
+	    /*resp = confirm("¿Termino de subir todas sus imágenes?")
 	    if (resp) {
 	    	location.href = 'producto_catalogo.php';
-	    };
+	    };*/
 	    
 	    
 	});

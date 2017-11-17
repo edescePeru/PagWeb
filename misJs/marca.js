@@ -3,46 +3,7 @@ $(document).ready(function(){
 	$("#new-subcategoria").on('click', processSubCategoria);
 
 	$(document).on('click', '[data-eliminar]', deleteSubCategoria);
-	$(document).on('click', '[data-editar]', function() {
-
-		$('#subcategoria').html('');
-		
-		console.log("hola");
-
-		var $fila = $(this).parents('tr');
-
-		var idMarca = $fila.find('[data-id]').data('id');
-		var categoria = $fila.find('[data-categoria]').data('categoria');
-		var subcategoria = $fila.find('[data-subcategoria]').data('subcategoria');
-
-		console.log(categoria);
-
-		var marca = $fila.find('[data-marca]').data('marca');
-		console.log(marca);
-
-        $.getJSON('Script/ComboSelectMarca.php?categoria='+categoria,function(data)
-	    {
-	    	$("#subcategoria").append("<option ></option>");
-	    	console.log(data);
-	        $.each(data,function(key,value)
-	        {
-	        	console.log(value[0]);
-	            if( value[0] == subcategoria )
-	                $("#subcategoria").append(" <option value='" + value[0]+"' selected='selected'>" + value[1]  + "</option> ");
-	            else
-	                $("#subcategoria").append(" <option value='" + value[0]+"' >" + value[1]  + "</option> ");
-	        });
-	    });
-
-		$('#marca').val(marca);
-		$('#categoria').val(categoria);
-
-
-		$("#modal-marca").modal({
-			show:true,
-			backdrop:'static'
-		});
-	});
+	$(document).on('click', '[data-editar]', showModalEditar);
 
 	$('#categoria').on('change', viewSubcategoria);
 });
@@ -61,6 +22,8 @@ function showModalRegister() {
 			backdrop:'static'
 		});
 }
+
+
 
 function deleteSubCategoria() {
 	event.preventDefault();
@@ -92,28 +55,43 @@ var idMarca;
 function showModalEditar() {
 	// $('#form-marca')[0].reset();
 	$("#proceso").html("Editar");
+		$('#subcategoria').html('');
+		
+		console.log("hola");
 
-	var $fila = $(this).parents('tr');
+		var $fila = $(this).parents('tr');
 
-	idMarca = $fila.find('[data-id]').data('id');
-	var categoria = $fila.find('[data-categoria]').data('categoria');
-	var subcategoria = $fila.find('[data-subcategoria]').data('subcategoria');
+		idMarca = $fila.find('[data-id]').data('id');
+		var categoria = $fila.find('[data-categoria]').data('categoria');
+		var subcategoria = $fila.find('[data-subcategoria]').data('subcategoria');
 
-	var marca = $fila.find('[data-marca]').text();
-	
-	$('#marca').val(marca.trim());
+		console.log(categoria);
 
-	$('#categoria').val(categoria);
-	$('#subcategoria').val(subcategoria);
+		var marca = $fila.find('[data-marca]').data('marca');
+		console.log(marca);
 
-	// $('#subcategoria option[value='+subcategoria+']').attr('selected','selected');
-	
-	console.log(subcategoria);
+        $.getJSON('Script/ComboSelectMarca.php?categoria='+categoria,function(data)
+	    {
+	    	$("#subcategoria").append("<option ></option>");
+	    	console.log(data);
+	        $.each(data,function(key,value)
+	        {
+	        	console.log(value[0]);
+	            if( value[0] == subcategoria )
+	                $("#subcategoria").append(" <option value='" + value[0]+"' selected='selected'>" + value[1]  + "</option> ");
+	            else
+	                $("#subcategoria").append(" <option value='" + value[0]+"' >" + value[1]  + "</option> ");
+	        });
+	    });
 
-	$("#modal-subcateg").modal({
-		show:true,
-		backdrop:'static'
-	});
+		$('#marca').val(marca);
+		$('#categoria').val(categoria);
+
+
+		$("#modal-marca").modal({
+			show:true,
+			backdrop:'static'
+		});
 }
 
 function processSubCategoria() {
@@ -141,12 +119,12 @@ function processSubCategoria() {
 	}
 
 	if ($('#proceso').html() == 'Editar'){
-		var url = 'Script/EditSubCategoria.php';
+		var url = 'Script/EditMarca.php';
 	    var data = $("#form-marca").serialize();
 
 		$.ajax({
 		 url: url,
-		 data: data + "&id=" + idSubCategoria,
+		 data: data + "&id=" + idMarca,
 		 method: 'POST'
 		}).done(function( response ) {
 		    console.log(response);

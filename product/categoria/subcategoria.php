@@ -10,7 +10,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Buy_shop an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Men :: w3layouts</title>
+	<title><?= str_replace("_"," ",$subcategoria); ?></title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -133,7 +133,12 @@
 					$limit = $numeroLotes*($pagina-1);
 				}
 
-				$consulta = "SELECT *  FROM producto where enable = 1 LIMIT $limit, $numeroLotes";
+				$subcateg = str_replace("_"," ",$subcategoria);
+
+				$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, SC.nombre 
+								FROM producto P
+								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
+								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 LIMIT $limit, $numeroLotes";
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
 			?>
@@ -148,7 +153,7 @@
 							</div>
 						</a>	
 
-						<h6><a href="single.html"> <b><?php echo $fila['nombrePortada'] ?></b> </a></h6>
+						<h6><a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>"><b><?php echo $fila['nombrePortada'] ?>...</b> </a></h6>
 						<div class="size_1">
 							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
 							<div class="clearfix"></div>
