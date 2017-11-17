@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-11-2017 a las 00:18:19
+-- Tiempo de generación: 04-11-2017 a las 21:08:51
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -204,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `marca` (
   `nombre` varchar(80) DEFAULT NULL,
   `enable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idMarca`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=36 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Volcado de datos para la tabla `marca`
@@ -241,8 +241,7 @@ INSERT INTO `marca` (`idMarca`, `idSubcategoria`, `nombre`, `enable`) VALUES
 (30, 104, 'Asus', 1),
 (31, 104, 'Genius', 1),
 (32, 104, 'Advance', 1),
-(33, 104, 'Hp', 1),
-(35, 105, 'Tp-link', 1);
+(33, 104, 'Hp', 1);
 
 -- --------------------------------------------------------
 
@@ -252,43 +251,37 @@ INSERT INTO `marca` (`idMarca`, `idSubcategoria`, `nombre`, `enable`) VALUES
 
 CREATE TABLE IF NOT EXISTS `producto` (
   `idProducto` int(11) NOT NULL AUTO_INCREMENT,
-  `codigo` varchar(100) DEFAULT NULL,
-  `nombrePortada` varchar(255) DEFAULT NULL,
-  `modelo` varchar(100) DEFAULT NULL,
-  `stock` int(11) DEFAULT NULL,
-  `precio` decimal(9,0) DEFAULT NULL,
-  `descripcionCorta` text,
-  `descripcionLarga` text,
-  `garantia` varchar(100) DEFAULT NULL,
-  `color` varchar(100) DEFAULT NULL,
-  `contenidoCaja` text,
-  `largoCaja` decimal(9,0) DEFAULT NULL,
-  `anchoCaja` decimal(9,0) DEFAULT NULL,
-  `altoCaja` decimal(9,0) DEFAULT NULL,
-  `pesoCaja` decimal(9,0) DEFAULT NULL,
-  `FechaCreacion` date DEFAULT NULL,
-  `vip` tinyint(1) NOT NULL,
-  `image` varchar(80) NOT NULL,
-  `idSubCategoria` int(11) DEFAULT NULL,
-  `idMarca` int(11) DEFAULT NULL,
-  `idCliente` int(11) DEFAULT NULL,
+  `codigo` varchar(20) NOT NULL,
+  `nombrePortada` varchar(100) NOT NULL,
+  `modelo` varchar(100) NOT NULL,
+  `stock` int(11) NOT NULL,
+  `precio` decimal(9,2) NOT NULL,
+  `descripcionCorta` text NOT NULL,
+  `descripcionLarga` text NOT NULL,
+  `garantia` varchar(100) NOT NULL,
+  `color` varchar(100) NOT NULL,
+  `contenidoCaja` text NOT NULL,
+  `largoCaja` decimal(9,2) NOT NULL,
+  `anchoCaja` decimal(9,2) NOT NULL,
+  `altoCaja` decimal(9,2) NOT NULL,
+  `pesoCaja` decimal(9,2) NOT NULL,
+  `FechaCreacion` date NOT NULL,
+  `idSubCategoria` int(11) NOT NULL,
+  `idMarca` int(11) NOT NULL,
+  `idCliente` int(11) NOT NULL,
   `enable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idProducto`),
   KEY `idSubCategoria` (`idSubCategoria`),
   KEY `idMarca` (`idMarca`),
   KEY `idCliente` (`idCliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`idProducto`, `codigo`, `nombrePortada`, `modelo`, `stock`, `precio`, `descripcionCorta`, `descripcionLarga`, `garantia`, `color`, `contenidoCaja`, `largoCaja`, `anchoCaja`, `altoCaja`, `pesoCaja`, `FechaCreacion`, `vip`, `image`, `idSubCategoria`, `idMarca`, `idCliente`, `enable`) VALUES
-(29, 'SSJ7', 'Nuevo Celular Samsung Galaxy J7 Blanco', 'Samsung J7', 10, '1500', 'Memoria 64 gb\r\nCamara Frontal 13 px\r\nCamara Trasera 13 px', 'Celular Samsung, 6.3 pulgadas, resoluciÃ³n 2960x1440, cÃ¡mara dual de 12 megapixels,  6GB de RAM, 64GB, 128GB o 256GB de almacenamiento interno, baterÃ­a de 3300 mAh																', '1 aÃ±o', 'Blanco', 'Memoria\r\nCargador\r\nAudifonos', '18', '18', '18', '2', '2017-10-09', 1, '1081482c0c4e05cd34356f5facf460a7.jpg', 2, 9, 1, 1),
-(30, 'HUAWEIP10LITE', 'HUAWEI P10 LITE WHITE (Blanco) - 5.2 " 1920x1080, Android 7.0, LTE, Dual SIM, Desbloqueado.', 'HUAWEI P10 LITE', 20, '1132', 'ROM 32 GB\r\nRAM 3GB\r\nOctacore\r\nANDROID 7.0 NOUGAT', 'SISTEMA OPERATIVO	                                 : ANDROID 7.0 NOUGAT\r\nMARCA	                                                         :HUAWEI\r\nMODELO	                                                 :P10 LITE\r\nBANDAS Y FRECUENCIAS SOPORTADAS	:2G	1800 MHz -1900 MHz - 850 MHz - 900 MHz\r\n                                                                         3G	1700 MHz - 1900 MHz - 2100 MHz  - 850 MHz - 900 MHz\r\n                                                                         LTE	1700 MHz - 1900 MHz - 2600 MHz - 700 MHz - 850 MHz\r\nPANTALLA	TAMAÃ‘O	                         :5.2 PULG\r\nRESOLUCIÃ“N	                                         :1080 x 1920 PX\r\nNÃšCLEOS DEL PROCESADOR	                 :OCTA CORE\r\nTIPO DE PROCESADOR	                          :KIRIN 658 (2.1GHZ x 4 + 1.7GHZ x 4)\r\nMEMORIA RAM	                                          :3 GB\r\nMEMORIA ROM	                                          :32 GB\r\nSIM	                                                                  :SIM	DUAL\r\nCONECTIVIDAD	                                          :BLUETOOTH\r\nWI-FI 802.11 B/G/N\r\nCONECTOR DE AUDIO	                                   :3.5 MM\r\nDATA	                                                           :MICRO-USB 2.0\r\nCÃMARA	                                                   :POSTERIOR: 12 MP (CON LED FLASH)\r\n                                                                           :FRONTAL: 8 MP\r\nBATERIA                                                            :3000 MAH\r\nACCESORIOS	AURICULARES                         : CABLE USB - CARGADOR DE BATERIA - MANUAL DE USUARIO\r\n																																', '1 AÃ‘O', 'Blanco', 'CELULAR \r\nCABLES\r\nMANUAL', '30', '15', '30', '1', '2017-11-04', 1, '', 2, 4, 1, 1),
-(31, 'J1minipro', 'Smartphone Samsung Galaxy J1 Mini Prime Blanco, 4.0", Android 6.0, Desbloqueado, Dual SIM, LTE.', 'SAMSUNG GALAXY J106M DS LTE WH ', 8, '395', 'Memoria : 8GB\r\nRAM : 1G\r\nMicro SD : Hasta 128GB', 'SISTEMA OPERATIVO	ANDROID V6.0 MARSHMALLOW\r\nMARCA	SAMSUNG\r\nMODELO	GALAXY J1 MINI PRIME\r\n\r\nPANTALLA	TAMAÃ±O	4.0 PULG\r\nRESOLUCIÃ³N	480 X 800 PX\r\nTIPO	WVGA TFT\r\n\r\nPROCESADOR	1.20 GHZ\r\nNÃšCLEOS DEL PROCESADOR	QUAD-CORE\r\nMEMORIA RAM	1 GB\r\nALMACENAMIENTO INTERNO	8 GB\r\nSIM	DUAL\r\nCONECTIVIDAD	3G - 4G LTE - BLUETOOTH - EDGE - GPRS - GPS - WI-FI\r\nPUERTOS	CONECTOR DE AUDIO	3.5 MM\r\nDATA	MICRO-USB 2.0\r\nSLOT CARD	MICRO SD (HASTA 128GB)\r\n\r\nDIMENSIONES	12.66 X 6.31 X 1.08 CM\r\nCÃMARA FRONTAL: VGA\r\nCÃMARA POSTERIOR: 5 MP FLASH LED\r\n\r\nBATERÃ­A	1500 MAH\r\nTIPO DE BATERIA	LI-ION', '1 aÃ±o', 'Blanco', 'Celular \r\nAccesorios\r\nManual', '15', '10', '7', '1', '2017-11-04', 1, '', 2, 9, 1, 1),
-(32, '11', 'erwerwe', 'werwer', 11, '11', 'werwer', 'werw', 'werwer', 'werwerw', 'werwer', '11', '11', '11', '11', '2017-11-04', 0, '', 105, 35, 1, 0),
-(39, 'Switch TP-Link TL-SF1005D', 'Switch TP-Link TL-SF1005D, 5 puertos RJ-45 10/100 Mbps, Auto MDI/MDIX', 'TP-Link', 3, '35', '5 puertos RJ-45 10/100 Mbps, \r\nAuto MDI/MDIX.', 'MARCA	TP-Link\r\nMODELO	TL-SF1005D\r\nTIPO	EXTERNO\r\nPUERTOS	RJ-45: 5\r\nESTÃNDAR	IEEE802.3\r\n802.3u\r\n802.3x\r\nCARACTERISTICAS GENERALES	ADMINISTRABLE	NO\r\nAUTO MDI-MDX	', '6 meses', 'Blanco', 'Equipo\r\nManual', '30', '20', '10', '1', '2017-11-05', 0, '', 105, 35, 1, 1);
+INSERT INTO `producto` (`idProducto`, `codigo`, `nombrePortada`, `modelo`, `stock`, `precio`, `descripcionCorta`, `descripcionLarga`, `garantia`, `color`, `contenidoCaja`, `largoCaja`, `anchoCaja`, `altoCaja`, `pesoCaja`, `FechaCreacion`, `idSubCategoria`, `idMarca`, `idCliente`, `enable`) VALUES
+(29, 'SSJ7', 'Nuevo Celular Samsung Galaxy J7 Blanco', 'Samsung J7', 10, '1500.00', 'Memoria 64 gb\r\nCamara Frontal 13 px\r\nCamara Trasera 13 px', 'Celular Samsung, 6.3 pulgadas, resoluciÃ³n 2960x1440, cÃ¡mara dual de 12 megapixels,  6GB de RAM, 64GB, 128GB o 256GB de almacenamiento interno, baterÃ­a de 3300 mAh																', '1 aÃ±o', 'Blanco', 'Memoria\r\nCargador\r\nAudifonos', '18.00', '18.00', '18.00', '1.64', '2017-10-09', 2, 9, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -303,28 +296,19 @@ CREATE TABLE IF NOT EXISTS `productoimage` (
   `enable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idProductoImage`),
   KEY `idProducto` (`idProducto`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=148 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=98 ;
 
 --
 -- Volcado de datos para la tabla `productoimage`
 --
 
 INSERT INTO `productoimage` (`idProductoImage`, `idProducto`, `imagen`, `enable`) VALUES
-(98, 30, '4c0dc3b82bf72ba6996a858a5d11ec22.jpg', 1),
-(99, 30, '99aa967f25d340c60c989ff4ccd52d88.jpg', 1),
-(100, 30, '6627cf49ff607fd9a9c7f1667fd388ff.jpg', 1),
-(101, 30, 'c3d9b2881a7f4575057849fa3e8b70a9.jpg', 1),
-(102, 30, 'f036957802bb2d7829edc308631737b6.jpg', 1),
-(103, 31, '110bd9eda4eadef3f969921ebd472939.jpg', 1),
-(104, 31, '46534b0b261961e6a8d7bfa1f885b70d.jpg', 1),
-(105, 31, 'f7b0db0df179a3ef9f8751d6653741ec.jpg', 1),
-(106, 31, '5cf7b5bf4d39c5b04775eda7be914339.jpg', 1),
-(107, 31, 'a32d7a7f302ff5347a51138f27b14b7b.jpg', 1),
-(111, 39, 'daaf40f43fabfa2eebe273f68d32ce81.jpg', 1),
-(112, 39, 'a7990f4ef53199b00950c4e1dc988e3f.jpg', 1),
-(113, 39, 'a0828beccb3e86ba7a23cfe77e972c5e.jpg', 1),
-(146, 29, '1081482c0c4e05cd34356f5facf460a7.jpg', 1),
-(147, 29, '4a0c27e0c1eb238d529a48e4962e5901.jpg', 1);
+(92, 29, '5779b8a4d4fa59f20db74b6ae3ff8a66.jpg', 1),
+(93, 29, 'a4f0300403622287f14d2a8df2bb99da.jpg', 1),
+(94, 29, '15c927c86d5aca7c19cb2d5fae04e3dd.jpg', 1),
+(95, 29, '4259e7172db8ca2f18e6c5d31e946818.jpg', 1),
+(96, 29, '604eaf60731091a16d80ab340730979c.png', 1),
+(97, 29, '226371485a190f666f766766d5ecfe49.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -354,7 +338,7 @@ CREATE TABLE IF NOT EXISTS `subcategoria` (
   `enable` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idSubCategoria`),
   KEY `idCategoria` (`idCategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=106 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=105 ;
 
 --
 -- Volcado de datos para la tabla `subcategoria`
@@ -464,8 +448,7 @@ INSERT INTO `subcategoria` (`idSubCategoria`, `idCategoria`, `nombre`, `enable`)
 (101, 20, 'UÃ±as', 1),
 (102, 20, 'Brochas y accesorios', 1),
 (103, 21, 'Tablet', 1),
-(104, 21, 'Accesorios para tablet', 1),
-(105, 9, 'Swich', 1);
+(104, 21, 'Accesorios para tablet', 1);
 
 -- --------------------------------------------------------
 

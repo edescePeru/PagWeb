@@ -17,7 +17,7 @@ session_start();
 	<!-- bootstrap & fontawesome -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
-	<link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+	<link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
     <link href="themes/explorer/theme.css" media="all" rel="stylesheet" type="text/css"/>
 	<!-- page specific plugin styles -->
 
@@ -348,53 +348,52 @@ session_start();
 <script src="assets/js/ace.min.js"></script>
 
 <script src="js/plugins/sortable.js" type="text/javascript"></script>
-<script src="js/fileinput.js" type="text/javascript"></script>
-<script src="js/locales/fr.js" type="text/javascript"></script>
-<script src="js/locales/es.js" type="text/javascript"></script>
+<script src="js/fileinput.min.js" type="text/javascript"></script>
+<script src="js/locales/es.js" type="text/javascript"></script>	
 <script src="themes/explorer/theme.js" type="text/javascript"></script>
 <script>
 
-	var file = $('#file-es');
-    file.fileinput({
+	var tipos = ['jpg', 'png', 'gif', 'jpeg'];
+
+    $('#file-es').fileinput({
         language: 'es',
-        allowedFileExtensions: ['jpg', 'png', 'gif', 'jpeg'],
-        maxFileCount: 5,
         uploadUrl: 'Script/RegProdImages.php',
+		uploadAsync: false,
+		maxFileCount: 5,
+		removeFromPreviewOnError: true,
+        allowedFileExtensions : tipos,
         uploadExtraData: {
             idprod: $("#idprod").val(),
         }
-    }); 
-
-    file.on('filecleared', function(event) {
-	    $('div.alert').empty();
-	    $('div.alert').hide();		
-	  });
-
-    file.on('fileerror', function(event, data, msg) {
-       console.log(data.id);
-       console.log(data.index);
-       console.log(data.file);
-       console.log(data.reader);
-       console.log(data.files);
-       // get message
-       alert(msg);
     });
 
-    file.on('fileuploaded', function(event, data, previewId, index) {
-	    // console.log(data);
-	    alert(data.response.message);
-	    console.log(data.response.fallo);
-	    console.log(data.response.message);
-	    /*resp = confirm("¿Termino de subir todas sus imágenes?")
-	    if (resp) {
-	    	location.href = 'producto_catalogo.php';
-	    };*/
-	    
-	    
-	});
+	$('#file-es').on('filebatchuploadsuccess', function(event, data, previewId, index) {
+    	var respuesta = data.response;
+        console.log(respuesta)
+    	
+        if (data.response.rpta) {
+            $('div.file-error-message').css({
+              "display": "block",
+              "padding": "0.6em",
+              "font-weight": "bold"
+            });
+            $('div.file-error-message').text(data.response.mensaje);    
+            $('div.kv-upload-progress').css( "display", "none" );  
+            $('div.file-preview-thumbnails').css( "display", "none" );  
 
+        } else{
+            $('div.file-error-message').css({
+              "display": "block",
+              "padding": "0.6em",
+              "font-weight": "bold",
+              "color": "#345825",
+              "background-color": "#dff0d8",
+              "border": "1px solid #839c78;",
+            });
+            $('div.file-error-message').text(data.response.mensaje);    
 
-
+        };
+    });
     
 </script>
 
