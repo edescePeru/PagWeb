@@ -379,7 +379,6 @@ session_start();
             });
             $('div.file-error-message').text(data.response.mensaje);    
             $('div.kv-upload-progress').css( "display", "none" );  
-            $('div.file-preview-thumbnails').css( "display", "none" );  
 
         } else{
             $('div.file-error-message').css({
