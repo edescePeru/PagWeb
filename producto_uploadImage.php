@@ -378,7 +378,7 @@ session_start();
               "font-weight": "bold"
             });
             $('div.file-error-message').text(data.response.mensaje);    
-            $('div.kv-upload-progress').css( "display", "none" );  
+            $('div.file-live-thumbs').empty();  
 
         } else{
             $('div.file-error-message').css({
@@ -389,7 +389,9 @@ session_start();
               "background-color": "#dff0d8",
               "border": "1px solid #839c78;",
             });
-            $('div.file-error-message').text(data.response.mensaje);    
+            $('div.file-error-message').text(data.response.mensaje);  
+            $('div.file-live-thumbs').empty();    
+            setTimeout(function(){ window.location = 'producto_catalogo.php'; },2000);
 
         };
     });
