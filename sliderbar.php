@@ -28,7 +28,7 @@
 					<li>
 						<div class="box_1-cart">
 							<div class="box_11">
-								<a href="checkout.html">
+								<a href="account.php">
 							  		<h4>
 							  			<i class="fa fa-user" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Mi cuenta"></i>
 							  			<div class="clearfix"> </div>

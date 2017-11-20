@@ -23,6 +23,16 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	
+	<style>
+		div.descripcion{
+			height: 4em;
+		}
+		img.img-responsive{
+			width: 150px;
+			height: 200px;
+		}
+	</style>
+
 </head>	
 <body>
 
@@ -135,7 +145,8 @@
 
 				$subcateg = str_replace("_"," ",$subcategoria);
 
-				$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, SC.nombre 
+				$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, 
+							SC.nombre, P.image
 								FROM producto P
 								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
 								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 LIMIT $limit, $numeroLotes";
@@ -146,14 +157,16 @@
 					<div class="content_box">
 						<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
 							<div class="view view-fifth">
-								<img src="../../images/celular/mini.jpg" class="img-responsive" alt=""/>
+								<img src="../../Script/images/<?= $fila['image'] ?>" class="img-responsive" alt=""/>
 								<div class="mask1">
 									<div class="info"> </div>
 								</div>
 							</div>
 						</a>	
 
-						<h6><a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>"><b><?php echo $fila['nombrePortada'] ?>...</b> </a></h6>
+						<div class="descripcion">
+							<h6><a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>"><b><?php echo $fila['nombrePortada'] ?>...</b> </a></h6>
+						</div>
 						<div class="size_1">
 							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
 							<div class="clearfix"></div>

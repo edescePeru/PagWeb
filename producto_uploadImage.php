@@ -2,7 +2,12 @@
 include 'BaseDatos/conexion.php';
 session_start();
 	
-	$idprod = $_GET['idprod'];
+$idprod = $_GET['idprod'];
+
+$query = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto = '".$idprod."'");
+$total = mysqli_fetch_row($query);
+if($total == 0) { header('Location:producto_catalogo.php');}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

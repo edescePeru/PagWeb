@@ -23,6 +23,23 @@
 		text-align: center;
 	}
 
+	div.product-img img{
+		height: 16.1em;
+	}
+
+	div.shop-holder1 img{
+		height: 185px;
+	}
+
+	span span.amount{
+		font-weight: bold;
+		font-size: 1.3em;
+	}
+	span.item_price {
+    	font-size: 1.09em;
+    }
+
+
 </style>
 
 </head>
@@ -116,7 +133,8 @@
 				<div class="section group">
 				<?php 
 					include 'BaseDatos/conexion.php';
-					$query = "SELECT idProducto, left(nombrePortada, 35), precio FROM producto WHERE vip = 1 ORDER BY idProducto ASC LIMIT 3 ";
+					$query = "SELECT idProducto, left(nombrePortada, 35), precio, image 
+					FROM producto WHERE vip = 1 ORDER BY idProducto ASC LIMIT 3 ";
 					$result = mysqli_query($conexion, $query);
 					$data = [];
 					if (mysqli_num_rows($result)>0) {
@@ -126,7 +144,7 @@
 						<div class="shop-holder">
 							<div class="product-img">
 								<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
-									<img width="225" height="265" src="images/iphone.png" class="img-responsive"  alt="item4">
+									<img src="Script/images/<?= $fila['image'] ?>" class="img-responsive"  alt="item4">
 								</a>
 								<a href="" class="button item_add"></a>
 							</div>
@@ -207,7 +225,7 @@
 		<div class="row_5">
 		<?php 
 			include 'BaseDatos/conexion.php';
-			$query = "SELECT idProducto, left(nombrePortada, 35), precio FROM producto WHERE vip = 1 ORDER BY idProducto DESC LIMIT 3";
+			$query = "SELECT idProducto, left(nombrePortada, 35), precio, image FROM producto WHERE vip = 1 ORDER BY idProducto DESC LIMIT 3";
 			$result = mysqli_query($conexion, $query);
 			$data = [];
 			if (mysqli_num_rows($result)>0) {
@@ -215,7 +233,8 @@
 		?>
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="shop-holder1">
-					<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><img src="images/default/pic4.jpg" class="img-responsive" alt=""/></a>
+					<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
+					<img src="Script/images/<?= $fila['image'] ?>" class="img-responsive" >
 				</div>
 				<div class="shop-content" style="height: 80px;">
 					<h4><a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?> ... </a></h4>

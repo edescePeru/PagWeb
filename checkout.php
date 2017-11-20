@@ -59,6 +59,7 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
+
 <div class="container cont-body">
 	<div class="check">	 
 		<h1>Carrito de Compras </h1>

@@ -90,7 +90,7 @@
 			<li>
 				<i class="back_arrow"> </i>
 				<a href="#" style="pointer-events: none;"><?= $prod['Categoria'] ?></a> >> 
-				<a href="../categoria/subcategoria.php?subcategoria=iphone"><?= $prod['Subcategoria'] ?></a>
+				<a href="../categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$prod['Subcategoria']) ?>"><?= $prod['Subcategoria'] ?></a>
 			</li>
         </ul>
 		<div class="single_grid">
@@ -98,9 +98,10 @@
 				<ul id="etalage">
 					<?php 
 						$resultSet2 = mysqli_query($conexion, 'SELECT 
-							P.idProducto, P.imagen
-							FROM productoimage P 
-							WHERE P.enable = 1 and P.idProducto = "'.$idprod.'"');
+							PI.idProducto, PI.imagen
+							FROM productoimage PI
+							WHERE not exists (select image from producto P where PI.imagen = P.image) 
+							AND PI.enable = 1 and PI.idProducto = "'.$idprod.'"');
 																	    
 							while($imagen = mysqli_fetch_array($resultSet2)){
 					?>

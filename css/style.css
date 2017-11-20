@@ -229,6 +229,7 @@ body a{
 .header-bottom-left{
 	margin-top:13px;
 	padding-right:0;
+	padding-left: 0px;
 }
 .col-xs-6.menu {
   padding-left: 0px;
@@ -714,11 +715,12 @@ ul.list_1 li a{
 }
 
 
+
 ul.footer_social {
 	padding: 0;
     list-style: none;
     margin-top: 13px;
-    text-align: center;
+    text-align: left;
 }
 ul.footer_social li {
   display: inline-block;
@@ -2671,8 +2673,15 @@ input:-webkit-autofill {
 	margin-left: 4em;
 }
 
+.social-title{
+	float: left!important;
+}
+
+.social-cont{
+	margin-top: 2em;
+}
+
 div.box_3 div.block-content h4.footer-title{
-		margin-top: 2em;
 	margin-bottom: 1.5em;
 }
 
@@ -2711,7 +2720,7 @@ background-color: #ce1c2d;
 
 .list_1 img{
 	width: 65%;
-    		margin-top: 2em;
+   	margin-top: 0.5em;
 }
 
 .login-left div p{
@@ -2755,6 +2764,16 @@ background-color: #ce1c2d;
 	background: #f54d56;
 }
 
+img.logo{
+	width: 1.1em;
+	height: 1.1em;
+	margin-top: -0.5em;
+}
+
+li.grid > a{
+	color: #565151;
+    font-weight: bold;
+}
 
 /*--responsive design--*/
 @media (max-width:1366px){
