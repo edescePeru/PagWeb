@@ -185,7 +185,7 @@
 		<h2 class="m_3">Lo mas Buscado</h2>
 		<div class="grid_1">
 			<div class="col-md-6 blog_1">
-				<a href="index_single.html">
+				<a href="#">
 					<div class="item-inner"> 
 						<img src="images/portadas/asusGamer.png" class="img-responsive" alt=""/>																	
 						<div class="date-comments">
@@ -200,7 +200,7 @@
 			</div>
 
 			<div class="col-md-6 row_2">
-				<a href="index_single.html">
+				<a href="#">
 					<div class="item-inner"> 
 						<img src="images/portadas/gopro.png" class="img-responsive" alt=""/>																	
 							<div class="date-comments">
