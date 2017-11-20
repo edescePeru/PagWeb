@@ -167,7 +167,7 @@
 				
 				 
 				  <div class="clearfix"></div>
-				 <a class="order" href="procesoPago">Realizar compra</a>
+				 <a class="order" href="procesoPago.php">Realizar compra</a>
 			 	
 			 <?php endif ?>
 			 
