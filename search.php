@@ -73,59 +73,18 @@
 		</div>
 
 		<div class="col-md-9 w_content">
-			<div class="women">
-				
-				<div class="clearfix"></div>
-				<?php
-					$query = "SELECT * FROM producto WHERE nombrePortada LIKE '%".$search."%'";
+		
+		<?php
+			$query = "SELECT * FROM producto WHERE nombrePortada LIKE '%".$search."%'";
 
-					$result = mysqli_query($conexion, $query);
+			$result = mysqli_query($conexion, $query);
 
-					$numeroProductos = mysqli_num_rows($result);
-					$numeroLotes = 4;
+			$numeroProductos = mysqli_num_rows($result);
+			$numeroLotes = 4;
 
-					$numeroPaginas = ceil($numeroProductos/$numeroLotes);
-
-					if (!isset($_GET['page'])) {
-				?>
-					<div class="feature feature-icon-hover indent first">
-						<a href="search.php?search=<?php echo $search ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-						<a href="search.php?search=<?php echo $search ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
-					</div>
-				<?php
-					} else {
-						$pagina = $_GET['page'];
-						if ($pagina==1) {
-							$next = $pagina+1;
-							$prev = 1;
-						} else {
-							if ($pagina == $numeroPaginas) {
-								$next = $pagina;
-								$prev = $pagina-1;
-							} else {
-								$next = $pagina+1;
-								$prev = $pagina-1;
-							}
-							
-							
-						}
-				?>
-					<div class="feature feature-icon-hover indent first">
-						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
-					</div>
-				<?php
-					}
-					
-				?>
-							
-							
-				<?php    	
-						
-				?>
-			</div>
-			<br>
-			<br>
+			$numeroPaginas = ceil($numeroProductos/$numeroLotes);
+		?>
+			
 			<!-- grids_of_4 -->
 			<div class="grids_of_4">
 			<?php 
@@ -140,7 +99,8 @@
 				} else {
 					$limit = $numeroLotes*($pagina-1);
 				}
-
+				// HAcer un if que pregunte por $orden y haga una consulta desc precio o asc precio
+				
 				$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' LIMIT $limit, $numeroLotes";
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
@@ -182,6 +142,72 @@
 				<div class="clearfix"></div>
 			</div>
 			<!-- end grids_of_4 -->
+			<div class="women">
+				
+				<div class="clearfix"></div>
+				<?php
+					
+
+					if (!isset($_GET['page'])) {
+						if (!isset($_GET['orden'])) {
+				?>
+						<br>
+						<select name="orden">
+							<option value="">Precio de Mayor a Menor</option>
+							<option value="">Precio de Menor a Mayor</option>
+						</select>
+						<br><br>
+				<?php
+						} else {
+				?>
+						<br>
+						<select name="orden">
+							<option value="">Precio de Mayor a Menor</option>
+							<option value="">Precio de Menor a Mayor</option>
+						</select>
+						<br><br>
+				<?php
+						}
+						
+				?>
+					<div class="feature feature-icon-hover indent first">
+						<a href="search.php?search=<?php echo $search ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+						<a href="search.php?search=<?php echo $search ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+					</div>
+				<?php
+					} else {
+						$pagina = $_GET['page'];
+						if ($pagina==1) {
+							$next = $pagina+1;
+							$prev = 1;
+						} else {
+							if ($pagina == $numeroPaginas) {
+								$next = $pagina;
+								$prev = $pagina-1;
+							} else {
+								$next = $pagina+1;
+								$prev = $pagina-1;
+							}
+							
+							
+						}
+				?>
+					<div class="feature feature-icon-hover indent first">
+						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+					</div>
+				<?php
+					}
+					
+				?>
+							
+							
+				<?php    	
+						
+				?>
+			</div>
+			<br>
+			<br>
 
 		</div>		
 		
