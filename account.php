@@ -21,6 +21,12 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<style>
+		.frase{
+			margin-bottom: 17em;
+		    font-weight: bold;
+		    color: black;
+		    text-align: right;
+		}
 		.tabs-left{
 		  border-bottom: none;
 		  padding-top: 2px;
@@ -95,7 +101,7 @@
 				<div class="row" style="min-height:300px;">
 
 				<div class="row affix-row">
-				    <div class="col-xs-3">
+				    <div class="col-sm-3 affix-sidebar">
 						<div class="sidebar-nav">
 							<div class="navbar navbar-default" role="navigation">
 						    	<div class="navbar-header">
@@ -121,13 +127,13 @@
 									            </ul>
 									        </div>
 								        </li> -->
-								        <li>
+								        <li class="active">
 								          	<a href="#" data-toggle="collapse" data-target="#toggleDemo" data-parent="#sidenav01" class="collapsed">
 									        	<span class="glyphicon glyphicon-cloud"></span> Submenu 1 <span class="caret pull-right"></span>
 									        </a>
 									        <div class="collapse" id="toggleDemo" style="height: 0px;">
 									        	<ul class="nav nav-list">
-									            	<li class="active"><a >Home</a></li>
+									            	<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
 									                <li><a href="#profile" data-toggle="tab">Profile</a></li>
 									                <li><a href="#messages" data-toggle="tab">Messages</a></li>
 									                <li><a href="#settings" data-toggle="tab">Settings</a></li>
@@ -135,22 +141,18 @@
 									        </div>
 								        </li>
 						        
-						        		<!-- <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Normalmenu</a></li> -->
-						      		</ul>
+						        	<!-- <li><a href="#"><span class="glyphicon glyphicon-lock"></span> Normalmenu</a></li> -->
 						      	</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-9">
-						<div class="col-xs-9">
-				            <!-- Tab panes -->
-				            <div class="tab-content">
-				                <div class="tab-pane active" id="home">Home Tab.</div>
-				                <div class="tab-pane" id="profile">Profile Tab.</div>
-				                <div class="tab-pane" id="messages">Messages Tab.</div>
-				                <div class="tab-pane" id="settings">Settings Tab.</div>
-				            </div>
-				        </div>
+					<div class="col-sm-9 affix-content">
+						<div class="tab-content">
+			                <div class="tab-pane active" id="home">Home Tab.</div>
+			                <div class="tab-pane" id="profile">Profile Tab.</div>
+			                <div class="tab-pane" id="messages">Messages Tab.</div>
+			                <div class="tab-pane" id="settings">Settings Tab.</div>
+			            </div>
 					</div>
 				</div>
 
