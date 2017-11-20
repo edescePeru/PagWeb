@@ -27,6 +27,15 @@
 		    color: black;
 		    text-align: right;
 		}
+		.register-content{
+			margin-top: 0.8em;
+		}
+		.cont-body{
+			margin-bottom: 1em;
+		}
+		.tab-content{
+			margin-top: 1em;
+		}
 	</style>
 </head>
 <body>
@@ -62,122 +71,69 @@
 
 <div class="container cont-body">
 	<div class="check">	 
-		<h1>Carrito de Compras </h1>
-		<div class="col-md-9 cart-items">
-			 
+		<h1>Proceso de Compra </h1>
+		<div class="register-content">
+			<ul class="nav nav-tabs ">
+				<li class="active" style="pointer-events: none;">
+					<a  data-toggle="tab1">Categoría de tu producto</a>
+				</li>
+				<li style="pointer-events: none;">
+					<a  data-toggle="tab2">Informacion de tu producto</a>
+				</li>
+			</ul>
+		</div>
 
-			 <?php 
-			 	include 'BaseDatos/conexion.php'; 
-		 		$query = "SELECT DISTINCT DC.idCarrito, P.idProducto, P.nombrePortada , M.nombre , DC.cantidad, DC.precio, S.nombre, PI.imagen, P.stock FROM carrito C 
-                        INNER JOIN detacarrito DC ON C.idCarrito = DC.idCarrito
-                        INNER JOIN producto P ON DC.idProducto = P.idProducto
-                        INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
-                        INNER JOIN marca M ON M.idMarca = P.idMarca
-                        INNER JOIN productoimage PI ON PI.idProducto= P.idProducto 
-                        WHERE C.idCliente = ".$_SESSION['id']." AND C.sold = 1";
-				$result = mysqli_query($conexion, $query);
-				$data = [];
+		<form id="product-register" method="post" accept-charset="utf-8">
 
-				$cantidad = mysqli_num_rows($result);
+			<div class="tab-content">
 
-				if ($cantidad>0) {
-					while ($fila = mysqli_fetch_array($result)) {
-						array_push($data, [$fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5], $fila[6], $fila[7], $fila[8]]);
-						}
-				}else{
-				?>
-					<div class="frase">
-						TU CARRITO ESTA VACÍO. ¡AGRÉGALE TUS PRODUCTOS FAVORITOS Y 
-						DISFRUTA DEL PLACER DE SEGUIR COMPRANDO!...
-					</div>
-				<?php
-
-				}
-
-				//echo count($data);
-				//var_dump($data);
-
-				for ($i=0; $i <count($data) ; $i++) { 
-					for($j=$i+1;$j<=count($data)-1;$j++) {	
-						if($data[$i][1]==$data[$j][1]){
-							$data[$j]['borrar']=true;
-						}
-					}
-				}
-				//var_dump($data);
-
-				for ($i=0; $i <count($data) ; $i++) { 
-					if (!isset($data[$i]['borrar'])) {
-						?>
-				 <div class="cart-header">
-					<div class="cart-sec simpleCart_shelfItem">
-						<div class="cart-item cyc">
-							<img src="Script/images/<?php echo $data[$i][7] ?>" class="img-responsive" alt=""/>
-							
+				<div class="tab-pane active" id="Tab1">
+					<div class="clearfix">
+						<div style=" border-bottom: 1px dotted #CCC; margin-bottom: 1em;">
+							<p>Por favor, seleccione la categoria principal para su producto</p>
 						</div>
-						<div class="cart-item-info">
-							<div class="feature feature-icon-hover indent first">
-								<a data-delete data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" href="" title=""><i class="fa fa-close pull-right " aria-hidden="true"></i></a>
-							</div>
-							<h3><a href="#"><?php echo $data[$i][2] ?></a><span>Marca: <?php echo $data[$i][3] ?></span></h3>
-							<ul class="qty">
-								<li><p><b>Precio:</b> S/. <?php echo $data[$i][5] ?></p></li>
-								<li><div>Cantidad: </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
-								<li>
-									<div class="feature feature-icon-hover indent first">
-										<a href="" title="" data-stock='<?php echo $data[$i][8] ?>' data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-plus><i class="fa fa-plus pull-left " aria-hidden="true"></i></a>
-										<a href="" title="" data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-minus><i class="fa fa-minus" aria-hidden="true"></i></a>
+
+						<div class="col-xs-12" >
+							<div class="form-group">
+								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Nombre del producto</b> </label>
+
+								<div class="col-xs-9">
+									<input type="text" id="name" name="name" class="form-control text1" />
+									<div class="acotacion">
+																	* Nombre del producto + marca + modelo + caracteristicas + color
 									</div>
-								</li>
-							</ul>
-							
+								</div>
+							</div>
 						</div>
-						<div class="clearfix"></div>
-												
-					</div>
-				</div> 
-			<?php 
-					}
-				}
-			
-					
-			 ?>
-						
-		
-			 </div>
-		 <div class="col-md-3 cart-total">
-			 <a class="continue" href="index.php">Continuar comprando</a>
 
-			 <?php if ($cantidad > 0): ?>
-			 	<div class="price-details">
-					 <h3>Detalle de compra</h3>
-					 <span>Total</span>
-					 <span id="subtotal" class="total1">gfdgdfg</span>
-					 <span>Descuento</span>
-					 <span id="discount" class="total1">---</span>
-					 <span>Envío</span>
-					 <span id="delivery" class="total1">dfgdf</span>
-					 <div class="clearfix"></div>				 
-				 </div>	
-				 <ul class="total_price">
-				   <li class="last_price"> <h4>TOTAL</h4></li>	
-				   <li class="last_price"><span id="total">dfgdfg</span></li>
-				   <div class="clearfix"> </div>
-				 </ul>
+
+					</div>
+
+					<div style="margin-top: 3em; float: right; ">
+						<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+						<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
+					</div>
+				</div>
+
 				
-				 
-				  <div class="clearfix"></div>
-				 <a class="order" href="#">Realizar compra</a>
-			 	
-			 <?php endif ?>
-			 
-			 <!--<div class="total-item">
-				 <h3>OPTIONS</h3>
-				 <h4>COUPONS</h4>
-				 <a class="cpns" href="#">Apply Coupons</a>
-				 <p><a href="#">Log In</a> to use accounts - linked coupons</p>
-			 </div> -->
+
+				<div class="tab-pane" id="Tab2">
+
+					<div class="clearfix">
+
+
+					</div>
+
+					<div style="margin-top: 3em; float: right; ">
+						<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
+						<button type="button" id="Previous2" data-toggle="tab" href="#Tab1" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Atras</button>
+						<!-- <button type="submit" id="Next4" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button> -->
+						<button type="submit" id="process" data-toggle="tab" class="btn btn-primary" disabled><i class="fa fa fa-check-circle"></i> Subir imagenes</button>
+					</div>
 			</div>
+		</div>
+	</form>	
+		
 	 </div>
 </div>
 <div class="footer">
@@ -205,6 +161,7 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="misJs/cartQuantity.js"></script>
 <script type="text/javascript" src="misJs/checkout.js"></script>
+<script type="text/javascript" src="misJs/procesoPago.js"></script>
 
 
 <script>
