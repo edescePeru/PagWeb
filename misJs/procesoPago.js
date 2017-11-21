@@ -3,6 +3,31 @@ $(document).ready(function(){
 	$('#Previous2').on('click', function () { PreviousPage(2) });
 	$('.text1').on('input', function() { nextButton(1) });
 
+	$('#departamento').change(function(){
+        var departamento=$('#departamento').val();
+        $('#provincia').load('Script/SelectProvincia.php?departamento='+departamento);
+    }); 
+
+    $('#provincia').change(function(){
+        var provincia=$('#provincia').val();
+        $('#distrito').load('Script/SelectDistrito.php?provincia='+provincia);
+    });
+
+    $(".departamento").select2({
+        placeholder: "Seleccione su departamento",
+        allowClear: true
+    });  
+
+    $(".provincia").select2({
+        placeholder: "Seleccione su provincia",
+        allowClear: true
+    });  
+
+    $(".distrito").select2({
+        placeholder: "Seleccione su distrito",
+        allowClear: true
+    });
+
 });
 
 function nextPage(i) {

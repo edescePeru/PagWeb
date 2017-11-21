@@ -15,6 +15,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
 	<!-- CSS -->
+	<link href="css/select2.min.css" rel="stylesheet" type='text/css' />
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
@@ -35,6 +36,9 @@
 		}
 		.tab-content{
 			margin-top: 1em;
+		}
+		.form-group{
+			    margin-bottom: 4em;
 		}
 	</style>
 </head>
@@ -89,19 +93,95 @@
 
 				<div class="tab-pane active" id="Tab1">
 					<div class="clearfix">
-						<div style=" border-bottom: 1px dotted #CCC; margin-bottom: 1em;">
-							<p>Por favor, seleccione la categoria principal para su producto</p>
+
+						<div class="col-sm-6">
+							<div class="col-xs-12" >
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Departamento</b> </label>
+
+									<div class="col-xs-9">
+										<select class="form-control departamento" style="width: 100%;"  id="departamento">
+				                          <option value=""></option>
+				                          <?php 
+				                            $depa = mysqli_query($conexion, 'SELECT * FROM departamento');
+				                            while($fila = mysqli_fetch_row($depa)){
+				                          ?>
+				                          <option value= "<?=$fila[0]?>"> <?=$fila[1]?> </option>
+				                          <?php } ?>                                             
+				                        </select>
+									</div>
+
+
+								</div>
+							</div>
+
+
+							<div class="col-xs-12" >
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Provincia</b> </label>
+
+									<div class="col-xs-9">
+										<select class="form-control provincia" style="width: 100%;"  name="provincia" id="provincia">
+				                            <option value=""></option>
+				                        </select>
+									</div>
+
+									
+								</div>
+							</div>
+
+
+							<div class="col-xs-12" >
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Distrito</b> </label>
+
+									<div class="col-xs-9">
+										<select class="form-control distrito" style="width: 100%;"  id="distrito" name="recogoDistrito" >
+					                      <option value=""></option>
+					                    </select>
+									</div>
+
+									
+								</div>
+							</div>
 						</div>
 
-						<div class="col-xs-12" >
-							<div class="form-group">
-								<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Nombre del producto</b> </label>
+						<div class="col-sm-6">
+							<div class="col-xs-12" >
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Dirección</b> </label>
 
-								<div class="col-xs-9">
-									<input type="text" id="name" name="name" class="form-control text1" />
-									<div class="acotacion">
-																	* Nombre del producto + marca + modelo + caracteristicas + color
+									<div class="col-xs-9">
+										<input type="text" id="name" name="name" class="form-control text1" />
 									</div>
+
+
+								</div>
+							</div>
+
+
+							<div class="col-xs-12" >
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Referencia</b> </label>
+
+									<div class="col-xs-9">
+										<input type="text" id="name" name="name" class="form-control text1" />
+									</div>
+
+									
+								</div>
+							</div>
+
+
+							<div class="col-xs-12" >
+								<div class="form-group">
+									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Telefono</b> </label>
+
+									<div class="col-xs-9">
+										<input type="text" id="name" name="name" class="form-control text1" />
+									</div>
+
+									
 								</div>
 							</div>
 						</div>
@@ -153,15 +233,18 @@
 	</div>
 </div>
 
+
 <script type="text/javascript" src="js/simpleCart.min.js"> </script>
 <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="js/megamenu.js"></script>
+<script type="text/javascript" src="js/select2.full.min.js"></script>
 <script type="text/javascript" src="misJs/validate.js"></script>
 <script type="text/javascript" src="misJs/message.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="misJs/cartQuantity.js"></script>
 <script type="text/javascript" src="misJs/checkout.js"></script>
 <script type="text/javascript" src="misJs/procesoPago.js"></script>
+
 
 
 <script>
