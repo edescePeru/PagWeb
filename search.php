@@ -10,7 +10,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Buy_shop an E-Commerce online Shopping Category Flat Bootstarp responsive Website Template| Men :: w3layouts</title>
+	<title>Buscar</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -73,6 +73,33 @@
 		</div>
 
 		<div class="col-md-9 w_content">
+		<div class="women">
+				
+			<div class="clearfix"></div>
+			<?php
+				
+				if (!isset($_GET['orden'])) {					
+			?>
+				<div class="feature feature-icon-hover indent first">
+					<a href="search.php?search=<?php echo $search ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+					<a href="search.php?search=<?php echo $search ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+				</div>
+			<?php
+			
+				} else {
+					
+			?>
+				<div class="feature feature-icon-hover indent first">
+					<a href="search.php?search=<?php echo $search ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+					<a href="search.php?search=<?php echo $search ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+				</div>
+			<?php
+				}
+				
+			?>
+			</div>
+			<br>
+			<br>
 		
 		<?php
 			$query = "SELECT * FROM producto WHERE nombrePortada LIKE '%".$search."%'";
@@ -100,8 +127,22 @@
 					$limit = $numeroLotes*($pagina-1);
 				}
 				// HAcer un if que pregunte por $orden y haga una consulta desc precio o asc precio
+				if (isset($_GET['orden'])) {
+					if ($_GET['orden'] == 1) {
+						// De mayor a menor
+						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' ORDER BY precio ASC LIMIT $limit, $numeroLotes ";
 				
-				$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' LIMIT $limit, $numeroLotes";
+					} else {
+						// De menor a mayor
+						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' ORDER BY precio DESC LIMIT $limit, $numeroLotes";
+				
+					}
+					
+				} else {
+					$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' LIMIT $limit, $numeroLotes";
+				
+				}
+				
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
 			?>
@@ -147,28 +188,7 @@
 				<div class="clearfix"></div>
 				<?php
 					
-
-					if (!isset($_GET['page'])) {
-						if (!isset($_GET['orden'])) {
-				?>
-						<br>
-						<select name="orden">
-							<option value="">Precio de Mayor a Menor</option>
-							<option value="">Precio de Menor a Mayor</option>
-						</select>
-						<br><br>
-				<?php
-						} else {
-				?>
-						<br>
-						<select name="orden">
-							<option value="">Precio de Mayor a Menor</option>
-							<option value="">Precio de Menor a Mayor</option>
-						</select>
-						<br><br>
-				<?php
-						}
-						
+					if (!isset($_GET['page'])) {					
 				?>
 					<div class="feature feature-icon-hover indent first">
 						<a href="search.php?search=<?php echo $search ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
