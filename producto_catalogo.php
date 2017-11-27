@@ -236,7 +236,7 @@ session_start();
 										<tbody>
 											<?php 
 									            $resultSet = mysqli_query($conexion, 'SELECT idProducto, nombrePortada, codigo, FechaCreacion, garantia, precio, stock 
-									            										FROM Producto 
+									            										FROM producto 
 									            										WHERE enable = 1 and idCliente = "'.$_SESSION['id'].'"');
 									            while($fila = mysqli_fetch_array($resultSet)){
 									            	$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
