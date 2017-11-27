@@ -196,6 +196,7 @@
 
 												<tbody>
 													<?php 
+													include 'BaseDatos/conexion.php';
 									                  $resultSet = mysqli_query($conexion, 'SELECT SC.idSubCategoria, SC.nombre, C.nombre, C.idCategoria FROM subcategoria SC
 									                  										JOIN Categoria C ON SC.idCategoria = C.idCategoria
 									                  										WHERE SC.enable = 1 and C.enable = 1');
