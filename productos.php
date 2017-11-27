@@ -391,6 +391,7 @@ session_start();
 							<select class="col-sm-9 form-control " id="subcategorias" name="subcategorias">
 								<option value="">Escoja la subcategoría</option>
 								<?php 
+									include_once 'BaseDatos/conexion.php';
 									$resultSet = mysqli_query($conexion, 'SELECT * FROM subcategoria WHERE enable = 1');
 									while($fila = mysqli_fetch_array($resultSet)){
 								?>
@@ -407,7 +408,7 @@ session_start();
 							<select class="col-sm-9 form-control" id="marcas" name="marcas">
 								<option value="">Escoja la marca</option>
 								<?php 
-									include_once 'BaseDatos/conexion.php';
+
 									$resultSet = mysqli_query($conexion, 'SELECT * FROM marca WHERE enable = 1');
 									while($fila = mysqli_fetch_array($resultSet)){
 								?>
