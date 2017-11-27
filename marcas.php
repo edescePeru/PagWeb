@@ -199,6 +199,7 @@
 
 												<tbody>
 													<?php 
+													  include_once 'BaseDatos/conexion.php';
 									                  $resultSet = mysqli_query($conexion, 'SELECT M.idMarca, M.nombre, SC.nombre, SC.idSubcategoria, C.idCategoria
 									                  										FROM marca M
 									                  										JOIN subcategoria SC ON M.idSubcategoria = SC.idSubcategoria

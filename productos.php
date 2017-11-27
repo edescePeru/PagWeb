@@ -407,6 +407,7 @@ session_start();
 							<select class="col-sm-9 form-control" id="marcas" name="marcas">
 								<option value="">Escoja la marca</option>
 								<?php 
+									include_once 'BaseDatos/conexion.php';
 									$resultSet = mysqli_query($conexion, 'SELECT * FROM marca WHERE enable = 1');
 									while($fila = mysqli_fetch_array($resultSet)){
 								?>
