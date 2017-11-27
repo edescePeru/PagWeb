@@ -203,7 +203,7 @@
 									                  $resultSet = mysqli_query($conexion, 'SELECT M.idMarca, M.nombre, SC.nombre, SC.idSubcategoria, C.idCategoria
 									                  										FROM marca M
 									                  										JOIN subcategoria SC ON M.idSubcategoria = SC.idSubcategoria
-									                  										JOIN Categoria C ON SC.idCategoria = C.idCategoria
+									                  										JOIN categoria C ON SC.idCategoria = C.idCategoria
 									                  										WHERE M.enable = 1 and SC.enable = 1');
 									                  while($fila = mysqli_fetch_row($resultSet)){
 									                ?>
