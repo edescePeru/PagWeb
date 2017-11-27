@@ -321,6 +321,7 @@
 									<select class="col-sm-9 form-control" id="categoria" name="categoria">
 										<option selected="selected" class="holder" value="0">Seleccionar categoria</option>
 										<?php 
+											include_once 'BaseDatos/conexion.php';
 											$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
 											while($fila = mysqli_fetch_array($resultSet)){
 										?>
