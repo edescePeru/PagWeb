@@ -264,7 +264,7 @@
 								</li>
 								<li class="divider"></li>
 								<li>
-									<a href="Script/logout.php">
+									<a href="Script/Logout.php">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>
