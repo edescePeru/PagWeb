@@ -10,7 +10,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>EdesceStore</title>
+	<title>Mi Cuenta</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	
@@ -21,109 +21,7 @@
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<style>
-		@media (min-width: 768px){
-			ul.navbar-nav {
-			    width: 230px;
-			}
-
-			ul.navbar-nav > li{
-				width: 235px;
-			}
-		}
-		.navbar-nav{
-			margin: 0;
-		}
-		.navbar-default{
-			background-color: #fff;
-		}
-		.navbar-collapse{
-			padding: 0px;
-		}
-		.affix-sidebar{
-			padding: 0 2em;
-		}
-
-		.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-		    color: #fff;
-		    background-color: #f54d56;
-		    font-weight: bold;
-		}
-
-		.nav > li > a:hover, .nav > li > a:focus{
-			background: #f54d563d;
-			font-weight: bold;
-		}
-
-		.list-content > a{
-			padding-left: 3em;
-		}
-
-		li > a > i.fa {
-			color: #f54d56;
-			margin-right: 0.5em;
-		}
-
-		.btn-primary{
-			background-color: #102e52;
-		}
-
-		.btn-success{
-			background-color: #104610;
-		}
-
-		h3.header{
-			border-bottom: 1.5px solid #e2e0e0;
-		    text-transform: uppercase;
-		    padding-bottom: 0.5em;
-		    margin-bottom: 1em;
-		}
-
-		div.information{
-			width: 43.5em;
-			margin-top: 1em;
-		}
-
-		div.information div[class^='col']{
-			padding: 0;
-		}
-
-		div.information> div[class^='col'] label{
-			padding-left: 5px;
-		}
-
-		.form-group{
-			padding: 0.7em 0;
-		}
-
-		div[class^='modal'] h4{
-			margin: 0;
-		}
-
-		.modal-body .form-group{
-			padding: 0;
-		}
-
-		.proceso{
-			float: left;
-   			padding-right: 5px;
-		}
-
-		div.direccion{
-			width: 55em;
-		}
-
-		label.address{
-			font-size: 15px;
-			padding-right: 10px;
-		}
-
-		div.direccion .form-group{
-			padding: 0 1em;
-		}
-
-		select:focus option.holder {
-		  display: none;
-		}
+		
 	</style>
 </head>
 <body>
@@ -171,7 +69,7 @@
 				<div class="row affix-row">
 				    <div class="col-sm-3 affix-sidebar">
 						<div class="sidebar-nav">
-							<div class="navbar navbar-default" role="navigation">
+							<div class="navbar navbar-default navbar-red" role="navigation">
 						    	<div class="navbar-header">
 							      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
 							      <span class="sr-only">Toggle navigation</span>
@@ -278,7 +176,7 @@
 								</div>
 								<?php } ?>
 			                </div>
-			                <div class="tab-pane active" id="address">
+			                <div class="tab-pane" id="address">
 								<h3 class="header">Mis direcciones</h3>
 			                	<?php 
 									$resultSet = mysqli_query($conexion, 'SELECT C.idCliente, C.nombre, C.apellidos, C.telefono, 

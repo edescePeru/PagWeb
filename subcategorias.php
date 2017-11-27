@@ -24,6 +24,9 @@
 		<!-- ace styles -->
 		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
+		<!-- estilos propios -->
+		<link rel="stylesheet" type="text/css" href="css/style2.css">
+
 		<!--[if lte IE 9]>
 			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<![endif]-->
@@ -314,7 +317,7 @@
 								<label class="col-sm-3 control-label no-padding-right" for="form-field-select-1">Categoria</label>
 								<div class="col-sm-9 ">
 									<select class="col-sm-9 form-control" id="categoria" name="categoria">
-										<option value=""></option>
+										<option selected="selected" class="holder" value="0">Seleccionar categoria</option>
 										<?php 
 											$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
 											while($fila = mysqli_fetch_array($resultSet)){

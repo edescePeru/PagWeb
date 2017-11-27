@@ -2775,6 +2775,111 @@ li.grid > a{
     font-weight: bold;
 }
 
+/*account*/
+@media (min-width: 768px){
+	ul.navbar-nav {
+		width: 230px;
+	}
+
+	ul.navbar-nav > li{
+		width: 235px;
+	}
+}
+.navbar-nav{
+	margin: 0;
+}
+.navbar-red{
+	background-color: #fff;
+}
+.navbar-collapse{
+	padding: 0px;
+}
+.affix-sidebar{
+	padding: 0 2em;
+}
+
+.navbar-red .navbar-nav > li > a, .navbar-red .navbar-nav > li > a:hover, .navbar-red .navbar-nav > li > a:focus {
+    color: #fff;
+    background-color: #f54d56;
+	font-weight: bold;
+}
+
+.nav > li > a:hover, .nav > li > a:focus{
+	background: #f54d563d;
+	font-weight: bold;
+}
+
+.list-content > a{
+	padding-left: 3em;
+}
+
+li > a > i.fa {
+	color: #f54d56;
+	margin-right: 0.5em;
+}
+
+.btn-primary{
+	background-color: #102e52;
+}
+
+.btn-success{
+	background-color: #104610;
+}
+
+h3.header{
+	border-bottom: 1.5px solid #e2e0e0;
+    text-transform: uppercase;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+div.information{
+	width: 43.5em;
+	margin-top: 1em;
+}
+
+div.information div[class^='col']{
+	padding: 0;
+}
+
+div.information> div[class^='col'] label{
+	padding-left: 5px;
+}
+
+.form-group{
+	padding: 0.7em 0;
+}
+
+div[class^='modal'] h4{
+	margin: 0;
+}
+
+.modal-body .form-group{
+	padding: 0;
+}
+
+.proceso{
+	float: left;
+	padding-right: 5px;
+}
+
+div.direccion{
+	width: 55em;
+}
+
+label.address{
+	font-size: 15px;
+	padding-right: 10px;
+}
+
+div.direccion .form-group{
+	padding: 0 1em;
+}
+
+select:focus option.holder {
+	display: none;
+}
+
 /*--responsive design--*/
 @media (max-width:1366px){
 	.icon1 ul {
