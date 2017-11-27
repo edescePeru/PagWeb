@@ -167,7 +167,16 @@ function viewSubcategoria () {
 	$('#Next1').prop('disabled', true);
 	$("#subcategoria").css("display", "block");
 	$("#marca").css("display", "none");
-	$('#subcategoria').load('Script/ComboSelect.php?categoria='+categoria);
+	/*$('#subcategoria').load('Script/ComboSelect.php?categoria='+categoria);*/
+	$('#subcategoria').empty();
+	$.getJSON('Script/ComboSelect.php?categoria='+categoria,function(data)
+	    {
+	    	console.log(data);
+	        $.each(data,function(key,value)
+	        {
+	            $("#subcategoria").append(" <option value='" + value[0]+"' >" + value[1]  + "</option> ");
+	        });
+	    });
 }
 
 function viewMarca () {
@@ -175,7 +184,16 @@ function viewMarca () {
 	$('#Next1').prop('disabled', true);
 	$(".select-subcategoria").css("float", "left");
 	$("#marca").css("display", "block");
-	$('#marca').load('Script/ComboSelect.php?subcategoria='+subcategoria);
+	/*$('#marca').load('Script/ComboSelect.php?subcategoria='+subcategoria);*/
+	$('#marca').empty();
+	$.getJSON('Script/ComboSelect.php?subcategoria='+subcategoria,function(data)
+	    {
+	    	console.log(data);
+	        $.each(data,function(key,value)
+	        {
+	            $("#marca").append(" <option value='" + value[0]+"' >" + value[1]  + "</option> ");
+	        });
+	    });
 }
 
 function viewButton() {

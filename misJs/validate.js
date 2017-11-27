@@ -1,10 +1,14 @@
 $(document).ready(function(){
 	$("#dni").keypress(inputNumber);
+	$("#docIdentity").keypress(inputNumber);
 	$("#phone").keypress(inputNumber);
+	$("#phone1").keypress(inputNumber);
+	$("#phone2").keypress(inputNumber);
 
 	$("input").keyup(validarInput);
 	$("textarea").keyup(validarTextArea);
 	$("#dni").keyup(validarDni);
+	$("#docIdentity").keyup(validarDni);
 	$("#phone").keyup(validarPhone);
 	$("#email").keyup(validarEmail);
 
@@ -15,31 +19,34 @@ function inputNumber() {
 }
 
 function validarInput() {
-	if ($( this ).val()==""){ 
-		$( this ).blur(function() {
-			$( this ).css({"background": "rgba(206, 28, 45, 0.22", "border": "1px solid red"});
-			$( this ).focusin(function(){
-		        		$( this ).css({"background": "white", "border": "1px solid #EEE"});
+	var opcional = $(this).parent().find('span').text();
+	if (opcional != '(opcional)') {
+		if ($( this ).val()==""){ 
+			$( this ).blur(function() {
+				$( this ).css({"background": "rgba(206, 28, 45, 0.22", "border": "1px solid red"});
+				$( this ).focusin(function(){
+			        		$( this ).css({"background": "white", "border": "1px solid #EEE"});
+				});
+			    
+				$( this ).focusout(function(){
+					$( this ).css({"background": "#f7f7f7", "border": "1px solid #EEE"});
+				});
 			});
-		    
-			$( this ).focusout(function(){
-				$( this ).css({"background": "#f7f7f7", "border": "1px solid #EEE"});
-			});
-		});
-	}
+		}
 
-	else {
-		$( this ).blur(function() {
-			$( this ).css({"background": "#f7f7f7", "border": "1px solid #EEE"});
-  			$( this ).focusin(function(){
-		        		$( this ).css({"background": "white", "border": "1px solid #EEE"});
-			});
-		    
-			$( this ).focusout(function(){
+		else {
+			$( this ).blur(function() {
 				$( this ).css({"background": "#f7f7f7", "border": "1px solid #EEE"});
-			});
-		});	
-	}
+	  			$( this ).focusin(function(){
+			        		$( this ).css({"background": "white", "border": "1px solid #EEE"});
+				});
+			    
+				$( this ).focusout(function(){
+					$( this ).css({"background": "#f7f7f7", "border": "1px solid #EEE"});
+				});
+			});	
+		}
+	};
 };
 
 function validarTextArea() {

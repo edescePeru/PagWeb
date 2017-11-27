@@ -10,7 +10,16 @@ $(document).ready(function(){
 
 function viewSubcategoria () {
 	var categoria = $(this).val();
-	$('#subcategoria').load('Script/ComboSelect.php?categoria='+categoria+'&&espacio=1');
+	/*$('#subcategoria').load('Script/ComboSelect.php?categoria='+categoria+'&&espacio=1');*/
+	$.getJSON('Script/ComboSelect.php?categoria='+categoria,function(data)
+	    {
+	    	console.log(data);
+	        $.each(data,function(key,value)
+	        {
+	            $("#subcategoria").append(" <option value='" + value[0]+"' >" + value[1]  + "</option> ");
+	        });
+	    });
+	
 }
 
 
@@ -70,9 +79,8 @@ function showModalEditar() {
 		var marca = $fila.find('[data-marca]').data('marca');
 		console.log(marca);
 
-        $.getJSON('Script/ComboSelectMarca.php?categoria='+categoria,function(data)
+        $.getJSON('Script/ComboSelect.php?categoria='+categoria,function(data)
 	    {
-	    	$("#subcategoria").append("<option ></option>");
 	    	console.log(data);
 	        $.each(data,function(key,value)
 	        {

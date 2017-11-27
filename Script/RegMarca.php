@@ -7,12 +7,12 @@
 	$subcategoria = $_POST['subcategoria'];
 	$marca = $_POST['marca'];
 
-	if ($categoria == "") {
+	if ($categoria <= 0) {
 		echo json_encode(['error' => true, 'message' => 'Es necesario especificar la categoria.']);
 		return;
 	}
 
-	if ($subcategoria == "") {
+	if ($subcategoria <= 0) {
 		echo json_encode(['error' => true, 'message' => 'Es necesario especificar la sub-categoria.']);
 		return;
 	}
