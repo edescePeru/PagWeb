@@ -2246,7 +2246,7 @@ p.cart {
   
 }
 a.order {
-  background:#333;
+  background:#00731f;
   padding: 10px 20px;
   
   font-size: 1em;
@@ -2258,7 +2258,7 @@ a.order {
   margin:3em 0;
 }
 a.order:hover{
-	background:orange;
+	background:#034816;
 }
 .total-item{
 	margin-top:2em;
@@ -2298,7 +2298,7 @@ a.cpns:hover{
 	text-decoration:underline;
 }
 a.continue{
-	background:orange;
+	background: #d24a18;
 	padding:10px 20px;
 	
 	font-size:1em;
@@ -2310,7 +2310,7 @@ a.continue{
    margin-bottom:2em;
 }
 a.continue:hover{
-	background:#333;
+	background:#9a3611;
 }
 ul.total_price{
 	padding: 0;
@@ -2878,6 +2878,11 @@ div.direccion .form-group{
 
 select:focus option.holder {
 	display: none;
+}
+
+.content_price{
+	border: 1px solid grey;
+    padding: 1em;
 }
 
 /*--responsive design--*/

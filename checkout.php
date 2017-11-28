@@ -27,6 +27,10 @@
 		    color: black;
 		    text-align: right;
 		}
+
+		span.total1{
+			text-align: right;
+		}
 	</style>
 </head>
 <body>
@@ -149,25 +153,28 @@
 			 <a class="continue" href="index.php">Continuar comprando</a>
 
 			 <?php if ($cantidad > 0): ?>
-			 	<div class="price-details">
-					 <h3>Detalle de compra</h3>
-					 <span>Total</span>
-					 <span id="subtotal" class="total1">gfdgdfg</span>
-					 <span>Descuento</span>
-					 <span id="discount" class="total1">---</span>
-					 <span>Envío</span>
-					 <span id="delivery" class="total1">dfgdf</span>
-					 <div class="clearfix"></div>				 
-				 </div>	
-				 <ul class="total_price">
-				   <li class="last_price"> <h4>TOTAL</h4></li>	
-				   <li class="last_price"><span id="total">dfgdfg</span></li>
-				   <div class="clearfix"> </div>
-				 </ul>
-				
-				 
-				  <div class="clearfix"></div>
-				 <a class="order" href="procesoPago.php">Realizar compra</a>
+			 	<div class="content_price">
+				 	<div class="price-details">
+						 <h3 style="text-align: center;"><b>Detalle de compra</b></h3>
+						 <span>Total</span>
+						 <span id="subtotal" class="total1">gfdgdfg</span>
+						 <span>Descuento</span>
+						 <span id="discount" class="total1">---</span>
+						 <span>Envío</span>
+						 <span id="delivery" class="total1">dfgdf</span>
+						 <div class="clearfix"></div>				 
+					</div>	
+					<ul class="total_price">
+					   <!-- <li class="last_price"> <h4><b>TOTAL</b></h4></li>	
+					   <li class="last_price"><p id="total">dfgdfg</p></li> -->
+					   <li class="last_price"> <h4><b>TOTAL</b></h4></li>
+					   <li class="last_price" id="total"></li>
+					   <div class="clearfix"> </div>
+					</ul>
+			 	</div>
+			 	
+				<div class="clearfix"></div>
+				<a class="order" href="procesoPago.php">Realizar compra</a>
 			 	
 			 <?php endif ?>
 			 
