@@ -199,10 +199,11 @@
 
 												<tbody>
 													<?php 
+													  include_once 'BaseDatos/conexion.php';
 									                  $resultSet = mysqli_query($conexion, 'SELECT M.idMarca, M.nombre, SC.nombre, SC.idSubcategoria, C.idCategoria
 									                  										FROM marca M
 									                  										JOIN subcategoria SC ON M.idSubcategoria = SC.idSubcategoria
-									                  										JOIN Categoria C ON SC.idCategoria = C.idCategoria
+									                  										JOIN categoria C ON SC.idCategoria = C.idCategoria
 									                  										WHERE M.enable = 1 and SC.enable = 1');
 									                  while($fila = mysqli_fetch_row($resultSet)){
 									                ?>
@@ -320,6 +321,7 @@
 									<select class="col-sm-9 form-control" id="categoria" name="categoria">
 										<option selected="selected" class="holder" value="0">Seleccionar categoria</option>
 										<?php 
+											include_once 'BaseDatos/conexion.php';
 											$resultSet = mysqli_query($conexion, 'SELECT * FROM categoria WHERE enable = 1');
 											while($fila = mysqli_fetch_array($resultSet)){
 										?>

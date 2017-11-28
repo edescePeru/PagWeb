@@ -54,7 +54,7 @@
 					<li class="active">
 						<div class="box_1-cart">
 							<div class="box_11">
-								<a href="script/logout.php" data-toggle="tooltip" data-placement="right" title="Salir">
+								<a href="Script/Logout.php" data-toggle="tooltip" data-placement="right" title="Salir">
 							  		<h4>
 							  			<i class="fa fa-power-off" aria-hidden="true"></i>
 							  			<div class="clearfix"> </div>
