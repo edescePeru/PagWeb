@@ -157,7 +157,7 @@
 				VALUES ('".$prod_codigo."', '".$prod_nombre."', '".$prod_modelo."', ".$prod_stock.", ".$prod_precio.", 
 						'".$prod_descrip_corta."', '".$prod_descrip_larga."', '".$prod_garantia."', '".$prod_color."',
 						'".$box_contenido."', ".$box_largo.", ".$box_ancho.", ".$box_alto.", ".$box_peso.",
-						".$fecha.",".$subcategoria.",".$marca.",".$_SESSION['id'].",1)";
+						'".$fecha."',".$subcategoria.",".$marca.",".$_SESSION['id'].",1)";
 
 	$registro = mysqli_query($conexion, $query);
 
