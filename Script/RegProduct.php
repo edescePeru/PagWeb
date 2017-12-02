@@ -147,7 +147,7 @@
 	}
 
 	setlocale(LC_ALL,"es_ES");
-	$fecha = date("Y")."-".date("m")."-".date("d");
+	$fecha = date('Y-m-d');
 
 
 	$query = "INSERT INTO producto(codigo, nombrePortada, modelo, stock, precio,
