@@ -161,7 +161,7 @@
 
 	$registro = mysqli_query($conexion, $query);
 
-	$idfinal = mysqli_query($conexion, "SELECT MAX(idProducto) FROM Producto");
+	$idfinal = mysqli_query($conexion, "SELECT MAX(idProducto) FROM producto");
 	if ($row = mysqli_fetch_row($idfinal)) {
 		$id = $row[0];
 	}

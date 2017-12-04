@@ -235,7 +235,7 @@ function registerProduct() {
 			}else{
 				alert(response.message);
 				console.log(response.message);
-				//location.href = 'producto_uploadImage.php?idprod='+response.idprod;
+				location.href = 'producto_uploadImage.php?idprod='+response.idprod;
 			}
 		});
 
