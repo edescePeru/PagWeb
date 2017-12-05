@@ -147,21 +147,21 @@
 	}
 
 	setlocale(LC_ALL,"es_ES");
-	$fecha = date("Y")."-".date("m")."-".date("d");
+	$fecha = date('Y-m-d');
 
 
 	$query = "INSERT INTO producto(codigo, nombrePortada, modelo, stock, precio,
 									descripcionCorta, descripcionLarga, garantia, color,
 									contenidoCaja, largoCaja, anchoCaja, altoCaja, pesoCaja,
 									FechaCreacion, idSubCategoria, idMarca, idCliente, enable) 
-				VALUES ('".$prod_codigo."', '".$prod_nombre."', '".$prod_modelo."', '".$prod_stock."', '".$prod_precio."', 
+				VALUES ('".$prod_codigo."', '".$prod_nombre."', '".$prod_modelo."', ".$prod_stock.", ".$prod_precio.", 
 						'".$prod_descrip_corta."', '".$prod_descrip_larga."', '".$prod_garantia."', '".$prod_color."',
-						'".$box_contenido."', '".$box_largo."', '".$box_ancho."', '".$box_alto."', '".$box_peso."',
-						'".$fecha."','".$subcategoria."','".$marca."','".$_SESSION['id']."',1)";
+						'".$box_contenido."', ".$box_largo.", ".$box_ancho.", ".$box_alto.", ".$box_peso.",
+						'".$fecha."',".$subcategoria.",".$marca.",".$_SESSION['id'].",1)";
 
 	$registro = mysqli_query($conexion, $query);
 
-	$idfinal = mysqli_query($conexion, "SELECT MAX(idProducto) FROM Producto");
+	$idfinal = mysqli_query($conexion, "SELECT MAX(idProducto) FROM producto");
 	if ($row = mysqli_fetch_row($idfinal)) {
 		$id = $row[0];
 	}
