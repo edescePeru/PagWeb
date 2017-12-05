@@ -43,11 +43,17 @@ function login(){
 			if (javaScriptVar == '1') {
 				window.history.back();
 			} else {
-				if (response.role == '2') {
-					window.location.href="index.php";
-				} else{
-					window.location.href="panel.php";
+				if (response.user == '1') {
+					var r = confirm("¿Desea ir al panel de control?");
+					if (r == true) {
+					    window.location.href=response.links;
+					} else {
+					    window.location.href='index.php';
+					}
+				}else{
+					window.location.href=response.links;
 				}
+				
 			}
 
 			

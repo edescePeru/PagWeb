@@ -122,7 +122,6 @@
 
 <script>
 	$(document).ready(function(){
-		$(".megamenu").megamenu();
 		$('[data-toggle="tooltip"]').tooltip();  
 	});
 

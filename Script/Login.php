@@ -32,16 +32,24 @@
 	} 
 
 	else{
-		if ($fila = mysqli_fetch_row($acceso)) {
+		if ($fila = mysqli_fetch_array($acceso)) {
 			// Creamos sesión
 			session_start();  
 
-		            // Almacenamos el nombre de usuario en una variable de sesión usuario
-			$_SESSION['id'] = $fila["0"];
-			$_SESSION['user'] = $fila["1"];
-			$_SESSION['email'] = $fila["7"];
-			$_SESSION['role'] = $fila["6"];
-			echo json_encode(['error' => false, 'message' =>'Bienvenido a Edesce Store. Redireccionando...', 'role'=> $fila["6"]]);
+			// Almacenamos el nombre de usuario en una variable de sesión usuario
+			$_SESSION['id'] = $fila["idCliente"];
+			$_SESSION['user'] = $fila["nombre"].' '.$fila["apellidos"];
+			$_SESSION['email'] = $fila["correo"];
+			$_SESSION['role'] = $fila["idTipoCliente"];
+
+			if ($fila["idTipoCliente"] == '1') {
+				$links = 'panel.php';
+			}
+			if ($fila["idTipoCliente"] == '2') {
+				$links = 'index.php';
+			}
+
+			echo json_encode(['error' => false, 'message' =>'Bienvenido a Edesce Store. Redireccionando...', 'user'=> $fila["idTipoCliente"], 'links'=> $links]);
 		    return;
 		}
 	}

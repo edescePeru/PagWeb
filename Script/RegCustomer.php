@@ -86,9 +86,34 @@
 	$registro = mysqli_query($conexion, " INSERT INTO cliente(nombre, apellidos, docIdentidad, telefono, idTipoCliente, correo, password, enable) 
 			VALUES ('".$nombre."','".$apellidos."','".$docIdentidad."','".$telefono."','2','".$correo."','".$encrippwd."','1')");
 
+
 	if ($registro) { 
-		echo json_encode(['error' => false, 'message' => 'Se ha registrado correctamente']);
-		return;
+
+		$acceso = mysqli_query($conexion, "SELECT * FROM cliente WHERE correo = '".$correo."' AND password = '".$encrippwd."'");
+		if ($fila = mysqli_fetch_row($acceso)) {
+			// Creamos sesión
+			session_start();  
+
+		    // Almacenamos el nombre de usuario en una variable de sesión usuario
+			$_SESSION['id'] = $fila["0"];
+			$_SESSION['user'] = $fila["1"];
+			$_SESSION['email'] = $fila["7"];
+			$_SESSION['role'] = $fila["6"];
+
+			if ($fila["6"] = '1') {
+				echo json_encode(['error' => false, 'message' =>'Bienvenido a Edesce Store. Redireccionando...', 'links'=> 'index.php']);
+		    	return;
+			}
+			if ($fila["6"] = '2') {
+				echo json_encode(['error' => false, 'message' =>'Bienvenido a Edesce Store. Redireccionando...', 'links'=> 'panel.php']);
+		    	return;
+			}
+			else{
+				echo json_encode(['error' => false, 'message' =>'Ha ocurrido un problema... vuelva a iniciar sesion', 'links'=> 'login.php']);
+		    	return;
+			}
+		}
+
 	} else {
 		echo json_encode(['error' => true, 'message' => 'Ocurrió un error inesperado. :(']);
 		return;

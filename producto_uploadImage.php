@@ -5,7 +5,7 @@ session_start();
 $idprod = $_GET['idprod'];
 
 $query = mysqli_query($conexion, "SELECT * FROM producto WHERE idProducto = '".$idprod."'");
-$total = mysqli_fetch_row($query);
+$total = mysqli_num_rows($query);
 if($total == 0) { header('Location:producto_catalogo.php');}
 
 ?>
