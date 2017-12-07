@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 	 session_start();
 	 include_once '../../BaseDatos/conexion.php';
 	 $inicioSesion = isset($_SESSION['id']);
@@ -162,22 +162,26 @@
 									<div class="info"> </div>
 								</div>
 							</div>
-						</a>	
+						</a>
 
-						<div class="descripcion">
-							<h6><a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>"><b><?php echo $fila['nombrePortada'] ?>...</b> </a></h6>
-						</div>
-						<div class="size_1">
-							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
-							<div class="clearfix"></div>
-						</div>
+						<div class="body-description">
+							<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
+								<div class="descripcion">
+									<h6><b><?php echo $fila['nombrePortada'] ?>...</b></h6>
+								</div>
+								<div class="size_1">
+									<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
 
-						<div class="size_2">
-							<!--<div class="size_2-left"> 
-								<input type="text" class="item_quantity quantity_1" value="1" />
-							</div>-->
-							<input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
-							<div class="clearfix"> </div>
+							<!-- <div class="size_2"> -->
+								<!--<div class="size_2-left"> 
+									<input type="text" class="item_quantity quantity_1" value="1" />
+								</div>-->
+								<!-- <input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
+								<div class="clearfix"> </div>
+							</div> -->
 						</div>
 					</div>
 				</div>

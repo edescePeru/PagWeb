@@ -416,16 +416,16 @@ h2.m_3 {
   margin:0 0 0 1.6%;
 }
 .col_1_of_3:hover .shop-holder{
-	border: 8px solid #f54d56;
+	border: 4px solid #f54d56;
 }
 .shop-holder{
-	border: 8px solid #ebebeb;
+	border: 4px solid #ebebeb;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
 }
-.shop-holder .product-img a:last-child {
+/*.shop-holder .product-img a:last-child {
   position: absolute;
   bottom: -22px;
   right: 30px;
@@ -440,12 +440,12 @@ h2.m_3 {
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
   border-top-right-radius: 50%;
-  /* border-bottom-right-radius: 50%; */
+  /* border-bottom-right-radius: 50%; 
   border-bottom-left-radius: 50%;
   border-bottom-right-radius: 50%;
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
-}
+}*/
 .shop-holder .product-img a {
   display: block;
   overflow: hidden;
@@ -493,7 +493,8 @@ h2.m_3 {
 }
 .shop-content > div a {
   font-size: 15px;
-  letter-spacing: 2px;
+  letter-spacing: 0px;
+  text-align: right;
 }
 .shop-content h3 {
   margin: 0;
@@ -524,7 +525,7 @@ h2.m_3 {
 	border:1px solid #E4E0E0;
 }
 .row_5{
-	padding: 4% 28% 0 5%;
+	padding: 4% 20% 0 5%;
 }
 .content_bottom-grid{
 	background: #f5f5f5;
@@ -551,11 +552,11 @@ h2.m_3 {
     display: block;
 }
 .shop-holder1{
-	border:1px solid #ebebeb;
+	border:2px solid #dedddd;
 	margin-bottom: 1em;
 }
 .shop-holder1:hover{
-	border:1px solid #f54d56;
+	border:2px solid #f54d56;
 }
 .row_4{
 	background: url(../images/portadas/moda1.png) no-repeat center top;
@@ -1306,13 +1307,15 @@ ul.footer_social li a i.fa-google{
   margin: -4px 0 0 0;
 }
 .size_1 {
-   margin: 0.3em 0 0.8em;
+	margin: 1.3em 0 0;
 }
 span.item_price {
-  color: #000;
-  font-size:1em;
-  font-weight: 700;
-  margin-right: 5%;
+    font-size: 1.05em;
+    font-weight: 700;
+    margin-right: 5%;
+    border: 2px solid #f54d7c;
+    padding: 3px;
+    border-radius: 8px;
 }
 .btn_3{
   border-top-left-radius:0;
@@ -1384,7 +1387,7 @@ select.item_Size {
 	margin:1em 0 0.2em; */
 }
 .content_box h6{
-	color:#999;
+	color:black;
 	font-size:0.85em;
 	line-height:1.5em;
 	margin-bottom: 0;

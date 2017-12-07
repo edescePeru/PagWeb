@@ -12,6 +12,7 @@
 	<!-- CSS -->
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/style2.css" rel='stylesheet' type='text/css' />
 	<link href="css/nivo-slider.css" rel="stylesheet" >
 	<link href="css/mi-slider.css" rel="stylesheet" >
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
@@ -25,6 +26,7 @@
 
 	div.product-img img{
 		height: 16.1em;
+		width: 100%;
 	}
 
 	div.shop-holder1 img{
@@ -38,6 +40,21 @@
 	span.item_price {
     	font-size: 1.09em;
     }
+
+    .shop-content{
+    	margin-bottom: 15px;
+	    margin-top: 15px;
+	    text-align: center;
+	    padding: 0 12px;
+    }
+
+    .destacado {
+	    margin-bottom: 5px;
+	}
+
+	.shop-content h5{
+		margin-bottom: 15px;
+	}
 
 
 </style>
@@ -126,7 +143,7 @@
 </div>	
 
 <div class="content_top">
-	<h3 class="m_1">Ultimos Productos</h3>
+	<h3 class="m_1"><b>Ultimos Productos</b></h3>
 	<div class="container">
 		<div class="box_1">
 			<div class="col-md-7">
@@ -146,17 +163,18 @@
 								<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
 									<img src="Script/images/<?= $fila['image'] ?>" class="img-responsive"  alt="item4">
 								</a>
-								<a href="" class="button item_add"></a>
+								<!-- <a href="" class="button item_add"></a> -->
+							</div>
+							<div class="shop-content">
+								<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>" >
+									<div class="destacado"><b>Destacado</b></div>
+									<h5><?php echo $fila[1]; ?> ...</h5>
+									<span class="amount item_price">S/. <?php echo $fila[2]; ?></span>
+								</a>
 							</div>
 						</div>
 		
-						<div class="shop-content" style="height: 80px;">
-							<div>
-								<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>" rel="tag">Destacado</a>
-							</div>
-							<h4><a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?> ... </a></h4>
-							<span class="amount item_price">S/. <?php echo $fila[2]; ?></span>
-						</div>
+						
 					</div>
 
 				<?php 
@@ -182,7 +200,7 @@
 
 <div class="content_bottom">
 	<div class="container">
-		<h2 class="m_3">Lo mas Buscado</h2>
+		<!-- <h2 class="m_3">Lo mas Buscado</h2>
 		<div class="grid_1">
 			<div class="col-md-6 blog_1">
 				<a href="#">
@@ -214,7 +232,14 @@
 				</a>
 			</div>
 			<div class="clearfix"></div>
-		</div>
+		</div> -->
+
+		<ul id="flexiselDemo3">
+		    <li><img src="images/1.jpg" /></li>
+		    <li><img src="images/2.jpg" /></li>
+		    <li><img src="images/3.jpg" /></li>
+		    <li><img src="images/4.jpg" /></li>                                                 
+		</ul>    
 	</div>	
 </div>
 
@@ -233,12 +258,19 @@
 		?>
 			<div class="col_1_of_3 span_1_of_3">
 				<div class="shop-holder1">
-					<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
-					<img src="Script/images/<?= $fila['image'] ?>" class="img-responsive" >
-				</div>
-				<div class="shop-content" style="height: 80px;">
-					<h4><a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>"><?php echo $fila[1]; ?> ... </a></h4>
-					<span><span class="amount">S/. <?php echo $fila[2]; ?></span></span>
+					<div class="product-img">
+						<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
+							<img src="Script/images/<?= $fila['image'] ?>" class="img-responsive"  alt="item4">
+						</a>
+						<!-- <a href="" class="button item_add"></a> -->
+					</div>
+					<div class="shop-content">
+						<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>" >
+							<div class="destacado"><b>Destacado</b></div>
+							<h5><?php echo $fila[1]; ?> ...</h5>
+							<span class="amount item_price">S/. <?php echo $fila[2]; ?></span>
+						</a>
+					</div>
 				</div>
 			</div>
 		<?php 
@@ -275,10 +307,21 @@
 <script type="text/javascript" src="js/megamenu.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+<script type="text/javascript" src="js/jquery.flexisel.js"></script>
 
 <script type="text/javascript"> 
 	$(window).on('load', function() {
 	    $('#slider').nivoSlider(); 
+
+	     $("#flexiselDemo3").flexisel({
+	        visibleItems: 3,
+	        itemsToScroll: 1,         
+	        autoPlay: {
+	            enable: true,
+	            interval: 5000,
+	            pauseOnHover: true
+	        }        
+	    });
 	}); 
 
 	$(document).ready(function(){
@@ -294,6 +337,7 @@
 		window.scrollTo(0,1); 
 	} 
 </script>
+
 <script type="text/javascript" src="notify/bootstrap-notify.min.js"></script>
 <script type="text/javascript" src="misJs/cartQuantity.js"></script>
 <script type="text/javascript" src="misJs/cartShop2.js"></script>
