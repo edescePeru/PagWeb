@@ -151,7 +151,7 @@
 							SC.nombre, P.image
 								FROM producto P
 								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
-								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 LIMIT $limit, $numeroLotes";
+								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 ";
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
 			?>
