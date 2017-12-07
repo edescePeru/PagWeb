@@ -11,7 +11,7 @@ $(document).ready(function(){
 
 function showModalPicture() {
 	var dato = $(this).data("picture");
-	$('#modal-body').load('Script/Archivo.php?idprod='+dato);
+	$('#modal-body').load('Script/archivos.php?idprod='+dato);
 	$("#modal-picture").modal({
 			show:true,
 			backdrop:'static'
