@@ -145,6 +145,8 @@
 
 				$subcateg = str_replace("_"," ",$subcategoria);
 
+				echo $subcateg;
+
 				$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, 
 							SC.nombre, P.image
 								FROM producto P
