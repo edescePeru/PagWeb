@@ -24,13 +24,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	
 	<style>
-		div.descripcion{
-			height: 4em;
-		}
-		img.img-responsive{
-			width: 150px;
-			height: 200px;
-		}
+		
 	</style>
 
 </head>	
