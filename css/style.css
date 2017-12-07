@@ -1381,12 +1381,16 @@ select.item_Size {
   margin-left: 0;
 }
 
+.grid1_of_4.simpleCart_shelfItem:nth-child(4n+5) > .content_box{
+	margin-top: 14px;
+}
+
 .grid1_of_4.simpleCart_shelfItem:nth-child(4n+5):before {
     position: absolute;
     width: 400%;
-    margin-top: -24px;
+    margin-top: 0px;
     max-width: 947px;
-    border-bottom: solid 1px #eee;
+    border-bottom: solid 1px #eee;	
     content: '';
 }
 
