@@ -1372,13 +1372,24 @@ select.item_Size {
 }
 /*-- end scrollpane --*/
 .grid1_of_4 {
-  float: left;
-  width: 23.22222%;
-  margin-left: 2.33333%;
+  	float: left;
+  	width: 23.22222%;
+	padding-bottom: 12px;
+    margin-bottom: 12px;
 }
-.grid1_of_4:first-child {
+.grid1_of_4:nth-child(4n+1) {
   margin-left: 0;
 }
+
+.grid1_of_4.simpleCart_shelfItem:nth-child(4n+5):before {
+    position: absolute;
+    width: 400%;
+    margin-top: -24px;
+    max-width: 947px;
+    border-bottom: solid 1px #eee;
+    content: '';
+}
+
 .content_box h5 {
 	color:#999;
 	font-size:1.05em;
