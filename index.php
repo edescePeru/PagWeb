@@ -235,10 +235,61 @@
 		</div> -->
 
 		<ul id="flexiselDemo3">
-		    <li><img src="images/1.jpg" /></li>
+		<?php 
+			include 'BaseDatos/conexion.php';
+			$query = "SELECT idProducto, left(nombrePortada, 35), precio, image FROM producto WHERE vip = 1 ORDER BY idProducto DESC LIMIT 3";
+			$result = mysqli_query($conexion, $query);
+			$data = [];
+			if (mysqli_num_rows($result)>0) {
+				while ($fila = mysqli_fetch_array($result)) {
+		?>
+	    	<li>
+		    	<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
+			    	<div class="flexisel-img">
+				   		<div>
+				   			<img src="Script/images/<?= $fila['image'] ?>" />
+				   		</div>
+				   		<div class="flexisel-text">
+							<h5><?php echo $fila[1]; ?> ...</h5>
+							<span class="amount item_price">S/. <?php echo $fila[2]; ?></span>
+				   		</div>
+				   	</div>
+		    	</a>
+	    	</li>
+	    <?php 
+				}
+			}
+
+		?>
+		
+		<!-- 	
+		
+		<li>
+				<div class="col_1_of_3 span_1_of_3">
+					<div class="shop-holder1">
+						<div class="product-img">
+							<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>">
+								<img src="Script/images/<?= $fila['image'] ?>" class="img-responsive"  alt="item4">
+							</a>
+						</div>
+						<div class="shop-content">
+							<a href="product/content/product.php?idprod=<?php echo $fila[0]; ?>" >
+								<div class="destacado"><b>Destacado</b></div>
+								<h5><?php echo $fila[1]; ?> ...</h5>
+								<span class="amount item_price">S/. <?php echo $fila[2]; ?></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</li>
+		 -->
+<!-- 		    <li>
+		    <img src="images/1.jpg" />
+
+		    </li>
 		    <li><img src="images/2.jpg" /></li>
 		    <li><img src="images/3.jpg" /></li>
-		    <li><img src="images/4.jpg" /></li>                                                 
+		    <li><img src="images/4.jpg" /></li>      -->                                            
 		</ul>    
 	</div>	
 </div>
@@ -314,13 +365,13 @@
 	    $('#slider').nivoSlider(); 
 
 	     $("#flexiselDemo3").flexisel({
-	        visibleItems: 3,
+	        visibleItems: 5,
 	        itemsToScroll: 1,         
-	        autoPlay: {
+	        /*autoPlay: {
 	            enable: true,
 	            interval: 5000,
 	            pauseOnHover: true
-	        }        
+	        }  */      
 	    });
 	}); 
 

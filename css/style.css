@@ -2921,11 +2921,11 @@ div.descripcion{
     padding: 0 10px;
 }
 
-img.img-responsive{
+/*img.img-responsive{
 	width: 150px;
 	height: 200px;
 }
-
+*/
 /*--responsive design--*/
 @media (max-width:1366px){
 	.icon1 ul {
