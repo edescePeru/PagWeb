@@ -38,7 +38,7 @@
 		
 		$data = [];
 		$departamento = $_GET['departamento'];
-		$prov = mysqli_query($conexion, ' Select * from provincia where idDepartamento  = "'.$departamento.'"');
+		$prov = mysqli_query($conexion, 'SELECT * FROM provincia WHERE idDepartamento = "'.$departamento.'"');
 		
 		/*echo '<option selected="selected" class="holder" value="0">Seleccionar provincia</option>';
 		while($fila = mysqli_fetch_row($prov)){

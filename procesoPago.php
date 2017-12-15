@@ -1,11 +1,21 @@
 <?php 
-	 session_start();
-	 $inicioSesion = isset($_SESSION['id']);
+	include 'BaseDatos/conexion.php'; 
+	session_start();
+	$inicioSesion = isset($_SESSION['id']);
 
-	 if ($inicioSesion) {
+	if ($inicioSesion) {
 		$user = $_SESSION['user'];
 		$email = $_SESSION['email'];
-	 }
+	}
+
+	$query = mysqli_query($conexion, "SELECT DISTINCT * FROM carrito C 
+                        INNER JOIN detacarrito DC ON C.idCarrito = DC.idCarrito
+                        INNER JOIN producto P ON DC.idProducto = P.idProducto
+                        INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
+                        INNER JOIN marca M ON M.idMarca = P.idMarca
+                        WHERE C.idCliente = ".$_SESSION['id']." AND C.sold = 1");
+	$total = mysqli_num_rows($query);
+	if($total <= 0) { header('Location:checkout.php');}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -19,29 +29,10 @@
 	<link href="css/select2.min.css" rel="stylesheet" type='text/css' />
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<link href="css/style2.css" rel='stylesheet' type='text/css' />
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<style>
-		.frase{
-			margin-bottom: 17em;
-		    font-weight: bold;
-		    color: black;
-		    text-align: right;
-		}
-		.register-content{
-			margin-top: 0.8em;
-		}
-		.cont-body{
-			margin-bottom: 1em;
-		}
-		.tab-content{
-			margin-top: 1em;
-		}
-		.form-group{
-			    margin-bottom: 4em;
-		}
-	</style>
 </head>
 <body>
 
@@ -67,8 +58,8 @@
 				<input type="submit" value="Subscribe" id="submit" name="submit">
 				<div id="response"></div>
 			</div>
-	 		<div class="clearfix"></div>
-		</div>
+		 		<div class="clearfix"></div>
+			</div>
 
 		<div class="clearfix"></div>
 	</div>
@@ -76,146 +67,275 @@
 
 <div class="container cont-body">
 	<div class="check">	 
-		<h1>Proceso de Compra </h1>
-		<div class="register-content">
-			<ul class="nav nav-tabs ">
-				<li class="active" style="pointer-events: none;">
-					<a  data-toggle="tab1">Categoría de tu producto</a>
-				</li>
-				<li style="pointer-events: none;">
-					<a  data-toggle="tab2">Informacion de tu producto</a>
-				</li>
-			</ul>
-		</div>
+		<h1 class="id" id="<?= $_SESSION['id'] ?>">Informacion del pedido </h1>
+		<div class="col-sm-9">
 
-		<form id="product-register" method="post" accept-charset="utf-8">
-
-			<div class="tab-content">
-
-				<div class="tab-pane active" id="Tab1">
-					<div class="clearfix">
-
-						<div class="col-sm-6">
-							<div class="col-xs-12" >
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Departamento</b> </label>
-
-									<div class="col-xs-9">
-										<select class="form-control departamento" style="width: 100%;"  id="departamento">
-				                          <option value=""></option>
-				                          <?php 
-				                            $depa = mysqli_query($conexion, 'SELECT * FROM departamento');
-				                            while($fila = mysqli_fetch_row($depa)){
-				                          ?>
-				                          <option value= "<?=$fila[0]?>"> <?=$fila[1]?> </option>
-				                          <?php } ?>                                             
-				                        </select>
-									</div>
-
-
-								</div>
-							</div>
-
-
-							<div class="col-xs-12" >
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Provincia</b> </label>
-
-									<div class="col-xs-9">
-										<select class="form-control provincia" style="width: 100%;"  name="provincia" id="provincia">
-				                            <option value=""></option>
-				                        </select>
-									</div>
-
-									
-								</div>
-							</div>
-
-
-							<div class="col-xs-12" >
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Distrito</b> </label>
-
-									<div class="col-xs-9">
-										<select class="form-control distrito" style="width: 100%;"  id="distrito" name="recogoDistrito" >
-					                      <option value=""></option>
-					                    </select>
-									</div>
-
-									
-								</div>
-							</div>
+			<div class="panel panel-default">
+				<?php 
+					$resultSet = mysqli_query($conexion, 'SELECT C.idCliente, C.nombre, C.apellidos, C.telefono, 
+						DC.telefono1, DC.telefono2, DC.tipoDireccion, DC.direccion, DC.numero, DC.dpto, 
+						DC.urbanizacion, DC.referencia, DC.idDistrito, D.descripcion as Distrito, D.idProvincia, 
+						P.descripcion as Provincia, P.idDepartamento, DP.descripcion as Departamento 
+						FROM cliente C
+						JOIN direccioncliente DC ON C.idCliente = DC.idCliente
+						JOIN distrito D ON DC.idDistrito = D.IdDistrito
+						JOIN provincia P ON D.idProvincia = P.IdProvincia
+						JOIN departamento DP ON P.idDepartamento = DP.IdDepartamento
+						WHERE C.enable = 1 and C.idCliente = "'.$_SESSION['id'].'"');
+					$total = mysqli_num_rows($resultSet);
+				?>
+				<div class="panel-heading">
+					<div class="row"> 
+						<div class="col-sm-9 panel-tittle">
+							<i class="fa fa-truck" aria-hidden="true"> </i> Direccion de envio
 						</div>
-
-						<div class="col-sm-6">
-							<div class="col-xs-12" >
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Dirección</b> </label>
-
-									<div class="col-xs-9">
-										<input type="text" id="name" name="name" class="form-control text1" />
-									</div>
-
-
-								</div>
-							</div>
-
-
-							<div class="col-xs-12" >
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Referencia</b> </label>
-
-									<div class="col-xs-9">
-										<input type="text" id="name" name="name" class="form-control text1" />
-									</div>
-
-									
-								</div>
-							</div>
-
-
-							<div class="col-xs-12" >
-								<div class="form-group">
-									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> <b>Telefono</b> </label>
-
-									<div class="col-xs-9">
-										<input type="text" id="name" name="name" class="form-control text1" />
-									</div>
-
-									
-								</div>
-							</div>
+						<div class="col-sm-3">
+							<?php if ($total <= 0) { ?>
+								<button type="button" id="registrar" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary"> <i class="fa fa-check-square-o"></i> Guardar Direccion</button>
+							<?php }else{ ?>
+								<button type="button" id="editar" style="width: 150px;" class="btn btn-danger"> <i class="fa fa-pencil-square-o"></i>Editar Direccion</button>
+							<?php } ?>
 						</div>
-
-
-					</div>
-
-					<div style="margin-top: 3em; float: right; ">
-						<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-						<button type="button" id="Next1" data-toggle="tab" href="#Tab2" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button>
 					</div>
 				</div>
-
-				
-
-				<div class="tab-pane" id="Tab2">
-
-					<div class="clearfix">
-
-
+				<div class="panel-body">
+					<?php
+						if ($total <= 0) {
+					?>
+					<form id="form-address" method="post" accept-charset="utf-8">
+						<div class="row address-register">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Teléfono/Celular:</label>	
+									<?php $acceso = mysqli_query($conexion, "SELECT telefono FROM cliente
+				                        WHERE idCliente = '".$_SESSION['id']."' ");
+									    $telefono = mysqli_fetch_row($acceso);
+									?>							
+									<input type="text" class="form-control" id="phone1" name="phone1" value="<?= $telefono['0']?>">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Tipo de Direccion:</label>
+									<select class="form-control" id="typeaddress" name="typeaddress">
+										<option value="Casa">Casa</option>
+										<option value="Departamento">Departamento</option>
+										<option value="Condominio">Condominio</option>
+										<option value="Oficina">Oficina</option>
+										<option value="Local">Local</option>
+										<option value="Centocomercial">Cento Comercial</option>
+										<option value="Mercado">Mercado</option>
+										<option value="Galeria">Galería</option>
+										<option value="Otro">Otro</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Nro/Lote/Mz:</label>								
+									<input type="text" class="form-control" id="number" name="number">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Ubanizacion <span>(opcional)</span>:</label>								
+									<input type="text" class="form-control" id="street" name="street">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Departamento:</label>
+									<select class="form-control" id="departamento" name="departamento">
+										<option selected="selected" class="holder" value="0">Seleccionar departamento</option>
+									    <?php 
+									        $depa = mysqli_query($conexion, 'SELECT * FROM departamento');
+									       	while($fila = mysqli_fetch_row($depa)){
+									    ?>
+									        <option value= "<?=$fila[0]?>"> <?=$fila[1]?> </option>
+									    <?php } ?>
+									</select>
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Distrito:</label>
+									<select class="form-control" id="distrito" name="distrito">
+										<option selected="selected" class="holder" value="0">Seleccionar distrito</option>
+									</select>
+								</div>				
+							</div>	
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Otro Teléfono/Celular <span>(opcional)</span>:</label>								
+									<input type="text" class="form-control" id="phone2" name="phone2">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Direccion:</label>								
+									<input type="text" class="form-control" id="address" name="address">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Dpto/Interior <span>(opcional)</span>:</label>								
+									<input type="text" class="form-control" id="dpto" name="dpto">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Referencia <span>(opcional)</span>:</label>								
+									<input type="text" class="form-control" id="referencia" name="referencia">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Provincia:</label>
+									<select class="form-control" id="provincia" name="provincia">
+										<option selected="selected" class="holder" value="0">Seleccionar provincia</option>
+									</select>
+								</div>
+							</div>
+						</div>	
+					</form>
+					<?php }else{ 
+						while($fila = mysqli_fetch_array($resultSet)){
+					?>
+					<div>
+						<div class="col-sm-6" style="    border-right: 1px dashed #dad7d7;">
+							<div class="form-group details">
+							    <label class="control-label col-sm-6 details-tittle">Cliente:</label>
+								<div class="col-sm-6 details-body" >
+									<p id="cliente"><?= $fila['nombre'] ?> <?= $fila['apellidos'] ?></p>
+							    </div>
+							</div>
+							<div class="form-group details">
+							    <label class="control-label col-sm-6 details-tittle">Telefono Principal:</label>
+								<div class="col-sm-6 details-body" >
+									<p id="phone1"> <?= $fila['telefono1'] ?></p>
+							    </div>
+							</div>
+							<div class="form-group details">
+							    <label class="control-label col-sm-6 details-tittle">Telefono Secundario:</label>
+								<div class="col-sm-6 details-body" >
+									<p id="phone2"><?php $fila['telefono2'] ?></p>
+							    </div>
+							</div>
+						</div>																	
+						<div class="col-sm-6">
+							<div class="form-group details">
+							    <label class="control-label col-sm-6 tittle-address">Direccion:</label>
+								<div class="col-sm-6 body-address" >
+									<p>
+										<span id="address"><?= $fila['direccion'] ?></span> <br> 
+										<span id="number"><?= $fila['numero'] ?></span> <br> 
+										<?php if ($fila['dpto'] != ""){ ?>
+											<span id="dpto"><?= $fila['dpto'] ?></span> <br>
+										<?php } ?>
+										<?php if ($fila['urbanizacion'] != ""){ ?>
+											<span id="street"><?= $fila['urbanizacion'] ?></span> <br> 
+										<?php } ?>													 
+										<?php if ($fila['referencia'] != ""){ ?>
+											<span id="referencia"><?= $fila['referencia'] ?></span> <br> 
+										<?php } ?>													 
+										<span id="typeaddress"><?= $fila['tipoDireccion'] ?></span> <br>
+										<span class="distrito" id="<?= $fila['idDistrito'] ?>"><?= $fila['Distrito'] ?></span> - <span class="provincia" id="<?= $fila['idProvincia'] ?>"><?= $fila['Provincia'] ?></span> - <span class="departamento" id="<?= $fila['idDepartamento'] ?>"><?= $fila['Departamento'] ?></span>
+									</p>
+								</div>
+							</div>
+						</div>
 					</div>
+					<?php }} ?>
+				</div>
+			</div>
 
-					<div style="margin-top: 3em; float: right; ">
-						<a  href="producto_catalogo.php" class="btn btn-danger" style="width: 150px;"  OnClick="return confirm('¿Desea salir y perder los datos del envío?');"> <i class="fa fa-times-circle"></i> Cancelar</a>
-						<button type="button" id="Previous2" data-toggle="tab" href="#Tab1" class="btn btn-primary" ><i class="fa fa-arrow-circle-left"></i> Atras</button>
-						<!-- <button type="submit" id="Next4" data-toggle="tab" href="#Tab5" style="width: 150px;" class="btn btn-primary" disabled><i class="fa fa-arrow-circle-right"></i> Siguiente</button> -->
-						<button type="submit" id="process" data-toggle="tab" class="btn btn-primary" disabled><i class="fa fa fa-check-circle"></i> Subir imagenes</button>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row"> 
+						<div class="col-sm-9 panel-tittle">
+							<i class="fa fa-shopping-basket " aria-hidden="true"> </i> Productos pedidos
+						</div>
 					</div>
+				</div>
+				<div class="panel-body">	
+				 	<?php 
+						include 'BaseDatos/conexion.php'; 
+					 	$query = "SELECT DISTINCT DC.idCarrito, P.idProducto, P.nombrePortada , M.nombre , DC.cantidad, DC.precio, S.nombre, P.image, P.stock FROM carrito C 
+			                        INNER JOIN detacarrito DC ON C.idCarrito = DC.idCarrito
+			                        INNER JOIN producto P ON DC.idProducto = P.idProducto
+			                        INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
+			                        INNER JOIN marca M ON M.idMarca = P.idMarca
+			                        WHERE C.idCliente = ".$_SESSION['id']." AND C.sold = 1";
+						$result = mysqli_query($conexion, $query);
+						$data = [];
+
+						$cantidad = mysqli_num_rows($result);
+
+						if ($cantidad>0) {
+							while ($fila = mysqli_fetch_array($result)) {
+								array_push($data, [$fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5], $fila[6], $fila[7], $fila[8]]);
+							}
+						}else{
+					?>
+					<div class="frase">
+						TU CARRITO ESTA VACÍO. ¡AGRÉGALE TUS PRODUCTOS FAVORITOS Y 
+						DISFRUTA DEL PLACER DE SEGUIR COMPRANDO!...
+					</div>
+					<?php
+						}
+
+						//echo count($data);
+						//var_dump($data);
+
+						for ($i=0; $i <count($data) ; $i++) { 
+							for($j=$i+1;$j<=count($data)-1;$j++) {	
+								if($data[$i][1]==$data[$j][1]){
+									$data[$j]['borrar']=true;
+								}
+							}
+						}
+						//var_dump($data);
+
+						for ($i=0; $i <count($data) ; $i++) { 
+							if (!isset($data[$i]['borrar'])) {
+					?>
+					<div class="cart-header">
+						<div class="cart-sec simpleCart_shelfItem">
+							<div class="cart-item small-image">
+								<img src="Script/images/<?php echo $data[$i][7] ?>" class="img-responsive" alt=""/>
+									
+							</div>
+							<div class="cart-item-info small-details">
+								<div class="feature feature-icon-hover indent first">
+									<a data-delete data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" href="" title=""><i class="fa fa-close pull-right " aria-hidden="true"></i></a>
+								</div>
+								<h3><a href="#"><?php echo $data[$i][2] ?></a><span>Marca: <?php echo $data[$i][3] ?></span></h3>
+								<ul class="qty">
+									<li><p><b>Precio:</b> S/. <?php echo $data[$i][5] ?></p></li>
+									<li><div>Cantidad: </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
+									<li>
+										<div class="feature feature-icon-hover indent first">
+											<a href="" title="" data-stock='<?php echo $data[$i][8] ?>' data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-plus><i class="fa fa-plus pull-left " aria-hidden="true"></i></a>
+											<a href="" title="" data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-minus><i class="fa fa-minus" aria-hidden="true"></i></a>
+										</div>
+									</li>
+								</ul>		
+							</div>
+							<div class="clearfix"></div>
+															
+						</div>
+					</div> 
+					<?php 
+							}
+						}	
+					?>
+				</div>
 			</div>
 		</div>
-	</form>	
-		
-	 </div>
+		<div class="col-sm-3">
+				<div class="panel panel-default total-cart">
+					<div class="panel-body">
+						<div class="price-details">
+							<h3 style="text-align: center;"><b>DETALLE DE COMPRA</b></h3>
+							<span><b>Total</b></span>
+							<span id="subtotal" class="total1">gfdgdfg</span>
+							<span><b>Descuento</b></span>
+							<span id="discount" class="total1">---</span>
+							<span><b>Envío</b></span>
+							<span id="delivery" class="total1">dfgdf</span>
+							<div class="clearfix"></div>				 
+						</div>	
+						<div class="price-total">
+							<span><b>TOTAL</b></span>
+							<span id="total" class="total1">dfgdf</span>
+							<div class="clearfix"></div>				 
+						</div>
+					</div>
+				</div>
+		</div>
+	</div>
 </div>
 <div class="footer">
 	<div class="container">
@@ -232,6 +352,107 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<div id="modal-direccion" class="modal fade" tabindex="-1">
+	<div class="modal-dialog direccion">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="smaller lighter blue no-margin"><b><div id="proceso" class="proceso">Nueva</div> Direccion</b></h4>
+			</div>
+			
+			<form class="form-horizontal" role="form" id="form-edit-address">
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Teléfono/Celular:</label>	
+								<?php $acceso = mysqli_query($conexion, "SELECT telefono FROM cliente
+                                       WHERE idCliente = '".$_SESSION['id']."' ");
+								    $telefono = mysqli_fetch_row($acceso);
+								?>							
+								<input type="text" class="form-control" id="phone1" name="phone1" value="<?= $telefono['0']?>">
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Tipo de Direccion:</label>
+								<select class="form-control" id="typeaddress" name="typeaddress">
+									<option value="Casa">Casa</option>
+									<option value="Departamento">Departamento</option>
+									<option value="Condominio">Condominio</option>
+									<option value="Oficina">Oficina</option>
+									<option value="Local">Local</option>
+									<option value="Centocomercial">Cento Comercial</option>
+									<option value="Mercado">Mercado</option>
+									<option value="Galeria">Galería</option>
+									<option value="Otro">Otro</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Nro/Lote/Mz:</label>								
+								<input type="text" class="form-control" id="number" name="number">
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Ubanizacion <span>(opcional)</span>:</label>								
+								<input type="text" class="form-control" id="street" name="street">
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Departamento:</label>
+								<select class="form-control" id="departamento" name="departamento">
+									<option selected="selected" class="holder" value="0">Seleccionar departamento</option>
+				                    <?php 
+				                        $depa = mysqli_query($conexion, 'SELECT * FROM departamento');
+				                        while($fila = mysqli_fetch_row($depa)){
+				                    ?>
+				                    	<option value= "<?=$fila[0]?>"> <?=$fila[1]?> </option>
+				                    <?php } ?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Distrito:</label>
+								<select class="form-control" id="distrito" name="distrito">
+									<option selected="selected" class="holder" value="0">Seleccionar distrito</option>
+								</select>
+							</div>
+							
+						</div>	
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Otro Teléfono/Celular <span>(opcional)</span>:</label>								
+								<input type="text" class="form-control" id="phone2" name="phone2">
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Direccion:</label>								
+								<input type="text" class="form-control" id="address" name="address">
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Dpto/Interior <span>(opcional)</span>:</label>								
+								<input type="text" class="form-control" id="dpto" name="dpto">
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Referencia <span>(opcional)</span>:</label>								
+								<input type="text" class="form-control" id="referencia" name="referencia">
+							</div>
+							<div class="form-group">
+								<label class="control-label no-padding-right address">Provincia:</label>
+								<select class="form-control" id="provincia" name="provincia">
+									<option selected="selected" class="holder" value="0">Seleccionar provincia</option>
+								</select>
+							</div>
+
+						</div>
+					</div>					
+				</div>
+
+				<div class="modal-footer">
+					<button id="btn-address" class="btn btn-primary pull-rigth" >
+						<i class="ace-icon fa fa-save"></i>
+						<b>Guardar</b>
+					</button>
+				</div>
+			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
 </div>
 
 

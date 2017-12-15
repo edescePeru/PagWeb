@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 	 session_start();
 	 include_once '../../BaseDatos/conexion.php';
 	 $inicioSesion = isset($_SESSION['id']);
@@ -24,13 +24,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	
 	<style>
-		div.descripcion{
-			height: 4em;
-		}
-		img.img-responsive{
-			width: 150px;
-			height: 200px;
-		}
+		
 	</style>
 
 </head>	
@@ -149,7 +143,8 @@
 							SC.nombre, P.image
 								FROM producto P
 								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
-								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 LIMIT $limit, $numeroLotes";
+								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 ";
+				/*LIMIT $limit, $numeroLotes*/
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {
 			?>
@@ -162,22 +157,26 @@
 									<div class="info"> </div>
 								</div>
 							</div>
-						</a>	
+						</a>
 
-						<div class="descripcion">
-							<h6><a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>"><b><?php echo $fila['nombrePortada'] ?>...</b> </a></h6>
-						</div>
-						<div class="size_1">
-							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
-							<div class="clearfix"></div>
-						</div>
+						<div class="body-description">
+							<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
+								<div class="descripcion">
+									<h6><b><?php echo $fila['nombrePortada'] ?>...</b></h6>
+								</div>
+								<div class="size_1">
+									<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
 
-						<div class="size_2">
-							<!--<div class="size_2-left"> 
-								<input type="text" class="item_quantity quantity_1" value="1" />
-							</div>-->
-							<input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
-							<div class="clearfix"> </div>
+							<!-- <div class="size_2"> -->
+								<!--<div class="size_2-left"> 
+									<input type="text" class="item_quantity quantity_1" value="1" />
+								</div>-->
+								<!-- <input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
+								<div class="clearfix"> </div>
+							</div> -->
 						</div>
 					</div>
 				</div>

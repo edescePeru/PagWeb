@@ -13,6 +13,8 @@ $(document).ready(function(){
 });
 
 function viewProvincia () {
+	$('#provincia').empty();
+	$('#provincia').append( '<option selected="selected" class="holder">Seleccionar provincia</option>' );
 	var departamento = $(this).val();
 	/*$('#provincia').load('Script/ComboSelect.php?departamento='+departamento);*/
 
@@ -30,6 +32,8 @@ function viewProvincia () {
 }
 
 function viewDistrito () {
+	$('#distrito').empty();
+	$('#distrito').append( '<option selected="selected" class="holder">Seleccionar distrito</option>' );
 	var provincia = $(this).val();
 	/*$('#distrito').load('Script/ComboSelect.php?provincia='+provincia);*/
 

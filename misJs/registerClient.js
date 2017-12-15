@@ -30,7 +30,7 @@ function enviarFormulario(){
 			alert(response.message);
 			$( response.input ).css({"background": "rgba(206, 28, 45, 0.22", "border": "1px solid red"});
 			$( response.input ).focusin(function(){
-		        		$( response.input ).css({"background": "white", "border": "1px solid #EEE"});
+		        $( response.input ).css({"background": "white", "border": "1px solid #EEE"});
 			});
 		    
 			$( response.input ).focusout(function(){
@@ -38,7 +38,7 @@ function enviarFormulario(){
 			});
 		}else{
 			alert(response.message);
-			location.reload();
+			window.location.href=response.links;
 		}
 
 	});
