@@ -98,6 +98,7 @@
 	    <img src="images/Slider/d.jpg" alt="" title="#htmlcaption3" />    
 	    <img src="images/Slider/k.jpg" alt="" title="#htmlcaption4" />    
 	    <img src="images/Slider/i.jpg" alt="" title="#htmlcaption5" />    
+	    <img src="images/Slider/g.png" alt="" title="#htmlcaption6" />    
 	</div> 
 
 	<div id="htmlcaption1" class="nivo-html-caption"> 
@@ -138,6 +139,9 @@
 			<h4><b>Perfumes de Mujer y Hombre</b></h4>
 			<button><b>Ver mas...</b></button>
 		</div>
+	</div>
+
+	<div id="htmlcaption6" class="nivo-html-caption"> 
 	</div>
 
 </div>	
