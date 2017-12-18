@@ -139,6 +139,23 @@
 
 										<div class="col1">
 											<div class="h_nav">
+												<h5>Tv y video</h5>
+												<ul>
+													<?php 
+														$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+															FROM subcategoria SC 
+															JOIN categoria C ON SC.idCategoria = C.idCategoria 
+															WHERE C.nombre = "Tv y Video" and SC.enable = 1');
+																						    
+														while($categoria = mysqli_fetch_array($resultSet)){
+													?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+													<?php } ?>
+												</ul>	
+											</div>							
+										</div>
+
+										<div class="col1">
+											<div class="h_nav">
 												<h5>Zona Gamer</h5>
 												<ul>
 													<?php 
@@ -148,7 +165,7 @@
 														WHERE C.nombre = "Zona Gamer" and SC.enable = 1');
 																					    
 													while($categoria = mysqli_fetch_array($resultSet)){
-												?><li><a href="../categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
 												<?php } ?>
 												</ul>
 											</div>							
