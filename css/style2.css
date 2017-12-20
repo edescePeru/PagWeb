@@ -165,12 +165,12 @@ display:none;
 
 .nbs-flexisel-nav-left {
     left: 10px;
-    background: url(http://www.pdcc.org/logo-slider/images/button-previous.png) no-repeat;
+    background: url(../images/button-previous.png) no-repeat;
 }
 
 .nbs-flexisel-nav-right {
     right: 5px;
-    background: url(http://www.pdcc.org/logo-slider/images/button-next.png) no-repeat;
+    background: url(../images/button-next.png) no-repeat;
 }
 
 @media (min-width: 768px){
