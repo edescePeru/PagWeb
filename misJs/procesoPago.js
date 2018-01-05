@@ -10,10 +10,124 @@ $(document).ready(function(){
     $('#registrar').on('click', proccessAddress);
 
     $('#btn-address').on('click', editAddress);
+    $('#btn-voucher').on('click', sendVoucher);
+
+    $("#voucher").on('click', showModalVoucher);
+    getDataPayu();
+
 
 
 
 });
+
+function getDataPayu () {
+    
+    $.getJSON('Script/getCarrito.php',function(data)
+    {
+        console.log(data);
+        var cantidad = data.length;
+        console.log(cantidad);
+
+        // $('#cantidad').html(cantidad);
+        var subtotal=0;
+        for (var i = 0; i < data.length; i++) {
+            subtotal = subtotal + parseFloat(data[i][5])*parseFloat(data[i][4]);
+        };
+        var discount = 0.00;
+        var delivery = 0.00;
+        var amount = subtotal-discount+delivery;
+        
+        $.getJSON('Script/getDataPayu.php?monto='+amount,function(data)
+        {
+            console.log(data["signature"]);
+            
+            var merchantId = "508029";
+            // IdUsuario
+            var accountId = data["accountId"];
+            var description = "Compra de productos PAYU";
+            // IdCarrito
+            var referenceCode = data["referenceCode"];
+            // Cantidad final
+            var amount = data["amount"];
+            var tax = 0;
+            var taxReturnBase = 0;
+            var currency = "PEN";
+            // firma
+            var signature = data["signature"];
+            var test = 1 ;
+            // Email del cliente
+            var buyerEmail = data["buyerEmail"];
+            // Url de respuesta
+            var responseUrl = "https://www.swarbox.com/Script/urlRespuesta.php";
+            // Url de confirmacion
+            var confirmationUrl = "https://www.swarbox.com/Script/urlConfirmacion.php";
+            // Direccion actualizada del cliente
+            var shippingAddress = data["shippingAddress"];
+            // Departamento del cliente
+            var shippingCity = data["shippingCity"];
+            // Pais del cliente
+            var shippingCountry = "PE";
+
+            $formPayu = $("#formPayU");
+            $formPayu.find('[name="merchantId"]').val(merchantId);
+            $formPayu.find('[name="accountId"]').val(accountId);
+            $formPayu.find('[name="description"]').val(description);
+            $formPayu.find('[name="referenceCode"]').val(referenceCode);
+            $formPayu.find('[name="amount"]').val(amount);
+            $formPayu.find('[name="tax"]').val(tax);
+            $formPayu.find('[name="taxReturnBase"]').val(taxReturnBase);
+            $formPayu.find('[name="currency"]').val(currency);
+            $formPayu.find('[name="signature"]').val(signature);
+            $formPayu.find('[name="test"]').val(test);
+            $formPayu.find('[name="buyerEmail"]').val(buyerEmail);
+            $formPayu.find('[name="responseUrl"]').val(responseUrl);
+            $formPayu.find('[name="confirmationUrl"]').val(confirmationUrl);
+            $formPayu.find('[name="shippingCity"]').val(shippingCity);
+            $formPayu.find('[name="shippingCountry"]').val(shippingCountry);
+            $formPayu.find('[name="shippingAddress"]').val(shippingAddress);
+
+
+            
+        });
+    });
+   
+}
+
+function sendVoucher () {
+    event.preventDefault();
+    var url = 'Script/RegPago.php';
+    console.log(data);
+
+    /*var trueorfalse = true;*/
+    $.ajax({
+        url: url,
+        data: new FormData($("#form-voucher")),
+        method: 'POST',
+        /*cache: false,
+        async : false, */
+        success: function(response ) {
+            console.log(response);
+
+            if(response.error) {
+                console.log(response.message);
+                alert(response.message);
+                /*trueorfalse = false;*/
+            }else{
+                console.log(response.message);
+                alert(response.message);
+                /*trueorfalse = true;*/
+            }
+
+        }
+    });
+}
+
+function showModalVoucher () {
+    $("#modal-voucher").modal({
+            show:true,
+            backdrop:'static'
+        });
+}
 
 function viewProvincia () {
     $('#provincia').empty();

@@ -288,19 +288,10 @@
 									
 							</div>
 							<div class="cart-item-info small-details">
-								<div class="feature feature-icon-hover indent first">
-									<a data-delete data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" href="" title=""><i class="fa fa-close pull-right " aria-hidden="true"></i></a>
-								</div>
 								<h3><a href="#"><?php echo $data[$i][2] ?></a><span>Marca: <?php echo $data[$i][3] ?></span></h3>
 								<ul class="qty">
 									<li><p><b>Precio:</b> S/. <?php echo $data[$i][5] ?></p></li>
 									<li><div>Cantidad: </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
-									<li>
-										<div class="feature feature-icon-hover indent first">
-											<a href="" title="" data-stock='<?php echo $data[$i][8] ?>' data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-plus><i class="fa fa-plus pull-left " aria-hidden="true"></i></a>
-											<a href="" title="" data-carrito="<?php echo $data[$i][0] ?>" data-producto="<?php echo $data[$i][1]; ?>" data-quantity="<?php echo $data[$i][4] ?>" data-price="<?php echo $data[$i][5] ?>" data-minus><i class="fa fa-minus" aria-hidden="true"></i></a>
-										</div>
-									</li>
 								</ul>		
 							</div>
 							<div class="clearfix"></div>
@@ -334,6 +325,28 @@
 						</div>
 					</div>
 				</div>
+				<div class="clearfix"></div>
+				<a href="#" class="order" href="">Ver estado compra</a>
+				<form id="formPayU" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway/">
+				  <input name="merchantId"    type="hidden"  value=""   >
+				  <input name="accountId"     type="hidden"  value="" >
+				  <input name="description"   type="hidden"  value=""  >
+				  <input name="referenceCode" type="hidden"  value="" >
+				  <input name="amount"        type="hidden"  value=""   >
+				  <input name="tax"           type="hidden"  value=""  >
+				  <input name="taxReturnBase" type="hidden"  value="" >
+				  <input name="currency"      type="hidden"  value="" >
+				  <input name="signature"     type="hidden"  value=""  >
+				  <input name="test"          type="hidden"  value="" >
+				  <input name="buyerEmail"    type="hidden"  value="" >
+				  <input name="responseUrl"    type="hidden"  value="" >
+				  <input name="confirmationUrl"    type="hidden"  value="" >
+				  <input name="shippingAddress" type="hidden" value="" > 
+				  <input name="shippingCity" type="hidden" value="" > 
+				  <input name="shippingCountry" type="hidden" value="" > 
+				  <input name="Submit"        type="submit"  value="Realizar pago" >
+
+				</form>
 		</div>
 	</div>
 </div>
@@ -451,6 +464,56 @@
 					</button>
 				</div>
 			</form>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
+
+<div id="modal-voucher" class="modal fade" tabindex="-1">
+	<div class="modal-dialog direccion small">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="smaller lighter blue no-margin"><b><div id="proceso" class="proceso">Nueva</div> Direccion</b></h4>
+				<form class="form-horizontal" role="form" id="form-voucher">
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-sm-8 col-sm-offset-2">
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Centro de pago:</label>	
+															
+									<input type="text" class="form-control" id="centro" name="centro" value="">
+								</div>
+							
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Monto:</label>								
+									<input type="text" class="form-control" id="monto" name="monto">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Voucher:</label>								
+									<input accept="image/x-png,image/jpeg" type="file" class="form-control" id="voucher" name="voucher">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Nro. operacion:</label>
+									<input type="text" class="form-control" id="operacion" name="operacion" value="">
+								</div>
+								<div class="form-group">
+									<label class="control-label no-padding-right address">Fecha:</label>
+									<input type="date" class="form-control" id="fecha" name="fecha" value="">
+								</div>
+								
+							</div>	
+							
+						</div>					
+					</div>
+
+					<div class="modal-footer">
+						<button id="btn-voucher" class="btn btn-primary pull-rigth" >
+							<i class="ace-icon fa fa-save"></i>
+							<b>Guardar</b>
+						</button>
+					</div>
+				</form>
+			</div>
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div>
