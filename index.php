@@ -96,9 +96,10 @@
 	<div id="slider" class="nivoSlider">     
 	    <img src="images/Slider/a.jpg" alt="" title="#htmlcaption1" />    
 	    <img src="images/Slider/c.jpg" alt="" title="#htmlcaption2" />     
-	    <img src="images/Slider/d.jpg" alt="" title="#htmlcaption3" />    
+	    <img src="images/Slider/n.png" alt="" title="#htmlcaption3" />    
 	    <img src="images/Slider/k.jpg" alt="" title="#htmlcaption4" />    
-	    <img src="images/Slider/i.jpg" alt="" title="#htmlcaption5" />    
+	    <img src="images/Slider/l.png" alt="" title="#htmlcaption5" />    
+	    <img src="images/Slider/g.png" alt="" title="#htmlcaption6" />    
 	</div> 
 
 	<div id="htmlcaption1" class="nivo-html-caption"> 
@@ -134,11 +135,9 @@
 	</div>
 
 	<div id="htmlcaption5" class="nivo-html-caption"> 
-		<div class="image3">    
-			<h2><b>Un accesorio invisible que <br> resalta tu presencia...</b></h2>
-			<h4><b>Perfumes de Mujer y Hombre</b></h4>
-			<button><b>Ver mas...</b></button>
-		</div>
+	</div>
+
+	<div id="htmlcaption6" class="nivo-html-caption"> 
 	</div>
 
 </div>	
