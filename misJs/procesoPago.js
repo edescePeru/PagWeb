@@ -41,7 +41,7 @@ function getDataPayu () {
         {
             console.log(data["signature"]);
             
-            var merchantId = "508029";
+            var merchantId = "701175";
             // IdUsuario
             var accountId = data["accountId"];
             var description = "Compra de productos PAYU";

@@ -11,7 +11,7 @@
 		echo json_encode(['error' => true, 'message' =>'Es necesario iniciar sesión', 'clave'=>'login' ]);
 		return;
 	} else {
-		$data['accountId'] = $_SESSION['id'];
+		$data['accountId'] = "512326";
 		$data['buyerEmail'] = $_SESSION['email'];
 	}
 	$query = "SELECT idCarrito FROM carrito WHERE idCliente = ".$_SESSION['id']." AND sold = 1";
