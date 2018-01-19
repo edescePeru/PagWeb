@@ -50,7 +50,7 @@
 		$result_insert = mysqli_query($conexion, $query_insert);
 		$last_id = mysqli_insert_id($conexion);
 		//echo $last_id.' '.$idProducto.' '.$res[6];
-		$query_insert2 ="INSERT INTO detacarrito (idCarrito, idProducto, cantidad, precio) VALUES (".$last_id.", ".$idProducto.", 1, ".$result_producto[6].")";
+		$query_insert2 ="INSERT INTO detacarrito (idCarrito, idProducto, cantidad, precio) VALUES (".$last_id.", ".$idProducto.", 1, ".$result_producto[5].")";
 		$result_insert2 = mysqli_query($conexion, $query_insert2);
 		$query_quantity = "SELECT count(*) FROM detacarrito WHERE idCarrito=".$last_id;
 		$result_quantity = mysqli_query($conexion, $query_quantity);
