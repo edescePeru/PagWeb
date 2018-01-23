@@ -11,7 +11,7 @@
 		echo json_encode(['error' => true, 'message' =>'Es necesario iniciar sesión', 'clave'=>'login' ]);
 		return;
 	} else {
-		$data['accountId'] = "512326";
+		$data['accountId'] = "698161";
 		$data['buyerEmail'] = $_SESSION['email'];
 	}
 	$query = "SELECT idCarrito FROM carrito WHERE idCliente = ".$_SESSION['id']." AND sold = 1";
@@ -44,8 +44,8 @@
 	}
 	
 	// Firma
-	$apikey = "4Vj8eK4rloUd272L48hsrarnUA";
-	$merchantId = "508029";
+	$apikey = "EMuC7EX6cfKrbo0cAPArEZzOVZ";
+	$merchantId = "698161";
 	$referenceCode = $idCarrito;
 	$amount = $monto;
 	$currency = "PEN";
