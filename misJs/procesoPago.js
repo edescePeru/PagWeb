@@ -54,7 +54,7 @@ function getDataPayu () {
             var currency = "PEN";
             // firma
             var signature = data["signature"];
-            var test = 1 ;
+            var test = 0 ;
             // Email del cliente
             var buyerEmail = data["buyerEmail"];
             // Url de respuesta
