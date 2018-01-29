@@ -12,7 +12,7 @@
 		return;
 	} else {
 		$data['accountId'] = "701175";
-		$data['buyerEmail'] = "$_SESSION['email']";
+		$data['buyerEmail'] = $_SESSION['email'];
 	}
 	$query = "SELECT idCarrito FROM carrito WHERE idCliente = ".$_SESSION['id']." AND sold = 1";
 	$result = mysqli_query($conexion, $query);
