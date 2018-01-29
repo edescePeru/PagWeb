@@ -12,7 +12,7 @@
 		return;
 	} else {
 		$data['accountId'] = "701175";
-		$data['buyerEmail'] = "edesceperu@gmail.com";
+		$data['buyerEmail'] = "$_SESSION['email']";
 	}
 	$query = "SELECT idCarrito FROM carrito WHERE idCliente = ".$_SESSION['id']." AND sold = 1";
 	$result = mysqli_query($conexion, $query);
@@ -36,7 +36,7 @@
 		$result2 = mysqli_query($conexion, $query2);
 		if (mysqli_num_rows($result2)>0) {
 			while ($fila2 = mysqli_fetch_array($result2)) {
-				$direccion = $fila2[1]."-".$fila2[2];
+				$direccion = $fila2[1]." ".$fila2[2];
 				$data['shippingCity'] = $fila2[0];
 				$data['shippingAddress'] = $direccion;
 			}
