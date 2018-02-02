@@ -19,7 +19,7 @@
 	$idCarrito = "";
 	if (mysqli_num_rows($result)>0) {
 		while ($fila = mysqli_fetch_array($result)) {
-			$data['referenceCode'] = $fila[0]."a".microtime(true);
+			$data['referenceCode'] = $fila[0]."a".round(microtime(true) * 1000);
 			$idCarrito = $fila[0];
 		}
 	}
