@@ -18,6 +18,8 @@ $pseBank = $_REQUEST['pseBank'];
 $lapPaymentMethod = $_REQUEST['lapPaymentMethod'];
 $transactionId = $_REQUEST['transactionId'];
 
+
+
 //echo $transactionId;
 
 if ($_REQUEST['transactionState'] == 4 ) {
@@ -43,7 +45,10 @@ else {
 
 if (strtoupper($firma) == strtoupper($firmacreada)) {
 	// Obtener la referencia y dr de baja al carrito y guardar la compra
-	$idCarrito = $referenceCode;
+	$reference = $referenceCode;
+	$findme = 'a';
+	$pos = strpos($reference, $findme);
+	$idCarrito = substr($reference,0,$pos);
 	$query = "UPDATE carrito SET sold = 0";
 	$edicion = mysqli_query($conexion, $query);
 
