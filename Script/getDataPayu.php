@@ -21,6 +21,7 @@
 		while ($fila = mysqli_fetch_array($result)) {
 			$data['referenceCode'] = $fila[0]."a".round(microtime(true) * 1000);
 			$idCarrito = $fila[0];
+			$referencia = $fila[0]."a".round(microtime(true) * 1000);
 		}
 	}
 	$query1 = "SELECT idDistrito FROM direccioncliente WHERE idCliente = ".$_SESSION['id'];
@@ -46,7 +47,7 @@
 	// Firma
 	$apikey = "EMuC7EX6cfKrbo0cAPArEZzOVZ";
 	$merchantId = "698161";
-	$referenceCode = $idCarrito;
+	$referenceCode = $referencia;
 	$amount = $monto;
 	$currency = "PEN";
 	$signature = md5($apikey."~".$merchantId."~".$referenceCode."~".$amount."~".$currency);
