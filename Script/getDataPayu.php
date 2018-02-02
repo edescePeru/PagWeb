@@ -19,7 +19,7 @@
 	$idCarrito = "";
 	if (mysqli_num_rows($result)>0) {
 		while ($fila = mysqli_fetch_array($result)) {
-			$data['referenceCode'] = $fila[0]+date();
+			$data['referenceCode'] = $fila[0]."".date();
 			$idCarrito = $fila[0];
 		}
 	}
