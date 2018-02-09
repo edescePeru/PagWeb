@@ -81,9 +81,9 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	INNER JOIN carrito CA ON CL.idCliente = CA.idCliente
 	WHERE idCarrito = ".$idCarrito;
 	$result_select_data = mysqli_query($conexion, $query_select_data);
-	if (mysqli_num_rows($result_select)>0) {
+	/*if (mysqli_num_rows($result_select)>0) {
 
-	}
+	}*/
 
 	$nombre = "Informador";
 	$emisor = "informes@gmail.com";
@@ -118,9 +118,6 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$mail->WordWrap = 50;
 	$mail->CharSet = "UTF-8";
 	$mail->MsgHTML($mensaje);
-
-
-	$mail->AddAttachment($ruta);
 
 	$mail->Send();
 		
