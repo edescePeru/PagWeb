@@ -188,7 +188,7 @@
 						</div>
 						<!--<div class="single_but"><a href="" class="item_add btn_3" value=""></a></div>-->
 						<?php 
-							if ($prod['stock']==8) {
+							if ($prod['stock']==0) {
 						?>
 							<div class="buy-box">
 								<button disabled="" class="buy-cart sold-out" data-add= <?= $idprod ?>><i class="fa fa-shopping-basket"></i> <b>Comprar</b></button>
