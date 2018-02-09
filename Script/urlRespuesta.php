@@ -64,12 +64,63 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 			$query_insert2 ="INSERT INTO detacompra (idCompra, idProducto, cantidad, precio, enable) 
 			VALUES (".$last_id.", ".$fila[1].", ".$fila[2].", ".$fila[3].", 1)";
 			$result_insert2 = mysqli_query($conexion, $query_insert2);
+			$query_insert3 ="UPDATE producto SET stock=stock-".$fila[2]." WHERE idProducto = ".$fila[1];
+			$result_insert3 = mysqli_query($conexion, $query_insert3);
 		}
 	}
 
 	// Enviar email a la empresa
 	
+	include_once 'PHPMailer/class.phpmailer.php';
+	include_once 'PHPMailer/class.smtp.php';
+
+	$query_select_data = "SELECT CL.nombre, Cl, apellidos, CL.docIdentidad, CL.correo, CL.telefono
+	FROM cliente CL
+	INNER JOIN carrito CA ON CL.idCliente = CA.idCliente
+	WHERE idCarrito = ".$idCarrito;
+	$result_select_data = mysqli_query($conexion, $query_select_data);
+	if (mysqli_num_rows($result_select)>0) {
+
+	}
+
+	$nombre = "Informador";
+	$emisor = "informes@gmail.com";
+	$asunto = "Informe de Venta";
+	$mensaje = '<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<link rel="stylesheet" href="">
+	</head>
+	<body>
+		
+	</body>
+	</html>';
+
+	$destino = "edesceperu@gmail.com";
+
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->SMTPAuth = true;
+	$mail->SMTPSecure = "ssl";
+	$mail->Host = "smtp.gmail.com";
+	$mail->Port = "465";
+	$mail->setFrom($emisor, $nombre);
+	$mail->AddAddress($destino);
+	$mail->Username = "mailpruebacursophp@gmail.com";
+	$mail->Password = "cursophp123";
+	$mail->Subject = $asunto;
+	$mail->Body = $mensaje;
+	$mail->WordWrap = 50;
+	$mail->CharSet = "UTF-8";
+	$mail->MsgHTML($mensaje);
 	
+
+	$mail->AddAttachment($ruta);
+
+	$mail->Send();
 		
 	header('Location: /../success.php');
 }

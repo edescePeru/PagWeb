@@ -327,7 +327,10 @@
 				</div>
 				<div class="clearfix"></div>
 				<a href="#" class="order" href="">Ver estado compra</a>
-				<form id="formPayU" action="https://checkout.payulatam.com/ppp-web-gateway-payu/" method="POST">
+				<!-- <form id="formPayU" action="https://checkout.payulatam.com/ppp-web-gateway-payu/" method="POST">
+				 -->
+				 <form id="formPayU" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/" method="POST">
+				
 				  <input name="merchantId"    type="hidden"  value=""   >
 				  <input name="accountId"     type="hidden"  value="" >
 				  <input name="description"   type="hidden"  value=""  >
