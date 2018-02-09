@@ -41,7 +41,8 @@ function getDataPayu () {
         {
             console.log(data["signature"]);
             
-            var merchantId = "698161";
+           /* var merchantId = "698161";*/
+            var merchantId = "508029";
             // IdUsuario
             var accountId = data["accountId"];
             var description = "Compra de productos PAYU";
@@ -54,7 +55,8 @@ function getDataPayu () {
             var currency = "PEN";
             // firma
             var signature = data["signature"];
-            var test = 0 ;
+           /* var test = 0 ;*/
+           var test = 1 ;
             // Email del cliente
             var buyerEmail = data["buyerEmail"];
             // Url de respuesta
