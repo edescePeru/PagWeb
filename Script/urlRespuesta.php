@@ -121,7 +121,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 
 	$mail->Send();
 		
-	header('Location: /../success.php');
+	/*header('Location: /../success.php');*/
 }
 else
 {
