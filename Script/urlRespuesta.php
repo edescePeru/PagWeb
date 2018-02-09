@@ -1,7 +1,7 @@
 <?php
 include_once '../BaseDatos/conexion.php';
 
-$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
+$ApiKey = "EMuC7EX6cfKrbo0cAPArEZzOVZApi";
 $merchant_id = $_REQUEST['merchantId'];
 $referenceCode = $_REQUEST['referenceCode'];
 $TX_VALUE = $_REQUEST['TX_VALUE'];
@@ -66,6 +66,9 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 			$result_insert2 = mysqli_query($conexion, $query_insert2);
 		}
 	}
+
+	// Enviar email a la empresa
+	
 	
 		
 	header('Location: /../success.php');

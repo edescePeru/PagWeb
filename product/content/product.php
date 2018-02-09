@@ -32,7 +32,12 @@
 	<link href="../../css/product.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-
+	
+	<style type="text/css" media="screen">
+		.sold-out{
+			background-color: #696969 !important
+		}
+	</style>
 
 
 </head>
@@ -182,9 +187,25 @@
 						   	<div class="clearfix"></div>
 						</div>
 						<!--<div class="single_but"><a href="" class="item_add btn_3" value=""></a></div>-->
-						<div class="buy-box">
-							<button class="buy-cart" data-add= <?= $idprod ?>><i class="fa fa-shopping-basket"></i> <b>Comprar</b></button>
-						</div>     
+						<?php 
+							if ($prod['stock']==8) {
+						?>
+							<div class="buy-box">
+								<button disabled="" class="buy-cart sold-out" data-add= <?= $idprod ?>><i class="fa fa-shopping-basket"></i> <b>Comprar</b></button>
+							</div>  
+							<img src="../../assets/images/sold-out.png" height="100%" width="100%" alt="">
+
+						<?php 
+							} else {
+						?>
+							<div class="buy-box">
+								<button class="buy-cart" data-add= <?= $idprod ?>><i class="fa fa-shopping-basket"></i> <b>Comprar</b></button>
+							</div> 
+						<?php
+							}
+							
+						?>					 
+
 					</div>
 				</div>
 

@@ -73,7 +73,7 @@
 				
 				<div class="clearfix"></div>
 				<?php
-					$query = "SELECT * FROM producto";
+					$query = "SELECT * FROM producto WHERE stock>0";
 
 					$result = mysqli_query($conexion, $query);
 
@@ -143,7 +143,7 @@
 							SC.nombre, P.image
 								FROM producto P
 								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
-								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 ";
+								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 AND P.stock>0";
 				/*LIMIT $limit, $numeroLotes*/
 				$resultado = mysqli_query($conexion, $consulta);
 				while ($fila = mysqli_fetch_array($resultado)) {

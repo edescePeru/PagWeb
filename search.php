@@ -103,7 +103,7 @@
 			<br>
 		
 		<?php
-			$query = "SELECT * FROM producto WHERE nombrePortada LIKE '%".$search."%'";
+			$query = "SELECT * FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0";
 
 			$result = mysqli_query($conexion, $query);
 
@@ -131,16 +131,16 @@
 				if (isset($_GET['orden'])) {
 					if ($_GET['orden'] == 1) {
 						// De mayor a menor
-						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' ORDER BY precio ASC LIMIT $limit, $numeroLotes ";
+						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio ASC LIMIT $limit, $numeroLotes ";
 				
 					} else {
 						// De menor a mayor
-						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' ORDER BY precio DESC LIMIT $limit, $numeroLotes";
+						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio DESC LIMIT $limit, $numeroLotes";
 				
 					}
 					
 				} else {
-					$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' LIMIT $limit, $numeroLotes";
+					$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 LIMIT $limit, $numeroLotes";
 				
 				}
 				
