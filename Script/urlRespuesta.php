@@ -1,7 +1,8 @@
 <?php
 include_once '../BaseDatos/conexion.php';
 
-$ApiKey = "EMuC7EX6cfKrbo0cAPArEZzOVZApi";
+/*$ApiKey = "EMuC7EX6cfKrbo0cAPArEZzOVZApi";*/
+$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
 $merchant_id = $_REQUEST['merchantId'];
 $referenceCode = $_REQUEST['referenceCode'];
 $TX_VALUE = $_REQUEST['TX_VALUE'];
@@ -51,6 +52,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$idCarrito = substr($reference,0,$pos);
 	$query = "UPDATE carrito SET sold = 0";
 	$edicion = mysqli_query($conexion, $query);
+	echo $idCarrito;
 
 	// Guardar la compra 
 	$query_insert="INSERT INTO compra(idCarrito, fechaCreacion, enable) VALUES (".$idCarrito.", '".date('Y-m-d')."', 1)";
@@ -116,7 +118,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$mail->WordWrap = 50;
 	$mail->CharSet = "UTF-8";
 	$mail->MsgHTML($mensaje);
-	
+
 
 	$mail->AddAttachment($ruta);
 
