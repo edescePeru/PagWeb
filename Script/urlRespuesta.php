@@ -106,7 +106,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 			$productos = $productos.'<br><label>Producto: </label>'.$fila[3].
 									'<br><label>Codigo: </label>'.$fila[8].
 									'<br><label>Cantidad: </label>'.$fila[5].
-									'<br><label>Precio: </label>'.$fila[6].
+									'<br><label>Precio Total: </label>'.($fila[6]*$fila[5]).
 									'<br><label>---------------------------------------------------------------------</label>';
 		}
 	}
