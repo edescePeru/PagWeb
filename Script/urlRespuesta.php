@@ -96,6 +96,8 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 		<title></title>
 		<link rel="stylesheet" href="">
 	</head>
+		<h3>Datos del cliente</h3>
+		<p>Nombre</p>'.$result_select_data[0].'
 	<body>
 		
 	</body>
