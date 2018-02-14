@@ -147,15 +147,15 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$mail->WordWrap = 50;
 	$mail->CharSet = "UTF-8";
 	$mail->MsgHTML($mensaje);
+	$mail->Send();
 
-	if ($mail->Send()) {
-		echo "Se envio";
-	} else {
-		echo "No se envio";
-	}
+	// if ($mail->Send()) {
+	// 	echo "Se envio";
+	// } else {
+	// 	echo "No se envio";
+	// }
 	
-		
-	/*header('Location: /../success.php');*/
+	header('Location: /../success.php');
 }
 else
 {
