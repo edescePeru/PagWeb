@@ -81,9 +81,16 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	INNER JOIN carrito CA ON CL.idCliente = CA.idCliente
 	WHERE CA.idCarrito = ".$idCarrito;
 	$result_select_data = mysqli_query($conexion, $query_select_data);
-	/*if (mysqli_num_rows($result_select)>0) {
-
-	}*/
+	$cliente = "";
+	if (mysqli_num_rows($result_select_data)>0) {
+		while ($fila = mysqli_fetch_row($result_select_data)) {
+		        $cliente = $cliente.'<br><p>Nombre</p>'.$fila[0].
+		        			'<br><p>Apellidos</p>'.$fila[1].
+		        			'<br><p>DocIdentidad</p>'.$fila[2].
+		        			'<br><p>Correo</p>'.$fila[3].
+		        			'<br><p>Telefono</p>'.$fila[4];
+		    }
+	}
 
 	$nombre = "Informador";
 	$emisor = "informes@gmail.com";
@@ -96,8 +103,8 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 		<title></title>
 		<link rel="stylesheet" href="">
 	</head>
-		<h3>Datos del cliente</h3>
-		<p>Nombre</p>
+		<h3>Datos del cliente</h3>'.$cliente.'
+	
 	<body>
 		
 	</body>
