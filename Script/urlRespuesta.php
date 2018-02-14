@@ -84,11 +84,11 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$cliente = "";
 	if (mysqli_num_rows($result_select_data)>0) {
 		while ($fila = mysqli_fetch_row($result_select_data)) {
-		        $cliente = $cliente.'<br><p>Nombre</p>'.$fila[0].
-		        			'<br><p>Apellidos</p>'.$fila[1].
-		        			'<br><p>DocIdentidad</p>'.$fila[2].
-		        			'<br><p>Correo</p>'.$fila[3].
-		        			'<br><p>Telefono</p>'.$fila[4];
+		        $cliente = $cliente.'<br><label>Nombre</label>'.$fila[0].
+		        			'<br><label>Apellidos</label>'.$fila[1].
+		        			'<br><label>DocIdentidad</label>'.$fila[2].
+		        			'<br><label>Correo</label>'.$fila[3].
+		        			'<br><label>Telefono</label>'.$fila[4];
 		    }
 	}
 
