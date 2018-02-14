@@ -76,7 +76,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	include_once 'PHPMailer/class.phpmailer.php';
 	include_once 'PHPMailer/class.smtp.php';
 
-	$query_select_data = "SELECT CL.nombre, Cl, apellidos, CL.docIdentidad, CL.correo, CL.telefono
+	$query_select_data = "SELECT CL.nombre, CL.apellidos, CL.docIdentidad, CL.correo, CL.telefono
 	FROM cliente CL
 	INNER JOIN carrito CA ON CL.idCliente = CA.idCliente
 	WHERE idCarrito = ".$idCarrito;
