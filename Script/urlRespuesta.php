@@ -92,7 +92,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 		    }
 	}
 
-	$query = "SELECT DC.idCarrito, P.idProducto, P.image, P.nombrePortada , M.nombre , DC.cantidad, DC.precio, S.nombre FROM carrito C 
+	$query = "SELECT DC.idCarrito, P.idProducto, P.image, P.nombrePortada , M.nombre , DC.cantidad, DC.precio, S.nombre, P.codigo FROM carrito C 
 		INNER JOIN detacarrito DC ON C.idCarrito = DC.idCarrito
 		INNER JOIN producto P ON DC.idProducto = P.idProducto
 		INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
@@ -104,9 +104,10 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	if (mysqli_num_rows($result)>0) {
 		while ($fila = mysqli_fetch_array($result)) {
 			$productos = $productos.'<br><label>Producto: </label>'.$fila[3].
-									'<br><label>Telefono: </label>'.$fila[5].
-									'<br><label>Telefono: </label>'.$fila[6].
-									'<br><label>------------------------------------</label>';
+									'<br><label>Codigo: </label>'.$fila[8].
+									'<br><label>Cantidad: </label>'.$fila[5].
+									'<br><label>Precio: </label>'.$fila[6].
+									'<br><label>---------------------------------------------------------------------</label>';
 		}
 	}
 
