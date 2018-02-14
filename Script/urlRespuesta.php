@@ -121,7 +121,12 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$mail->CharSet = "UTF-8";
 	$mail->MsgHTML($mensaje);
 
-	$mail->Send();
+	if ($mail->Send()) {
+		echo "Se envio";
+	} else {
+		echo "No se envio";
+	}
+	
 		
 	/*header('Location: /../success.php');*/
 }
