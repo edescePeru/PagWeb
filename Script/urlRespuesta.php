@@ -84,13 +84,32 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$cliente = "";
 	if (mysqli_num_rows($result_select_data)>0) {
 		while ($fila = mysqli_fetch_row($result_select_data)) {
-		        $cliente = $cliente.'<br><label>Nombre</label>'.$fila[0].
-		        			'<br><label>Apellidos</label>'.$fila[1].
-		        			'<br><label>DocIdentidad</label>'.$fila[2].
-		        			'<br><label>Correo</label>'.$fila[3].
-		        			'<br><label>Telefono</label>'.$fila[4];
+		        $cliente = $cliente.'<br><label>Nombre: </label>'.$fila[0].
+		        			'<br><label>Apellidos: </label>'.$fila[1].
+		        			'<br><label>DocIdentidad: </label>'.$fila[2].
+		        			'<br><label>Correo: </label>'.$fila[3].
+		        			'<br><label>Telefono: </label>'.$fila[4];
 		    }
 	}
+
+	$query = "SELECT DC.idCarrito, P.idProducto, P.image, P.nombrePortada , M.nombre , DC.cantidad, DC.precio, S.nombre FROM carrito C 
+		INNER JOIN detacarrito DC ON C.idCarrito = DC.idCarrito
+		INNER JOIN producto P ON DC.idProducto = P.idProducto
+		INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
+		INNER JOIN marca M ON M.idMarca = P.idMarca
+		WHERE DC.idCarrito = ".$idCarrito;
+	$result = mysqli_query($conexion, $query);
+	$data = [];
+	$productos = "";
+	if (mysqli_num_rows($result)>0) {
+		while ($fila = mysqli_fetch_array($result)) {
+			$productos = $productos.'<br><label>Producto: </label>'.$fila[3].
+									'<br><label>Telefono: </label>'.$fila[5].
+									'<br><label>Telefono: </label>'.$fila[6].
+									'<br><label>------------------------------------</label>';
+		}
+	}
+
 
 	$nombre = "Informador";
 	$emisor = "informes@gmail.com";
@@ -104,7 +123,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 		<link rel="stylesheet" href="">
 	</head>
 		<h3>Datos del cliente</h3>'.$cliente.'
-	
+		<br><h3>Datos del carrito</h3>'.$productos.'
 	<body>
 		
 	</body>
