@@ -79,7 +79,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$query_select_data = "SELECT CL.nombre, CL.apellidos, CL.docIdentidad, CL.correo, CL.telefono
 	FROM cliente CL
 	INNER JOIN carrito CA ON CL.idCliente = CA.idCliente
-	WHERE idCarrito = ".$idCarrito;
+	WHERE CA.idCarrito = ".$idCarrito;
 	$result_select_data = mysqli_query($conexion, $query_select_data);
 	/*if (mysqli_num_rows($result_select)>0) {
 
