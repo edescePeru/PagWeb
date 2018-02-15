@@ -230,13 +230,14 @@ session_start();
 											<th>Garantía</th>
 											<th class="hidden-480">Precio (S/.)</th>
 											<th class="hidden-480">Stock</th>
+											<th style=" width: 7em;">VIP</th>
 											<th style=" width: 7em;"></th>
 										</tr>
 										</thead>
 
 										<tbody>
 											<?php 
-									            $resultSet = mysqli_query($conexion, 'SELECT idProducto, nombrePortada, codigo, FechaCreacion, garantia, precio, stock 
+									            $resultSet = mysqli_query($conexion, 'SELECT idProducto, nombrePortada, codigo, FechaCreacion, garantia, precio, stock , vip
 									            										FROM producto 
 									            										WHERE enable = 1 and idCliente = "'.$_SESSION['id'].'"');
 									            while($fila = mysqli_fetch_array($resultSet)){
@@ -262,6 +263,31 @@ session_start();
 												<td class="hidden-480"><?= $fila['garantia'] ?></td>
 												<td class="hidden-480" data-precio><?= $fila['precio'] ?></td>
 												<td class="hidden-480" data-stock><?= $fila['stock'] ?></td>
+												<td class="hidden-480" data-stock>
+													<label class="pull-right inline">
+														<?php 
+															if ($fila['vip']==1 ) {
+														?>
+															<label>
+																<input name="switch-field-1" data-check data-id=<?= $fila['idProducto'] ?> class="ace ace-switch ace-switch-7" type="checkbox" checked="" />
+																<span class="lbl"></span>
+															</label>
+															
+														<?php
+															} else {
+														?>	
+															<label>
+																<input name="switch-field-1" data-check data-id=<?= $fila['idProducto'] ?> class="ace ace-switch ace-switch-7" type="checkbox" />
+																<span class="lbl"></span>
+															</label>
+														<?php
+															}
+															
+														 ?>
+														
+													</label>
+												</td>
+											
 												<td>
 													<div class="hidden-sm hidden-xs action-buttons">
 														<!-- <a class="blue" href="#" data-rel="tooltip" title="Items">
@@ -276,6 +302,7 @@ session_start();
 														<a class="orange" href="#" data-rel="tooltip" title="Imagenes" data-picture="<?= $fila['idProducto'] ?>">
 															<i class="ace-icon fa fa-file-image-o bigger-130"></i>
 														</a>
+														
 													</div>
 													<div class="hidden-md hidden-lg">
 														<div class="inline pos-rel">
@@ -491,6 +518,7 @@ session_start();
 					"aoColumns": [
 						{ "bSortable": false },
 						null, null,null, null, null, null,
+						null,
 						{ "bSortable": false }
 					],
 					"aaSorting": [],
@@ -627,7 +655,7 @@ session_start();
 
 		/////////////////////////////////
 		//table checkboxes
-		$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
+		$('th input[type=checkbox]').prop('checked', false);
 
 		//select/deselect all rows according to table header checkbox
 		$('#dynamic-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
@@ -698,6 +726,74 @@ session_start();
 		}
 
 	})
+</script>
+
+<script type="text/javascript">
+	$(function () {
+    $('.button-checkbox').each(function () {
+
+        // Settings
+        var $widget = $(this),
+            $button = $widget.find('button'),
+            $checkbox = $widget.find('input:checkbox'),
+            color = $button.data('color'),
+            settings = {
+                on: {
+                    icon: 'glyphicon glyphicon-check'
+                },
+                off: {
+                    icon: 'glyphicon glyphicon-unchecked'
+                }
+            };
+
+        // Event Handlers
+        $button.on('click', function () {
+            $checkbox.prop('checked', !$checkbox.is(':checked'));
+            $checkbox.triggerHandler('change');
+            updateDisplay();
+        });
+        $checkbox.on('change', function () {
+            updateDisplay();
+        });
+
+        // Actions
+        function updateDisplay() {
+            var isChecked = $checkbox.is(':checked');
+
+            // Set the button's state
+            $button.data('state', (isChecked) ? "on" : "off");
+
+            // Set the button's icon
+            $button.find('.state-icon')
+                .removeClass()
+                .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+            // Update the button's color
+            if (isChecked) {
+                $button
+                    .removeClass('btn-default')
+                    .addClass('btn-' + color + ' active');
+            }
+            else {
+                $button
+                    .removeClass('btn-' + color + ' active')
+                    .addClass('btn-default');
+            }
+        }
+
+        // Initialization
+        function init() {
+
+            updateDisplay();
+
+            // Inject the icon if applicable
+            if ($button.find('.state-icon').length == 0) {
+                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i> ');
+            }
+        }
+        init();
+    });
+});
 </script>
 
 <script src="misJs/producto.js"></script>

@@ -7,6 +7,72 @@ $(document).ready(function(){
 
 	$('#precio').on('keypress', decimal);
 	$('#stock').on('keypress', decimal);
+
+	$("[data-check]").on( 'change', function() {
+    if( $(this).is(':checked') ) {
+        // Hacer algo si el checkbox ha sido seleccionado
+        var url = 'Script/activeVip.php';
+		var dato = $(this).data("id");
+        $.ajax({
+			url: url,
+			data: {dato:dato},
+			method: 'POST'
+		}).done(function( response ) {
+			console.log(response);
+
+			if(response.error) {
+				console.log(response.message);
+				$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					type: 'danger'
+				});
+				
+			}else{
+				$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					type: 'success'
+				});
+			}
+		});
+    } else {
+        // Hacer algo si el checkbox ha sido deseleccionado
+        var url = 'Script/inactiveVip.php';
+		var dato = $(this).data("id");
+        $.ajax({
+			url: url,
+			data: {dato:dato},
+			method: 'POST'
+		}).done(function( response ) {
+			console.log(response);
+
+			if(response.error) {
+				console.log(response.message);
+				$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					type: 'danger'
+				});
+				
+			}else{
+				$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					type: 'success'
+				});
+			}
+		});
+    }
+});
 });
 
 function showModalPicture() {
@@ -96,10 +162,22 @@ function deleteProducto () {
 
 			if(response.error) {
 				console.log(response.message);
-				$.notify(response.message,"danger");
+				$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					type: 'danger'
+				});
 				
 			}else{
-				$.notify(response.message,"danger");
+				$.notify({
+					// options
+					message: response.message 
+				},{
+					// settings
+					type: 'success'
+				});
 				setTimeout(function(){ location.reload(); },2000);
 			}
 		});
