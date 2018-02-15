@@ -237,7 +237,7 @@
 		<ul id="flexiselDemo3">
 		<?php 
 			include 'BaseDatos/conexion.php';
-			$query = "SELECT idProducto, left(nombrePortada, 35), precio, image FROM producto WHERE vip = 1 ORDER BY idProducto DESC LIMIT 3";
+			$query = "SELECT idProducto, left(nombrePortada, 35), precio, image FROM producto WHERE vip = 1 AND enable=1 ORDER BY idProducto DESC LIMIT 3";
 			$result = mysqli_query($conexion, $query);
 			$data = [];
 			if (mysqli_num_rows($result)>0) {
