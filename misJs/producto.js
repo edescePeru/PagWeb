@@ -8,7 +8,7 @@ $(document).ready(function(){
 	$('#precio').on('keypress', decimal);
 	$('#stock').on('keypress', decimal);
 
-	$(document).on( 'change', '[data-check]', function() {
+	$(document).on('click', '[data-check]', function() {
     if( $(this).is(':checked') ) {
         // Hacer algo si el checkbox ha sido seleccionado
         var url = 'Script/activeVip.php';
