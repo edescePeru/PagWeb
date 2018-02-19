@@ -136,17 +136,20 @@
 									if ($fila1[4]==1) {
 										# Mostrar estado "Registrado"
 										?>
+											<br>
 											<li><p><b>Estado: </b> Compra Registrada</p></li>
 										<?php
 									} else {
 										if ($fila1[4]==2) {
 											# Mostrar estado "En trayecto"
 											?>
+												<br>
 												<li><p><b>Estado: </b> Compra en trayecto</p></li>
 											<?php
 										} else {
 											# Mostrar estado "Finalizado"
 											?>
+												<br>
 												<li><p><b>Estado: </b> Compra Finalizada</p></li>
 											<?php
 										}
