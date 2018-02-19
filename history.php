@@ -67,13 +67,13 @@
 		<?php 
 			$query = "";
 			$resultSet = mysqli_query($conexion, 'SELECT * FROM compra');
-			while($fila = mysqli_fetch_array($resultSet)){
+			while($fila1 = mysqli_fetch_array($resultSet)){
         ?>
 			<div class="style panel panel-default">
 				<div class="panel-heading">
 					<div class="row"> 
 						<div class="col-sm-9 panel-tittle">
-							<i class="fa fa-shopping-basket " aria-hidden="true"> </i> Productos de la compra realizada el <?php echo $fila[2] ?>
+							<i class="fa fa-shopping-basket " aria-hidden="true"> </i> Productos de la compra realizada el <?php echo $fila1[2] ?>
 						</div>
 					</div>
 				</div>
@@ -86,7 +86,7 @@
 			                        INNER JOIN producto P ON DC.idProducto = P.idProducto
 			                        INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
 			                        INNER JOIN marca M ON M.idMarca = P.idMarca
-			                        WHERE DC.idCompra = ".$fila[0];
+			                        WHERE DC.idCompra = ".$fila1[0];
 						$result = mysqli_query($conexion, $query);
 						$data = [];
 
@@ -130,24 +130,24 @@
 								<h3><a href="#"><?php echo $data[$i][2] ?></a><span>Marca: <?php echo $data[$i][3] ?></span></h3>
 								<ul class="qty">
 									<li><p><b>Precio:</b> S/. <?php echo $data[$i][5] ?></p></li>
-									<li><div>Cantidad: </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
+									<li><div><b>Cantidad:</b> </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
 								
 								<?php 
-									if ($fila[4]==1) {
+									if ($fila1[4]==1) {
 										# Mostrar estado "Registrado"
 										?>
-											<li><div>Estado: </div><p>Compra Registrada</p></li>
+											<li><p><b>Estado: </b> Compra Registrada</p></li>
 										<?php
 									} else {
-										if ($fila[4]==2) {
+										if ($fila1[4]==2) {
 											# Mostrar estado "En trayecto"
 											?>
-												<li><div>Estado: </div><p>Compra en trayecto</p></li>
+												<li><p><b>Estado: </b> Compra en trayecto</p></li>
 											<?php
 										} else {
 											# Mostrar estado "Finalizado"
 											?>
-												<li><div>Estado: </div><p>Compra finalizada</p></li>
+												<li><p><b>Estado: </b> Compra Finalizada</p></li>
 											<?php
 										}
 										
