@@ -178,6 +178,7 @@ session_start();
                                             <th>Cliente</th>
                                             <th>Fecha compra</th>
                                             <th>Estado</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
 
