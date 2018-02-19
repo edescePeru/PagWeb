@@ -1,4 +1,5 @@
 <?php 
+	include 'BaseDatos/conexion.php';
 	 session_start();
 	 $inicioSesion = isset($_SESSION['id']);
 
@@ -10,7 +11,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Confirmación</title>
+<title>Historial</title>
 <link rel="icon" href="images/swarbox.ico"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -54,16 +55,96 @@
 <div class="single_top">
 	<div class="container"> 		
 		<div class="content-title">
-			<h1 class="contact">Resultado de la operación</h1>
+			<h1 class="contact">Historial de compras</h1>
 			<div class="line-title"></div>
 		</div>	
 		<div class="col-md-9 contact_left">
-			<h3>Operación exitosa</h3>
+			
+		<?php 
+			$query = "";
+			$resultSet = mysqli_query($conexion, 'SELECT * FROM compra');
+			while($fila = mysqli_fetch_array($resultSet)){
+        ?>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row"> 
+						<div class="col-sm-9 panel-tittle">
+							<i class="fa fa-shopping-basket " aria-hidden="true"> </i> Productos pedidos
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">	
+				 	<?php 
+						
+					 	$query = "SELECT DISTINCT DC.idCompra, P.idProducto, P.nombrePortada , M.nombre , DC.cantidad, DC.precio, S.nombre, P.image, P.stock 
+					 				FROM compra C 
+			                        INNER JOIN detacompra DC ON C.idCompra = DC.idCompra
+			                        INNER JOIN producto P ON DC.idProducto = P.idProducto
+			                        INNER JOIN subcategoria S ON S.idSubCategoria = P.idSubCategoria
+			                        INNER JOIN marca M ON M.idMarca = P.idMarca
+			                        WHERE DC.idCompra = ".$fila[0];
+						$result = mysqli_query($conexion, $query);
+						$data = [];
+
+						$cantidad = mysqli_num_rows($result);
+
+						if ($cantidad>0) {
+							while ($fila = mysqli_fetch_array($result)) {
+								array_push($data, [$fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5], $fila[6], $fila[7], $fila[8]]);
+							}
+						}else{
+					?>
+					<div class="frase">
+						TU CARRITO ESTA VACÍO. ¡AGRÉGALE TUS PRODUCTOS FAVORITOS Y 
+						DISFRUTA DEL PLACER DE SEGUIR COMPRANDO!...
+					</div>
+					<?php
+						}
+
+						//echo count($data);
+						//var_dump($data);
+
+						for ($i=0; $i <count($data) ; $i++) { 
+							for($j=$i+1;$j<=count($data)-1;$j++) {	
+								if($data[$i][1]==$data[$j][1]){
+									$data[$j]['borrar']=true;
+								}
+							}
+						}
+						//var_dump($data);
+
+						for ($i=0; $i <count($data) ; $i++) { 
+							if (!isset($data[$i]['borrar'])) {
+					?>
+					<div class="cart-header">
+						<div class="cart-sec simpleCart_shelfItem">
+							<div class="cart-item small-image">
+								<img src="Script/images/<?php echo $data[$i][7] ?>" class="img-responsive" alt=""/>
+									
+							</div>
+							<div class="cart-item-info small-details">
+								<h3><a href="#"><?php echo $data[$i][2] ?></a><span>Marca: <?php echo $data[$i][3] ?></span></h3>
+								<ul class="qty">
+									<li><p><b>Precio:</b> S/. <?php echo $data[$i][5] ?></p></li>
+									<li><div>Cantidad: </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
+								</ul>		
+							</div>
+							<div class="clearfix"></div>
+															
+						</div>
+					</div> 
+					<?php 
+							}
+						}	
+					?>
+				</div>
+			</div>
+        <?php
+    		}
+        ?>
 	  		
 		</div>
-		<div class="clearfix"></div>
-		<a href="index.php" class="order" href="">Siga comprando</a>
-		<a href="history.php" class="order" href="">HIstorial de compras</a>
+		
 	</div>
 </div>  
 

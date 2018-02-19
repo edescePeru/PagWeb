@@ -41,7 +41,7 @@
 					<li>
 						<div class="box_1-cart">
 							<div class="box_11">
-								<a href="checkout.html" data-toggle="tooltip" data-placement="right" title="Pedidos">
+								<a href="history.php" data-toggle="tooltip" data-placement="right" title="Pedidos">
 							  		<h4>
 							  			<i class="fa fa-truck" aria-hidden="true"></i>
 							  			<div class="clearfix"> </div>
