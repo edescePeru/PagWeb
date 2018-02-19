@@ -178,7 +178,6 @@ session_start();
                                             <th>Cliente</th>
                                             <th>Fecha compra</th>
                                             <th>Estado</th>
-                                            <th></th>
                                         </tr>
                                     </thead>
 
@@ -210,9 +209,6 @@ session_start();
 
                                             <td>
                                                 <?= $fila[1] ?>
-                                            </td>
-                                            <td>
-                                                <?= $fila[2] ?>
                                             </td>
 
                                             <td>
@@ -342,7 +338,7 @@ session_start();
                     bAutoWidth: false,
                     "aoColumns": [
                       { "bSortable": false },
-                      null, null, null,
+                      null, null,
                       { "bSortable": false }
                     ],
                     "aaSorting": [],
