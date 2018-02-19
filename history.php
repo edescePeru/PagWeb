@@ -22,7 +22,11 @@
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-
+	<style type="text/css" media="screen">
+		.mystyle{
+			margin-bottom: 0px !important;
+		}
+	</style>
 </head>
 <body>
 <?php 
@@ -117,7 +121,7 @@
 							if (!isset($data[$i]['borrar'])) {
 					?>
 					<div class="cart-header">
-						<div class="cart-sec simpleCart_shelfItem">
+						<div class="cart-sec simpleCart_shelfItem mystyle">
 							<div class="cart-item small-image">
 								<img src="Script/images/<?php echo $data[$i][7] ?>" class="img-responsive" alt=""/>
 									
