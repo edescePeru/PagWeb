@@ -69,7 +69,7 @@
 			$resultSet = mysqli_query($conexion, 'SELECT * FROM compra');
 			while($fila = mysqli_fetch_array($resultSet)){
         ?>
-			<div class="panel panel-default">
+			<div class="style panel panel-default">
 				<div class="panel-heading">
 					<div class="row"> 
 						<div class="col-sm-9 panel-tittle">
