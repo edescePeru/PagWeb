@@ -73,7 +73,7 @@
 				<div class="panel-heading">
 					<div class="row"> 
 						<div class="col-sm-9 panel-tittle">
-							<i class="fa fa-shopping-basket " aria-hidden="true"> </i> Productos de la compra realizada el <?php echo $fila1[2] ?>
+							<i class="fa fa-shopping-basket " aria-hidden="true"> </i> Productos de la compra realizada el <?php echo $fila1[2] ?> <br>
 						<?php 
 							if ($fila1[4]==1) {
 								# Mostrar estado "Registrado"
