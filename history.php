@@ -74,6 +74,26 @@
 					<div class="row"> 
 						<div class="col-sm-9 panel-tittle">
 							<i class="fa fa-shopping-basket " aria-hidden="true"> </i> Productos de la compra realizada el <?php echo $fila1[2] ?>
+						<?php 
+							if ($fila1[4]==1) {
+								# Mostrar estado "Registrado"
+								
+								echo "<b>Estado: </b> Compra Registrada</p>";
+								
+							} else {
+								if ($fila1[4]==2) {
+									# Mostrar estado "En trayecto"
+									
+									echo "<b>echoEstado: Compra en trayecto</b>";
+									
+								} else {
+									# Mostrar estado "Finalizado"
+									echo "<b>echoEstado: Compra Finalizada</b>";									
+								}
+								
+							}
+							
+						?>
 						</div>
 					</div>
 				</div>
@@ -132,32 +152,7 @@
 									<li><p><b>Precio:</b> S/. <?php echo $data[$i][5] ?></p></li>
 									<li><div><b>Cantidad:</b> </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
 								
-								<?php 
-									if ($fila1[4]==1) {
-										# Mostrar estado "Registrado"
-										?>
-											<br>
-											<li><p><b>Estado: </b> Compra Registrada</p></li>
-										<?php
-									} else {
-										if ($fila1[4]==2) {
-											# Mostrar estado "En trayecto"
-											?>
-												<br>
-												<li><p><b>Estado: </b> Compra en trayecto</p></li>
-											<?php
-										} else {
-											# Mostrar estado "Finalizado"
-											?>
-												<br>
-												<li><p><b>Estado: </b> Compra Finalizada</p></li>
-											<?php
-										}
-										
-									}
-									
-								 ?>		
-								 </ul>
+
 							</div>
 							<div class="clearfix"></div>
 															
