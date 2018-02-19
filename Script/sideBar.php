@@ -59,6 +59,19 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 					-->
 
 					<li class="">
+						<a href="compras.php">
+							<i class="menu-icon fa fa-calendar"></i>
+							<span class="menu-text">
+								Compras
+								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
+								
+								</span>
+							</span>
+						</a>
+						<b class="arrow"></b>
+					</li>
+
+					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-headphones"></i>
 							<span class="menu-text"> Productos </span>
@@ -309,18 +322,7 @@ echo '<div id="sidebar" class="sidebar                  responsive">
 						</ul>
 					</li>
 					
-					<li class="">
-						<a href="calendar.html">
-							<i class="menu-icon fa fa-calendar"></i>
-							<span class="menu-text">
-								Calendar
-								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
-							</span>
-						</a>
-						<b class="arrow"></b>
-					</li>
+					
 
 					<li class="">
 						<a href="gallery.html">
