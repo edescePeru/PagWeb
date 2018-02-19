@@ -131,7 +131,30 @@
 								<ul class="qty">
 									<li><p><b>Precio:</b> S/. <?php echo $data[$i][5] ?></p></li>
 									<li><div>Cantidad: </div><p data-cantidad='<?php echo $data[$i][1] ?>'><?php echo $data[$i][4] ?></p></li>
-								</ul>		
+								
+								<?php 
+									if ($fila[4]==1) {
+										# Mostrar estado "Registrado"
+										?>
+											<li><div>Estado: </div><p>Compra Registrada</p></li>
+										<?php
+									} else {
+										if ($fila[4]==2) {
+											# Mostrar estado "En trayecto"
+											?>
+												<li><div>Estado: </div><p>Compra en trayecto</p></li>
+											<?php
+										} else {
+											# Mostrar estado "Finalizado"
+											?>
+												<li><div>Estado: </div><p>Compra finalizada</p></li>
+											<?php
+										}
+										
+									}
+									
+								 ?>		
+								 </ul>
 							</div>
 							<div class="clearfix"></div>
 															
