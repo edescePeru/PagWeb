@@ -93,7 +93,14 @@
 								array_push($data, [$fila[0], $fila[1], $fila[2], $fila[3], $fila[4], $fila[5], $fila[6], $fila[7], $fila[8]]);
 							}
 						}else{
-					
+					?>
+					<div class="frase">
+						TU CARRITO ESTA VACÍO. ¡AGRÉGALE TUS PRODUCTOS FAVORITOS Y 
+						DISFRUTA DEL PLACER DE SEGUIR COMPRANDO!...
+					</div>
+					<?php
+						}
+
 						//echo count($data);
 						//var_dump($data);
 
