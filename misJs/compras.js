@@ -10,7 +10,7 @@ function modificarEstado () {
 	// Llamado ajax para agregar al carrito
 	$.ajax({
 		url: url,
-		data: {idCompra:idCompra, estado=estado},
+		data: {idCompra:idCompra, estado:estado},
 		method: 'POST'
 	}).done(function( response ) {
 		console.log(response);
