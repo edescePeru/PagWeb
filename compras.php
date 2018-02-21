@@ -215,7 +215,7 @@ session_start();
                                                 <?php 
                                                     if ($fila[2]==1) {
                                                 ?>
-                                                    <select name="cboEstado" data-id="<?php echo $fila[3]; ?>">
+                                                    <select name="cboEstado" data-combo="<?php echo $fila[3]; ?>">
                                                         <option value="1" selected="">Registrada</option>
                                                         <option value="2">En trayecto</option>
                                                         <option value="3">Finalizada</option>
@@ -224,7 +224,7 @@ session_start();
                                                     } else {
                                                         if ($fila[2]==2) {
                                                         ?>
-                                                            <select name="cboEstado" data-id="<?php echo $fila[3]; ?>">
+                                                            <select name="cboEstado" data-combo="<?php echo $fila[3]; ?>">
                                                                 <option value="1" >Registrada</option>
                                                                 <option value="2" selected="">En trayecto</option>
                                                                 <option value="3">Finalizada</option>
@@ -232,7 +232,7 @@ session_start();
                                                         <?php
                                                         } else {
                                                             ?>
-                                                                <select name="cboEstado" data-id="<?php echo $fila[3]; ?>">
+                                                                <select name="cboEstado" data-combo="<?php echo $fila[3]; ?>">
                                                                     <option value="1" >Registrada</option>
                                                                     <option value="2" >En trayecto</option>
                                                                     <option value="3" selected="">Finalizada</option>
@@ -546,6 +546,11 @@ session_start();
                 }
             
             })
-        </script>
+</script>
+
+<script src="misJs/compras.js"></script>
+<script src="notify/bootstrap-notify.js"></script>
+<script src="notify/bootstrap-notify.min.js"></script>
+
 </body>
 </html>
