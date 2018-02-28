@@ -98,9 +98,9 @@
 				}
 				
 			?>
-			</div>
-			<br>
-			<br>
+		</div>
+		<br>
+		<br>
 		
 		<?php
 			$query = "SELECT * FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0";
@@ -181,7 +181,6 @@
 
 			 ?>
 				
-				<div class="clearfix"></div>
 			</div>
 			<!-- end grids_of_4 -->
 			<div class="women">

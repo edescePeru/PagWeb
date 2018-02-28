@@ -70,6 +70,136 @@
 
 		<div class="col-md-9 w_content">
 			<div class="women">
+				<div class="clearfix"></div>
+				<?php
+					
+					if (!isset($_GET['orden'])) {					
+				?>
+					<div class="feature feature-icon-hover indent first">
+						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+					</div>
+				<?php
+				
+					} else {
+						
+				?>
+					<div class="feature feature-icon-hover indent first">
+						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+						<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+					</div>
+				<?php
+					}
+					
+				?>
+				</div>
+				<br>
+				<br>
+				
+				<div class="clearfix"></div>
+				
+			</div>
+			<br>
+			<br>
+			<!-- grids_of_4 -->
+			<div class="grids_of_4">
+			<?php 
+				$query = "SELECT * FROM producto WHERE stock>0";
+
+					$result = mysqli_query($conexion, $query);
+
+					$numeroProductos = mysqli_num_rows($result);
+					$numeroLotes = 4;
+
+					$numeroPaginas = ceil($numeroProductos/$numeroLotes);
+				if (!isset($_GET['page'])) {
+					$pagina = 1;
+				} else {
+					$pagina = $_GET['page'];
+				}
+				
+				if ($pagina <= 1) {
+					$limit = 0;
+				} else {
+					$limit = $numeroLotes*($pagina-1);
+				}
+
+				$subcateg = str_replace("_"," ",$subcategoria);
+
+				if (isset($_GET['orden'])) {
+					if ($_GET['orden'] == 1) {
+						// De mayor a menor
+						$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, 
+							SC.nombre, P.image
+								FROM producto P
+								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
+								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 AND P.stock>0
+								ORDER BY precio ASC LIMIT $limit, $numeroLotes";
+				
+					} else {
+						// De menor a mayor
+						$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, 
+							SC.nombre, P.image
+								FROM producto P
+								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
+								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 AND P.stock>0
+								ORDER BY precio DESC LIMIT $limit, $numeroLotes";
+				
+					}
+					
+				} else {
+					$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, 
+							SC.nombre, P.image
+								FROM producto P
+								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
+								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 AND P.stock>0
+								LIMIT $limit, $numeroLotes";
+				
+				}
+
+				/*LIMIT $limit, $numeroLotes*/
+				$resultado = mysqli_query($conexion, $consulta);
+				while ($fila = mysqli_fetch_array($resultado)) {
+			?>
+				<div class="grid1_of_4 simpleCart_shelfItem">
+					<div class="content_box">
+						<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
+							<div class="view view-fifth">
+								<img src="../../Script/images/<?= $fila['image'] ?>" class="img-responsive" alt=""/>
+								<div class="mask1">
+									<div class="info"> </div>
+								</div>
+							</div>
+						</a>
+
+						<div class="body-description">
+							<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
+								<div class="descripcion">
+									<h6><b><?php echo $fila['nombrePortada'] ?>...</b></h6>
+								</div>
+								<div class="size_1">
+									<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
+									<div class="clearfix"></div>
+								</div>
+							</a>
+
+							<!-- <div class="size_2"> -->
+								<!--<div class="size_2-left"> 
+									<input type="text" class="item_quantity quantity_1" value="1" />
+								</div>-->
+								<!-- <input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
+								<div class="clearfix"> </div>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			<?php 
+				}
+
+			 ?>		
+			</div>
+			<!-- end grids_of_4 -->
+			<div class="col-md-9 w_content">
 				
 				<div class="clearfix"></div>
 				<?php
@@ -114,87 +244,11 @@
 					}
 					
 				?>
-							
-							
-				<?php    	
-						
-				?>
-			</div>
-			<br>
-			<br>
-			<!-- grids_of_4 -->
-			<div class="grids_of_4">
-			<?php 
-				if (!isset($_GET['page'])) {
-					$pagina = 1;
-				} else {
-					$pagina = $_GET['page'];
-				}
-				
-				if ($pagina <= 1) {
-					$limit = 0;
-				} else {
-					$limit = $numeroLotes*($pagina-1);
-				}
+			</div>	
+			<br><br>
 
-				$subcateg = str_replace("_"," ",$subcategoria);
-
-				$consulta = "SELECT P.idProducto, left(P.nombrePortada,80) as nombrePortada, P.precio, 
-							SC.nombre, P.image
-								FROM producto P
-								JOIN subcategoria SC ON P.idSubCategoria = SC.idSubCategoria
-								WHERE SC.nombre =  '".$subcateg."' and P.enable = 1 AND P.stock>0";
-				/*LIMIT $limit, $numeroLotes*/
-				$resultado = mysqli_query($conexion, $consulta);
-				while ($fila = mysqli_fetch_array($resultado)) {
-			?>
-				<div class="grid1_of_4 simpleCart_shelfItem">
-					<div class="content_box">
-						<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
-							<div class="view view-fifth">
-								<img src="../../Script/images/<?= $fila['image'] ?>" class="img-responsive" alt=""/>
-								<div class="mask1">
-									<div class="info"> </div>
-								</div>
-							</div>
-						</a>
-
-						<div class="body-description">
-							<a href="../content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
-								<div class="descripcion">
-									<h6><b><?php echo $fila['nombrePortada'] ?>...</b></h6>
-								</div>
-								<div class="size_1">
-									<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
-									<div class="clearfix"></div>
-								</div>
-							</a>
-
-							<!-- <div class="size_2"> -->
-								<!--<div class="size_2-left"> 
-									<input type="text" class="item_quantity quantity_1" value="1" />
-								</div>-->
-								<!-- <input type="button" data-add="<?php echo $fila[0]; ?>" class="item_add add3" value="Agregar carrito"/>
-								<div class="clearfix"> </div>
-							</div> -->
-						</div>
-					</div>
-				</div>
-			<?php 
-				}
-
-			 ?>
-				
-				<div class="clearfix"></div>
-			</div>
-			<!-- end grids_of_4 -->
-
-		</div>		
-		
-		<!-- start content -->
+		</div>
 		<div class="clearfix"></div>
-		<!-- end content -->
-
 	</div>
 </div>
 
