@@ -109,7 +109,7 @@
 					$result = mysqli_query($conexion, $query);
 
 					$numeroProductos = mysqli_num_rows($result);
-					$numeroLotes = 4;
+					$numeroLotes = 15;
 
 					$numeroPaginas = ceil($numeroProductos/$numeroLotes);
 				if (!isset($_GET['page'])) {
@@ -208,7 +208,7 @@
 					$result = mysqli_query($conexion, $query);
 
 					$numeroProductos = mysqli_num_rows($result);
-					$numeroLotes = 4;
+					$numeroLotes = 15;
 
 					$numeroPaginas = ceil($numeroProductos/$numeroLotes);
 
