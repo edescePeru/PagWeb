@@ -86,11 +86,15 @@
 		
 		<div class="col-md-3 contact_right">
 			<h3>POR FACEBOOK</h3>
-			<div class="fb-page" data-href="https://www.facebook.com/EdesceStore/" data-tabs="messages" data-small-header="false"  data-height="400" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-				<blockquote cite="https://www.facebook.com/EdesceStore/" class="fb-xfbml-parse-ignore">
-					<a href="https://www.facebook.com/EdesceStore/">Edesce Store</a>
-				</blockquote>
-			</div>
+			<div id="fb-root"></div>
+			<div class="fb-page" data-href="https://www.facebook.com/Swarbox-301444097029202/" data-tabs="messages" data-height="350" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/Swarbox-301444097029202/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Swarbox-301444097029202/">Swarbox</a></blockquote></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.12';
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
 		</div>
 	</div>
 </div>  
@@ -135,16 +139,6 @@
 
 	function hideURLbar(){ window.scrollTo(0,1); } 
 
-</script>
-
-<script>
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.10";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
 </script>
 
 </body>
