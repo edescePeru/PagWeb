@@ -31,6 +31,46 @@
 			width: 150px;
 			height: 200px;
 		}
+		.myButton {
+		-moz-box-shadow: 0px 0px 0px 2px #ce1c2e;
+		-webkit-box-shadow: 0px 0px 0px 2px #ce1c2e;
+		box-shadow: 0px 0px 0px 2px #ce1c2e;
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ce1c2e), color-stop(1, #cf5965));
+		background:-moz-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
+		background:-webkit-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
+		background:-o-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
+		background:-ms-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
+		background:linear-gradient(to bottom, #ce1c2e 5%, #cf5965 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce1c2e', endColorstr='#cf5965',GradientType=0);
+		background-color:#ce1c2e;
+		-moz-border-radius:10px;
+		-webkit-border-radius:10px;
+		border-radius:10px;
+		border:1px solid #ce1c2e;
+		display:inline-block;
+		cursor:pointer;
+		color:#ffffff;
+		font-family:Arial;
+		font-size:19px;
+		padding:5px 37px;
+		text-decoration:none;
+		text-shadow:0px 1px 0px #bf9da0;
+		width: 180px;
+	}
+	.myButton:hover {
+		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cf5965), color-stop(1, #ce1c2e));
+		background:-moz-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
+		background:-webkit-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
+		background:-o-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
+		background:-ms-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
+		background:linear-gradient(to bottom, #cf5965 5%, #ce1c2e 100%);
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf5965', endColorstr='#ce1c2e',GradientType=0);
+		background-color:#cf5965;
+	}
+	.myButton:active {
+		position:relative;
+		top:1px;
+	}
 	</style>
 </head>	
 <body>
@@ -69,7 +109,21 @@
 		<!-- start sidebar -->
 		<div class="col-md-3">
 			<div class="w_sidebar">
-				<img src="images/BANNER TECNOLOGIA.jpg" height="1123" width="281" alt="">
+				<div class="feature feature-icon-hover indent first">
+				<?php 
+					$queryMarca = "SELECT m.idMarca, m.nombre 
+					FROM marca m
+					WHERE m.enable=1";
+					$resultMarca = mysqli_query($conexion, $queryMarca);
+
+					while ($filaMarca = mysqli_fetch_array($resultMarca)) {
+				?>
+					<a href="search.php?search=<?php echo $search ?>&orden=1&$page=1&marca=<?php echo $filaMarca["idMarca"] ?>" title="" class="myButton"><?php echo $filaMarca["nombre"] ?></a>
+					<br><br>
+				<?php
+					}
+				?>
+				</div>
 			</div>
 		</div>
 
@@ -79,24 +133,39 @@
 			<div class="clearfix"></div>
 			<?php
 				
-				if (!isset($_GET['orden'])) {					
-			?>
-				<div class="feature feature-icon-hover indent first">
-					<a href="search.php?search=<?php echo $search ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
-					<a href="search.php?search=<?php echo $search ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
-				</div>
-			<?php
-			
+				if (!isset($_GET['orden'])) {
+					if (!isset($_GET['marca'])) {
+				?>
+					<div class="feature feature-icon-hover indent first">
+						<a href="search.php?search=<?php echo $search ?>&orden=1&marca=3" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+						<a href="search.php?search=<?php echo $search ?>&orden=2&marca=3" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+					</div>
+				<?php	
+					}else {
+				?>
+					<div class="feature feature-icon-hover indent first">
+						<a href="search.php?search=<?php echo $search ?>&orden=1&marca=<?php echo $_GET['marca'] ?>" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+						<a href="search.php?search=<?php echo $search ?>&orden=2&marca=<?php echo $_GET['marca'] ?>" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+					</div>
+				<?php
+					}			
 				} else {
-					
-			?>
+					if (!isset($_GET['marca'])) {
+				?>
+					<div class="feature feature-icon-hover indent first">
+						<a href="search.php?search=<?php echo $search ?>&orden=1&marca=3" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+						<a href="search.php?search=<?php echo $search ?>&orden=2&marca=3" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+					</div>
+				<?php	
+					}else {
+				?>
 				<div class="feature feature-icon-hover indent first">
 					<a href="search.php?search=<?php echo $search ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
 					<a href="search.php?search=<?php echo $search ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
 				</div>
 			<?php
+					}
 				}
-				
 			?>
 		</div>
 		<br>
@@ -115,38 +184,60 @@
 			
 			<!-- grids_of_4 -->
 			<div class="grids_of_4">
-			<?php 
-				if (!isset($_GET['page'])) {
-					$pagina = 1;
-				} else {
-					$pagina = $_GET['page'];
-				}
-				
-				if ($pagina <= 1) {
-					$limit = 0;
-				} else {
-					$limit = $numeroLotes*($pagina-1);
-				}
-				// HAcer un if que pregunte por $orden y haga una consulta desc precio o asc precio
-				if (isset($_GET['orden'])) {
-					if ($_GET['orden'] == 1) {
-						// De mayor a menor
-						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio ASC LIMIT $limit, $numeroLotes ";
-				
+				<?php 
+					if (!isset($_GET['page'])) {
+						$pagina = 1;
 					} else {
-						// De menor a mayor
-						$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio DESC LIMIT $limit, $numeroLotes";
-				
+						$pagina = $_GET['page'];
 					}
 					
-				} else {
-					$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 LIMIT $limit, $numeroLotes";
-				
-				}
-				
-				$resultado = mysqli_query($conexion, $consulta);
-				while ($fila = mysqli_fetch_array($resultado)) {
-			?>
+					if ($pagina <= 1) {
+						$limit = 0;
+					} else {
+						$limit = $numeroLotes*($pagina-1);
+					}
+					// HAcer un if que pregunte por $orden y haga una consulta desc precio o asc precio
+					if (isset($_GET['orden'])) {
+						if ($_GET['orden'] == 1) {
+							if (!isset($_GET['marca'])) {
+								$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio ASC LIMIT $limit, $numeroLotes ";
+								
+							} else {
+								// De mayor a menor
+								$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  
+								FROM producto WHERE idMarca=".$_GET['marca']." AND nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio ASC LIMIT $limit, $numeroLotes ";
+								
+							}
+					
+						} else {
+							// De menor a mayor
+							if (!isset($_GET['marca'])) {
+								$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  
+								FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio DESC LIMIT $limit, $numeroLotes";
+
+							} else {
+								$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  
+								FROM producto WHERE idMarca=".$_GET['marca']." AND nombrePortada LIKE '%".$search."%' AND stock>0 ORDER BY precio DESC LIMIT $limit, $numeroLotes";
+
+							}
+					
+						}
+						
+					} else {
+						if (!isset($_GET['marca'])) {
+							$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  FROM producto WHERE nombrePortada LIKE '%".$search."%' AND stock>0 LIMIT $limit, $numeroLotes";
+							
+						} else {
+							$consulta = "SELECT idProducto, left(nombrePortada, 80) as nombrePortada, precio, image  
+							FROM producto WHERE idMarca=".$_GET['marca']." AND nombrePortada LIKE '%".$search."%' AND stock>0 LIMIT $limit, $numeroLotes";
+							
+						}
+					
+					}
+					
+					$resultado = mysqli_query($conexion, $consulta);
+					while ($fila = mysqli_fetch_array($resultado)) {
+				?>
 				<div class="grid1_of_4 simpleCart_shelfItem">
 					<div class="content_box">
 						<a href="product/content/product.php?idprod=<?php echo $fila['idProducto'] ?>">
@@ -188,13 +279,23 @@
 				<div class="clearfix"></div>
 				<?php
 					
-					if (!isset($_GET['page'])) {					
-				?>
-					<div class="feature feature-icon-hover indent first">
-						<a href="search.php?search=<?php echo $search ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-						<a href="search.php?search=<?php echo $search ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
-					</div>
-				<?php
+					if (!isset($_GET['page'])) {	
+						if (!isset($_GET['marca'])) {	
+							?>
+								<div class="feature feature-icon-hover indent first">
+									<a href="search.php?search=<?php echo $search ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+									<a href="search.php?search=<?php echo $search ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+								</div>
+							<?php
+						} else {
+							?>
+								<div class="feature feature-icon-hover indent first">
+									<a href="search.php?search=<?php echo $search ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+									<a href="search.php?search=<?php echo $search ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+								</div>
+							<?php
+						}	
+				
 					} else {
 						$pagina = $_GET['page'];
 						if ($pagina==1) {
@@ -211,19 +312,25 @@
 							
 							
 						}
-				?>
-					<div class="feature feature-icon-hover indent first">
-						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-						<a href="search.php?search=<?php echo $search ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
-					</div>
-				<?php
+						if (!isset($_GET['marca'])) {
+							?>
+								<div class="feature feature-icon-hover indent first">
+									<a href="search.php?search=<?php echo $search ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+									<a href="search.php?search=<?php echo $search ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+								</div>
+							<?php
+						} else {
+							?>
+								<div class="feature feature-icon-hover indent first">
+									<a href="search.php?search=<?php echo $search ?>&page=<?php echo $prev ?>&marca=<?php echo $_GET['marca'] ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+									<a href="search.php?search=<?php echo $search ?>&page=<?php echo $next ?>&marca=<?php echo $_GET['marca'] ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+								</div>
+							<?php
+						}
+
+				
 					}
 					
-				?>
-							
-							
-				<?php    	
-						
 				?>
 			</div>
 			<br>
