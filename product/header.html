@@ -165,7 +165,7 @@
 														WHERE C.nombre = "Zona Gamer" and SC.enable = 1');
 																					    
 													while($categoria = mysqli_fetch_array($resultSet)){
-												?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												?><li><a href="subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
 												<?php } ?>
 												</ul>
 											</div>							
