@@ -26,45 +26,27 @@
 	
 	<style>
 		.myButton {
-		-moz-box-shadow: 0px 0px 0px 2px #ce1c2e;
-		-webkit-box-shadow: 0px 0px 0px 2px #ce1c2e;
-		box-shadow: 0px 0px 0px 2px #ce1c2e;
-		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ce1c2e), color-stop(1, #cf5965));
-		background:-moz-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
-		background:-webkit-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
-		background:-o-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
-		background:-ms-linear-gradient(top, #ce1c2e 5%, #cf5965 100%);
-		background:linear-gradient(to bottom, #ce1c2e 5%, #cf5965 100%);
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce1c2e', endColorstr='#cf5965',GradientType=0);
-		background-color:#ce1c2e;
-		-moz-border-radius:10px;
-		-webkit-border-radius:10px;
-		border-radius:10px;
-		border:1px solid #ce1c2e;
-		display:inline-block;
-		cursor:pointer;
-		color:#ffffff;
-		font-family:Arial;
-		font-size:19px;
-		padding:5px 37px;
-		text-decoration:none;
-		text-shadow:0px 1px 0px #bf9da0;
-		width: 180px;
-	}
-	.myButton:hover {
-		background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #cf5965), color-stop(1, #ce1c2e));
-		background:-moz-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
-		background:-webkit-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
-		background:-o-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
-		background:-ms-linear-gradient(top, #cf5965 5%, #ce1c2e 100%);
-		background:linear-gradient(to bottom, #cf5965 5%, #ce1c2e 100%);
-		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#cf5965', endColorstr='#ce1c2e',GradientType=0);
-		background-color:#cf5965;
-	}
-	.myButton:active {
-		position:relative;
-		top:1px;
-	}
+			background-color:#f54d55;
+			display:inline-block;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:17px;
+			font-weight:bold;
+			padding:9px 31px;
+			text-decoration:none;
+			text-shadow:0px 1px 0px #f54d55;
+			width: 200px;
+			text-align: center;
+		}
+		.myButton:hover {
+			background-color:#d63e48;
+		}
+		.myButton:active {
+			position:relative;
+			top:1px;
+		}
+
 	</style>
 
 </head>	
