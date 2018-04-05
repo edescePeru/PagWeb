@@ -52,6 +52,9 @@
 			position:relative;
 			top:1px;
 		}
+		.w_sidebar {
+			border: none !important;
+		}
 	</style>
 </head>	
 <body>
