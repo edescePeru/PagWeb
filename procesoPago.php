@@ -32,7 +32,7 @@
 	<link href="css/style2.css" rel='stylesheet' type='text/css' />
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
-	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<style type="text/css" media="screen">
 		.myButton {
 			background-color:#f54d55;

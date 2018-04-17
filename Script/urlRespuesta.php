@@ -1,8 +1,8 @@
 <?php
 include_once '../BaseDatos/conexion.php';
 
-/*$ApiKey = "EMuC7EX6cfKrbo0cAPArEZzOVZApi";*/
-$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";
+$ApiKey = "EMuC7EX6cfKrbo0cAPArEZzOVZApi";
+/*$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";*/
 $merchant_id = $_REQUEST['merchantId'];
 $referenceCode = $_REQUEST['referenceCode'];
 $TX_VALUE = $_REQUEST['TX_VALUE'];
