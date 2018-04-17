@@ -11,8 +11,8 @@
 		echo json_encode(['error' => true, 'message' =>'Es necesario iniciar sesión', 'clave'=>'login' ]);
 		return;
 	} else {
-		/*$data['accountId'] = "701175";*/
-		$data['accountId'] = "512323";
+		$data['accountId'] = "701175";
+		/*$data['accountId'] = "512323";*/
 		$data['buyerEmail'] = $_SESSION['email'];
 	}
 	$query = "SELECT idCarrito FROM carrito WHERE idCliente = ".$_SESSION['id']." AND sold = 1";
@@ -46,10 +46,10 @@
 	}
 	
 	// Firma
-	/*$apikey = "EMuC7EX6cfKrbo0cAPArEZzOVZ";*/
-	$apikey = "4Vj8eK4rloUd272L48hsrarnUA";
-	/*$merchantId = "698161";*/
-	$merchantId = "508029";
+	$apikey = "EMuC7EX6cfKrbo0cAPArEZzOVZ";
+	/*$apikey = "4Vj8eK4rloUd272L48hsrarnUA";*/
+	$merchantId = "698161";
+	/*$merchantId = "508029";*/
 	$referenceCode = $referencia;
 	$amount = $monto;
 	$currency = "PEN";
