@@ -241,7 +241,7 @@
 							<span class="item_price">S/.<?php echo $fila['precio'] ?></span>
 							<div class="clearfix"></div>
 						</div>
-
+						<br>
 						<div class="size_2">
 							<!--<div class="size_2-left"> 
 								<input type="text" class="item_quantity quantity_1" value="1" />

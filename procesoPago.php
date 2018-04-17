@@ -33,6 +33,32 @@
 	<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/font-awesome.min.css" rel="stylesheet" >
 	<link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<style type="text/css" media="screen">
+		.myButton {
+			background-color:#f54d55;
+			display:inline-block;
+			cursor:pointer;
+			color:#ffffff;
+			font-family:Arial;
+			font-size:17px;
+			font-weight:bold;
+			padding:9px 31px;
+			text-decoration:none;
+			text-shadow:0px 1px 0px #f54d55;
+			width: 200px;
+			text-align: center;
+		}
+		.myButton:hover {
+			background-color:#d63e48;
+		}
+		.myButton:active {
+			position:relative;
+			top:1px;
+		}
+		.w_sidebar {
+			border: none !important;
+		}
+	</style>
 </head>
 <body>
 
@@ -347,7 +373,7 @@
 				  <input name="shippingAddress" type="hidden" value="" > 
 				  <input name="shippingCity" type="hidden" value="" > 
 				  <input name="shippingCountry" type="hidden" value="" > 
-				  <input name="Submit"        type="submit"  value="Realizar pago" >
+				  <input class="myButton" name="Submit" type="submit"  value="Realizar pago" >
 
 				</form>
 		</div>
