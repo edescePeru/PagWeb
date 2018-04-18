@@ -412,5 +412,35 @@
 						  	</div>
 						</div>
 					</li>
+					<li class="grid">
+						<a class="color1" href="#">SERVICIOS</a>
+						<div class="megapanel">
+							<div class="row">
+
+								<div style="float: left; width: 65%">
+									
+									<div>
+										<div class="col1">
+											<div class="h_nav">
+												<h5>Cursos</h5>
+												<ul>
+												<?php 
+													$resultSet = mysqli_query($conexion, 'SELECT C.idCategoria, C.nombre as Categoria, SC.idSubCategoria, SC.nombre as Subcategoria
+														FROM subcategoria SC 
+														JOIN categoria C ON SC.idCategoria = C.idCategoria 
+														WHERE C.nombre = "Curso" and SC.enable = 1');
+																						    
+													while($categoria = mysqli_fetch_array($resultSet)){
+													?><li><a href="product/categoria/subcategoria.php?subcategoria=<?= str_replace(" ","_",$categoria['Subcategoria']) ?>"><?= $categoria['Subcategoria'] ?></a></li>
+												<?php } ?></ul>	
+											</div>							
+										</div>
+									</div>	
+								</div>
+
+								<div style="clear: both;"></div>
+						  	</div>
+						</div>
+					</li>
 			  	</ul> 
 			</div>
