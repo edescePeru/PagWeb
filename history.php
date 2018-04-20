@@ -65,8 +65,8 @@
 		<div class="col-md-9 contact_left">
 			
 		<?php 
-			$query = "";
-			$resultSet = mysqli_query($conexion, 'SELECT * FROM compra');
+			$query = "SELECT * FROM compra c iNNER JOIN carrito ca ON c.idCarrito = ca.idCarrito WHERE ca.idCliente = ".$_SESSION['id'];
+			$resultSet = mysqli_query($conexion, $query);
 			while($fila1 = mysqli_fetch_array($resultSet)){
         ?>
 			<div class="style panel panel-default">

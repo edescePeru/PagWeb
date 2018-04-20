@@ -95,7 +95,7 @@
 			<div class="w_sidebar">
 				<div class="feature feature-icon-hover indent first">
 				<?php 
-					$queryMarca = "SELECT m.idMarca, m.nombre 
+					$queryMarca = "SELECT DISTINCT m.idMarca, m.nombre 
 					FROM marca m
 					WHERE m.enable=1";
 					$resultMarca = mysqli_query($conexion, $queryMarca);
