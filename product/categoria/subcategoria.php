@@ -119,8 +119,8 @@
 						if (!isset($_GET['marca'])) {
 					?>
 						<div class="feature feature-icon-hover indent first">
-							<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=1&marca=3" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
-							<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=2&marca=3" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+							<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+							<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
 						</div>
 					<?php
 						} else {
@@ -135,8 +135,8 @@
 						if (!isset($_GET['marca'])) {
 							?>
 								<div class="feature feature-icon-hover indent first">
-									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=1&marca=3" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
-									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=2&marca=3" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
+									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=1" title=""><i class="fa fa-chevron-up pull-left" aria-hidden="true"></i>De menor a mayor</a>
+									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&orden=2" title="" class="pull-right"><i class="fa fa-chevron-down pull-right" aria-hidden="true"></i>De mayor a menor</a>
 								</div>
 							<?php
 						} else {
@@ -309,8 +309,8 @@
 							if (!isset($_GET['marca'])) {
 							?>
 								<div class="feature feature-icon-hover indent first">
-									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=1&marca=3" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=2&marca=3" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=1" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+									<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=2" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
 								</div>
 							<?php
 							} else {
@@ -342,8 +342,8 @@
 							if (!isset($_GET['marca'])) {
 								?>
 									<div class="feature feature-icon-hover indent first">
-										<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $prev ?>&marca=3" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
-										<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $next ?>&marca=3" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
+										<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $prev ?>" title=""><i class="fa fa-chevron-left pull-left" aria-hidden="true"></i>Anterior</a>
+										<a href="subcategoria.php?subcategoria=<?php echo $subcategoria ?>&page=<?php echo $next ?>" title="" class="pull-right"><i class="fa fa-chevron-right pull-right" aria-hidden="true"></i>Siguiente</a>
 									</div>
 								<?php
 							} else {
