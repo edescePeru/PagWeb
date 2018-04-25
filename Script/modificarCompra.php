@@ -2,6 +2,9 @@
 	header('Content-type: application/json');
 	include '../BaseDatos/conexion.php';
 
+	include_once 'PHPMailer/class.phpmailer.php';
+	include_once 'PHPMailer/class.smtp.php';
+
 	$idCompra = $_POST['idCompra'];
 	$estado = $_POST['estado'];
 
