@@ -1,5 +1,6 @@
 <?php
 include_once '../BaseDatos/conexion.php';
+session_start();
 
 $ApiKey = "EMuC7EX6cfKrbo0cAPArEZzOVZ";
 /*$ApiKey = "4Vj8eK4rloUd272L48hsrarnUA";*/
@@ -102,13 +103,16 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	$data = [];
 	$productos = "";
 	if (mysqli_num_rows($result)>0) {
+		$totalT = 0;
 		while ($fila = mysqli_fetch_array($result)) {
-			$productos = $productos.'<br><label>Producto: </label>'.$fila[3].
+			$productos = $productos.'<label>Producto: </label>'.$fila[3].
 									'<br><label>Codigo: </label>'.$fila[8].
 									'<br><label>Cantidad: </label>'.$fila[5].
-									'<br><label>Precio Total: </label>'.($fila[6]*$fila[5]).
+									'<br><label>Subtotal: </label>'.($fila[6]*$fila[5]).
 									'<br><label>---------------------------------------------------------------------</label>';
+			$totalT += ($fila[6]*$fila[5]);
 		}
+		$productos = $productos.'<br><label>TOTAL: </label>'.$totalT;
 	}
 
 
@@ -125,6 +129,7 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	</head>
 		<h3>Datos del cliente</h3>'.$cliente.'
 		<br><h3>Datos del carrito</h3>'.$productos.'
+		<br>
 	<body>
 		
 	</body>
@@ -154,6 +159,56 @@ if (strtoupper($firma) == strtoupper($firmacreada)) {
 	// } else {
 	// 	echo "No se envio";
 	// }
+	// 
+	$queryC = "SELECT idCompra FROM compra WHERE idCarrito = ".$idCarrito;
+	$resultC = mysqli_query($conexion, $queryC);
+	$idCompra=0;
+	while ($filaC = mysqli_fetch_array($resultC)) {
+		$idCompra = $filaC[0];
+	}
+	$nombre = "EDESCE EIRL";
+	$emisor = "edesceperu@gmail.com";
+	$asunto = "Compra Registrada";
+	$mensaje = '<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<link rel="stylesheet" href="">
+	</head>
+		<h1>Su compra ha sido registrada</h1>
+		<h2>Hola '.$_SESSION['user'].'</h2>	
+		<p>Te informamos que tu orden de compra Nº '.$idCompra.' ha sido registrada</p>
+		<p>Para retirar tu compra debes presentar:</p>
+		<p>• Número de orden de compra</p>
+		<p>• Documento de Identidad del titular registrado en la orden de compra</p>
+		<br>
+		<h3>Datos del cliente</h3>'.$cliente.'
+		<br><h3>Datos de los productos</h3>'.$productos.'
+	<body>
+		
+	</body>
+	</html>';
+
+	$destino = $_SESSION['email'];
+
+	$mailU = new PHPMailer();
+	$mailU->IsSMTP();
+	$mailU->SMTPAuth = true;
+	$mailU->SMTPSecure = "ssl";
+	$mailU->Host = "smtp.gmail.com";
+	$mailU->Port = "465";
+	$mailU->setFrom($emisor, $nombre);
+	$mailU->AddAddress($destino);
+	$mailU->Username = "mailpruebacursophp@gmail.com";
+	$mailU->Password = "cursophp123";
+	$mailU->Subject = $asunto;
+	$mailU->Body = $mensaje;
+	$mailU->WordWrap = 50;
+	$mailU->CharSet = "UTF-8";
+	$mailU->MsgHTML($mensaje);
+	$mailU->Send();
 	
 	header('Location: /../success.php');
 }
