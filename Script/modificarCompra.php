@@ -37,6 +37,7 @@
 			WHERE C.idCompra = ".$idCompra;
 			$result_select_data = mysqli_query($conexion, $query_select_data);
 			$cliente = "";
+			$nombreCliente = "";
 			$correo = "";
 			if (mysqli_num_rows($result_select_data)>0) {
 				while ($fila = mysqli_fetch_row($result_select_data)) {
@@ -46,6 +47,7 @@
 			        			'<br><label>Correo: </label>'.$fila[3].
 			        			'<br><label>Telefono: </label>'.$fila[4];
 			        $correo = $fila[3];
+			        $nombreCliente = $fila[0];
 			    }
 			}
 
@@ -68,7 +70,7 @@
 											'<br><label>Codigo: </label>'.$fila[8].
 											'<br><label>Cantidad: </label>'.$fila[5].
 											'<br><label>Subtotal: </label>'.($fila[6]*$fila[5]).
-											'<br><label>---------------------------------------------------------------------</label>';
+											'<br><label>---------------------------------------------------------------------</label><br>';
 					$totalT += ($fila[6]*$fila[5]);
 				}
 				$productos = $productos.'<br><label>TOTAL: </label>'.$totalT;
@@ -84,16 +86,17 @@
 				<title></title>
 				<link rel="stylesheet" href="">
 			</head>
-				<h1>Su compra ha sido registrada</h1>
-				<h2>Hola '.$_SESSION['user'].'</h2>	
+			<body background="yellow">
+				<h1>Su compra esta en trayecto</h1>
+				<h2>Hola '.$nombreCliente.'</h2>	
 				<p>Te informamos que tu orden de compra Nº '.$idCompra.' esta siendo atendida</p>
-				<p>Para retirar tu compra debes presentar:</p>
+				<p>Para pedir información de tu compra debes presentar:</p>
 				<p>• Número de orden de compra</p>
 				<p>• Documento de Identidad del titular registrado en la orden de compra</p>
 				<br>
 				<h3>Datos del cliente</h3>'.$cliente.'
 				<br><h3>Datos de los productos</h3>'.$productos.'
-			<body>
+			
 				
 			</body>
 			</html>';
@@ -126,6 +129,7 @@
 				WHERE C.idCompra = ".$idCompra;
 				$result_select_data = mysqli_query($conexion, $query_select_data);
 				$cliente = "";
+				$nombreCliente = "";
 				$correo = "";
 				if (mysqli_num_rows($result_select_data)>0) {
 					while ($fila = mysqli_fetch_row($result_select_data)) {
@@ -135,6 +139,7 @@
 				        			'<br><label>Correo: </label>'.$fila[3].
 				        			'<br><label>Telefono: </label>'.$fila[4];
 				        $correo = $fila[3];
+				        $nombreCliente = $fila[0];
 				    }
 				}
 
@@ -157,7 +162,7 @@
 												'<br><label>Codigo: </label>'.$fila[8].
 												'<br><label>Cantidad: </label>'.$fila[5].
 												'<br><label>Subtotal: </label>'.($fila[6]*$fila[5]).
-												'<br><label>---------------------------------------------------------------------</label>';
+												'<br><label>---------------------------------------------------------------------</label><br>';
 						$totalT += ($fila[6]*$fila[5]);
 					}
 					$productos = $productos.'<br><label>TOTAL: </label>'.$totalT;
@@ -173,15 +178,16 @@
 					<title></title>
 					<link rel="stylesheet" href="">
 				</head>
+				<body background="yellow">
 					<h1>Su compra ha finalizado</h1>
-					<h2>Hola '.$_SESSION['user'].'</h2>	
+					<h2>Hola '.$nombreCliente.'</h2>	
 					<p>Te informamos que tu orden de compra Nº '.$idCompra.' ha finalizado</p>
 					<p>Por favor dejanos un comentario especificando tu experiencia de compra con nosotros</p>
 					<p>En los productos puedes calificar la calidad de ellos</p>
 					<br>
 					<h3>Datos del cliente</h3>'.$cliente.'
 					<br><h3>Datos de los productos</h3>'.$productos.'
-				<body>
+				
 					
 				</body>
 				</html>';
