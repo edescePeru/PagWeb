@@ -29,7 +29,7 @@
 	$modificar = mysqli_query($conexion, $query);
 	if ($modificar) {
 		// EN TRAYECTO
-		if ($estado = 2) {
+		if ($estado == 2) {
 			$query_select_data = "SELECT CL.nombre, CL.apellidos, CL.docIdentidad, CL.correo, CL.telefono
 			FROM cliente CL
 			INNER JOIN carrito CA ON CL.idCliente = CA.idCliente
@@ -118,7 +118,7 @@
 			$mailU->Send();
 		} else {
 			// FINALIZADA
-			if ($estado = 3) {
+			if ($estado == 3) {
 				$query_select_data = "SELECT CL.nombre, CL.apellidos, CL.docIdentidad, CL.correo, CL.telefono
 				FROM cliente CL
 				INNER JOIN carrito CA ON CL.idCliente = CA.idCliente
